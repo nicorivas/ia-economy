@@ -5,7 +5,8 @@ escaso cuando la inteligencia se vuelve abundante, y quién se queda con la rent
 escasez**. El empleo, los salarios, la participación del trabajo, la energía, el cómputo,
 la renta. No es un pronóstico — es un mapa del debate, con su rastro de evidencia.
 
-Iniciado por [Nicolás Rivas](https://nicolasrivasabud.com/).
+**▶ En vivo: [ia-economy.vercel.app](https://ia-economy.vercel.app)** · Iniciado por
+[Nicolás Rivas](https://nicolasrivasabud.com/).
 
 ## El espíritu
 
