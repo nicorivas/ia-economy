@@ -2549,3 +2549,76 @@ button.capa-cell:hover:not(.on):not(.soon) {
     display: none;
   }
 }
+
+/* ── Explorador en móvil ──────────────────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  /* La barra superior: ocultar el subtítulo para dar aire al título + iconos. */
+  .tb-sub {
+    display: none;
+  }
+
+  /* El panel de ayuda lateral es por hover (inútil en touch) y roba ancho → fuera; las bandas
+     ocupan todo el ancho. */
+  .detail {
+    display: none;
+  }
+  .bands {
+    padding: 0 13px;
+  }
+
+  /* Sin hover en touch: el árbol de navegación se muestra siempre desplegado (no colapsado). */
+  .tree-fold {
+    grid-template-rows: 1fr;
+  }
+  .tree-fold-inner {
+    opacity: 1;
+  }
+  .tree-cell {
+    font-size: 11px;
+    padding: 7px 6px;
+    line-height: 1.25;
+  }
+
+  /* Lente y Capas: fila scrolleable horizontal en vez de aplastar las celdas hasta lo ilegible. */
+  .lens-row,
+  .capa-row {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .lens-row::-webkit-scrollbar,
+  .capa-row::-webkit-scrollbar {
+    display: none;
+  }
+  .lens-cell,
+  .capa-cell {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* Palancas (sliders) y fórmula dejan de ser dos columnas que se enciman → se apilan. */
+  .ver-cockpit {
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+  }
+
+  /* Empleo y salarios se apilan; cada grupo conserva sus dos tarjetas (3/5 años) lado a lado. */
+  .kpi-groups {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .kpis {
+    gap: 10px;
+  }
+  .kpi {
+    padding: 10px 11px;
+  }
+  .kpi-point {
+    font-size: 25px;
+  }
+
+  /* Tabla de comparar lentes y visualizaciones anchas: que puedan scrollear en vez de desbordar. */
+  .cmp,
+  .cmp-table {
+    overflow-x: auto;
+  }
+}
