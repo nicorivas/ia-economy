@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { map, edgesByStudy, edgesByHyp, hypById, studyById, surname } from "./data";
+import { readParams, writeParams } from "./urlState";
 import type { EdgeType } from "./types";
 import { Band3 } from "./Band3";
 import { VeredictoSection } from "./Veredicto";
@@ -103,7 +104,9 @@ const MOTHER = [
 type Sel = { kind: "study" | "hyp"; id: string };
 
 export function App() {
-  const [view, setView] = useState<View>("portada");
+  // Estado inicial desde el hash de la URL (escenario compartido). Ver urlState.ts.
+  const url0 = readParams();
+  const [view, setView] = useState<View>(() => (url0.get("v") as View) || "portada");
   const [fuentesSel, setFuentesSel] = useState<string>(""); // estudio seleccionado en Fuentes
   // Saltar a Fuentes con un estudio seleccionado (desde una cita clicable en la Síntesis).
   const goToStudy = (id: string) => {
@@ -112,9 +115,16 @@ export function App() {
   };
   const [pinned, setPinned] = useState<Sel[]>([]);
   const [hover, setHover] = useState<Sel | null>(null);
-  const [mq, setMq] = useState(0);
-  const [ans, setAns] = useState(0);
-  const [met, setMet] = useState(0);
+  const [mq, setMq] = useState(() => Number(url0.get("q")) || 0);
+  const [ans, setAns] = useState(() => Number(url0.get("a")) || 0);
+  const [met, setMet] = useState(() => {
+    const q = Number(url0.get("q")) || 0;
+    const a = Number(url0.get("a")) || 0;
+    const ms = (MOTHER[q]?.answers?.[a] as { metrics?: { m: string }[] })?.metrics;
+    const mstr = url0.get("m");
+    const i = mstr && ms ? ms.findIndex((x) => x.m === mstr) : -1;
+    return i >= 0 ? i : 0;
+  });
   const [paramFocus, setParamFocus] = useState<ParamFocus>(null);
   const [help, setHelp] = useState<HelpEntry | null>(null);
   // Engancha el hover de un elemento a la ayuda contextual de la derecha (entrada ya armada).
@@ -130,6 +140,17 @@ export function App() {
   const metricRaw = metrics ? metrics[met].m : "empleo";
   const metric = metricRaw as Metric; // rama "El trabajo"
   const recMetric = metricRaw as RecMetric; // rama "Los recursos físicos"
+
+  // Sincroniza la posición (vista + árbol + métrica) al hash. La rebanada del escenario
+  // (lente, escala, palancas) la escribe Veredicto. Juntas, el hash describe el escenario.
+  useEffect(() => {
+    writeParams({
+      v: view === "portada" ? null : view,
+      q: mq ? String(mq) : null,
+      a: ans ? String(ans) : null,
+      m: met ? metricRaw : null,
+    });
+  }, [view, mq, ans, met, metricRaw]);
   const pickMother = (i: number) => {
     setMq(i);
     setAns(0);

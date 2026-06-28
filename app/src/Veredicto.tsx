@@ -14,6 +14,7 @@ import {
   SK_SL,
 } from "./model";
 import type { Scope, Vals, ParamKey, Metric, ParamDef, Lens, Engine, SensRow } from "./model";
+import { readParams, writeParams } from "./urlState";
 import { studyById, surname } from "./data";
 import { Compare } from "./Compare";
 import { Distribucion } from "./Distribucion";
@@ -21,6 +22,7 @@ import {
   helpKpi,
   helpParam,
   HELP_SCOPE,
+  HELP_SHARE,
   HELP_FORMULA,
   HELP_FORMULA_CES,
   HELP_FORMULA_EMP,
@@ -718,11 +720,25 @@ export function VeredictoSection({
   onParamFocus?: (f: ParamFocus) => void;
   onHelp?: (e: HelpEntry | null) => void;
 }) {
-  const [scope, setScope] = useState<Scope>("global");
-  const [lens, setLens] = useState<Lens>("tareas"); // motor del núcleo (lente)
-  const [compareMode, setCompareMode] = useState(false); // modo: comparar todas las lentes a la vez
-  const [distOn, setDistOn] = useState(false); // capa Distribución (quién): aditiva, sobre la lente activa
-  const [vals, setVals] = useState<Vals>(() => scopeDefaults("global"));
+  // Estado inicial desde el hash de la URL (escenario compartido). Ver urlState.ts.
+  const u0 = readParams();
+  const [scope, setScope] = useState<Scope>(() => (u0.get("sc") as Scope) || "global");
+  const [lens, setLens] = useState<Lens>(() => (u0.get("l") as Lens) || "tareas"); // motor del núcleo (lente)
+  const [compareMode, setCompareMode] = useState(() => u0.get("cmp") === "1"); // comparar todas las lentes
+  const [distOn, setDistOn] = useState(() => u0.get("dist") === "1"); // capa Distribución (quién), aditiva
+  const [vals, setVals] = useState<Vals>(() => {
+    const l = (u0.get("l") as Lens) || "tareas";
+    const sc = (u0.get("sc") as Scope) || "global";
+    const base = (ENGINES[l] ?? (ENGINES.tareas as Engine)).defaults(sc);
+    const p = u0.get("p"); // palancas movidas: "clave~valor!clave~valor" (solo las ≠ default)
+    if (p)
+      for (const pair of p.split("!")) {
+        const [k, v] = pair.split("~");
+        if (k && v !== undefined && k in base) base[k] = Number(v);
+      }
+    return base;
+  });
+  const [copied, setCopied] = useState(false); // feedback del botón "compartir"
   const engine = ENGINES[lens] ?? (ENGINES.tareas as Engine);
 
   // Foco de parámetro: el hover da una vista previa; el clic lo FIJA (persiste al salir el cursor)
@@ -739,6 +755,31 @@ export function VeredictoSection({
     onParamFocus?.(p ? mkFocus(p, vals[focusKey]) : null);
   }, [focusKey, vals, engine, onParamFocus]);
   const togglePin = (k: ParamKey) => setPinnedKey((cur) => (cur === k ? null : k));
+
+  // Sincroniza la rebanada del escenario (lente, escala, capa, palancas) al hash. Solo escribe
+  // lo que se desvía del default → links cortos cuando casi no tocas nada.
+  useEffect(() => {
+    const base = engine.defaults(scope);
+    const diff = Object.keys(vals)
+      .filter((k) => Math.abs(vals[k] - (base[k] ?? vals[k])) > 1e-9)
+      .map((k) => `${k}~${+vals[k].toFixed(4)}`)
+      .join("!");
+    writeParams({
+      l: lens === "tareas" ? null : lens,
+      sc: scope === "global" ? null : scope,
+      cmp: compareMode ? "1" : null,
+      dist: distOn ? "1" : null,
+      p: diff || null,
+    });
+  }, [engine, scope, lens, compareMode, distOn, vals]);
+
+  // "Compartir": el hash ya está sincronizado, así que basta copiar el link actual. El feedback
+  // sale siempre (optimista); si el navegador no expone clipboard, no rompe.
+  const share = () => {
+    navigator.clipboard?.writeText(location.href)?.catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const pickScope = (sc: Scope) => {
     setScope(sc);
@@ -1001,6 +1042,15 @@ export function VeredictoSection({
                   ))}
                 </select>
                 <button onClick={() => setVals(engine.defaults(scope))}>defaults</button>
+                <button
+                  className="share-btn"
+                  onClick={share}
+                  title="Copia un link que reproduce este escenario exacto"
+                  onMouseEnter={() => onHelp?.(HELP_SHARE)}
+                  onMouseLeave={() => onHelp?.(null)}
+                >
+                  {copied ? "copiado ✓" : "compartir"}
+                </button>
               </div>
 
               {!meta.hasData && (

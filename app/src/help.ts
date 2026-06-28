@@ -530,6 +530,16 @@ export const HELP_SCOPE: HelpEntry = {
   read: "«Sin datos propios» = usa la base global como aproximación.",
 };
 
+export const HELP_SHARE: HelpEntry = {
+  kicker: "Compartir",
+  title: "Un link a este escenario exacto",
+  body: [
+    "Copia un enlace que reproduce lo que tienes en pantalla: la pregunta, la lente, la región y cada palanca que moviste. Quien lo abra ve tu escenario, no la pantalla inicial.",
+    "El escenario viaja en la propia dirección (después del #), así que no se guarda nada en ningún servidor.",
+  ],
+  read: "Útil para discutir un supuesto concreto: «mira qué pasa con la participación si σ baja a 0,5».",
+};
+
 // ── RAMA RECURSOS FÍSICOS (el motor de los átomos) ──────────────────────────────────────
 // Mismo lenguaje de color (azul=anclado), pero otra pregunta: dónde se muda la escasez cuando la
 // inteligencia se vuelve abundante. La tensión honesta (es de horizonte) va tejida en cada ayuda.
