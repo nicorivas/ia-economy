@@ -1,0 +1,82 @@
+{
+  "studies": [
+    {
+      "id": "brynjolfsson-chandar-chen-2025-canaries",
+      "authors": "Erik Brynjolfsson, Bharat Chandar, Ruyu Chen",
+      "year": 2025,
+      "venue": "Stanford Digital Economy Lab working paper (NBER-affiliated authors), v. 13 Nov 2025",
+      "url": "https://digitaleconomy.stanford.edu/wp-content/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf",
+      "reliability_note": "Figuras verificadas por el revisor contra el PDF primario (versión 13-nov-2025) con pdftotext -layout. CIFRA TITULAR de esta versión = 16% (abstract L15 y conclusión L926: '16% relative employment decline'), derivado de un '15 log-point decline' (intro L166, Fact 4 L686). La traducción 15 log pt -> 16% es de los propios autores: equivale a (e^0.15 - 1) = 16.2% (expresan la brecha entre quintiles como razón). El '13%' que circuló en prensa es del draft de agosto-2025 y NO aparece como cifra de empleo en esta versión; el único '13%' del PDF nov-2025 es el TOPE de la banda de crecimiento 5-13% de los quintiles MENOS expuestos (L553), no la caída titular. El 16% es RELATIVO (quintiles más expuestos vs el menos, condicionado en firm-quintile y firm-time en un event-study de Poisson, t=-1 = octubre 2022), NO una caída absoluta; el comparable crudo absoluto es -6% (Fact 2). Los autores son explícitos en que NO es identificación causal limpia ('our main estimates may be influenced by factors other than generative AI', L935; piden mejores datos de adopción a nivel firma para 'plausible causal effects', L959). El crudo de Fact 2 (-6%) es una caída absoluta de headcount oct-2022->sep-2025 en los dos quintiles más expuestos. Exposición medida con Eloundou et al. 2024 measure GPT-4 β (L434).",
+      "estimates": [
+        {
+          "value": "16% (de un 15 log-point decline)",
+          "metric": "Caída de empleo RELATIVA de trabajadores 22-25 en los quintiles de ocupaciones MÁS expuestos a IA (Eloundou et al. 2024, GPT-4 β) vs el quintil menos expuesto, tras condicionar en efectos firm-quintile y firm-time en un event-study de Poisson (Fact 4). Verbatim: '15 log-point decline in relative employment for the most AI-exposed quintiles compared to the least exposed quintile, a large and statistically significant effect'; abstract/conclusión lo expresan como '16% relative employment decline'. RELATIVA, no absoluta. t=-1 = octubre 2022; datos mensuales hasta septiembre 2025. Las estimaciones para otros grupos de edad son 'much smaller in magnitude and not statistically significant'.",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "-6% (jóvenes 22-25) vs +6-9% (mayores; 35-49 >8%)",
+          "metric": "Cambio ABSOLUTO de empleo (headcount) de 'late 2022' (t=-1=oct-2022) a sep-2025 en los DOS quintiles MÁS expuestos a IA: 22-25 cayeron 6% ('declined by 6%'), trabajadores mayores subieron (intro L133 verbatim: '6-9% increase for older workers'; Fact 2 L559: 35-49 'grew by over 8%'). En los TRES quintiles MENOS expuestos el crecimiento fue 5-13% sin orden claro por edad. El empleo agregado de ADP 'remains robust' / sigue creciendo.",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "≈ -20%",
+          "metric": "Caída de empleo (headcount) de software developers de 22-25 años hacia sep-2025 vs su pico de fines de 2022 (caso de estudio crudo, Figura 1; verbatim L490: 'employment for software developers aged 22-25 declined nearly 20% compared to its peak in late 2022'). Empleo de otros grupos de edad en la misma ocupación siguió creciendo. NO es un estimador de regresión.",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "caídas donde AI AUTOMATIZA; sin patrón claro donde AUMENTA",
+          "metric": "Fact 3: usando el Anthropic Economic Index (Handa et al. 2025) para clasificar queries a Claude por ocupación como automative (Directive + Feedback Loop) vs augmentative (Task Iteration, Learning, Validation): el empleo de jóvenes 22-25 cae en ocupaciones de mayor share automativo, mientras 'employment changes for young workers are not ordered by augmentation exposure, as the fifth quintile has among the fastest employment growth'. Es una ASOCIACIÓN a nivel ocupación-quintil basada en shares de uso, NO un efecto causal estimado. Verbatim: 'consistent with automative uses of AI substituting for labor while augmentative uses do not'.",
+          "dimension": "dim-collaboration-mode"
+        },
+        {
+          "value": "sin divergencia por edad/exposición (posible rigidez salarial)",
+          "metric": "Fact 5: el ajuste laboral aparece en el EMPLEO, no en la COMPENSACIÓN. Salario base anual deflactado a dólares 2017 con índice PCE (serie hasta agosto-2025); 'we find little difference in compensation trends by age or exposure quintile'. Interpretación de los autores: posibles efectos compensatorios offsetting (Autor-Thompson 2025) y/o rigidez salarial de corto plazo (Davis-Krolikowski 2025); 'AI may have larger effects on employment than on wages, at least initially'.",
+          "dimension": "dim-wages"
+        },
+        {
+          "value": "robusto excluyendo TI y ocupaciones remotables; sin patrón pre-2022 (incl. COVID)",
+          "metric": "Fact 6: los resultados se mantienen al excluir ocupaciones de computación (SOC 2010 15-1) y firmas de TI/diseño de sistemas (NAICS 51, 5415), y para ocupaciones no-teletrabajables (Dingel-Neiman 2020). La taxonomía de exposición a IA 'did not meaningfully predict employment outcomes for young workers further back in time, before the widespread use of LLMs, including during the unemployment spike driven by the COVID-19 pandemic'; los patrones aparecen 'most acutely starting in late 2022 and early 2023'.",
+          "dimension": "dim-realized-employment-change"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "brynjolfsson-chandar-chen-2025-canaries",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "tensiona",
+      "why": "Primera evidencia de empleo REALIZADO a gran escala (micro-nómina ADP, hasta sep-2025) que cruza el puente exposición->empleo CON DIRECCIÓN y SIGNO: en las ocupaciones más expuestas (Eloundou GPT-4 β) el empleo de jóvenes 22-25 cayó (-6% crudo; 16% relativo / 15 log-pt condicionado en firm-time). Tensiona la columna vertebral porque la exposición SÍ se traduce en empleo realizado negativo —pero solo en un margen acotado (jóvenes, no mayores; empleo, no salarios) y con el empleo agregado de ADP creciendo, de modo que 'exposición' sigue sin ser 'empleo neto agregado'. No la refuta: la exposición no predice pérdida uniforme, y los autores advierten explícitamente que no es causalidad limpia ('may be influenced by factors other than generative AI')."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2025-canaries",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "informa",
+      "why": "DEGRADADO de 'confirma' a 'informa' por el verificador: Fact 3 es una ASOCIACIÓN observacional a nivel ocupación-quintil (cruza shares de uso automative/augmentative del Anthropic Economic Index con empleo de 22-25), NO un efecto causal estimado, y la advertencia del propio paper ('may be influenced by factors other than generative AI') aplica a todo el conjunto. Informa fuertemente la tesis de que la DIRECCIÓN del uso (sustituir vs complementar) modula el efecto sobre demanda de trabajo —el empleo cae donde el uso es automativo y no está ordenado por augmentación—, y es la primera vez en el mapa que el split automatización/aumento se ancla a empleo realizado (antes solo a modo-de-interacción). Pero 'confirma' sobre-afirma la limpieza causal de una correlación de shares."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2025-canaries",
+      "hypothesis": "hyp-skill-leveling",
+      "type": "tensiona",
+      "why": "La nivelación-de-habilidades predice que la IA abre la entrada a NOVATOS (los eleva más) y comoditiza la habilidad de expertos —pero mide PRODUCTIVIDAD/tiempo por tarea, no empleo. Aquí el empleo realizado de los más novatos (22-25) CAE en ocupaciones expuestas mientras el de experimentados se mantiene: en el mercado real, sobre el margen de EMPLEO, la puerta de entrada se cierra, no se abre. Los autores lo racionalizan (los jóvenes aportan conocimiento codificado que el LLM replica; el tácito de los mayores se complementa), pero el SIGNO sobre empleo tensiona la lectura optimista de skill-leveling vía cantidad de puestos. Tensión genuina, no refutación: son márgenes distintos (productividad de tarea vs empleo)."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2025-canaries",
+      "hypothesis": "hyp-ai-targets-high-skill",
+      "type": "informa",
+      "why": "Aporta matiz: las ocupaciones golpeadas (software development, customer support) son de alta exposición a LLM y alta calificación, consistente con que la IA expone trabajo cognitivo/calificado. Pero refina el blanco: dentro de esas ocupaciones el daño realizado se concentra en el extremo JOVEN/entry-level, no en toda la ocupación —la exposición ocupacional alta no implica daño uniforme por antigüedad."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2025-canaries",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "tensiona",
+      "why": "La tesis 'potential gated by adoption' sostiene que el impacto realizado va muy por detrás del potencial técnico (adopción lenta, co-invención). Este paper muestra efectos de empleo realizados YA visibles desde fines de 2022/inicios de 2023, antes de lo que un marco de rezago fuerte predeciría, con adopción de LLM en el trabajo reportada en 46% (Hartley et al. 2025, jun/jul-2025, encuesta a >18 años; NO adopción a nivel firma). Tensiona el supuesto de que aún no hay efectos medibles; aunque el efecto sigue acotado a un margen (jóvenes/expuestos), no es 'too little, too late' en ese segmento. Los propios autores apelan al precedente de la revolución TI (rezago largo) en la conclusión, así que la tensión es parcial."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2025-canaries",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "informa",
+      "why": "Coherente con 'mucha rotación, neto pequeño': el empleo agregado de ADP sigue creciendo (neto positivo) mientras hay reasignación por debajo (jóvenes expuestos abajo, mayores y no-expuestos arriba). El paper aporta la textura micro de esa rotación neta-pequeña, mostrando QUIÉN absorbe el ajuste (entry-level expuesto). No mide rotación bruta agregada (no es su unidad), por eso informa más que confirma."
+    }
+  ]
+}

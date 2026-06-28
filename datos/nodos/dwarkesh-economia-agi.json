@@ -1,0 +1,181 @@
+{
+  "_nota": "Cúmulo traído por el podcast de Dwarkesh con Imas & Trammell (4 jun 2026). Integración ESTRECHA: solo lo relevante a empleo/labor share. Varios nodos se agregan a nivel de discusión + abstract confirmado por web, NO lectura completa — verificar cifras contra primaria antes de publicar. (Andrew Hall / economía política del desempleo quedó fuera: es material de la versión 'ancha'.)",
+  "studies": [
+    {
+      "id": "dwarkesh2026-economia-agi",
+      "authors": "Alex Imas & Phil Trammell (Dwarkesh Patel)",
+      "year": "2026",
+      "venue": "Dwarkesh Patel — 'What remains scarce after AGI' (4 jun 2026)",
+      "url": "https://www.dwarkesh.com/p/alex-imas-phil-trammell",
+      "source_type": "essay",
+      "accessed": true,
+      "reliability_note": "Conversación de economistas (Imas, UChicago Booth; Trammell, Stanford/Oxford), no peer-reviewed pero con base en modelos. Transcripción local en fuentes/. Método: ingeniería inversa de escenarios > pronóstico. Posiciones: labor share estable; la elasticidad de demanda es la bisagra; la cuota económica de la IA puede ENCOGER (Baumol/Jones). Citas abajo son paráfrasis de la discusión.",
+      "estimates": [
+        {
+          "metric": "Participación del trabajo en el producto (EE.UU.)",
+          "dimension": "dim-labor-share",
+          "value": "≈60% del producto, estable; con metodología contable constante ni siquiera ha caído (Atkeson)",
+          "unit": "% del producto",
+          "horizon": "histórico",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "relato de capital-se-come-al-trabajo",
+          "quote": "Imas: con metodología constante el labor share ni siquiera ha caído (paráfrasis de la discusión)",
+          "location": "podcast, vía discusión"
+        },
+        {
+          "metric": "Signo del efecto sobre el empleo",
+          "dimension": "dim-task-net-ambiguous",
+          "value": "indeterminado; depende de la elasticidad de demanda (O-ring + Jevons). Software es elástico; petróleo/insulina/comida se sacian",
+          "unit": "cualitativo",
+          "horizon": "—",
+          "geography": "—",
+          "sector": "economía completa",
+          "counterfactual": "lump of labor",
+          "quote": "si la demanda es suficientemente elástica, automatizar tareas puede subir el empleo (paráfrasis)",
+          "location": "podcast, vía discusión"
+        }
+      ]
+    },
+    {
+      "id": "atkeson2020-labor-share",
+      "authors": "Andrew Atkeson",
+      "year": "2020",
+      "venue": "Review of Economic Dynamics — 'Alternative Facts about the Labor Share'",
+      "url": "https://sites.google.com/site/andyatkeson/home/publications",
+      "source_type": "paper",
+      "accessed": false,
+      "reliability_note": "Agregado desde la discusión del podcast + confirmación de abstract; no lectura completa. Verificar contra primaria antes de publicar.",
+      "estimates": [
+        {
+          "metric": "Tendencia del labor share de EE.UU.",
+          "dimension": "dim-labor-share",
+          "value": "la caída aparente desaparece al mantener constante la metodología contable (capital intangible/IPP)",
+          "unit": "cualitativo (tesis del paper)",
+          "horizon": "décadas",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "narrativa de declive del labor share",
+          "quote": "Alternative Facts about the Labor Share (tesis, vía discusión)",
+          "location": "abstract"
+        }
+      ]
+    },
+    {
+      "id": "gans-goldfarb2025-oring-automation",
+      "authors": "Joshua Gans & Avi Goldfarb",
+      "year": "2025",
+      "venue": "NBER WP 34639 — 'O-Ring Automation'",
+      "url": "https://www.nber.org/papers/w34639",
+      "source_type": "paper",
+      "accessed": false,
+      "reliability_note": "Agregado desde la discusión del podcast + abstract NBER; no lectura completa. Verificar antes de publicar.",
+      "estimates": [
+        {
+          "metric": "Efecto de la automatización parcial sobre el ingreso laboral",
+          "dimension": "dim-task-net-ambiguous",
+          "value": "la adopción óptima puede ser discreta/agrupada (no tarea-a-tarea); el ingreso laboral puede SUBIR bajo automatización parcial",
+          "unit": "cualitativo (modelo)",
+          "horizon": "—",
+          "geography": "—",
+          "sector": "economía completa",
+          "counterfactual": "automatización tarea-a-tarea lineal",
+          "quote": "O-Ring Automation (NBER w34639), tesis vía discusión",
+          "location": "abstract"
+        }
+      ]
+    },
+    {
+      "id": "citrini2026-2028-gic",
+      "authors": "Citrini Research",
+      "year": "2026",
+      "venue": "Citrini Research — 'The 2028 Global Intelligence Crisis' (feb 2026)",
+      "url": "https://www.citriniresearch.com/p/2028gic",
+      "source_type": "essay",
+      "accessed": false,
+      "reliability_note": "ESCENARIO, no predicción (el propio autor lo subraya). Polo doom del debate; Imas lo usa como ejemplo de supuestos implausibles. Cifras confirmadas por web, no leídas en primaria completa.",
+      "estimates": [
+        {
+          "metric": "Escenario de crisis por automatización de cuello blanco",
+          "dimension": "dim-net-employment-forecast",
+          "value": "10.2% de desempleo y −38% del S&P para jun 2028 (escenario, NO predicción)",
+          "unit": "% desempleo / % del índice (escenario)",
+          "horizon": "2028",
+          "geography": "EE.UU. / global",
+          "sector": "cuello blanco",
+          "counterfactual": "trayectoria sin colapso de demanda",
+          "quote": "The 2028 Global Intelligence Crisis (escenario)",
+          "location": "citriniresearch.com/p/2028gic"
+        }
+      ]
+    },
+    {
+      "id": "kinder2026-messy-middle",
+      "authors": "Molly Kinder (Brookings)",
+      "year": "2026",
+      "venue": "'The Messy Middle' (2026)",
+      "url": "https://mollykinder2.substack.com/p/the-messy-middle",
+      "source_type": "essay",
+      "accessed": false,
+      "reliability_note": "Ensayo de policy (Brookings). Agregado desde la discusión del podcast + fuente confirmada; no lectura completa.",
+      "estimates": [
+        {
+          "metric": "Distribución del daño en la transición",
+          "dimension": "dim-wage-inequality",
+          "value": "pérdidas concentradas en la 'laptop class' (empleos mejor pagados); transición larga sin mejora de Pareto",
+          "unit": "cualitativo",
+          "horizon": "transición (años)",
+          "geography": "EE.UU.",
+          "sector": "trabajo de oficina/conocimiento",
+          "counterfactual": "transición compensada",
+          "quote": "The Messy Middle (tesis, vía discusión)",
+          "location": "substack"
+        }
+      ]
+    },
+    {
+      "id": "korinek-trammell2024-growth-tai",
+      "authors": "Anton Korinek & Philip Trammell",
+      "year": "2024",
+      "venue": "Annual Review of Economics — 'Economic Growth under Transformative AI'",
+      "url": "https://philiptrammell.com/static/economic_growth_under_transformative_ai.pdf",
+      "source_type": "paper",
+      "accessed": false,
+      "reliability_note": "Paper macro canónico de IA-y-crecimiento (marco de la posición de Trammell). Agregado a nivel de marco; verificar cifras específicas contra primaria.",
+      "estimates": [
+        {
+          "metric": "Crecimiento bajo IA transformadora",
+          "dimension": "dim-pib-crecimiento",
+          "value": "de modesto a explosivo según supuestos (automatización de tareas, cuellos de botella de Baumol, sustituibilidad)",
+          "unit": "cualitativo (marco de escenarios)",
+          "horizon": "largo plazo",
+          "geography": "global",
+          "sector": "economía completa",
+          "counterfactual": "—",
+          "quote": "Economic Growth under Transformative AI (marco)",
+          "location": "Annual Review of Economics"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {"study_id": "dwarkesh2026-economia-agi", "hypothesis": "hyp-task-net-ambiguous", "type": "confirma", "why": "Método de ingeniería inversa de escenarios; el signo neto depende de la elasticidad de demanda (O-ring/Jevons), no está determinado."},
+    {"study_id": "dwarkesh2026-economia-agi", "hypothesis": "hyp-reinstatement-new-tasks", "type": "confirma", "why": "El empleo se sostiene por elasticidad + creación de tareas nuevas; Ricardo erró al ignorar las tareas nuevas (falacia del lump of labor)."},
+    {"study_id": "dwarkesh2026-economia-agi", "hypothesis": "hyp-displacement-dominant-recent", "type": "tensiona", "why": "Argumentan que el colapso de demanda/recesión por automatización (escenario Citrini) exige supuestos implausibles."},
+    {"study_id": "dwarkesh2026-economia-agi", "hypothesis": "hyp-ia-ensancha-desigualdad", "type": "tensiona", "why": "Labor share ~estable (Atkeson) y complementariedad obligan a pagar a ambos factores; el motor real de desigualdad sería un 'titán' no-saciante, no la IA per se."},
+
+    {"study_id": "atkeson2020-labor-share", "hypothesis": "hyp-ia-ensancha-desigualdad", "type": "tensiona", "why": "Con metodología contable constante el labor share de EE.UU. no ha caído — debilita el relato capital-se-come-al-trabajo."},
+    {"study_id": "atkeson2020-labor-share", "hypothesis": "hyp-displacement-dominant-recent", "type": "tensiona", "why": "El supuesto declive del labor share (insumo del relato de desplazamiento) sería en parte artefacto contable."},
+
+    {"study_id": "gans-goldfarb2025-oring-automation", "hypothesis": "hyp-task-net-ambiguous", "type": "informa", "why": "Refina el modelo de tareas: la automatización óptima puede ser discreta/agrupada, no tarea-a-tarea."},
+    {"study_id": "gans-goldfarb2025-oring-automation", "hypothesis": "hyp-displacement-dominant-recent", "type": "tensiona", "why": "El ingreso laboral puede SUBIR bajo automatización parcial (efecto calidad/O-ring)."},
+
+    {"study_id": "citrini2026-2028-gic", "hypothesis": "hyp-displacement-dominant-recent", "type": "confirma", "why": "Escenario de automatización de cuello blanco que desplaza empleo agregado y dispara el desempleo."},
+    {"study_id": "citrini2026-2028-gic", "hypothesis": "hyp-ia-ensancha-desigualdad", "type": "confirma", "why": "El colapso de demanda y la caída del mercado concentran el daño."},
+
+    {"study_id": "kinder2026-messy-middle", "hypothesis": "hyp-ai-targets-high-skill", "type": "confirma", "why": "Las pérdidas se concentran en la 'laptop class' — empleos de alta calificación/mejor pagados."},
+    {"study_id": "kinder2026-messy-middle", "hypothesis": "hyp-ia-ensancha-desigualdad", "type": "confirma", "why": "Transición larga sin mejora de Pareto; daño concentrado y políticamente explosivo."},
+
+    {"study_id": "korinek-trammell2024-growth-tai", "hypothesis": "hyp-macro-modest-vs-extreme", "type": "informa", "why": "Marco canónico que reconcilia el macro modesto y el explosivo como puntos de un espacio de supuestos (cuellos de botella de Baumol, sustituibilidad)."}
+  ]
+}

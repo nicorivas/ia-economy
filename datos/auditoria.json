@@ -1,0 +1,46 @@
+{
+  "flags": [
+    {
+      "target": "cnv-robot-to-emppop (from: dim-task-exposure)",
+      "issue": "Error de tipado de dimensión: usa dim-task-exposure como origen, pero el regresor de Acemoglu-Restrepo 2020 es densidad de robots (robots por 1000 trabajadores), NO exposición de tareas. Densidad de hardware instalado y susceptibilidad técnica del contenido del trabajo son magnitudes distintas. La conversión hereda el rótulo equivocado, lo que enturbia la columna vertebral del mapa (exposición no es empleo): aquí un coeficiente empleo-por-robot queda colgado de la dimensión 'exposición'.",
+      "severity": "medio"
+    },
+    {
+      "target": "cnv-robot-to-emppop / cnv-robot-to-wages (kind: established)",
+      "issue": "Marcadas 'established' siendo pendientes reducidas-forma estimadas sobre una muestra concreta (zonas de commuting EE.UU. 1990-2007). El texto de assumptions lo reconoce honestamente ('no es ley estructural, no extrapolar'), pero etiquetar una regresión correlacional-causal de un solo periodo/tecnología como 'established' al mismo nivel que identidades contables (Hulten, agregación tarea-ocupación) confunde dos sentidos de rigor. Es aire disfrazado de identidad.",
+      "severity": "medio"
+    },
+    {
+      "target": "cnv-hulten-savings-to-tfp (kind: established)",
+      "issue": "El teorema de Hulten es identidad solo a primer orden en torno a un óptimo competitivo y BAJO supuestos fuertes (sin reasignación de gran escala, sin nuevas tareas). Marcarla 'established' empuja al lector a tratarla como contable cuando carga supuestos económicos no triviales; las propias críticas a Acemoglu 2024 atacan precisamente esos supuestos. Los assumptions están nombrados, por eso es bajo y no medio.",
+      "severity": "bajo"
+    },
+    {
+      "target": "anthropic-aei-2026-primitives (productividad implícita: 'baseline 1.8 a 1.2 pp/año ajustado por éxito')",
+      "issue": "El reporte da 1.8 pp/año como baseline con sigma=1; el '1.2 ajustado por éxito' es un reencuadre del mapa que mezcla el ajuste-por-tasa-de-éxito con el escenario sigma. Verificado que el reporte existe y las bandas (0.7-0.9 / 1.2 / 2.2-2.6) son correctas, pero la glosa 'baseline 1.8 a 1.2' puede leerse como una caída temporal que el reporte no afirma así. Riesgo menor de tergiversación de matiz.",
+      "severity": "bajo"
+    },
+    {
+      "target": "wef-fojr-2023 vs wef-fojr-2025 (uso conjunto del neto)",
+      "issue": "El mapa ya marca correctamente que no es serie temporal limpia (denominadores 673M vs 1.2B, metodología distinta). No es un fallo del mapa; lo señalo como riesgo persistente de que un lector apile -14M y +78M como tendencia. El mapa lo neutraliza bien con hyp-high-churn-small-net, pero la cifra +78M/+7% es un pronóstico de encuesta a empleadores (todos los macrotrends), no un efecto IA: el driver IA aislado es solo +11M/-9M.",
+      "severity": "bajo"
+    },
+    {
+      "target": "autor-2024-rebuild-middle-class (cita RCT: '+56% / -40% / +14%')",
+      "issue": "Cifras citadas de SEGUNDA mano por Autor, que difieren de las primarias ya presentes como nodos propios (Peng -55.8% no +56%; Noy-Zhang -37% en WP / -40% redondeo; Brynjolfsson +15% no +14%). El mapa reconoce el problema en gaps ('sin reconciliar a una cifra canónica') pero deja conviviendo dos versiones numéricas del mismo experimento dentro del dataset, lo que invita a doble conteo o a citar la cifra secundaria como si fuera medición.",
+      "severity": "bajo"
+    },
+    {
+      "target": "bessen2015-tellers (url: aei.org; cifras 21 a 13 cajeros y 'empleo subió')",
+      "issue": "El estudio se ancla en una URL de divulgación (AEI/EconTalk), no en la fuente primaria (libro 'Learning by Doing' / IMF F&D). El propio mapa lo admite en gaps ('solo en paráfrasis secundarias'). Las cifras 21 a 13 y la tendencia de empleo no están verificadas contra primaria; descansan en paráfrasis. Caso load-bearing (es el ejemplo que invierte el signo ingenuo), por lo que la debilidad de fuente importa.",
+      "severity": "medio"
+    },
+    {
+      "target": "cnv-exposure-to-implicit-prod y banda 0.7-2.6 pp/año (sigma no identificado)",
+      "issue": "Correctamente marcada 'hypothesized', pero conviene reforzar: el resultado varía por factor ~3 según un parámetro (sigma) que el propio lab declara no identificado empíricamente. Es el supuesto irreducible. No es un fallo (está bien etiquetado), pero es el punto donde un número aparentemente preciso (p.ej. 2.6 pp/año) es casi enteramente un artefacto del supuesto elegido.",
+      "severity": "bajo"
+    }
+  ],
+  "health": "El mapa es notablemente sólido en su tesis central y en su higiene de dimensiones: verifiqué contra fuente primaria Eloundou (80%/19%), METR (-19% medido vs +20% percibido), Acemoglu 2024 (TFP <0.66%, conservador <0.53%), Webb (90:10 baja 4%/9%, pico p90, top 1% intacto), Korinek-Suh (colapso/sube-para-siempre según cola) y la existencia del reporte Anthropic enero-2026, y todos respaldan los números y los rótulos del mapa. El gran acierto es que NO confunde exposición con empleo destruido: lo eleva a hallazgo y lo blinda con seis puentes 'absent' bien razonados. El aire residual no está en los números sino en el tipado: una conversión clave (robots) cuelga de la dimensión 'exposición de tareas' siendo densidad de hardware, y dos coeficientes de regresión de un solo periodo van marcados 'established' junto a identidades contables, mezclando dos sentidos de rigor. El caso Bessen/cajeros (load-bearing para invertir el signo ingenuo) descansa en fuente de divulgación sin verificación primaria.",
+  "verdict": "aceptable-con-reservas"
+}

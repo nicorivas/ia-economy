@@ -1,0 +1,186 @@
+{
+  "_meta": "Autores e ideas que faltaban del podcast Dwarkesh × Imas-Trammell (leído entero, 2026-06-20). Tres mecanismos nuevos: elasticidad de demanda (la bisagra), el sector relacional, y la captura (electricidad vs plataforma). Académicos verificados contra primaria (Ricardo clásico; Feigenbaum-Gross NBER w28061; Imas 'Art and the Machine' vía Crossref). Grey-lit con nota honesta.",
+  "dimensions": [
+    {
+      "id": "dim-demand-elasticity",
+      "name": "Elasticidad de demanda (la bisagra empleo↑/↓)",
+      "definition": "Cuánto crece la demanda de un bien cuando su precio cae. Decide el signo del efecto de automatizar una tarea: si la demanda es elástica (software, Jevons) el bien más barato se compra mucho más y el empleo del resto de tareas SUBE; si se sacia (comida, petróleo, insulina) la demanda no responde y el empleo CAE. Imas: 'no tenemos datos' sobre estas elasticidades — la pieza que más falta. Unidad: elasticidad / cualitativo."
+    },
+    {
+      "id": "dim-relational-value",
+      "name": "Valor relacional (el humano-en-el-loop como parte del valor)",
+      "definition": "Bienes/servicios donde el hecho de que un humano esté en el loop ES parte del valor para el consumidor (no porque el humano sea un insumo reemplazable, sino por una preferencia intrínseca por empatía/conexión/autenticidad). Su tajada sostiene empleo solo si la preferencia es fuerte, amplia y su variedad crece. Unidad: disposición a pagar / cualitativo."
+    },
+    {
+      "id": "dim-value-capture",
+      "name": "Captura de la renta (electricidad vs plataforma)",
+      "definition": "Adónde van las ganancias de la IA: difusas a los usuarios (como la electricidad: nadie teme a la compañía eléctrica) o concentradas en el dueño (como las redes sociales: las rentas van a la plataforma). La 'indexabilidad' de la economía —si la gente común puede tener una porción del capital que gana— decide si participa. Unidad: concentración / cualitativo."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hyp-elasticidad-decide-empleo",
+      "name": "La elasticidad de demanda decide si automatizar sube o baja el empleo",
+      "statement": "Automatizar una tarea libera trabajo y abarata el bien; si el empleo neto sube o baja depende de la elasticidad de demanda del bien. Elástica (software: Jevons) → la demanda explota y el empleo del resto de tareas sube; inelástica/saciable (comida, petróleo, insulina) → la demanda no responde y el empleo cae. Es la bisagra del modelo de tareas, y la elasticidad agregada nadie la ha medido (Imas: 'necesitamos un proyecto Manhattan de datos')."
+    },
+    {
+      "id": "hyp-relacional-sostiene-empleo",
+      "name": "El sector relacional puede sostener el empleo (con condiciones)",
+      "statement": "Si los humanos prefieren intrínsecamente que un humano esté en el loop (empatía, conexión, autenticidad), queda un sector relacional escaso que sostiene empleo y tajada aunque todo lo demás se automatice. Pero solo se sostiene si la preferencia es fuerte, vale para suficientes sectores, y su variedad crece tanto como la del sector automatizado; si no, su tajada del gasto tiende a cero (Imas-Trammell: el contrafáctico del mongol del 1400 que solo gastaría en cantantes)."
+    },
+    {
+      "id": "hyp-captura-electricidad-vs-plataforma",
+      "name": "La renta de la IA: ¿electricidad (difusa) o plataforma (concentrada)?",
+      "statement": "Quién captura la renta de la IA depende de si se parece a la electricidad (los beneficios fluyen a los usuarios) o a las redes sociales (las rentas van al dueño de la plataforma). La 'indexabilidad' —que la gente común y los países pobres puedan tener una porción del capital que gana— decide si participan; la comoditización de los modelos (open source 6-9 meses detrás) empuja hacia el lado electricidad. Conecta la rama 'escasez' con 'quién se queda con la renta'."
+    }
+  ],
+  "studies": [
+    {
+      "id": "ricardo1821-machinery",
+      "authors": "David Ricardo",
+      "year": "1821",
+      "venue": "On the Principles of Political Economy and Taxation, cap. 31 «On Machinery» (3ª ed.)",
+      "source_type": "book",
+      "url": "https://www.econlib.org/library/Ricardo/ricP.html",
+      "accessed": true,
+      "reliability_note": "Clásico fundacional. Ricardo acertó en que las máquinas automatizarían los trabajos de su época, pero erró el agregado por no anticipar el cambio estructural (la falacia del lump of labor): lo que se abarató liberó gasto hacia servicios y tareas nuevas, y el empleo se mantuvo. La tasa de empleo en edad prima de EE.UU. en 2026 es la más alta desde 2000 — lo contrario de su predicción de desempleo masivo (Imas en el podcast).",
+      "estimates": [
+        {
+          "metric": "Efecto neto de la maquinaria sobre el empleo",
+          "dimension": "dim-task-net-ambiguous",
+          "value": "predijo desempleo masivo; acertó la automatización tarea-por-tarea, erró el agregado (cambio estructural recreó empleo)",
+          "unit": "cualitativo",
+          "horizon": "histórico (200 años)",
+          "geography": "Reino Unido / general",
+          "sector": "economía completa",
+          "counterfactual": "pleno empleo vía cambio estructural",
+          "quote": "the substitution of machinery for human labour, is often very injurious to the interests of the class of labourers (cap. 31)"
+        }
+      ]
+    },
+    {
+      "id": "feigenbaum-gross-2024-operators",
+      "authors": "James Feigenbaum & Daniel P. Gross",
+      "year": "2024",
+      "venue": "Quarterly Journal of Economics (NBER WP 28061)",
+      "source_type": "paper",
+      "url": "https://www.nber.org/system/files/working_papers/w28061/w28061.pdf",
+      "accessed": true,
+      "reliability_note": "Verificado contra el PDF primario (NBER w28061). Análoga histórica robusta, hermana de Bessen (cajeros): muestra el patrón 'agregado sano / incumbentes golpeados' que importa para la IA. Método: enlace censo-genealógico.",
+      "estimates": [
+        {
+          "metric": "Automatización de telefonistas (AT&T, 1920-1940): empleo agregado vs. incumbentes",
+          "dimension": "dim-realized-employment-change",
+          "value": "el empleo agregado no cayó (compensado por empleo clerical medio y servicios bajos, incl. categorías nuevas), pero las telefonistas incumbentes fueron las más afectadas; las nuevas cohortes simplemente no entraron a la ocupación",
+          "unit": "cualitativo + micro",
+          "horizon": "20 años",
+          "geography": "EE.UU.",
+          "sector": "telecomunicaciones / clerical",
+          "counterfactual": "destrucción neta de empleo",
+          "quote": "the decline in operators was counteracted by employment growth in middle-skill clerical jobs and lower-skill service jobs, including in new categories of work... incumbent telephone operators were most [affected]"
+        }
+      ]
+    },
+    {
+      "id": "imas-art-machine",
+      "authors": "Alex Imas et al.",
+      "year": "2025",
+      "venue": "«Art and the Machine: Why People Devalue AI-Generated Creative Work»",
+      "source_type": "paper",
+      "url": "https://doi.org/10.2139/ssrn.4564219",
+      "accessed": false,
+      "reliability_note": "Existencia confirmada vía Crossref; cifras no verificadas contra primaria (descripción del experimento desde el podcast). Es la evidencia experimental del sector relacional: el valor de lo humano es intrínseco, no solo escasez.",
+      "estimates": [
+        {
+          "metric": "Disposición a pagar por arte humano vs. IA, y el rol de la unicidad",
+          "dimension": "dim-relational-value",
+          "value": "el art-print hecho por humano se valora mucho más que el de IA — pero cuando hay 500 copias la prima humana cae fuerte (se pierde la conexión con el artista), mientras la IA ya se ve como commodity",
+          "unit": "disposición a pagar (incentive-compatible)",
+          "horizon": "experimental",
+          "geography": "—",
+          "sector": "bienes creativos",
+          "counterfactual": "humano = insumo reemplazable (como un caballo)",
+          "quote": "the human-made one... is valued much much higher than the AI version (paráfrasis del podcast)"
+        }
+      ]
+    },
+    {
+      "id": "budgetlab-yale-2025",
+      "authors": "The Budget Lab at Yale",
+      "year": "2025",
+      "venue": "Budget Lab (Yale) — análisis de exposición ocupacional a IA",
+      "source_type": "essay",
+      "url": "https://budgetlab.yale.edu/",
+      "accessed": false,
+      "reliability_note": "Grey-lit institucional, referida por Imas en el podcast (no leída directamente). Rastrea en vivo el supuesto 'white-collar apocalypse'. TENSIONA nuestra lente Empírico: ellos leen la señal de jóvenes como ruido, nosotros como dato.",
+      "estimates": [
+        {
+          "metric": "¿Hay automatización/desempleo masivo por IA ya (cuello blanco)?",
+          "dimension": "dim-realized-labor-demand",
+          "value": "hay que entrecerrar los ojos para ver algo; los devs junior crecen más LENTO que la tendencia (no una caída de nivel) y la demanda de devs senior sube si acaso",
+          "unit": "cualitativo",
+          "horizon": "2024-2025",
+          "geography": "EE.UU.",
+          "sector": "cuello blanco / software",
+          "counterfactual": "white-collar bloodbath",
+          "quote": "you really have to squint to see anything happening... a bit below trend for juniors, but still growth (Imas, paráfrasis)"
+        }
+      ]
+    },
+    {
+      "id": "hall2026-politics-agi",
+      "authors": "Andrew B. Hall",
+      "year": "2026",
+      "venue": "Ensayo sobre la política de la AGI (referido en el podcast)",
+      "source_type": "essay",
+      "url": "",
+      "accessed": false,
+      "reliability_note": "Grey-lit, referido por Imas (no leído). Aporta la economía POLÍTICA que falta en los modelos económicos: el umbral político, no el económico, es lo que dispara la crisis.",
+      "estimates": [
+        {
+          "metric": "Umbral político del desempleo",
+          "dimension": "dim-realized-employment-change",
+          "value": "un alza de solo 2-3% en el desempleo cambia por completo el viento político (emergencia nacional); los modelos económicos de IA no tienen economía política",
+          "unit": "puntos de desempleo",
+          "horizon": "—",
+          "geography": "EE.UU.",
+          "sector": "—",
+          "counterfactual": "respuesta proporcional al tamaño económico del shock",
+          "quote": "if there's a 2% increase in unemployment, the political winds completely change (paráfrasis del podcast)"
+        }
+      ]
+    },
+    {
+      "id": "fradkin-etal-2026-forecast",
+      "authors": "Fradkin et al. (atribución por transcribir)",
+      "year": "2026",
+      "venue": "Post sobre el desacuerdo de pronósticos de economistas",
+      "source_type": "essay",
+      "url": "",
+      "accessed": false,
+      "reliability_note": "LEAD por confirmar: los nombres ('Andre Fredkin, Brian DeBerry, Andrew Coe') vienen de la transcripción de voz y casi seguro están mal escritos (probable Andrei Fradkin, MIT, que trabaja en mercados de predicción). Verificar antes de citar en público. Vale como fuente de nuestra meta-tesis.",
+      "estimates": [
+        {
+          "metric": "Acuerdo entre pronósticos de economistas sobre el mercado laboral con IA",
+          "dimension": "dim-task-net-ambiguous",
+          "value": "los pronósticos discrepan en TODA dirección → mejor agregar vía mercados de predicción (sabiduría de la multitud) que confiar en un pronóstico individual",
+          "unit": "cualitativo",
+          "horizon": "—",
+          "geography": "—",
+          "sector": "—",
+          "counterfactual": "consenso de expertos",
+          "quote": "there's a ton of disagreement, like in every single direction (Imas, paráfrasis)"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    { "study_id": "ricardo1821-machinery", "hypothesis": "hyp-reinstatement-new-tasks", "type": "informa", "why": "El caso fundacional de la falacia del lump of labor: acertó la automatización tarea-por-tarea pero erró el agregado porque no anticipó la reinstauración / cambio estructural." },
+    { "study_id": "feigenbaum-gross-2024-operators", "hypothesis": "hyp-high-churn-small-net", "type": "confirma", "why": "Telefonistas: agregado sano (reabsorción en clerical/servicios) pero incumbentes golpeadas — mucha rotación, neto pequeño, el costo cae en quien ya estaba." },
+    { "study_id": "imas-art-machine", "hypothesis": "hyp-relacional-sostiene-empleo", "type": "confirma", "why": "Evidencia experimental de que el valor de lo humano es intrínseco (no solo escasez) — el pilar del sector relacional. Pero la prima cae con la replicación: condicional." },
+    { "study_id": "budgetlab-yale-2025", "hypothesis": "hyp-exposure-not-employment", "type": "confirma", "why": "Rastreo en vivo: la exposición no se traduce (aún) en caída de empleo medible — hay que entrecerrar los ojos. Confirma el puente ausente." },
+    { "study_id": "budgetlab-yale-2025", "hypothesis": "hyp-perception-gap", "type": "confirma", "why": "La narrativa del white-collar apocalypse supera lo que muestra el dato; layoffs normales releídos como 'layoffs de IA'." },
+    { "study_id": "hall2026-politics-agi", "hypothesis": "hyp-high-churn-small-net", "type": "informa", "why": "Aun un neto pequeño puede ser políticamente explosivo: el umbral relevante es político (2-3%), no económico." },
+    { "study_id": "fradkin-etal-2026-forecast", "hypothesis": "hyp-exposure-not-employment", "type": "informa", "why": "El desacuerdo total entre pronósticos es la cara empírica de 'la conclusión depende del modelo': nadie sabe traducir exposición a empleo neto." }
+  ]
+}

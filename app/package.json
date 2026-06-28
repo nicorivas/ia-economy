@@ -1,0 +1,27 @@
+{
+  "name": "ia-empleo-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync": "cp ../datos/mapa.json src/mapa.json",
+    "predev": "npm run sync",
+    "dev": "vite",
+    "prebuild": "npm run sync",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "recharts": "^3.8.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.0"
+  }
+}

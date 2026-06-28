@@ -1,0 +1,10 @@
+{
+  "_nota": "Dimensiones referidas por estimaciones pero nunca definidas como nodo. Detectadas por la validación de agregar-nodo.py.",
+  "dimensions": [
+    {
+      "id": "dim-task-net-ambiguous",
+      "name": "Signo del efecto neto sobre el empleo",
+      "definition": "Dirección (no magnitud) del efecto neto de la automatización sobre la demanda de trabajo: el balance cualitativo entre desplazamiento y reinstauración+productividad. Es cualitativo, no se promedia."
+    }
+  ]
+}

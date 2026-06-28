@@ -1,0 +1,128 @@
+{
+  "studies": [
+    {
+      "id": "bonney-btos-2024-tracking",
+      "authors": "Bonney, Breaux, Buffington, Dinlersoz, Foster, Goldschlag, Haltiwanger, Kroff, Savage",
+      "year": 2024,
+      "venue": "NBER Working Paper No. 32319 / Census CES-WP-24-16",
+      "url": "https://www.nber.org/system/files/working_papers/w32319/w32319.pdf",
+      "estimates": [
+        {
+          "value": "3.7% → 5.4%",
+          "metric": "Tasa de firmas que usaron IA para fines de negocio (pregunta core BTOS, ref. dos semanas previas), de inicio (sept 2023) a fin (feb 2024) de la colección. Estimaciones bi-semanales ponderadas, representativas a nivel nacional/sector/tamaño. VERIFICADO verbatim contra abstract w32319.",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "~6.6%",
+          "metric": "Tasa ESPERADA de uso de IA por firmas a inicios de otoño (Fall) 2024 (expectativa BTOS), proyectada desde datos sept2023–feb2024. VERIFICADO verbatim contra abstract ('expected rate of about 6.6% by early Fall 2024').",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "1.4%–18.1%",
+          "metric": "Rango del uso ACTUAL de IA por firmas POR SECTOR: bajo 1.4% (Construcción y Agricultura) a alto 18.1% (Información). Esperado a otoño 2024: 1.5% (Agricultura) a 21.5% (Información). VERIFICADO contra cuerpo del PDF primario (CES-WP-24-16, líneas de texto extraídas).",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "7% firmas / 9% trabajadores",
+          "metric": "Entre firmas de ≥250 empleados: ~7% de firmas usa IA, pero ~9% de los trabajadores está en firmas que usan IA (tasa ponderada por empleo > tasa por firma). La relación uso-tamaño es U-shaped (las más pequeñas, 1–4 empleados, usan más que las de 5–99); el uso decae con la EDAD de la firma pero ponderado por empleo es U-shaped en edad. VERIFICADO contra cuerpo del PDF primario.",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "1.9% vs 22.3% (empleo-ponderado)",
+          "metric": "Brecha sectorial en base PONDERADA POR EMPLEO: ~1.9% de trabajadores en Construcción vs ~22.3% en Información están en firmas que usan IA. Esperado a otoño 2024 (empleo-ponderado): 3.2% y 25.2% respectivamente. VERIFICADO contra cuerpo del PDF primario.",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "pocas / few",
+          "metric": "Efecto sobre EMPLEO realizado auto-reportado por adoptantes: las firmas usuarias 'often utilize AI to substitute for worker tasks and equipment/software, but few report reductions in employment due to AI use'; además exhiben mejor desempeño y MAYOR incidencia de EXPANSIÓN de empleo que las no usuarias (correlacional, no causal). Razón más común de no-adopción: la IA no aplica al negocio. VERIFICADO verbatim contra abstract w32319.",
+          "dimension": "dim-realized-labor-demand"
+        }
+      ],
+      "reliability_note": "Cifras verificadas contra el abstract verbatim (w32319) y el cuerpo del PDF primario CES-WP-24-16. La definición de 'uso de IA' aquí es la pregunta core de uso para FINES DE NEGOCIO con énfasis en producción (más estrecha que 'cualquier función', usada desde nov-2025), por lo que NO es comparable nivel-a-nivel con el 18%/32% del paper 2026. La asociación adopción→empleo es transversal/auto-reportada, no causal. AUTORÍA: el prompt nombra a McElheran como autora; McElheran NO es coautora de este paper (autores confirmados en NBER). McElheran et al. es trabajo relacionado sobre la Annual Business Survey (período 2016–18) citado dentro, no esta fuente."
+    },
+    {
+      "id": "bonney-btos-2026-microstructure",
+      "authors": "Bonney, Breaux, Dinlersoz, Foster, Haltiwanger, Pande",
+      "year": 2026,
+      "venue": "Census CES-WP-26-25 / NBER Working Paper No. 35141 (abril 2026)",
+      "url": "https://www.nber.org/papers/w35141",
+      "estimates": [
+        {
+          "value": "18% (32% empleo-ponderado)",
+          "metric": "Tasa de firmas que usaron IA en una FUNCIÓN DE NEGOCIO (medida ampliada del suplemento, ref. dos semanas previas), período nov-2025–ene-2026; 18% por firma, 32% ponderado por empleo. Esperado: 22% dentro de seis meses. VERIFICADO verbatim contra abstract/highlights CES-WP-26-25.",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "50%–60% (60%–70% empleo-ponderado)",
+          "metric": "Tasa de uso de IA en firmas MUY GRANDES de sectores Información, Servicios Profesionales y Finanzas: 50–60% (60–70% ponderado por empleo). VERIFICADO verbatim contra abstract CES-WP-26-25.",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "57% / 52% / 45% / 41%",
+          "metric": "Estrechez del alcance entre ADOPTANTES: 57% integra IA en tres o menos funciones de negocio; funciones más comunes Ventas y Marketing 52%, Estrategia y Desarrollo de Negocio 45%, TI 41%. VERIFICADO verbatim contra abstract CES-WP-26-25.",
+          "dimension": "dim-firm-adoption"
+        },
+        {
+          "value": "66% solo aumentan",
+          "metric": "Modo de uso a nivel firma: la mayoría de usuarios (66%) usa la IA SOLO para AUMENTAR tareas (augment-only). VERIFICADO verbatim ('Most users (66%) rely on AI solely to augment tasks'). Nota: el dato adicional '23% de firmas (41% empleo-ponderado) tienen trabajadores usando IA en tareas' es una medida de PENETRACIÓN a nivel trabajador (más cercana a adopción que a modo augment/automate); no se mezcla aquí.",
+          "dimension": "dim-collaboration-mode"
+        },
+        {
+          "value": "2% de firmas",
+          "metric": "PUENTE adopción→empleo realizado: 'AI-related employment decreases are rare, occurring in only 2% of firms' (VERIFICADO verbatim). Auto-reportado por las firmas en el suplemento BTOS; no causal.",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "amplitud funcional e inversión: + ; tarea-trabajador: n.s.",
+          "metric": "Regresión transversal a nivel firma: 'Functional breadth and operational investment are positively associated with employment decreases, whereas worker-task integration shows no significant link to headcount reduction once functional integration and operational investment are taken into account' (VERIFICADO verbatim). También: correlación positiva entre desempeño comercial y amplitud de integración de IA. CORRELACIONAL, no causal.",
+          "dimension": "dim-realized-labor-demand"
+        }
+      ],
+      "reliability_note": "Cifras verificadas verbatim contra el abstract/highlights del CES-WP-26-25 y la página NBER w35141 (título y autores confirmados; publicado abril 2026). Las asociaciones de la regresión son CORRELACIONALES (transversales, auto-reporte de efectos de empleo por la firma respondente, no del trabajador); no son estimaciones causales. La medida de adopción ('cualquier función de negocio') es más amplia que la de 2024 — el salto 5.4%→18% mezcla difusión real con cambio de definición (NO es una serie temporal limpia). McElheran no es autora."
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "bonney-btos-2024-tracking",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "confirma",
+      "why": "Mide directamente la difusión a nivel firma —el cuello de botella entre potencial técnico y efecto realizado— y la halla baja (3.7→5.4%) y muy desigual por sector y tamaño; la razón más común de no-adopción es que 'la IA no aplica al negocio'. Confirma que la adopción empresarial va por detrás del potencial técnico."
+    },
+    {
+      "study_id": "bonney-btos-2024-tracking",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Aporta la tasa de adopción real —uno de los supuestos faltantes que separan exposición técnica de empleo neto— y un puente directo: las firmas adoptantes 'few report reductions in employment due to AI use' y muestran mayor incidencia de expansión (correlacional). Indirecto/auto-reportado, por eso informa, no confirma."
+    },
+    {
+      "study_id": "bonney-btos-2024-tracking",
+      "hypothesis": "hyp-augmentation-domina-uso",
+      "type": "informa",
+      "why": "Las firmas usan la IA para sustituir tareas y para complementar; que 'pocas' reporten reducir empleo es consistente con predominio de augmentation, pero la medida es de uso a nivel firma, no un split granular augment/automate. Por eso informa."
+    },
+    {
+      "study_id": "bonney-btos-2026-microstructure",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "confirma",
+      "why": "Confirma difusión gateada por adopción y co-invención: alcance estrecho entre adoptantes (57% en ≤3 funciones), concentración en firmas grandes y sectores intensivos en conocimiento, e identificación explícita de la inversión operativa requerida para implementar IA."
+    },
+    {
+      "study_id": "bonney-btos-2026-microstructure",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "LLENA el puente ausente firm_adoption→realized_labor_demand (cnv-potential-to-realized-ABSENT): pregunta a las firmas directamente por el efecto de la IA en su empleo y lo halla raro (2% de firmas). La regresión muestra qué dimensión de integración se asocia con baja de plantilla (amplitud funcional + inversión, no uso a nivel tarea). Correlacional, por eso informa."
+    },
+    {
+      "study_id": "bonney-btos-2026-microstructure",
+      "hypothesis": "hyp-augmentation-domina-uso",
+      "type": "confirma",
+      "why": "Dato directo y representativo de modo de uso: 66% de usuarios usa la IA SOLO para aumentar tareas y las bajas de empleo por IA ocurren en solo 2% de firmas — predominio claro de augmentation sobre sustitución plena en el uso real."
+    },
+    {
+      "study_id": "bonney-btos-2026-microstructure",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "informa",
+      "why": "La regresión distingue forma de integración: amplitud funcional + inversión operativa (despliegue tipo automatización a escala) se ligan a bajas de empleo, mientras la integración tarea-trabajador (tipo copiloto) no. Informa la tesis de que el efecto sobre demanda de trabajo depende de cómo se despliega; correlacional e interpretativo, por eso informa, no confirma."
+    }
+  ]
+}

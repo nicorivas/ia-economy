@@ -1,0 +1,165 @@
+{
+  "_meta": "Estudios para INFORMAR (no fijar) el reparto φ del ajuste entre empleo (cantidad) y salarios (precio) en la lente Tareas. Verificados contra fuente primaria (PDFs) por subagentes, 2026-06-19. Hallazgo: la rigidez salarial a la baja desvía el ajuste hacia el empleo → φ tiende BAJO (central ≈0,30, rango informado ~0,20–0,45). Es 'informado', no 'anclado': la evidencia es de shocks CÍCLICOS, no del shock estructural de la IA; acota la dirección y el rango, no fija un punto.",
+  "dimensions": [
+    {
+      "id": "dim-wage-rigidity",
+      "name": "Rigidez salarial a la baja / margen de ajuste (empleo vs salario)",
+      "definition": "Cuando cae la demanda de trabajo, ¿el ajuste recae en el PRECIO (los salarios bajan) o en la CANTIDAD (se pierden puestos)? La rigidez salarial a la baja (downward nominal/real wage rigidity) mide cuánto se resiste el salario a caer; cuanto más rígido, más del ajuste se desvía al empleo. Informa el parámetro φ del modelo de tareas (φ = fracción del ajuste que cae en salarios; 1−φ en empleo). Unidad: fracción / cualitativo."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hyp-ajuste-cae-en-empleo",
+      "name": "El ajuste cae más en el empleo que en el salario (φ bajo)",
+      "statement": "Ante una caída de la demanda de trabajo, los salarios nominales se resisten a bajar (rigidez a la baja: normas de justicia, moral, protección al empleo), así que una fracción grande del ajuste se desvía a la cantidad —despidos, no recortes de sueldo—. Esto empuja φ (la parte del golpe que cae en salarios) hacia abajo: el escenario modal no es 'hay trabajo que paga menos' sino 'se pierden puestos'. La evidencia es de shocks cíclicos en economías desarrolladas; para un shock estructural y permanente de IA, la dirección (φ bajo) es robusta pero el nivel no es trasladable 1:1, y sube con el horizonte (en el largo plazo el salario real sí se ajusta)."
+    }
+  ],
+  "studies": [
+    {
+      "id": "dickens-iwfp-2007",
+      "authors": "Dickens, Goette, Groshen, Holden, Messina, Schweitzer, Turunen, Ward",
+      "year": "2007",
+      "venue": "Journal of Economic Perspectives 21(2): 195-214 (International Wage Flexibility Project)",
+      "source_type": "paper",
+      "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp697.pdf",
+      "accessed": true,
+      "reliability_note": "La cifra más directamente traducible a φ. 31 datasets, 16 países, microdatos de cambios salariales individuales. Mide rigidez de salarios de quienes siguen empleados (job stayers); enorme dispersión por país (nominal 4%–58%). Verificado contra ECB WP697 (las versiones AEA bloquean el fetch).",
+      "estimates": [
+        {
+          "metric": "Fracción de recortes salariales impedidos por la rigidez a la baja (nominal y real)",
+          "dimension": "dim-wage-rigidity",
+          "value": "≈28% nominal / ≈26% real (φ implícito ≈0,26–0,28)",
+          "unit": "fracción de recortes impedidos",
+          "horizon": "corto-medio plazo",
+          "geography": "16 países desarrollados",
+          "sector": "economía completa",
+          "counterfactual": "salarios flexibles (sin rigidez)",
+          "quote": "an average of 28 percent of workers are covered by downward nominal rigidity, in the sense that 28 percent of the wage cuts that would have taken place under flexible wage setting are prevented by downward rigidity... an average of 26 percent of workers are covered by downward real rigidity"
+        }
+      ]
+    },
+    {
+      "id": "daly-hobijn-2014",
+      "authors": "Mary C. Daly & Bart Hobijn",
+      "year": "2014",
+      "venue": "Journal of Money, Credit and Banking 46(S2): 51-93",
+      "source_type": "paper",
+      "url": "https://www.frbsf.org/wp-content/uploads/wp2013-08.pdf",
+      "accessed": true,
+      "reliability_note": "EE.UU., CPS 1986-2011, micro. La rigidez es procíclica: muerde MÁS en recesión y a baja inflación, justo cuando el shock es adverso → φ cae cuando más importaría. El dato crudo robusto es la masa en cero (12%→16%); el 57% es de su modelo calibrado.",
+      "estimates": [
+        {
+          "metric": "Masa de trabajadores con cambio salarial nominal cero (rigidez a la baja), pico→fondo del ciclo",
+          "dimension": "dim-wage-rigidity",
+          "value": "12% (2006) → 16% (2011); más vinculante en recesión (φ implícito bajo, procíclico)",
+          "unit": "% de trabajadores con salario sin cambio",
+          "horizon": "ciclo",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "distribución simétrica de cambios salariales",
+          "quote": "In 2006 about 12 percent of workers reported zero wage change; in 2011 the share had risen to about 16 percent... during recessions the rigidities become more binding"
+        }
+      ]
+    },
+    {
+      "id": "babecky-wdn-2010",
+      "authors": "Babecký, Du Caju, Kosma, Lawless, Messina, Rõõm",
+      "year": "2010",
+      "venue": "Scandinavian Journal of Economics 112(4): 884-910 (Wage Dynamics Network, ECB)",
+      "source_type": "paper",
+      "url": "https://www.jsmessina.com/assets/papers/Scandinavian2010.pdf",
+      "accessed": true,
+      "reliability_note": "Encuesta armonizada a firmas europeas (~15 países). Mide rigidez del salario BASE: el ajuste puede ir a componentes flexibles (bonos), pero el empleo se ajusta antes que el salario base. La rigidez es mayor donde el despido es costoso (protección al empleo).",
+      "estimates": [
+        {
+          "metric": "Prevalencia de recortes de salario base entre firmas (margen del precio)",
+          "dimension": "dim-wage-rigidity",
+          "value": "2,3% de firmas recortó salario base vs 9,6% lo congeló (recortes 'extremely rare' → φ implícito muy bajo)",
+          "unit": "% de firmas",
+          "horizon": "5 años previos a la encuesta",
+          "geography": "~15 países europeos",
+          "sector": "economía completa",
+          "counterfactual": "ajuste vía salario base",
+          "quote": "Only 2.3% of sampled firms cut base wages of at least some employees during the five-year period prior to the survey, while 9.6% of firms froze base wages"
+        }
+      ]
+    },
+    {
+      "id": "kaur-2019",
+      "authors": "Supreet Kaur",
+      "year": "2019",
+      "venue": "American Economic Review 109(10): 3585-3616",
+      "source_type": "paper",
+      "url": "https://www.nber.org/papers/w20770.pdf",
+      "accessed": true,
+      "reliability_note": "Cuasi-experimental (lluvia como instrumento), mercados rurales en India. Es el LÍMITE de φ→0 (rigidez casi total), no la mediana: alta validez interna, baja validez externa para un shock de IA en economías desarrolladas. Demuestra causalmente que la rigidez desvía el ajuste al empleo.",
+      "estimates": [
+        {
+          "metric": "Costo en empleo de la rigidez nominal a la baja (el precio atascado → todo el ajuste en cantidad)",
+          "dimension": "dim-wage-rigidity",
+          "value": "−9% de empleo por el efecto trinquete; salarios no caen en sequía (φ implícito ≈0, cota inferior)",
+          "unit": "% de empleo",
+          "horizon": "1 año",
+          "geography": "India rural",
+          "sector": "agricultura",
+          "counterfactual": "salarios nominales flexibles a la baja",
+          "quote": "Nominal wages rise in response to positive shocks but do not fall during droughts... This ratcheting effect generates a 9% reduction in employment levels"
+        }
+      ]
+    },
+    {
+      "id": "bewley-1999",
+      "authors": "Truman F. Bewley",
+      "year": "1999",
+      "venue": "Why Wages Don't Fall During a Recession (Harvard University Press); Marshall Lecture, Cowles DP 1167",
+      "source_type": "book",
+      "url": "https://cowles.yale.edu/sites/default/files/2022-08/d1167.pdf",
+      "accessed": true,
+      "reliability_note": "Cualitativo: 335 entrevistas a ejecutivos/sindicatos/reclutadores en la recesión de EE.UU. de inicios de los 90. Aporta el MECANISMO y la dirección (φ bajo), no un número — el propio autor advierte que no puede estimar incidencias. Verificado vía la lectura/artículo del propio autor (el libro no fue accesible al fetcher).",
+      "estimates": [
+        {
+          "metric": "Por qué las firmas eligen despedir antes que recortar sueldos (margen de ajuste = empleo)",
+          "dimension": "dim-wage-rigidity",
+          "value": "cualitativo: despido preferido al recorte salarial para proteger la moral (φ implícito bajo)",
+          "unit": "cualitativo",
+          "horizon": "recesión",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "recorte de salario nominal",
+          "quote": "the advantage of layoffs over pay reduction was that they 'get the misery out the door'"
+        }
+      ]
+    },
+    {
+      "id": "chetty-et-al-2011",
+      "authors": "Raj Chetty, Adam Guren, Day Manoli, Andrea Weber",
+      "year": "2011",
+      "venue": "American Economic Review P&P 101(3): 471-475",
+      "source_type": "paper",
+      "url": "https://rajchetty.com/wp-content/uploads/2021/04/micro_macro_aerpp.pdf",
+      "accessed": true,
+      "reliability_note": "CONTEXTO del lado de la oferta, no portante para φ. La elasticidad de Frisch mide cuánto mueve el trabajador sus horas/participación ante el salario, no el reparto precio/cantidad de un shock de demanda. Su propio punchline: las fluctuaciones de empleo son 'un orden de magnitud' mayores que lo que la Frisch explica → el reparto lo gobierna la rigidez/fricción, no la preferencia del trabajador.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de Frisch de oferta laboral (micro, agregada) — lado cantidad, contexto",
+          "dimension": "dim-wage-rigidity",
+          "value": "0,5 intensivo / 0,25 extensivo / 0,75 horas agregadas (no traducible a φ directamente)",
+          "unit": "elasticidad",
+          "horizon": "estructural",
+          "geography": "meta-análisis (EE.UU./Europa)",
+          "sector": "economía completa",
+          "counterfactual": "oferta laboral inelástica",
+          "quote": "we recommend calibrating macro models to match... Frisch elasticities of 0.5 on the intensive and 0.25 on the extensive margin... a Frisch elasticity of aggregate hours of 0.75"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    { "study_id": "dickens-iwfp-2007", "hypothesis": "hyp-ajuste-cae-en-empleo", "type": "confirma", "why": "~28% de los recortes salariales que ocurrirían bajo flexibilidad son impedidos por la rigidez → ese ajuste se desvía al empleo. La cifra más directa para φ: apunta a ~0,26–0,28." },
+    { "study_id": "daly-hobijn-2014", "hypothesis": "hyp-ajuste-cae-en-empleo", "type": "confirma", "why": "La rigidez nominal a la baja se vuelve más vinculante en recesión y a baja inflación, justo cuando el shock es adverso → el ajuste cae en el empleo (φ bajo, procíclico)." },
+    { "study_id": "babecky-wdn-2010", "hypothesis": "hyp-ajuste-cae-en-empleo", "type": "confirma", "why": "Los recortes de salario base son 'extremely rare' (2,3% de firmas); congelan antes de cortar. Si el precio casi no se mueve, el ajuste cae en otros márgenes (empleo)." },
+    { "study_id": "kaur-2019", "hypothesis": "hyp-ajuste-cae-en-empleo", "type": "confirma", "why": "Causal: con rigidez nominal casi total, el salario atascado fuerza todo el ajuste al empleo (−9%). Es la cota φ→0 que demuestra el mecanismo." },
+    { "study_id": "bewley-1999", "hypothesis": "hyp-ajuste-cae-en-empleo", "type": "confirma", "why": "Las firmas eligen despedir antes que recortar sueldos para proteger la moral ('get the misery out the door'): el margen de ajuste es la cantidad, no el precio. Aporta el porqué." },
+    { "study_id": "chetty-et-al-2011", "hypothesis": "hyp-ajuste-cae-en-empleo", "type": "informa", "why": "Contexto del lado de la oferta: la elasticidad de Frisch es chica y no alcanza a explicar las fluctuaciones de empleo → el reparto lo gobierna la rigidez salarial, no la preferencia del trabajador. No fija φ, lo enmarca." }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "source_key": "reconcile-eloundou-rcts",
+  "corrections_to_existing": [
+    {
+      "target_study_id": "eloundou-2023-gpts",
+      "kind": "field",
+      "field": "url",
+      "new_value": "https://www.science.org/doi/10.1126/science.adj0998",
+      "reason": "El mapa apunta al working paper de arXiv (arxiv.org/abs/2303.10130). La version final revisada por pares es Science 2024, vol 384, num 6702, pp 1306-1308, DOI 10.1126/science.adj0998 (publicada 20-21 jun 2024). Apuntar la fuente mas primaria/canonica a la version de registro. VERIFICADO por verificador: DOI/vol/num/pp confirmados en PubMed 38900883.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/38900883/"
+    },
+    {
+      "target_study_id": "eloundou-2023-gpts",
+      "kind": "field",
+      "field": "venue",
+      "new_value": "Science 384(6702):1306-1308 (2024); preprint arXiv:2303.10130 (2023)",
+      "reason": "El campo venue actual dice 'arXiv:2303.10130 (later Science 2024)'. Fijar la cita de registro completa con volumen/numero/paginas de la version Science publicada. VERIFICADO contra PubMed 38900883.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/38900883/"
+    },
+    {
+      "target_study_id": "eloundou-2023-gpts",
+      "kind": "estimate",
+      "dimension": "dim-task-exposure",
+      "new_value": "~80% de la fuerza laboral EE.UU. con >=10% de tareas afectadas; ~19% con >=50% de tareas afectadas. Abstract Science 2024 verbatim: 'Around 80% of the U.S. workforce could have at least 10% of their work tasks affected by the introduction of LLMs, while approximately 19% of workers may see at least 50% of their tasks impacted.' La cifra SOBREVIVE intacta a la revision por pares; identica a la version arXiv que ya cita el mapa. Solo se corrige la fuente a Science. Metrica = % de TRABAJADORES de la fuerza laboral EE.UU., por umbral de fraccion de sus tareas expuestas (capacidad actual). NOTA: '% de trabajadores con tareas expuestas' NO es '% de empleos perdidos' (exposicion, no empleo neto).",
+      "reason": "Verificacion ANTI-AIRE pedida: confirmar si 80%/19% (trabajadores con >=10% / >=50% de tareas expuestas) cambiaron en la revision por pares. NO cambiaron. VERIFICADO por verificador: abstract de Science 2024 reportado verbatim via registro PubMed 38900883 (science.org devuelve 403). La estimacion del mapa es correcta; lo unico desactualizado era la fuente (arXiv).",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/38900883/"
+    },
+    {
+      "target_study_id": "eloundou-2023-gpts",
+      "kind": "estimate",
+      "dimension": "dim-task-exposure",
+      "new_value": "A nivel de TAREAS: ~15% de TODAS las tareas de trabajadores EE.UU. podrian completarse significativamente mas rapido a igual calidad con acceso directo a un LLM, subiendo a 47-56% al incorporar software/tooling construido sobre LLMs (arXiv abstract verbatim: 'about 15% of all worker tasks in the US could be completed significantly faster at the same level of quality... this share increases to between 47 and 56% of all tasks'). DENOMINADOR DISTINTO al encuadre de EMPLEOS del abstract Science: '~1.8% de empleos con interfaces simples -> just over 46% of jobs con desarrollos de software complementarios' (umbral de >=mitad de tareas a nivel EMPLEO). El 15%->47-56% es % de TAREAS; el 1.8%->46% es % de EMPLEOS. Suenan paralelas, miden universos distintos. Mantener la cifra de tareas (sobrevive); no apilarla con la de empleos.",
+      "reason": "ANTI-AIRE / inconmensurabilidad de denominador. VERIFICADO por verificador: el 15%->47-56% (tareas) se confirmo verbatim en el abstract de arXiv 2303.10130; el 1.8%->46% (empleos) se confirmo via busqueda del abstract de Science 2024 (PubMed). Ambos encuadres existen; difieren en denominador (tareas vs empleos). Dejar explicita la distincion para evitar tratar exposicion de tareas como empleos. CONFIANZA ALTA.",
+      "source_url": "https://arxiv.org/abs/2303.10130"
+    },
+    {
+      "target_study_id": "noy-zhang-2023",
+      "kind": "estimate",
+      "dimension": "dim-productivity-task-rct",
+      "new_value": "Tiempo promedio -40% (cifra CANONICA, version de registro Science 2024 [vol 381, num 6654, pp 187-192, DOI 10.1126/science.adh2586]). Abstract verbatim: 'The average time taken decreased by 40%.' El mapa usaba -37% del working paper de MIT; canonizar a -40% de la version revisada por pares. Mismo RCT (453 profesionales con educacion universitaria, tareas de escritura profesional de nivel medio).",
+      "reason": "Reconciliacion de version pedida. VERIFICADO por verificador: el abstract de Science (Vol 381, Issue 6654, pp 187-192, DOI 10.1126/science.adh2586, 14 jul 2023) reporta verbatim '-40% time' (confirmado en PubMed 37440646). Canonizar a la cifra de registro. SEPARADO el estimate de tiempo del de calidad en dim-ids distintos (la correccion original mezclaba ambos en un campo dimension compuesto, invalido para el schema).",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/37440646/"
+    },
+    {
+      "target_study_id": "noy-zhang-2023",
+      "kind": "estimate",
+      "dimension": "dim-output-quality",
+      "new_value": "Calidad del output +18% (cifra CANONICA, version de registro Science 2024). Abstract verbatim: 'output quality rose by 18%.' El mapa usaba +0.45 SD de grado del working paper de MIT. NOTA DE METRICA: +18% (Science) y +0.45 SD (WP) son NORMALIZACIONES DISTINTAS de la misma calidad del mismo experimento (% de aumento vs desviaciones estandar de la nota asignada por evaluadores); no son cifras intercambiables. Canonizar a +18% de la version Science; conservar la advertencia de no equiparar con +0.45 SD.",
+      "reason": "Reconciliacion de version pedida. VERIFICADO por verificador: abstract de Science reporta verbatim 'output quality rose by 18%' (PubMed 37440646). El verificador NO pudo confirmar de forma independiente que el WP de MIT dijera exactamente +0.45 SD (PDF no leido), por lo que se mantiene como nota descriptiva, no como cifra canonizada. La cifra de registro (+18%) si esta verificada.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/37440646/"
+    },
+    {
+      "target_study_id": "noy-zhang-2023",
+      "kind": "field",
+      "field": "url",
+      "new_value": "https://www.science.org/doi/10.1126/science.adh2586",
+      "reason": "El mapa apunta al PDF del working paper de MIT. Apuntar a la version de registro: Science vol 381, num 6654, pp 187-192, DOI 10.1126/science.adh2586. VERIFICADO contra PubMed 37440646.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/37440646/"
+    },
+    {
+      "target_study_id": "noy-zhang-2023",
+      "kind": "field",
+      "field": "venue",
+      "new_value": "Science 381(6654):187-192 (2023), DOI 10.1126/science.adh2586; preprint MIT/SSRN id4375283",
+      "reason": "El venue actual ('Science 384(6650); cifras del WP MIT marzo 2023') tiene volumen/numero ERRADOS (decia 384/6650; lo correcto es 381/6654, confirmado verbatim en PubMed 37440646). Ademas, al canonizar las cifras a Science (-40%/+18%) ya no se usan las del WP. VERIFICADO por verificador.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/37440646/"
+    },
+    {
+      "target_study_id": "brynjolfsson-li-raymond-2023",
+      "kind": "estimate",
+      "dimension": "dim-productivity-task-rct",
+      "new_value": "+15% en issues resueltos por hora EN PROMEDIO (cifra CANONICA, version de registro QJE 2025 [140(2):889-942, DOI 10.1093/qje/qjae044]). Abstract verbatim: 'increases worker productivity, as measured by issues resolved per hour, by 15% on average.' (El coeficiente de regresion con efectos fijos es 0.30 chats = 15.2%; redondeado a 15% como titular.) Muestra final: 5,172 agentes de soporte al cliente (el NBER WP original implicaba 5,179). DiD escalonado.",
+      "reason": "Reconciliacion de version pedida. VERIFICADO por verificador contra el PDF de arXiv 2304.11771 (version actual, armonizada con QJE, N=5,172) y el abstract de QJE: '15% on average' confirmado verbatim; 5,172 agentes confirmado. CORRECCION AL REASON ORIGINAL DEL EXTRACTOR: el '+15.2% vs +15%' NO es un cambio entre arXiv v2 y QJE; el 15.2% (coeficiente de regresion) y el 15% (titular redondeado) COEXISTEN en la misma version. La diferencia real preprint-vs-publicado es: NBER WP original 2023 = 14% promedio, N=5,179; version armonizada QJE = 15% promedio, N=5,172. CONFIANZA ALTA.",
+      "source_url": "https://academic.oup.com/qje/article/140/2/889/7990658"
+    },
+    {
+      "target_study_id": "brynjolfsson-li-raymond-2023",
+      "kind": "estimate",
+      "dimension": "dim-productivity-dispersion",
+      "new_value": "Heterogeneidad por habilidad (cifra CANONICA QJE 2025): trabajadores MENOS calificados/menos experimentados ~+30% en issues resueltos por hora (texto verbatim: 'approximate increase of 30% in the number of issues they are able to resolve per hour'); el QUINTIL MAS BAJO de habilidad especificamente +36% ('0.5 increase or 36% increase in resolutions per hour'); los trabajadores MAS calificados NO ven aumento de productividad ('does not lead to any productivity increase for the most skilled workers'; small gains in speed, small declines in quality). OJO DE DENOMINADOR: el 30% (grupo amplio menos-calificado) y el 36% (quintil inferior estricto) son SUBPOBLACIONES DISTINTAS del mismo paper, no cifras rivales de versiones distintas. El NBER WP original (2023) reportaba 34% para 'novice and low-skilled'.",
+      "reason": "Reconciliacion de version pedida + ANTI-AIRE de denominador. VERIFICADO por verificador contra el PDF de arXiv 2304.11771 (armonizado con QJE): el 30% (menos calificados/experimentados, en el resumen de tres hallazgos) y el 36% (quintil de habilidad mas bajo, en el analisis de heterogeneidad) AMBOS aparecen en la misma version; no son arXiv-v2-vs-QJE. CORRECCION AL REASON ORIGINAL DEL EXTRACTOR: era erroneo afirmar 'arXiv v2 reporto +15.2%/+36% y QJE los revisó a +15%/+30%'. Lo correcto: el cambio entre el NBER WP de 2023 (14%/34%, N=5,179) y la version armonizada (15%/30%-amplio/36%-quintil, N=5,172). El efecto ~0 para los mas calificados es la pieza clave para hyp-skill-leveling. CONFIANZA ALTA.",
+      "source_url": "https://academic.oup.com/qje/article/140/2/889/7990658"
+    },
+    {
+      "target_study_id": "brynjolfsson-li-raymond-2023",
+      "kind": "field",
+      "field": "url",
+      "new_value": "https://academic.oup.com/qje/article/140/2/889/7990658",
+      "reason": "El mapa apunta al preprint arXiv 2304.11771v2. Apuntar a la version de registro revisada por pares: QJE vol 140, num 2, pp 889-942, DOI 10.1093/qje/qjae044 (Open Access). VERIFICADO: vol/num/pp confirmados en RePEc/Oxford Academic.",
+      "source_url": "https://ideas.repec.org/a/oup/qjecon/v140y2025i2p889-942..html"
+    },
+    {
+      "target_study_id": "brynjolfsson-li-raymond-2023",
+      "kind": "field",
+      "field": "venue",
+      "new_value": "Quarterly Journal of Economics 140(2):889-942 (2025), DOI 10.1093/qje/qjae044; preprint NBER WP 31161 / arXiv 2304.11771",
+      "reason": "El venue actual ('NBER WP 31161 (arXiv 2304.11771v2)') no nombra la version revisada por pares. La de registro es QJE 2025 (140:2, 889-942). Mantener NBER/arXiv como preprint. VERIFICADO contra RePEc.",
+      "source_url": "https://ideas.repec.org/a/oup/qjecon/v140y2025i2p889-942..html"
+    }
+  ]
+}

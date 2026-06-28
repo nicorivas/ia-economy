@@ -1,0 +1,87 @@
+{
+  "studies": [
+    {
+      "id": "autor-salomons-2018-labor-displacing",
+      "authors": "David H. Autor, Anna Salomons",
+      "year": 2018,
+      "venue": "Brookings Papers on Economic Activity, Spring 2018, pp. 1-87 (NBER WP 24871)",
+      "url": "https://www.brookings.edu/wp-content/uploads/2018/03/1_autorsalomons.pdf",
+      "estimates": [
+        {
+          "value": "-0.129",
+          "metric": "Elasticidad OWN-INDUSTRY del empleo respecto a TFP (col. 1, Tabla 3A): un aumento de 1% en la TFP propia de la industria predice una caida de ~0.13% en el empleo de esa misma industria. Las horas caen 30-40% mas que el empleo (margen extensivo+intensivo). Es el EFECTO DIRECTO antes de derrames. VERIFICADO contra el texto primario (p. ~18).",
+          "dimension": "dim-displacement-effect"
+        },
+        {
+          "value": "+0.30 (empleo), +0.30 (horas), +0.63 (salario), +0.93 (masa salarial)",
+          "metric": "Efecto de DEMANDA FINAL (NO es el 'efecto de productividad' del marco Acemoglu-Restrepo): elasticidad del empleo/horas/salario/masa-salarial respecto al valor agregado AGREGADO nacional (beta2, col. 3, Tabla 3A). Captura el canal por el que el crecimiento de productividad de una industria, al subir el ingreso agregado, AUMENTA la demanda de trabajo en toda la economia. Es lo que contrarresta el efecto directo de desplazamiento. VERIFICADO (p. ~22). Mapeado a dim-productivity-effect por ser el mecanismo productividad->demanda-laboral; el catalogo solo da nombres de dimension, no definiciones.",
+          "dimension": "dim-productivity-effect"
+        },
+        {
+          "value": "directo -0.068; demanda final +0.073; upstream grande positivo; downstream negligible; NETO +0.16/100 anual ≈ +5.92 (~6) log puntos sobre 37 años (1970-2007)",
+          "metric": "Descomposicion del efecto NETO de la TFP sobre el EMPLEO AGREGADO en los 4 canales (Figura 1A). El efecto directo (-0.068, ~-2.5% sobre 37 años: 0.068/100*37=2.5) es MAS QUE COMPENSADO por demanda final (+0.073) y derrames upstream hacia industrias clientes. Resultado: automatizacion NO es desplazadora de empleo neto a nivel agregado. VERIFICADO (p. ~26-27).",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "-0.34",
+          "metric": "Elasticidad OWN-INDUSTRY de la PARTICIPACION DEL TRABAJO respecto a la TFP (col. 4, panel D, Tabla 3B): un aumento de 1% en TFP predice una caida de 0.34% en la participacion del trabajo en el valor agregado de esa industria. Es el punto-estimado directo; algebraicamente equivale a wagebill-TFP=0.11 menos value-added-TFP=0.45 (=−0.34 en logs, identidad participacion=wagebill/VA). VERIFICADO (p. ~23-24).",
+          "dimension": "dim-labor-share"
+        },
+        {
+          "value": "directo -0.23/100 anual; offset upstream +0.12/100 anual (~mitad del directo); demanda final y supplier sin offset; NETO -0.143/100 anual = -5.3 log puntos sobre 1970-2007 (vs -6.3 observado, -0.169/100 anual)",
+          "metric": "Descomposicion del efecto NETO de la TFP sobre la PARTICIPACION DEL TRABAJO (Figura 1C). A diferencia del empleo, el efecto directo negativo solo se compensa PARCIALMENTE (~mitad, 0.12/0.23≈0.52) via clientes (upstream); NO hay offset por demanda final ni proveedores. Resultado NETO negativo: automatizacion SI es desplazadora de la participacion del trabajo. El modelo reproduce ~el cambio observado (-5.3 estimado vs -6.3 observado). VERIFICADO (p. ~27).",
+          "dimension": "dim-labor-share"
+        },
+        {
+          "value": "-0.14 (1970s) → -0.32 (1980s) → -0.34 (1990s) → -0.47 (2000s)",
+          "metric": "Elasticidad participacion-del-trabajo respecto a TFP por decada (Tabla 6B): se vuelve monotonicamente mas negativa. El efecto NETO desplazador de participacion fue 'esencialmente cero' en los 1970s y -4.51 log puntos entre 1980-2007 (Figura 2B). Conducido por la masa-salarial-TFP que cae monotonicamente de 0.17 (1970s) a 0.04 (2000s): debilitamiento de la respuesta de la masa salarial. VERIFICADO (p. ~29-30).",
+          "dimension": "dim-labor-share"
+        },
+        {
+          "value": "-0.35",
+          "metric": "Efecto de la TFP (INSTRUMENTADA por flujos de citas de patentes extranjeras, 2SLS) sobre la participacion del trabajo (Tabla 8, col. 8 = -0.348**, sig.): muy comparable al OLS de Tabla 4 col. 8 (-0.348), con error estandar mayor. El instrumento de robots (IFR; primera etapa: +1 robot/1000 trab. → +0.175 log TFP, sig.) da segunda etapa cualitativamente igual (own-industry labor share -0.195, 'en el rango' pero imprecisa). Da plausibilidad CAUSAL al vinculo TFP→participacion. VERIFICADO (p. ~32-34).",
+          "dimension": "dim-labor-share"
+        },
+        {
+          "value": "0.45 (value-added-TFP); ~-0.40 (precio-TFP; coef. preciso -0.387) → elasticidad de demanda implicita 1.2 (=0.455/0.387)",
+          "metric": "Un aumento de 1% en TFP predice +0.45% en valor agregado nominal y ~-0.40% en el deflactor de precios de la industria; implica una elasticidad-demanda de producto de ~1.2. Mecanismo del canal de productividad: la TFP baja precios y expande output, lo que sostiene la demanda de trabajo via clientes. VERIFICADO (p. ~23): el texto dice 'aproximadamente 0.40' y usa -0.387/0.455 para el calculo de 1.2.",
+          "dimension": "dim-productivity-tfp"
+        }
+      ],
+      "reliability_note": "Cifras verificadas contra el texto primario (borrador BPEA, 27-feb-2018, PDF de Brookings, extraido con pdftotext -layout). TODAS las cifras coinciden con Tablas 3A/3B/4/6B/8 y Figuras 1A/1C/2B. 'TFP' es la medida omnibus de cambio tecnologico (automatizacion), NO una medida directa de exposicion a IA ni IA generativa. Sample principal: 28 industrias, 18 paises OCDE, desde 1970 (hasta 2007, EU KLEMS). IV de patentes: USPTO citas (US y no-US), N=14,942. IV de robots (IFR): 16 industrias agregadas, 1993-2007, sin Canada/Irlanda/Luxemburgo/Japon. Extension 2007-2015 (Tabla 7) usa EUKLEMS 2017, 13 paises, no directamente comparable.",
+      "venue_note": ""
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "autor-salomons-2018-labor-displacing",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "confirma",
+      "why": "Pone NUMERO al puente que Brynjolfsson (Turing Trap) deja cualitativo: cuantifica grado-de-automatizacion (TFP)→Δparticipacion del trabajo. Elasticidad own-industry participacion-TFP de -0.34 (IV de patentes -0.35), neto -5.3 log puntos 1970-2007, crecientemente negativa por decada (-0.14→-0.47) por debilitamiento de la respuesta de la masa salarial (masa-salarial-TFP 0.17→0.04). Evidencia directa de que la automatizacion reduce la participacion del trabajo aunque suba la productividad: exactamente la dinamica del Turing Trap. (Todas las cifras verificadas contra el primario.)"
+    },
+    {
+      "study_id": "autor-salomons-2018-labor-displacing",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "confirma",
+      "why": "Refuerza la columna vertebral por un canal distinto (productividad, no exposicion): la automatizacion (TFP) destruye empleo own-industry (-2.5% en 37 años) pero el efecto NETO sobre el empleo agregado es POSITIVO (+~6 log puntos) tras demanda final y derrames upstream. Los autores afirman EXPLICITAMENTE que 'un foco exclusivo en efectos own-industry llevaria a conclusiones equivocadas para los agregados laborales' (p. ~22), un calco logico del error-de-dimension de la espina (leer un canal como el agregado). La inferencia hacia 'exposicion' es por analogia, no identidad de constructo; aun asi confirma el principio."
+    },
+    {
+      "study_id": "autor-salomons-2018-labor-displacing",
+      "hypothesis": "hyp-task-net-ambiguous",
+      "type": "confirma",
+      "why": "Contrastacion empirica del marco de Acemoglu-Restrepo que la hipotesis articula: el efecto de DESPLAZAMIENTO directo (own-industry empleo -0.068) se balancea contra el canal de demanda-final/productividad (+0.073) y derrames; el signo neto sobre empleo resulta positivo pero sobre participacion del trabajo resulta negativo. Los autores escriben que 'no se puede sacar conclusion fuerte de si la automatizacion es labor-augmenting o labor-displacing' a partir de los efectos sobre cantidades. Confirma que subir productividad NO garantiza mas demanda de trabajo NI mas participacion: el balance es a priori ambiguo y aqui se mide."
+    },
+    {
+      "study_id": "autor-salomons-2018-labor-displacing",
+      "hypothesis": "hyp-displacement-dominant-recent",
+      "type": "informa",
+      "why": "DEGRADADO de 'confirma' a 'informa' por el verificador: la hipotesis es sobre la descomposicion del GIRO DEL CONTENIDO DE TAREAS (desplazamiento -0.48→-0.7%/año, reinstauracion +0.47→+0.35%/año), un constructo que ESTE paper NO mide. Autor-Salomons corrobora la DIRECCION temporal (el giro contra el trabajo se acelero post-1980) pero por un canal distinto: la elasticidad participacion-TFP que se hace mas negativa por decada (-0.14→-0.47; neto -4.51 log puntos 1980-2007, ~cero en 1970s). Es evidencia paralela e independiente (panel OCDE, no solo EE.UU.) que INFORMA la tesis temporal sin reproducir sus cantidades ni su mecanismo (no hay tasas de reinstauracion aqui)."
+    },
+    {
+      "study_id": "autor-salomons-2018-labor-displacing",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "informa",
+      "why": "La caida de la participacion del trabajo (renta hacia el capital) es el mecanismo macro que alimenta la brecha capital-trabajo de la hipotesis. Pero es evidencia INDIRECTA para IA: mide automatizacion historica via TFP/robots/patentes 1970-2007, no IA generativa, y habla de participacion AGREGADA, no de la distribucion salarial 90:10. Informa el signo macro distribucional sin zanjar la tension interna (compresion vs ensanchamiento)."
+    }
+  ]
+}

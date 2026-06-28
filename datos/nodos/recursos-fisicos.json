@@ -1,0 +1,574 @@
+{
+  "_meta": "Evidencia para la rama 'Recursos físicos' (motor CES de dos factores: inteligencia abundante vs físico escaso; perilla central = elasticidad de oferta física η; segundo parámetro = σ inteligencia↔físico). Verificada contra fuente primaria por 4 subagentes con notas de confiabilidad honestas, 2026-06-20. Korinek-Suh 2024 (korinek2024scenarios) y Korinek-Trammell 2024 (korinek-trammell2024-growth-tai) ya están en el mapa: se reusan en las aristas, no se duplican. Diseño y derivación del motor en recursos-fisicos.md.",
+  "dimensions": [
+    {
+      "id": "dim-abundancia-computo",
+      "name": "Abundancia y costo del cómputo (la oferta de inteligencia)",
+      "definition": "Cuán rápido cae el costo por unidad de capacidad de IA (FLOP por dólar del hardware, precio de inferencia, progreso algorítmico) frente a cuánto escala el cómputo de frontera. Es el lado de la oferta de 'inteligencia' que vuelve barato ese factor — el empuje g del motor. Unidad: tasas de cambio (x/año)."
+    },
+    {
+      "id": "dim-cuello-energetico",
+      "name": "La energía como cuello físico de la IA",
+      "definition": "Demanda eléctrica de los datacenters (nivel, crecimiento, concentración geográfica) frente a la capacidad del sistema de entregarla. Mide si la energía se vuelve la restricción de ritmo y lugar de la IA. Caveat: a escala global los datacenters son un actor menor del crecimiento eléctrico — la escasez es local/temporal, no una pared malthusiana. Unidad: TWh, %/año, % del consumo."
+    },
+    {
+      "id": "dim-elasticidad-oferta-fisica",
+      "name": "Elasticidad-precio de la oferta de insumos físicos (η)",
+      "definition": "Cuánto responde la cantidad ofrecida de electricidad firme o de empaquetado/HBM a un alza de su precio. Inelástica (corto plazo, capacidad fija, lead times largos) → el alza va al PRECIO y los dueños del factor físico capturan la renta; elástica (largo plazo) → la cantidad se expande y la abundancia se traslada. Es la perilla central del motor. Unidad: adimensional (Δ%cantidad / Δ%precio)."
+    },
+    {
+      "id": "dim-sustitucion-energia-factores",
+      "name": "Elasticidad de sustitución energía ↔ otros factores (σ)",
+      "definition": "Cuán fácil reemplaza la economía energía/insumos físicos por capital, trabajo o inteligencia cuando cambian sus precios relativos. σ<1 (complementos) = la inteligencia abundante vuelve MÁS valioso el factor físico y su tajada de la renta sube; σ>1 (sustitutos) = la inteligencia lo reemplaza y su tajada cae; σ=1 = tajada fija. Es el parámetro que decide el signo de '¿los átomos capturan la renta?'. Análogo físico de dim-elasticidad-sustitucion. Unidad: adimensional."
+    },
+    {
+      "id": "dim-captura-renta-factor-fijo",
+      "name": "El factor fijo captura la renta (resultado teórico)",
+      "definition": "El resultado de que, cuando los demás factores se vuelven reproducibles/abundantes (la IA convierte la inteligencia y luego el trabajo en factores reproducibles), el factor que queda fijo o escaso captura una tajada creciente —en el límite, toda— de la renta. Formaliza '¿quién hereda el cuello cuando la inteligencia es abundante?'. Condicionado a la complementariedad (σ<1). Unidad: tajada del ingreso (0–1)."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hyp-escasez-se-muda-a-fisico",
+      "name": "La escasez se muda del trabajo a los recursos físicos",
+      "statement": "Cuando la IA vuelve abundante la inteligencia, el cuello de botella del crecimiento se desplaza del trabajo humano a los insumos físicos —energía y cómputo—. La evidencia de corto plazo apunta a un cuello de ritmo y lugar: la demanda eléctrica de los servidores de IA crece ~30%/año, conectar generación toma ~5 años, el empaquetado CoWoS/HBM está agotado. La tensión honesta: a escala global la energía no es escasa (los datacenters son ~1/10 del crecimiento eléctrico, menos que el aire acondicionado o los autos eléctricos; el costo de generación renovable cae ~10%/año), y el factor que hoy aprieta puede ser transitorio (el cómputo es reproducible; solo materia/energía/tierra son genuinamente fijas). El desacuerdo se juega en el horizonte temporal."
+    },
+    {
+      "id": "hyp-atomos-capturan-renta",
+      "name": "Si son complementos y la oferta es inelástica, los átomos capturan la renta",
+      "statement": "En un modelo de dos factores —inteligencia (abundante) y recursos físicos (escasos)—, si ambos son complementos (σ<1) la tajada de la renta que va al factor físico sube a medida que la inteligencia se abarata; con oferta física inelástica el ajuste va al precio y sus dueños capturan el excedente. Es el teorema de Trammell-Korinek (la tajada del factor fijo tiende a 1 cuando ρ<0) y la 'vuelta de la escasez' de Korinek-Suh, con raíz en Korinek-Stiglitz (los beneficios se acumulan en el factor irreproducible) y el motor Baumol de Aghion-Jones-Jones. El parámetro empírico la respalda en el corto plazo (energía-capital complementos, Berndt-Wood; σ≈0,2–0,5). Se tensiona si σ→1 (sustitución de largo plazo, Koetse) o si la oferta se vuelve elástica (curva de aprendizaje solar, Way-Farmer)."
+    },
+    {
+      "id": "hyp-oferta-fisica-inelastica",
+      "name": "La oferta de energía y cómputo es inelástica en el horizonte relevante",
+      "statement": "Añadir generación eléctrica firme y empaquetado avanzado de chips toma años: la capacidad de corto plazo está fija (curva de oferta vertical, merit-order) y los lead times son largos. La oferta física es entonces marcadamente inelástica en 1–5 años (el horizonte del ciclo de IA actual) y solo moderadamente elástica a largo plazo (>7–10 años). Esa inelasticidad de corto plazo es la condición bajo la cual los dueños del factor físico capturan la renta; su relajación de largo plazo es la salida."
+    }
+  ],
+  "studies": [
+    {
+      "id": "epoch-gpu-price-perf2022",
+      "authors": "Marius Hobbhahn & Tamay Besiroglu",
+      "year": "2022",
+      "venue": "Epoch AI — Trends in GPU price-performance",
+      "source_type": "report",
+      "url": "https://epoch.ai/blog/trends-in-gpu-price-performance",
+      "accessed": true,
+      "reliability_note": "Fuente primaria, dataset público de 470 GPUs (2006–2021). Es la cifra ancla canónica del abaratamiento del hardware. Caveat: la serie termina en 2021; el '~40%/año' reciente (2012–2025) viene de una actualización de Epoch que se leyó vía relay, no verbatim.",
+      "estimates": [
+        {
+          "metric": "FLOP/s por dólar del hardware, tiempo de duplicación",
+          "dimension": "dim-abundancia-computo",
+          "value": "2,46 años (IC95% 2,24–2,72); GPUs de ML 2,07 años",
+          "unit": "años por duplicación",
+          "horizon": "2006–2021",
+          "geography": "global",
+          "sector": "hardware de cómputo",
+          "counterfactual": "costo constante",
+          "quote": "FLOP/s per dollar doubles every 2.46 years (95% CI: 2.24 to 2.72 years)"
+        }
+      ]
+    },
+    {
+      "id": "epoch-inference-prices2025",
+      "authors": "Ben Cottier, Robi Rahman, et al.",
+      "year": "2025",
+      "venue": "Epoch AI — LLM inference prices have fallen rapidly but unequally",
+      "source_type": "report",
+      "url": "https://epoch.ai/data-insights/llm-inference-price-trends",
+      "accessed": true,
+      "reliability_note": "Fuente primaria. Hallazgo de matiz anti-aire: el abaratamiento de inferencia NO es un solo número (el '10x/año' que circula es la versión simplificada); el rango riguroso es 9x–900x/año según el umbral de capacidad. Usar el rango, no el eslogan.",
+      "estimates": [
+        {
+          "metric": "Caída del precio de inferencia a igual capacidad",
+          "dimension": "dim-abundancia-computo",
+          "value": "9x–900x por año (mediana ~50x; 200x post-ene-2024)",
+          "unit": "factor por año",
+          "horizon": "2022–2025",
+          "geography": "global",
+          "sector": "modelos de lenguaje",
+          "counterfactual": "precio constante",
+          "quote": "prices declining between 9x per year and 900x per year, with a median of 50x per year"
+        }
+      ]
+    },
+    {
+      "id": "epoch-training-compute2024",
+      "authors": "Jaime Sevilla & Edu Roldán",
+      "year": "2024",
+      "venue": "Epoch AI — Training compute of frontier models grows by 4-5x per year",
+      "source_type": "report",
+      "url": "https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year",
+      "accessed": true,
+      "reliability_note": "Fuente primaria, dataset público (GitHub epoch-research). Contraste clave para el motor: el cómputo por modelo crece 4-5x/año mientras el $/FLOP cae solo ~2x cada 2 años → el gasto físico total SUBE. La demanda escala más rápido de lo que el hardware se abarata.",
+      "estimates": [
+        {
+          "metric": "Crecimiento del cómputo de entrenamiento de modelos frontera",
+          "dimension": "dim-abundancia-computo",
+          "value": "4,1x/año (todos); 5,3x/año (frontera top-10)",
+          "unit": "factor por año",
+          "horizon": "2010–2024",
+          "geography": "global",
+          "sector": "modelos frontera",
+          "counterfactual": "escala constante",
+          "quote": "the compute used to train notable models has grown about 4.1x/year (90% CI: 3.7x to 4.6x) between 2010 to May 2024"
+        }
+      ]
+    },
+    {
+      "id": "epoch-training-cost2024",
+      "authors": "Ben Cottier, et al.",
+      "year": "2024",
+      "venue": "Epoch AI / arXiv:2405.21015 — The rising costs of training frontier AI models",
+      "source_type": "paper",
+      "url": "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "accessed": true,
+      "reliability_note": "Fuente primaria + arXiv. El número central del lado escasez: el costo del training run sube 2,4x/año pese a que el hardware se abarata, porque la escala (4-5x/año) gana. El gasto físico agregado se vuelve la restricción.",
+      "estimates": [
+        {
+          "metric": "Costo amortizado de hardware+energía del training run de frontera",
+          "dimension": "dim-abundancia-computo",
+          "value": "+2,4x/año (IC95% 2,0–3,1); >$1.000M por run hacia 2027",
+          "unit": "factor por año",
+          "horizon": "desde 2016",
+          "geography": "global",
+          "sector": "modelos frontera",
+          "counterfactual": "costo constante",
+          "quote": "the amortized hardware and energy cost for the final training run of frontier models has grown rapidly, at a rate of 2.4x per year since 2016"
+        }
+      ]
+    },
+    {
+      "id": "semianalysis-silicon2026",
+      "authors": "SemiAnalysis (Dylan Patel et al.)",
+      "year": "2026",
+      "venue": "SemiAnalysis — The Great AI Silicon Shortage",
+      "source_type": "report",
+      "url": "https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage",
+      "accessed": true,
+      "reliability_note": "Análisis de industria de boutique, la fuente más respetada en silicio, pero no peer-reviewed y con proyecciones (utilización >100% en 2H2026, etc.). La síntesis 'silicio corto plazo / energía largo plazo' es la mejor descripción de la migración del cuello físico.",
+      "estimates": [
+        {
+          "metric": "Cuello de botella físico de la IA, corto vs largo plazo",
+          "dimension": "dim-cuello-energetico",
+          "value": "IA toma ~60% del output N3 de TSMC (2026); sin alivio por ~2 años",
+          "unit": "cualitativo + %",
+          "horizon": "2026–2028",
+          "geography": "global",
+          "sector": "semiconductores / energía",
+          "counterfactual": "oferta sin restricción",
+          "quote": "Silicon is the binding short-term constraint. Power is the binding long-term constraint."
+        }
+      ]
+    },
+    {
+      "id": "iea-energy-ai2025",
+      "authors": "IEA (International Energy Agency)",
+      "year": "2025",
+      "venue": "IEA — Energy and AI (flagship report)",
+      "source_type": "report",
+      "url": "https://www.iea.org/reports/energy-and-ai",
+      "accessed": true,
+      "reliability_note": "Fuente primaria, leída verbatim de las páginas oficiales. Las proyecciones a 2030 son escenarios (Base Case), no hechos. Matiz anti-aire central: a escala global los datacenters son ~1/10 del crecimiento eléctrico (menos que A/C, motores industriales o EVs) — el cuello es local (EE.UU./China ~80% del crecimiento) y de ritmo, no una escasez planetaria.",
+      "estimates": [
+        {
+          "metric": "Consumo eléctrico de datacenters (nivel y proyección)",
+          "dimension": "dim-cuello-energetico",
+          "value": "1,5% mundial en 2024 (415 TWh) → ~945 TWh en 2030; IA en servidores acelerados +30%/año",
+          "unit": "% del consumo / TWh / %año",
+          "horizon": "2024–2030",
+          "geography": "global (EE.UU. = 45%)",
+          "sector": "datacenters",
+          "counterfactual": "sin crecimiento de IA",
+          "quote": "Data centres accounted for around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh)."
+        },
+        {
+          "metric": "Riesgo de demora por restricciones de red (oferta inelástica)",
+          "dimension": "dim-elasticidad-oferta-fisica",
+          "value": "~20% de los proyectos planificados en riesgo; datacenter 2-3 años vs sistema energético 'longer lead times'",
+          "unit": "% de proyectos",
+          "horizon": "a 2030",
+          "geography": "global",
+          "sector": "red eléctrica",
+          "counterfactual": "expansión sin fricción",
+          "quote": "unless these risks are addressed, around 20% of planned data centre projects could be at risk of delays"
+        }
+      ]
+    },
+    {
+      "id": "eia-energy-gdp-share",
+      "authors": "EIA (U.S. Energy Information Administration)",
+      "year": "2018",
+      "venue": "EIA — Today in Energy: total energy expenditures as share of GDP",
+      "source_type": "report",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=36754",
+      "accessed": true,
+      "reliability_note": "Fuente primaria (EIA, leída directa) para el 5,6% de 2016. El rango oscilante 4,8% (2020) – 6,7% (2022) y el pico >8% en los shocks petroleros de los 70–80 vienen de otras páginas EIA vía búsqueda, no verificados verbatim. Ancla la constante s_P (tajada física actual) del motor, ~0,05–0,08.",
+      "estimates": [
+        {
+          "metric": "Gasto total en energía como % del PIB (EE.UU.)",
+          "dimension": "dim-captura-renta-factor-fijo",
+          "value": "5,6% (2016); rango histórico ~5–7%",
+          "unit": "% del PIB",
+          "horizon": "1970–2023",
+          "geography": "EE.UU.",
+          "sector": "energía",
+          "counterfactual": "—",
+          "quote": "Expressed as a percent of gross domestic product (GDP), total energy expenditures were 5.6% in 2016, the lowest since at least 1970."
+        }
+      ]
+    },
+    {
+      "id": "owid-renewables-cost2025",
+      "authors": "Max Roser (Our World in Data)",
+      "year": "2025",
+      "venue": "Our World in Data — Why did renewables become so cheap so fast?",
+      "source_type": "report",
+      "url": "https://ourworldindata.org/cheap-renewables-growth",
+      "accessed": true,
+      "reliability_note": "Fuente accesible y confiable, pero mide el COSTO DE GENERACIÓN NUEVA (LCOE), no la tarifa que paga un datacenter — conceptos distintos. Es la tensión honesta de la rama: la energía como commodity se ABARATA, así que la escasez no es de stock global. La tarifa mayorista regional (PJM/ERCOT) sería el siguiente paso de verificación.",
+      "estimates": [
+        {
+          "metric": "Caída del costo de generación (curva de aprendizaje)",
+          "dimension": "dim-cuello-energetico",
+          "value": "solar −88% en 15 años; −36% por cada duplicación de capacidad; carbón ~plano (−2% en 2010s)",
+          "unit": "% de cambio",
+          "horizon": "2009–2024",
+          "geography": "global",
+          "sector": "generación eléctrica",
+          "counterfactual": "costo de fósiles (plano)",
+          "quote": "Electricity from utility-scale solar photovoltaics cost $496 per MWh in 2009. Within 15 years the price declined by 88%."
+        }
+      ]
+    },
+    {
+      "id": "lbnl-queued-up2024",
+      "authors": "LBNL (Lawrence Berkeley National Laboratory, EMP)",
+      "year": "2024",
+      "venue": "Berkeley Lab — Queued Up: 2024 Edition (datos a fin de 2023)",
+      "source_type": "report",
+      "url": "https://emp.lbl.gov/queues",
+      "accessed": true,
+      "reliability_note": "Confiabilidad muy alta: dataset de referencia del sector (Berkeley Lab/DOE), datos administrativos de las colas de interconexión de los ISO/RTO. Es la cuantificación más dura de la inelasticidad de la oferta eléctrica: añadir generación tarda ~5 años y casi nada de la cola se construye.",
+      "estimates": [
+        {
+          "metric": "Lead time y tasa de completación de nueva generación",
+          "dimension": "dim-elasticidad-oferta-fisica",
+          "value": "~5 años de solicitud a operación (vs <2 en 2008); solo 19% de proyectos / 14% de capacidad construidos; >70% se retira",
+          "unit": "años / % completado",
+          "horizon": "2000–2023",
+          "geography": "EE.UU.",
+          "sector": "generación eléctrica",
+          "counterfactual": "oferta perfectamente elástica",
+          "quote": "The typical project built in 2023 took nearly 5 years from the interconnection request to commercial operations, compared to 3 years in 2015 and <2 years in 2008."
+        }
+      ]
+    },
+    {
+      "id": "johnson-supply-elasticity2014",
+      "authors": "Erik Paul Johnson",
+      "year": "2014",
+      "venue": "Energy Economics (WP Georgia Tech 2011) — Price Elasticity of Supply of Renewable Electricity Generation",
+      "source_type": "paper",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0140988314000425",
+      "accessed": true,
+      "reliability_note": "Estimación IV publicada, identificada con el calendario de los RPS estatales. ES la única estimación econométrica dura de elasticidad de OFERTA que se halló (la literatura mide casi siempre demanda — laguna real). Pero es de capacidad RENOVABLE de LARGO PLAZO en un periodo de costos cayendo → probablemente el TECHO de elasticidad; la generación firme y el corto plazo son mucho más inelásticos.",
+      "estimates": [
+        {
+          "metric": "Elasticidad-precio de la oferta de generación renovable (largo plazo)",
+          "dimension": "dim-elasticidad-oferta-fisica",
+          "value": "≈2,7 (preferida 2,714)",
+          "unit": "adimensional",
+          "horizon": "largo plazo",
+          "geography": "EE.UU.",
+          "sector": "generación renovable",
+          "counterfactual": "oferta inelástica de corto plazo (PES≈0)",
+          "quote": "my preferred estimate of the supply elasticity is 2.7 ... for every 1% increase in the price of RECs, there will [be] approximately a 2.7% increase in renewable generating capacity"
+        }
+      ]
+    },
+    {
+      "id": "epoch-chip-supply2025",
+      "authors": "Epoch AI",
+      "year": "2025",
+      "venue": "Epoch AI — Advanced packaging and HBM were the bottlenecks on AI chip production",
+      "source_type": "report",
+      "url": "https://epoch.ai/data-insights/ai-chip-supply-chain-constraints",
+      "accessed": true,
+      "reliability_note": "Fuente primaria para el hallazgo cualitativo (alto): el cuello de la oferta de chips de IA es bimodal — el empaquetado CoWoS y la memoria HBM son inelásticos (fabs nuevas, lead times largos), mientras el die lógico es relativamente elástico (se redirige capacidad pujando precio). Las cifras puntuales de wafers/lead-times son de prensa de industria (media).",
+      "estimates": [
+        {
+          "metric": "Concentración y elasticidad de la oferta de chips de IA",
+          "dimension": "dim-elasticidad-oferta-fisica",
+          "value": "top-4 consumen ~90% del CoWoS y HBM (inelástico); solo 12% del die lógico (elástico)",
+          "unit": "% de capacidad",
+          "horizon": "2025",
+          "geography": "global",
+          "sector": "semiconductores",
+          "counterfactual": "oferta elástica",
+          "quote": "the four largest AI chip designers collectively consumed around 90% of global CoWoS capacity and HBM supply in 2025, while consuming only 12% of advanced logic die production"
+        }
+      ]
+    },
+    {
+      "id": "berndt-wood1975",
+      "authors": "Ernst R. Berndt & David O. Wood",
+      "year": "1975",
+      "venue": "Review of Economics and Statistics 57(3): 259–268",
+      "source_type": "paper",
+      "url": "https://www.jstor.org/stable/1923910",
+      "accessed": true,
+      "reliability_note": "Hallazgo canónico de complementariedad capital-energía (el paper más citado de la historia de esa revista). La cita es de la retrospectiva 'Citation Classic' de los propios autores (leída verbatim); el original vía esa síntesis. La complementariedad K-E es el caso que sostiene σ<1 → los átomos capturan; controvertida (depende de series de tiempo vs corte transversal, ver Koetse/Thompson).",
+      "estimates": [
+        {
+          "metric": "Sustitución energía ↔ capital/trabajo",
+          "dimension": "dim-sustitucion-energia-factores",
+          "value": "energía-capital COMPLEMENTOS (σ<1); energía-trabajo sustitutos; own-price energía −0,5",
+          "unit": "adimensional",
+          "horizon": "series de tiempo EE.UU.",
+          "geography": "EE.UU.",
+          "sector": "manufactura agregada",
+          "counterfactual": "σ=1",
+          "quote": "energy and labor are substitutable while energy and capital are complements"
+        }
+      ]
+    },
+    {
+      "id": "koetse-meta2008",
+      "authors": "Mark J. Koetse, Henri L.F. de Groot & Raymond J.G.M. Florax",
+      "year": "2008",
+      "venue": "Energy Economics 30(5): 2236–2251 (meta-análisis)",
+      "source_type": "paper",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0140988307000825",
+      "accessed": true,
+      "reliability_note": "Abstract primario; las cifras desagregadas (Morishima CP ≈0,2–0,4 / LP ≈0,8–1,1) son cita secundaria consistente entre fuentes (el PDF completo dio 403). Es la cara 'sustituto' del debate (usa Morishima/cross-price, que dan sustituibilidad débil), frente a la Allen de Berndt-Wood que da complementos. La lección: σ energía-factores depende fuerte del horizonte y la agregación.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de sustitución capital-energía (Morishima)",
+          "dimension": "dim-sustitucion-energia-factores",
+          "value": "CP ≈0,2–0,4; LP ≈0,8–1,1 (media reportada ~0,22)",
+          "unit": "adimensional",
+          "horizon": "corto y largo plazo",
+          "geography": "Norteamérica / Europa",
+          "sector": "economía / manufactura",
+          "counterfactual": "σ=1",
+          "quote": "the estimated cross-price elasticities suggest capital-energy substitutability without exception"
+        }
+      ]
+    },
+    {
+      "id": "korinek-stiglitz2019",
+      "authors": "Anton Korinek & Joseph E. Stiglitz",
+      "year": "2019",
+      "venue": "The Economics of AI (NBER), cap. 14 / NBER WP 24174",
+      "source_type": "paper",
+      "url": "https://www.nber.org/papers/w24174",
+      "accessed": true,
+      "reliability_note": "Fuente primaria. Es el origen de la tesis: cuando la máquina vuelve al trabajo un factor reproducible, el crecimiento queda limitado por el factor irreproducible que sobrevive, y la renta se acumula en él. No nombra aún el factor físico (lo hace Korinek-Suh).",
+      "estimates": [
+        {
+          "metric": "El factor irreproducible captura los beneficios del progreso",
+          "dimension": "dim-captura-renta-factor-fijo",
+          "value": "tesis: toda la renta → el factor irreproducible",
+          "unit": "cualitativo",
+          "horizon": "largo plazo",
+          "geography": "—",
+          "sector": "—",
+          "counterfactual": "reparto estable de factores",
+          "quote": "in the long run, growth will likely be limited by some other irreproducible factor, and all the benefits of technological progress will accrue to that factor"
+        }
+      ]
+    },
+    {
+      "id": "aghion-jones-jones2019",
+      "authors": "Philippe Aghion, Benjamin F. Jones & Charles I. Jones",
+      "year": "2019",
+      "venue": "The Economics of AI (NBER), cap. 9 / NBER WP 23928",
+      "source_type": "paper",
+      "url": "https://web.stanford.edu/~chadj/AJJ-AIandGrowth.pdf",
+      "accessed": true,
+      "reliability_note": "Fuente primaria. Aporta el motor Baumol que conecta σ<1 con el cuello: lo esencial y difícil de mejorar gobierna el crecimiento. Su extensión 'natural laws' apunta explícitamente a la física/termodinámica como restricción última — el mecanismo es agnóstico al tipo de factor, aplica a los átomos. Distinto de jones2025 (ya en el mapa); es el paper de 2019.",
+      "estimates": [
+        {
+          "metric": "El cuello (Baumol) gobierna el crecimiento",
+          "dimension": "dim-captura-renta-factor-fijo",
+          "value": "lo esencial y difícil de mejorar (no lo que se hace bien) limita el crecimiento",
+          "unit": "cualitativo",
+          "horizon": "largo plazo",
+          "geography": "—",
+          "sector": "—",
+          "counterfactual": "crecimiento gobernado por lo automatizado",
+          "quote": "Economic growth may be constrained not by what we do well but rather by what is essential and yet hard to improve"
+        }
+      ]
+    },
+    {
+      "id": "way-farmer2022",
+      "authors": "Rupert Way, J. Doyne Farmer, et al.",
+      "year": "2022",
+      "venue": "Joule 6(9) / INET Oxford WP — Empirically grounded technology forecasts and the energy transition",
+      "source_type": "paper",
+      "url": "https://www.cell.com/joule/fulltext/S2542-4351(22)00410-X",
+      "accessed": true,
+      "reliability_note": "Working paper primario (la versión Joule dio paywall). Es la contracara más rigurosa (peer-reviewed, forecasting probabilístico): la energía se ABARATA ~10%/año por la curva de aprendizaje (ley de Wright) → a largo plazo no es el factor escaso. Tensiona directamente la tesis (equivale a η alta y σ→1 de largo plazo).",
+      "estimates": [
+        {
+          "metric": "Curva de aprendizaje de la energía limpia",
+          "dimension": "dim-cuello-energetico",
+          "value": "solar/eólica/baterías caen ~10%/año (solar ~15%); transición rápida = ahorro neto de billones",
+          "unit": "%/año",
+          "horizon": "largo plazo",
+          "geography": "global",
+          "sector": "energía limpia",
+          "counterfactual": "energía como recurso escaso/caro",
+          "quote": "(roughly) exponentially at a rate near 10% per year"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "epoch-gpu-price-perf2022",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "informa",
+      "why": "Documenta el lado abundancia: la inteligencia-vía-hardware se abarata ~2x cada 2,5 años. Es la premisa que dispara el desplazamiento del cuello — sin inteligencia abundante no hay pregunta."
+    },
+    {
+      "study_id": "epoch-inference-prices2025",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "informa",
+      "why": "El precio de inferencia a igual capacidad cae rapidísimo (mediana ~50x/año): la inteligencia entregada se vuelve barata, condición de partida de la rama."
+    },
+    {
+      "study_id": "epoch-training-compute2024",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "confirma",
+      "why": "El cómputo de frontera escala 4-5x/año, mucho más rápido de lo que el hardware se abarata → la demanda de insumos físicos explota y el cuello se desplaza hacia ellos."
+    },
+    {
+      "study_id": "epoch-training-cost2024",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "confirma",
+      "why": "Pese al abaratamiento por unidad, el costo del training run sube 2,4x/año hacia >$1.000M: el gasto físico agregado se vuelve la restricción, justo la migración del cuello."
+    },
+    {
+      "study_id": "semianalysis-silicon2026",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "confirma",
+      "why": "Nombra el cuello físico actual: silicio (CoWoS/HBM) en el corto plazo, energía en el largo. La escasez ya migró del algoritmo a los átomos."
+    },
+    {
+      "study_id": "semianalysis-silicon2026",
+      "hypothesis": "hyp-oferta-fisica-inelastica",
+      "type": "confirma",
+      "why": "Utilización N3 >100% y sin alivio por ~2 años: la oferta de empaquetado avanzado no responde rápido al alza de demanda/precio."
+    },
+    {
+      "study_id": "iea-energy-ai2025",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "confirma",
+      "why": "Demanda eléctrica de IA +30%/año y EE.UU. con datacenters explicando ~la mitad del crecimiento eléctrico al 2030. Confirma el cuello, con el matiz honesto de que es local/de ritmo, no global."
+    },
+    {
+      "study_id": "iea-energy-ai2025",
+      "hypothesis": "hyp-oferta-fisica-inelastica",
+      "type": "confirma",
+      "why": "El sistema energético tiene lead times largos frente a los 2-3 años de un datacenter; ~20% de proyectos en riesgo por la red. La oferta de entrega no se expande al ritmo de la demanda."
+    },
+    {
+      "study_id": "eia-energy-gdp-share",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "informa",
+      "why": "Fija la tajada física de partida (energía ~5–7% del PIB): la constante s_P del motor. Hoy es chica — el modelo muestra bajo qué condiciones (σ<1, η baja) crecería."
+    },
+    {
+      "study_id": "owid-renewables-cost2025",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "tensiona",
+      "why": "El costo de generación renovable cae ~10%/año: la energía como commodity se abarata, no se vuelve escasa. La escasez sería de entrega local, no de recurso."
+    },
+    {
+      "study_id": "owid-renewables-cost2025",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "tensiona",
+      "why": "Si la energía se abarata estructuralmente (curva de aprendizaje), su precio y su tajada no suben: equivale a oferta elástica de largo plazo y mina la captura de renta."
+    },
+    {
+      "study_id": "lbnl-queued-up2024",
+      "hypothesis": "hyp-oferta-fisica-inelastica",
+      "type": "confirma",
+      "why": "La cuantificación más dura: ~5 años para conectar generación y solo 14% de la cola se construye. Oferta eléctrica casi congelada en el corto plazo."
+    },
+    {
+      "study_id": "lbnl-queued-up2024",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "confirma",
+      "why": "Con la oferta tan inelástica, un alza de demanda va al precio: los dueños de energía firme e interconexión capturan la renta. Es la condición η→0 del motor."
+    },
+    {
+      "study_id": "johnson-supply-elasticity2014",
+      "hypothesis": "hyp-oferta-fisica-inelastica",
+      "type": "tensiona",
+      "why": "A largo plazo la oferta renovable es elástica (≈2,7): con suficiente tiempo la capacidad responde más que proporcional al precio. Es la salida del régimen inelástico — el techo de η."
+    },
+    {
+      "study_id": "epoch-chip-supply2025",
+      "hypothesis": "hyp-oferta-fisica-inelastica",
+      "type": "confirma",
+      "why": "CoWoS y HBM (90% consumido por top-4) son el cuello duro inelástico; solo el die lógico es elástico. La oferta de cómputo no se expande rápido donde aprieta."
+    },
+    {
+      "study_id": "berndt-wood1975",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "confirma",
+      "why": "Energía-capital son complementos (σ<1): si la inteligencia (capital efectivo) abunda, el factor físico complementario se vuelve más valioso y su tajada sube. Es la condición que activa la captura."
+    },
+    {
+      "study_id": "koetse-meta2008",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "informa",
+      "why": "El meta-análisis acota σ energía-capital: ~0,2–0,4 en el corto plazo (complementos, sostiene la tesis) pero ~0,8–1,1 en el largo (hacia sustitutos, la tensiona). El signo depende del horizonte."
+    },
+    {
+      "study_id": "korinek-stiglitz2019",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "confirma",
+      "why": "El origen teórico: cuando la máquina vuelve reproducible al trabajo, la renta se acumula en el factor irreproducible que queda. El factor físico es candidato a ese rol."
+    },
+    {
+      "study_id": "aghion-jones-jones2019",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "confirma",
+      "why": "El motor Baumol: lo esencial y difícil de mejorar (σ<1) gobierna el crecimiento y captura el retorno; su extensión a leyes naturales apunta a la energía/termodinámica como cuello físico."
+    },
+    {
+      "study_id": "way-farmer2022",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "refuta",
+      "why": "La energía se abarata ~10%/año por la curva de aprendizaje: a largo plazo σ→1 y la oferta se vuelve elástica, así que los átomos NO heredan la renta. Es la contracara rigurosa de la tesis."
+    },
+    {
+      "study_id": "korinek2024scenarios",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "confirma",
+      "why": "Korinek-Suh tienen una sección 'Fixed Factors and the Return of Scarcity' y nombran la materia/energía (E=mc²) como la fuente última de escasez cuando los demás factores se vuelven reproducibles."
+    },
+    {
+      "study_id": "korinek2024scenarios",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "informa",
+      "why": "Modelan la captura por el factor fijo, pero advierten que el cómputo es REPRODUCIBLE y disipa su renta: solo materia/energía/tierra genuinamente fijas capturan para siempre. Matiza qué átomos capturan."
+    },
+    {
+      "study_id": "korinek-trammell2024-growth-tai",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "confirma",
+      "why": "El teorema directo: embebida la producción en un factor de oferta fija y baja sustituibilidad, 'the resource in fixed supply constrains growth and its owners receive approximately all output' — exactamente con ρ<0 (σ<1). Mi (1−σ)/(σ+η) es su versión local."
+    },
+    {
+      "study_id": "jones2025-ai-economic-future",
+      "hypothesis": "hyp-atomos-capturan-renta",
+      "type": "informa",
+      "why": "El marco de weak links (lo no automatizable captura el retorno y domestica el crecimiento) es agnóstico al factor: aplica también a un cuello físico, no solo a tareas humanas."
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "studies": [
+    {
+      "id": "acemoglu-restrepo-2022-wage-inequality",
+      "authors": "Daron Acemoglu, Pascual Restrepo",
+      "year": 2022,
+      "venue": "Econometrica, Vol. 90, No. 5 (September 2022), pp. 1973-2016 (DOI 10.3982/ECTA19815; NBER w28920)",
+      "url": "https://economics.mit.edu/sites/default/files/2022-10/Tasks%20Automation%20and%20the%20Rise%20in%20US%20Wage%20Inequality.pdf",
+      "estimates": [
+        {
+          "value": "50-70%",
+          "metric": "Fracción de los cambios en la ESTRUCTURA SALARIAL de EE.UU. 1980-2016 que el desplazamiento DIRECTO de tareas explica en forma reducida (regresiones de base sobre 500 grupos demográficos por educación/género/edad/raza/estatus migratorio). Cita verbatim (intro §1): 'direct task displacement explains 50-70% of the changes in wage structure across groups between 1980 and 2016.' El abstract lo fraseado como 'between 50% and 70% of changes in the U.S. wage structure ... are accounted for by relative wage declines of worker groups specialized in routine tasks in industries experiencing rapid automation.' Mide VARIANZA ENTRE GRUPOS de salarios relativos, NO participación del trabajo ni puestos. (En equilibrio general con efectos ripple esta cifra sube a 94%, no usada aquí.)",
+          "dimension": "dim-wage-inequality"
+        },
+        {
+          "value": "50%",
+          "metric": "Fracción de los cambios en la estructura salarial 1980-2016 atribuida a la automatización incorporando efectos de EQUILIBRIO GENERAL (composición industrial + efectos ripple por reasignación de tareas), distinta de la cifra reducida 50-70%. Cita verbatim: 'automation —incorporating general equilibrium effects— accounts for 50% of the changes in the wage structure during this period' (la conclusión §6 la describe como 'close to 50%').",
+          "dimension": "dim-wage-inequality"
+        },
+        {
+          "value": "80%",
+          "metric": "Fracción del AUMENTO de la prima universitaria (college premium) 1980-2016 explicada por la automatización en equilibrio general. Cita verbatim: 'explains 80% of the rise in the college premium.' (En el cuerpo: el desplazamiento de tareas genera un alza de 21% en la prima universitaria = 80% del aumento observado.)",
+          "dimension": "dim-wage-inequality"
+        },
+        {
+          "value": "-8.8% (hombres) / -2.3% (mujeres)",
+          "metric": "Efecto NIVEL en equilibrio general de la automatización sobre el salario real de desertores de secundaria (high-school dropouts) 1980-2016, por género. Cita verbatim: 'automation reduced the real wage of high-school dropout men by 8.8% and high-school dropout women by 2.3%.' (Contexto del paper: el salario real observado de hombres sin secundaria es 15% menor que en 1980 —'now 15% lower than they were in 1980'—; la atribución de ~8.8pp de esos 15 a la automatización es inferencia del lector, no afirmación textual.)",
+          "dimension": "dim-wages"
+        },
+        {
+          "value": "3.4% (acumulado)",
+          "metric": "Aumento ACUMULADO de la TFP atribuible a la automatización 1980-2016. Cita verbatim: 'automation accounts only for a (cumulative) 3.4% increase in TFP between 1980 and 2016.' Núcleo del argumento 'so-so automation': grandes efectos distributivos con ganancias de productividad modestas. Descomposición del paper: ≈10% del PIB en tareas desplazadas × ~30% de ahorro de costos ≈ 3% ('0.1 × 0.3 ≈ 3%'). Comparar: la TFP OBSERVADA creció 35% en el periodo ('in the data TFP grew by 35% during this period') — confirmado verbatim.",
+          "dimension": "dim-productivity-tfp"
+        },
+        {
+          "value": "45%",
+          "metric": "Fracción de los cambios OBSERVADOS en la participación del trabajo por industria (1987-2016) que los proxies de automatización (adopción de robots, software especializado y maquinaria dedicada) explican. Cita verbatim: 'These proxies of automation account for 45% of the observed changes in industry labor shares from 1987 to 2016.'",
+          "dimension": "dim-labor-share"
+        },
+        {
+          "value": "10%",
+          "metric": "Fracción de los cambios en la estructura salarial atribuible a formas estándar de SBTC (productividad de los trabajadores evolucionando por educación/género) — pequeño frente al 50-70% del desplazamiento de tareas. Cita verbatim: 'standard forms of SBTC ... which account for 10% of the changes in the wage structure.'",
+          "dimension": "dim-wage-inequality"
+        },
+        {
+          "value": "13% / un tercio",
+          "metric": "El desplazamiento de tareas dentro de la manufactura genera una reducción de 13% en la masa salarial (wage bill) del sector, lo que da cuenta de un tercio de la caída de la demanda laboral en manufactura 1980-2016. Cita verbatim: 'task displacement within manufacturing generates a large, 13%, reduction in the wage bill of that sector, accounting for a third of the decline in manufacturing labor demand for 1980-2016.'",
+          "dimension": "dim-realized-labor-demand"
+        }
+      ],
+      "reliability_note": "TODAS las cifras verificadas verbatim contra el PDF primario de Econometrica (vol. 90 no. 5, copia abierta alojada en economics.mit.edu): 50-70% (intro, 'direct task displacement explains 50-70%...'); 50%/80% (GE, 'automation —incorporating general equilibrium effects— accounts for 50%... 80% of the rise in the college premium'); -8.8%/-2.3% (GE nivel, verbatim); 3.4% TFP acumulada (verbatim, vs 35% observada verbatim); 45% labor shares 1987-2016 (verbatim); 10% SBTC (verbatim); 13%/un tercio manufactura (verbatim). El verificador NO eliminó ni degradó ninguna cifra. CUIDADO con cifras que suenan iguales: el 50-70% es FORMA REDUCIDA (asociación entre 500 grupos, varianza de salarios relativos); el 50%/80%/-8.8%/-2.3%/3.4% son resultados de EQUILIBRIO GENERAL del ejercicio cuantitativo. El 50-70% mide varianza de salarios relativos entre grupos, NO 'puestos perdidos' ni participación del trabajo; los autores advierten explícitamente (verbatim) que 'task displacement does not need to be associated with job loss'. Única atribución que es inferencia del lector (no textual): el desglose de los 15pp de caída del salario real de hombres sin secundaria en ~8.8pp por automatización."
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "acemoglu-restrepo-2022-wage-inequality",
+      "hypothesis": "hyp-displacement-dominant-recent",
+      "type": "confirma",
+      "why": "Es la pieza SALARIAL del programa desplazamiento-dominante. El mismo marco de tareas de la descomposición (Acemoglu-Restrepo 2019/2020) llevado al lado de los precios: 50-70% (forma reducida) de los cambios de la estructura salarial 1980-2016, 80% del alza de la prima universitaria en GE, y caídas reales de -8.8%/-2.3% para desertores. Evidencia directa y cuantitativa del periodo reciente. (Nota de eco: es el mismo equipo/marco que sostiene la hipótesis, por lo que confirma sin ser fuente independiente.)"
+    },
+    {
+      "study_id": "acemoglu-restrepo-2022-wage-inequality",
+      "hypothesis": "hyp-task-net-ambiguous",
+      "type": "aplica",
+      "why": "Aplica el vocabulario canónico de descomposición (desplazamiento vs productividad/reinstauración) al margen de salarios: el efecto de desplazamiento puede superar al de productividad, de modo que se pueden tener grandes efectos distributivos (caídas reales para los menos calificados) con ganancias de TFP minúsculas (3.4% acumulado vs 35% observada). Materializa en datos la ambigüedad de signo del marco basado en tareas."
+    },
+    {
+      "study_id": "acemoglu-restrepo-2022-wage-inequality",
+      "hypothesis": "hyp-routine-polarization",
+      "type": "tensiona",
+      "why": "Comparte el objeto (grupos rutina-intensivos pierden salario relativo) pero REENCUADRA el mecanismo: no es RBTC/polarización por sesgo de habilidad —el SBTC estándar explica solo 10%— sino DESPLAZAMIENTO de tareas vía automatización concentrada por industria (proxies de robots/software/maquinaria explican 45% de las caídas de labor share por industria 1987-2016). La variable explicativa no es la intensidad de rutina per se sino la pérdida de cuota de tareas a la automatización en la industria donde el grupo se especializa."
+    },
+    {
+      "study_id": "acemoglu-restrepo-2022-wage-inequality",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "informa",
+      "why": "Evidencia histórica (robots/software/maquinaria, NO IA generativa) de que la automatización ENSANCHÓ la desigualdad salarial: 50-70% de los cambios de estructura salarial y 80% del alza de la prima universitaria, con caídas reales para los menos calificados. Informa el caso base distribucional contra el que se contrasta la IA generativa (que podría comprimir, según Webb/Autor-2024). Es analogía histórica, no medición de IA: por eso informa y no confirma."
+    },
+    {
+      "study_id": "acemoglu-restrepo-2022-wage-inequality",
+      "hypothesis": "hyp-macro-modest-vs-extreme",
+      "type": "informa",
+      "why": "Precedente empírico del lado 'macro modesto': cuatro décadas de automatización produjeron solo 3.4% acumulado de TFP atribuible a ella (vs 35% de TFP observada), mostrando que disrupción distributiva grande y ganancia de productividad agregada pequeña coexisten ('so-so automation'). Refuerza por qué exposición/adopción altas no implican saltos macro grandes. Es analogía histórica de automatización previa, no medición de IA generativa: informa."
+    },
+    {
+      "study_id": "acemoglu-restrepo-2022-wage-inequality",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Recorre parcialmente el puente que el mapa marca ausente (cnv-exposure-to-wages-ABSENT), pero por el tramo AUTOMATIZACIÓN-REALIZADA→salarios, no exposición-técnica→salarios: parte de desplazamiento medido ex-post (caídas observadas de labor share por industria, 45% atribuibles a automatización 1987-2016), NO de un índice de exposición técnica. Y mide SALARIOS relativos entre grupos, no puestos netos; los autores advierten verbatim que 'task displacement does not need to be associated with job loss'. El desplazamiento medido se realiza en salarios relativos, no en un conteo de puestos. Evidencia indirecta para el spine, de ahí 'informa', no 'confirma': llena automatización-realizada→salarios y deja intacto exposición-técnica→empleo."
+    }
+  ]
+}

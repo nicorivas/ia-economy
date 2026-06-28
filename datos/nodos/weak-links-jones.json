@@ -1,0 +1,82 @@
+{
+  "_meta": "Framework de WEAK LINKS (Chad Jones) — la fuente canónica del mecanismo de la lente Crecimiento. La producción es una cadena de tareas complementarias (O-ring/Baumol); automatizar las fáciles no dispara el crecimiento porque el output queda acotado por las difíciles que quedan con humanos. Esos weak links son la fuente de la escasez y capturan el retorno; y, además, DOMESTICAN el crecimiento (hay que automatizarlos para acelerar). Verificado contra el PDF primario de Jones (2025), 2026-06-20.",
+  "dimensions": [
+    {
+      "id": "dim-weak-links",
+      "name": "Weak links / cuello de botella (tareas que acotan y capturan)",
+      "definition": "Tareas complementarias difíciles de automatizar que quedan con humanos. Como una cadena vale por su eslabón más débil, acotan el output total —aunque las tareas fáciles se automaticen infinito— y, al ser la fuente de la escasez, capturan el retorno (sueldos/tajada). Automatizarlas todas es lo que dispararía el crecimiento, y a la vez lo que borraría la renta del trabajo. Es el primitivo de la lente Crecimiento. Unidad: cualitativo / mecanismo."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hyp-weak-links-acotan-capturan",
+      "name": "Los weak links acotan el crecimiento y capturan el retorno (Jones)",
+      "statement": "En una economía de tareas complementarias (weak link / O-ring), automatizar las tareas fáciles no dispara el crecimiento sin límite: el output queda acotado por las tareas difíciles que aún dependen de humanos. Esos weak links son la fuente de la escasez y capturan el retorno. Mientras sobrevivan, el trabajo es el factor escaso y su tajada se sostiene; si se automatizan todos, el crecimiento se acelera pero la renta del trabajo colapsa. Los weak links hacen DOS cosas: acotan/domestican el crecimiento y deciden quién captura. Es el mecanismo de la lente Crecimiento (cuello de botella)."
+    }
+  ],
+  "studies": [
+    {
+      "id": "jones2025-ai-economic-future",
+      "authors": "Charles I. Jones",
+      "year": "2025",
+      "venue": "NBER WP w34779 (Stanford GSB; presentado SF Fed, sep-2025)",
+      "source_type": "paper",
+      "url": "https://web.stanford.edu/~chadj/AIandEconomicFuture.pdf",
+      "accessed": true,
+      "reliability_note": "Verificado contra el PDF primario (web.stanford.edu/~chadj/AIandEconomicFuture.pdf). Es teoría de crecimiento (calibra, no decide): los escenarios dependen de un parámetro empírico, no de una postura. Mide GDP, que no distingue valor real de proxy — testigo convergente, no prueba.",
+      "estimates": [
+        {
+          "metric": "Los weak links acotan el output: automatizar las tareas fáciles no dispara el crecimiento",
+          "dimension": "dim-weak-links",
+          "value": "el output queda acotado por el eslabón más débil; infinito de una tarea sube el GDP solo en su tajada del GDP",
+          "unit": "cualitativo / mecanismo",
+          "horizon": "largo plazo",
+          "geography": "global (teoría)",
+          "sector": "economía completa",
+          "counterfactual": "crecimiento sin cuellos (explosión)",
+          "quote": "even with infinite amounts of some input, overall production remains finite — again because we are limited by the weakest link... output is always constrained by the weakest links that are not yet automated"
+        },
+        {
+          "metric": "Los weak links DOMESTICAN el crecimiento: hay que automatizarlos para acelerar",
+          "dimension": "dim-pib-crecimiento",
+          "value": "la aceleración del crecimiento queda frenada por los weak links; acelerar requiere automatizar la gran mayoría de ellos",
+          "unit": "cualitativo",
+          "horizon": "largo plazo",
+          "geography": "global (teoría)",
+          "sector": "economía completa",
+          "counterfactual": "crecimiento explosivo sin cuellos",
+          "quote": "this acceleration is likely to be slowed by the presence of “weak links”... Accelerating economic growth requires the vast majority of the weak links to be automated away, which delays the large gains"
+        }
+      ]
+    },
+    {
+      "id": "jones-tonetti2026",
+      "authors": "Charles I. Jones & Christopher Tonetti",
+      "year": "2026",
+      "venue": "«Past Automation and Future A.I.: How Weak Links Tame the Growth Explosion»",
+      "source_type": "paper",
+      "url": "https://web.stanford.edu/~chadj/",
+      "accessed": false,
+      "reliability_note": "Verificado vía la cita verbatim DENTRO de Jones (2025) (PDF primario); el paper directo no fue accesible al fetcher. La tesis del título —los weak links domestican la explosión de crecimiento— está confirmada por esa cita. Cifras específicas: sin verificar.",
+      "estimates": [
+        {
+          "metric": "Los weak links domestican la explosión de crecimiento de la IA",
+          "dimension": "dim-pib-crecimiento",
+          "value": "la presencia de weak links limita el crecimiento que emerge de la IA (domestica la explosión)",
+          "unit": "cualitativo",
+          "horizon": "largo plazo",
+          "geography": "global (teoría)",
+          "sector": "economía completa",
+          "counterfactual": "explosión de crecimiento sin cuellos",
+          "quote": "Jones and Tonetti (2026) use the weak link framework to explain how the presence of weak links can limit the growth that emerges from artificial intelligence"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    { "study_id": "jones2025-ai-economic-future", "hypothesis": "hyp-weak-links-acotan-capturan", "type": "confirma", "why": "Es la fuente canónica: la producción como cadena de tareas complementarias, el output acotado por el eslabón más débil, y los weak links como fuente de escasez que captura el retorno." },
+    { "study_id": "jones-tonetti2026", "hypothesis": "hyp-weak-links-acotan-capturan", "type": "confirma", "why": "Aplica el framework de weak links para mostrar cómo domestican la explosión de crecimiento de la IA — la mitad 'acotan el crecimiento' de la hipótesis." },
+    { "study_id": "korinek-trammell2024-growth-tai", "hypothesis": "hyp-weak-links-acotan-capturan", "type": "informa", "why": "Mismo linaje Baumol: el crecimiento bajo IA va de modesto a explosivo según los cuellos de botella — los weak links." },
+    { "study_id": "korinek2024scenarios", "hypothesis": "hyp-weak-links-acotan-capturan", "type": "informa", "why": "La cola de tareas acotada vs no-acotada de Korinek-Suh es el mismo cuello: si siempre queda una tarea esencial (weak link), el trabajo sobrevive como factor escaso." }
+  ]
+}

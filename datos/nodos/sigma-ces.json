@@ -1,0 +1,190 @@
+{
+  "_meta": "Estudios para anclar la elasticidad de sustitución capital-trabajo (σ) en la lente Agregado·CES. Verificados contra fuente primaria (PDFs completos) por subagentes con verificación cruzada, 2026-06-19. Centro de gravedad empírico: σ<1 (complementos); Karabarbounis-Neiman es el caso que NECESITA σ>1.",
+  "dimensions": [
+    {
+      "id": "dim-elasticidad-sustitucion",
+      "name": "Elasticidad de sustitución capital–trabajo (σ)",
+      "definition": "Cuán fácilmente la producción reemplaza trabajo por capital cuando cambian sus precios relativos. σ>1 = sustitutos brutos (el capital barato desplaza trabajo y baja su tajada); σ<1 = complementos (el trabajo se vuelve el factor escaso y su tajada sube); σ=1 = Cobb-Douglas (tajadas fijas). Es el parámetro que decide el signo del efecto de la IA sobre la participación del trabajo en el modelo agregado. Unidad: adimensional."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hyp-ia-erosiona-participacion",
+      "name": "La IA erosiona la participación del trabajo (si σ>1)",
+      "statement": "En el modelo agregado, la IA equivale a capital más productivo/barato: el producto crece, pero la tajada del ingreso que va al trabajo cae SOLO si capital y trabajo son sustitutos brutos (σ>1). Con σ<1 (complementos) el trabajo se vuelve el factor escaso y su tajada puede subir; con σ=1 (Cobb-Douglas) queda fija. El signo de '¿quién se queda con la renta?' depende, entonces, de un parámetro empírico contestado — y, de forma entrelazada, de qué se suponga sobre el sesgo del cambio técnico (Hicks-neutral fuerza σ>1; permitir cambio técnico labor-augmenting admite σ<1)."
+    }
+  ],
+  "studies": [
+    {
+      "id": "karabarbounis-neiman2014",
+      "authors": "Loukas Karabarbounis & Brent Neiman",
+      "year": "2014",
+      "venue": "Quarterly Journal of Economics 129(1): 61-103",
+      "source_type": "paper",
+      "url": "https://www.nber.org/papers/w19136",
+      "accessed": true,
+      "reliability_note": "σ es ESTIMADA (no calibrada a dedo) y luego usada como input; el mecanismo (la caída del precio de los bienes de inversión reduce la tajada del trabajo) solo opera si σ>1. Lawrence (2015) argumenta que el supuesto de cambio técnico Hicks-neutral 'por construcción' obliga a σ>1.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de sustitución capital-trabajo (σ), estimación preferida",
+          "dimension": "dim-elasticidad-sustitucion (σ)",
+          "value": "≈1,25 (promedio de seis estimaciones base 1,28)",
+          "unit": "adimensional",
+          "horizon": "largo plazo",
+          "geography": "global (panel de países)",
+          "sector": "economía completa",
+          "counterfactual": "σ=1 (Cobb-Douglas, tajadas fijas)",
+          "quote": "our estimate of an elasticity of substitution significantly above one"
+        }
+      ]
+    },
+    {
+      "id": "oberfield-raval2021",
+      "authors": "Ezra Oberfield & Devesh Raval",
+      "year": "2021",
+      "venue": "Econometrica 89(2): 703-732",
+      "source_type": "paper",
+      "url": "https://www.nber.org/papers/w20452",
+      "accessed": true,
+      "reliability_note": "El número agregado (0,5–0,7) es para el SECTOR MANUFACTURERO de EE.UU., no la economía entera; a nivel de planta σ≈0,3–0,5, la reasignación entre plantas la sube. Lo más cercano a un σ agregado micro-fundado.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de sustitución capital-trabajo (σ), agregada",
+          "dimension": "dim-elasticidad-sustitucion (σ)",
+          "value": "≈0,5–0,7 (planta ≈0,3–0,5)",
+          "unit": "adimensional",
+          "horizon": "estructural",
+          "geography": "EE.UU.",
+          "sector": "manufactura",
+          "counterfactual": "σ=1"
+        }
+      ]
+    },
+    {
+      "id": "antras2004",
+      "authors": "Pol Antràs",
+      "year": "2004",
+      "venue": "B.E. Journal of Macroeconomics 4(1), art. 4",
+      "source_type": "paper",
+      "url": "https://scholar.harvard.edu/files/antras/files/cespublished.pdf",
+      "accessed": true,
+      "reliability_note": "Rango 0,641–0,892 (promedio 0,78) verificado vía cita textual en Lawrence (2015); el PDF original devolvió 403 al fetcher automático. Concluye que σ es 'considerablemente menor que uno y puede incluso ser menor a 0,5'.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de sustitución capital-trabajo (σ)",
+          "dimension": "dim-elasticidad-sustitucion (σ)",
+          "value": "0,64–0,89 (promedio ≈0,78)",
+          "unit": "adimensional",
+          "horizon": "largo plazo",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "σ=1 (rechaza Cobb-Douglas)"
+        }
+      ]
+    },
+    {
+      "id": "knoblach2020",
+      "authors": "Michael Knoblach, Martin Roessler & Patrick Zwerschke",
+      "year": "2020",
+      "venue": "Oxford Bulletin of Economics and Statistics 82(1): 62-82",
+      "source_type": "paper",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/obes.12312",
+      "accessed": true,
+      "reliability_note": "Meta-regresión de 2.419 estimaciones (77 estudios). El paper PUBLICADO da un RANGO de largo plazo 0,45–0,87, no un punto central único; el '0,6–0,7' que suele citarse viene del working paper. La ancla en el slider (0,66) es el punto medio del rango.",
+      "estimates": [
+        {
+          "metric": "Meta-elasticidad de sustitución (σ), largo plazo agregado",
+          "dimension": "dim-elasticidad-sustitucion (σ)",
+          "value": "0,45–0,87 (largo plazo); corto plazo cercano a proporciones fijas",
+          "unit": "adimensional",
+          "horizon": "largo plazo",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "σ=1 (rechazado)"
+        }
+      ]
+    },
+    {
+      "id": "chirinko2008",
+      "authors": "Robert S. Chirinko",
+      "year": "2008",
+      "venue": "Journal of Macroeconomics 30(2): 671-686",
+      "source_type": "paper",
+      "url": "https://www.ifo.de/DocDL/cesifo1_wp2234.pdf",
+      "accessed": true,
+      "reliability_note": "Survey de ~75 años de literatura; el peso de la evidencia apunta a σ en 0,40–0,60 y rechaza explícitamente Cobb-Douglas.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de sustitución capital-trabajo (σ), peso de la evidencia",
+          "dimension": "dim-elasticidad-sustitucion (σ)",
+          "value": "0,40–0,60",
+          "unit": "adimensional",
+          "horizon": "largo plazo",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "σ=1 (rechazado)"
+        }
+      ]
+    },
+    {
+      "id": "lawrence2015",
+      "authors": "Robert Z. Lawrence",
+      "year": "2015",
+      "venue": "NBER Working Paper No. 21296",
+      "source_type": "paper",
+      "url": "https://www.nber.org/papers/w21296",
+      "accessed": true,
+      "reliability_note": "Refuta directamente a Karabarbounis-Neiman: la caída de la tajada del trabajo se explica con σ<1 más cambio técnico labor-augmenting rápido, no con σ>1.",
+      "estimates": [
+        {
+          "metric": "Elasticidad de sustitución capital-trabajo (σ), estimaciones propias",
+          "dimension": "dim-elasticidad-sustitucion (σ)",
+          "value": "≈0,5 (1980–2010 ≈0,54; 1999–2010 ≈0,49; tan baja como 0,19)",
+          "unit": "adimensional",
+          "horizon": "largo plazo",
+          "geography": "EE.UU.",
+          "sector": "economía completa / manufactura",
+          "counterfactual": "σ=1; σ>1 de KN"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "karabarbounis-neiman2014",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "confirma",
+      "why": "Estima σ≈1,25 (>1): capital y trabajo son sustitutos, así que el capital más barato erosiona la tajada del trabajo. Es el caso que sostiene la hipótesis."
+    },
+    {
+      "study_id": "chirinko2008",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "σ en 0,40–0,60 (<1): complementos. El canal de sustitución no opera; con σ<1 la tajada del trabajo subiría, no caería."
+    },
+    {
+      "study_id": "oberfield-raval2021",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "σ agregado ≈0,5–0,7 (<1): capital y trabajo se complementan; cuesta sostener la erosión de la tajada vía sustitución."
+    },
+    {
+      "study_id": "antras2004",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "σ ≈0,64–0,89 (<1): por debajo del umbral 1 que la hipótesis necesita."
+    },
+    {
+      "study_id": "knoblach2020",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "Meta-evidencia de largo plazo 0,45–0,87 (<1): el peso agregado de la literatura no respalda σ>1."
+    },
+    {
+      "study_id": "lawrence2015",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "refuta",
+      "why": "Argumenta que la caída de la tajada NO viene de σ>1 sino de σ<1 con cambio técnico labor-augmenting; refuta el mecanismo de Karabarbounis-Neiman."
+    }
+  ]
+}

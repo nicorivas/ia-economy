@@ -1,0 +1,2551 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Cada línea es el borde de UNA celda (no compartido), en el color brillante, así se ve
+   igual junto a lo claro o lo oscuro. No seleccionado = oscuro, seleccionado = claro. */
+.tree {
+  display: flex;
+  flex-direction: column;
+  background: var(--mantle);
+  border-bottom: 1px solid var(--text);
+}
+/* Por defecto el árbol muestra solo su última fila (las 3 métricas); al pasar el cursor se
+   despliega entero y al salir vuelve a esconderse — para ahorrar espacio vertical. La altura
+   real se anima con grid-template-rows 0fr→1fr (rápido y sutil, sin recortes). */
+.tree-fold {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.17s ease;
+}
+.tree:hover .tree-fold {
+  grid-template-rows: 1fr;
+}
+.tree-fold-inner {
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+.tree:hover .tree-fold-inner {
+  opacity: 1;
+}
+.tree-row {
+  display: flex;
+  border-top: 1px solid var(--text);
+}
+.tree-cell {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  background: var(--mantle); /* no seleccionado = oscuro */
+  border: none;
+  border-left: 1px solid var(--text);
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.35;
+  cursor: pointer;
+}
+.tree-cell:first-child {
+  border-left: none;
+}
+button.tree-cell:hover:not(.sel) {
+  background: var(--surface0);
+}
+.tree-cell.sel {
+  background: var(--surface0); /* fondo claro = el de las cards */
+}
+.tree-cell.focus {
+  box-shadow: inset 0 -2px 0 var(--text); /* la métrica en foco; las tres están encendidas (AND) */
+}
+.tree-cell.soon {
+  opacity: 0.5;
+}
+.tree-cell.leaf {
+  cursor: default;
+}
+.placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px;
+}
+.ph-q {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--subtext1);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.ph-sub {
+  font-size: 13px;
+  color: var(--overlay1);
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.ph-sub b {
+  color: var(--subtext0);
+}
+.band-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.legend-mini {
+  color: var(--overlay2);
+  font-size: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+.mini-btn {
+  background: var(--surface0);
+  color: var(--subtext1);
+  border: 1px solid var(--surface1);
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.mini-btn:hover {
+  background: var(--surface1);
+  color: var(--text);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.bands {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+/* Acordeón: cada sección principal se pliega/despliega. Colapsada muestra encabezado +
+   resumen; al pasar el cursor el fondo se ilumina (afford de clic); al abrir, el cuerpo se
+   despliega con grid-template-rows 0fr→1fr (rápido) y trae su propio scroll. */
+.acc {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--surface0);
+}
+.acc-primary {
+  background: var(--mantle);
+}
+.acc-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 9px 16px;
+  transition: background 0.12s;
+}
+.acc-head:hover {
+  background: var(--surface0);
+}
+.acc-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--overlay2);
+  flex-shrink: 0;
+}
+.acc-summary {
+  flex: 1;
+  min-width: 0;
+  font-size: 11.5px;
+  color: var(--subtext0);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Ícono Lucide (chevron) vía CDN, recoloreado con mask para que herede el color y quede
+   tenue. Para íconos siempre usar Lucide vía CDN, no glifos unicode. */
+.acc-chev {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  align-self: center;
+  color: var(--overlay1);
+  background-color: currentColor;
+  -webkit-mask: url("https://unpkg.com/lucide-static@latest/icons/chevron-right.svg") center / 16px
+    no-repeat;
+  mask: url("https://unpkg.com/lucide-static@latest/icons/chevron-right.svg") center / 16px no-repeat;
+  transition: color 0.12s;
+}
+.acc-head:hover .acc-chev {
+  color: var(--subtext0);
+}
+.acc.open .acc-chev {
+  -webkit-mask-image: url("https://unpkg.com/lucide-static@latest/icons/chevron-down.svg");
+  mask-image: url("https://unpkg.com/lucide-static@latest/icons/chevron-down.svg");
+}
+.acc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.18s ease;
+}
+.acc.open .acc-body {
+  grid-template-rows: 1fr;
+}
+.acc-body-inner {
+  overflow: hidden;
+}
+.acc.open .acc-body-inner {
+  overflow: auto;
+  max-height: 52vh;
+}
+.acc-pad {
+  padding: 2px 16px 14px;
+}
+.ver-always {
+  padding: 12px 16px 6px;
+}
+.hyp-legend {
+  margin-bottom: 10px;
+}
+.hyp-empty {
+  font-size: 12.5px;
+  color: var(--overlay1);
+  font-style: italic;
+}
+.detail {
+  width: 340px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--surface0);
+  background: var(--mantle);
+  padding: 16px;
+  overflow: auto;
+}
+
+.band {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--surface0);
+}
+.band-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--overlay2);
+  margin-bottom: 10px;
+}
+.band-grow {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.band-stub .stub {
+  font-size: 13px;
+  color: var(--overlay1);
+  font-style: italic;
+}
+
+/* Banda 1 — estudios */
+.study-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.pill {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  background: var(--surface0);
+  border: 1px solid transparent;
+  padding: 7px 11px;
+  cursor: pointer;
+  transition: opacity 0.12s, box-shadow 0.12s, background 0.12s;
+}
+/* Llenado por peso: el estudio se "llena" de abajo hacia arriba según cuánto pesa en el
+   valor actual del slider en foco. */
+.pill-wt {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(137, 180, 250, 0.25);
+  z-index: 0;
+  transition: height 0.1s ease;
+}
+.pill.wt {
+  border-color: var(--surface2);
+}
+.pill-auth,
+.pill-year {
+  position: relative;
+  z-index: 1;
+}
+.pill:hover {
+  background: var(--surface1);
+}
+.pill-auth {
+  font-size: 12.5px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+.pill-year {
+  font-size: 11px;
+  color: var(--overlay2);
+}
+.pill.active {
+  background: var(--surface1);
+  border-color: var(--lavender);
+}
+
+.dim {
+  opacity: 0.28;
+}
+
+/* Banda 2 — hipótesis */
+.hyp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+}
+.hyp-card {
+  width: 212px;
+  text-align: left;
+  background: var(--surface0);
+  border: 1px solid transparent;
+  border-left: 3px solid var(--surface2);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: opacity 0.12s, border-color 0.12s, background 0.12s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hyp-card:hover {
+  background: var(--surface1);
+}
+.hyp-card.active {
+  background: var(--surface1);
+  border-color: var(--lavender);
+}
+.hyp-name {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.35;
+}
+.hyp-meta {
+  font-size: 11px;
+  color: var(--overlay2);
+}
+.spine-tag {
+  align-self: flex-start;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--crust);
+  background: var(--lavender);
+  padding: 1px 6px;
+}
+
+/* Panel de detalle */
+.detail h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.d-type {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay2);
+}
+.d-statement {
+  font-size: 12.5px;
+  color: var(--subtext1);
+  margin: 8px 0 12px;
+}
+.d-section {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay1);
+  margin: 14px 0 6px;
+}
+.conn {
+  font-size: 12px;
+  color: var(--subtext1);
+  margin-bottom: 8px;
+  padding-left: 10px;
+  border-left: 2px solid var(--surface1);
+  line-height: 1.4;
+}
+.conn .rel {
+  font-weight: 600;
+}
+.d-empty {
+  color: var(--overlay1);
+  font-size: 12.5px;
+  font-style: italic;
+}
+
+/* Panel de ayuda contextual: aparece solo en el panel derecho al pasar el cursor por
+   cualquier elemento (o en reposo, la orientación general). El kicker reusa el lenguaje de
+   color del resto (azul = evidencia, durazno = supuesto). */
+.help-kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay2);
+}
+.help-kicker.ev {
+  color: var(--blue);
+}
+.help-kicker.as {
+  color: var(--peach);
+}
+.help-kicker.inf {
+  color: var(--green);
+}
+.help-title {
+  margin: 6px 0 12px;
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--text);
+  font-weight: 600;
+}
+.help-body {
+  font-size: 12.5px;
+  color: var(--subtext1);
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+.help-read {
+  font-size: 12px;
+  color: var(--subtext0);
+  line-height: 1.5;
+  border-left: 2px solid var(--surface2);
+  padding-left: 10px;
+  margin-top: 12px;
+}
+/* Visual opcional bajo el texto de ayuda (p.ej. la sensibilidad bajo la ayuda de la fórmula),
+   separado con una línea tenue. */
+.help-extra {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--surface0);
+}
+.detail a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.detail a:hover {
+  text-decoration: underline;
+}
+
+/* Banda 3 — dispersión */
+.b3 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.b3-empty {
+  color: var(--overlay1);
+  font-size: 12.5px;
+  font-style: italic;
+}
+.b3-bridges {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.b3-bridge {
+  font-size: 12px;
+  color: var(--peach);
+  background: rgba(250, 179, 135, 0.08);
+  border-left: 2px solid var(--peach);
+  padding: 6px 10px;
+}
+.b3-bridge b {
+  color: var(--subtext1);
+  font-weight: 600;
+}
+
+/* Tarjetas de puente (al enfocar): la función que conecta dos dimensiones, su tipo y supuestos.
+   established = teal (validada) · hypothesized = durazno (requiere supuestos) · absent = rojo (falta). */
+.br-section {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay1);
+  margin-bottom: 2px;
+}
+.bridge {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 7px 11px;
+  border-left: 2px solid var(--surface2);
+}
+.br-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.br-flow {
+  font-size: 12px;
+  color: var(--subtext0);
+}
+.br-flow b {
+  color: var(--text);
+  font-weight: 600;
+}
+.br-kind {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.br-fn {
+  font-size: 11.5px;
+  color: var(--subtext1);
+  line-height: 1.45;
+}
+.br-none {
+  font-style: italic;
+}
+.br-asm {
+  font-size: 10.5px;
+  color: var(--overlay1);
+  line-height: 1.45;
+}
+.br-lbl {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--overlay2);
+}
+.br-src {
+  font-size: 10px;
+  color: var(--overlay0);
+  font-variant-numeric: tabular-nums;
+}
+.bridge.br-est {
+  background: rgba(148, 226, 213, 0.06);
+  border-left-color: var(--teal);
+}
+.bridge.br-est .br-kind {
+  color: var(--teal);
+}
+.bridge.br-hyp {
+  background: rgba(250, 179, 135, 0.06);
+  border-left-color: var(--peach);
+}
+.bridge.br-hyp .br-kind {
+  color: var(--peach);
+}
+.bridge.br-abs {
+  background: rgba(243, 139, 168, 0.07);
+  border-left-color: var(--red);
+}
+.bridge.br-abs .br-kind {
+  color: var(--red);
+}
+
+.b3-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-content: flex-start;
+}
+.dim-card {
+  width: 300px;
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dim-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  cursor: default;
+}
+.dim-name {
+  font-size: 12.5px;
+  color: var(--text);
+  font-weight: 600;
+}
+.dim-count {
+  font-size: 10.5px;
+  color: var(--crust);
+  background: var(--overlay1);
+  padding: 0 6px;
+}
+.unit-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.unit-label {
+  font-size: 10px;
+  color: var(--overlay1);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.numline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px 20px;
+}
+.nl-min,
+.nl-max {
+  font-size: 10px;
+  color: var(--overlay2);
+  flex-shrink: 0;
+}
+.nl-track {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--surface2);
+}
+.nl-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.nl-pip {
+  display: block;
+  width: 9px;
+  height: 9px;
+  background: var(--lavender);
+  border: 2px solid var(--base);
+}
+.nl-tag {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--subtext0);
+  white-space: nowrap;
+}
+/* Cada estimación: primero la AFIRMACIÓN (qué mide ese número), luego la cifra y el estudio.
+   Antes solo se veía la cifra suelta y no se entendía de qué hablaba. */
+.est-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.est-metric {
+  font-size: 11.5px;
+  color: var(--subtext1);
+  line-height: 1.4;
+}
+.est-figs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11.5px;
+}
+.est-val {
+  color: var(--text);
+}
+.est-study {
+  color: var(--overlay1);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.b3-evidence-label {
+  margin-top: 20px;
+}
+
+/* Banda del veredicto (motor de escenarios): la FILA lleva el fondo oscuro para marcarla
+   como lo principal; sin contenedor interno extra (consistente con las demás bandas). */
+.ver-band {
+  background: var(--mantle);
+}
+
+/* ───── Explorador que respira: pregunta → respuesta → cabina (palancas | efecto) ─────
+   La pregunta y su respuesta honesta van arriba y grandes (el foco); debajo, una cabina de
+   dos columnas pone las palancas (la causa) junto al efecto en vivo (la cuenta), para ver
+   moverse el resultado sin perder de vista el sentido. */
+.ver-band.respira {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px 18px 18px;
+  border-bottom: 1px solid var(--surface0);
+}
+.ver-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ver-question {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--text);
+}
+.ver-cockpit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.cockpit-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.cockpit-col.knobs {
+  padding-right: 22px;
+}
+.cockpit-col.effect {
+  padding-left: 22px;
+  border-left: 1px solid var(--surface0);
+}
+.cockpit-h {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay2);
+}
+/* En la columna estrecha los sliders entran en una grilla flexible (≈2 al ancho). */
+.cockpit-col.knobs .sg-sliders {
+  grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+}
+/* La fórmula vive sobre el fondo, sin su línea inferior (la columna ya separa con el filo);
+   sus ecuaciones se apilan en vez de ir en fila (columna angosta). */
+.cockpit-col.effect .formula {
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  overflow: hidden;
+}
+.cockpit-col.effect .f-line {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+}
+.cockpit-col.effect .f-sep {
+  display: none;
+}
+/* En la columna angosta cada ecuación se envuelve (no se desborda ni la tapa el rail). */
+.cockpit-col.effect .f-eq {
+  flex-wrap: wrap;
+  gap: 5px 6px;
+}
+.cockpit-col.effect .f-lhs {
+  white-space: nowrap;
+}
+.cockpit-sens {
+  border-top: 1px solid var(--surface0);
+  padding-top: 12px;
+}
+.veredicto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+/* El veredicto: los parámetros ocupan todo el ancho (se quitó la columna con el recuadro). */
+.ver-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ver-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ver-q {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.ver-head select {
+  margin-left: auto;
+  background: var(--surface0);
+  color: var(--text);
+  border: 1px solid var(--surface1);
+  padding: 4px 8px;
+  font-size: 12px;
+}
+.ver-head button {
+  background: var(--surface0);
+  color: var(--subtext1);
+  border: 1px solid var(--surface1);
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.ver-note {
+  font-size: 11.5px;
+  color: var(--overlay2);
+  font-style: italic;
+}
+
+/* Fila de la fórmula — el motor a la vista, entre el indicador y las palancas. Sin caja
+   interna: vive sobre el fondo de la banda, con una línea inferior que la separa de los
+   controles. Cada término lleva el color de su palanca (azul = evidencia, durazno = supuesto);
+   los números en tabular para que las cuentas se lean alineadas. */
+.formula {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0 13px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--surface0);
+}
+.f-kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay2);
+}
+/* Las dos partes (N y Δ) viven en una sola línea; si no caben, el salto cae entre ellas. */
+.f-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  font-variant-numeric: tabular-nums;
+}
+/* Cada ecuación (N, Δ) no se parte por dentro: viaja como una unidad. */
+.f-eq {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+/* Separador tenue entre N y Δ — marca que N alimenta a Δ. */
+.f-sep {
+  align-self: center;
+  width: 1px;
+  height: 18px;
+  background: var(--surface1);
+}
+.f-lhs {
+  font-size: 12.5px;
+  color: var(--subtext0);
+  font-style: italic;
+}
+.f-op {
+  font-size: 14px;
+  color: var(--subtext0);
+}
+.f-num {
+  font-size: 12px;
+  color: var(--subtext0);
+}
+.f-pq {
+  font-size: 16px;
+  color: var(--overlay1);
+}
+/* Cada variable es un pill chico y sobrio: nombre y valor del MISMO tamaño y color, sin bold,
+   sobre un fondo neutro. El tipo (azul = evidencia, durazno = supuesto) se marca solo con un
+   filo a la derecha — no en el número ni en el fondo. Esquinas planas. */
+.f-term {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 2px 8px;
+  background: var(--surface0);
+  border-right: 2px solid var(--surface2);
+}
+.f-tname,
+.f-tval {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--subtext1);
+  white-space: nowrap;
+}
+.f-term.ev {
+  border-right-color: var(--blue);
+}
+.f-term.inf {
+  border-right-color: var(--green);
+}
+.f-term.as {
+  border-right-color: var(--peach);
+}
+/* Grupo entre paréntesis: se mantiene unido. */
+.f-group {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+/* Constantes (s_K, s_L): no son palancas — texto neutro, sin fondo ni filo, para que se
+   distingan de los pills. */
+.f-konst {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.f-kname {
+  font-size: 9px;
+  color: var(--overlay2);
+  font-style: italic;
+  white-space: nowrap;
+}
+.f-kval {
+  font-size: 11px;
+  color: var(--subtext0);
+}
+/* Derivados (N) y resultados: texto, no pill — así se distinguen de los parámetros. */
+.f-derived {
+  font-size: 12.5px;
+  color: var(--subtext1);
+  font-weight: 700;
+  font-style: italic;
+}
+.f-mid {
+  font-size: 12.5px;
+  color: var(--subtext0);
+  font-weight: 700;
+}
+.f-result {
+  font-size: 13.5px;
+  font-weight: 800;
+}
+.f-note {
+  font-size: 10.5px;
+  color: var(--overlay2);
+  font-style: italic;
+  line-height: 1.45;
+}
+.f-note b {
+  color: var(--subtext1);
+  font-style: normal;
+}
+
+/* Fila de lentes: el motor con que se responde. Plana, en línea con la estética del árbol; la
+   construida resaltada (fondo claro), las que faltan en gris ("pronto"), no clicables. */
+.lens-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 12px;
+  border: 1px solid var(--surface1);
+}
+.lens-tag {
+  display: flex;
+  align-items: center;
+  padding: 0 11px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay1);
+  background: var(--mantle);
+  border-right: 1px solid var(--surface1);
+}
+.lens-cell {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--mantle);
+  border: none;
+  border-left: 1px solid var(--surface1);
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--subtext1);
+  cursor: pointer;
+}
+.lens-cell:first-of-type {
+  border-left: none;
+}
+button.lens-cell:hover:not(.sel):not(.soon) {
+  background: var(--surface0);
+  color: var(--text);
+}
+.lens-cell.sel {
+  background: var(--surface0);
+  color: var(--text);
+}
+.lens-cell.soon {
+  color: var(--overlay0);
+  cursor: default;
+}
+.lens-soon {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--crust);
+  background: var(--overlay0);
+  padding: 1px 5px;
+}
+
+/* Empleo y salarios emparejados: dos grupos lado a lado, cada uno con sus tarjetas 3/5 años.
+   El no seleccionado queda como contexto (un punto más tenue). */
+.kpi-groups {
+  display: flex;
+  gap: 22px;
+}
+.kpi-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.kpi-group-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay1);
+}
+.kpi-group.sel .kpi-group-label {
+  color: var(--text);
+}
+.kpi-groups:has(.kpi-group.sel) .kpi-group:not(.sel) {
+  opacity: 0.72;
+}
+.kpis {
+  display: flex;
+  gap: 14px;
+}
+.kpi {
+  flex: 1;
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  padding: 12px 14px;
+}
+.kpi-h {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay2);
+}
+.kpi-point {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+.kpi-sub {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+}
+.kpi-track {
+  position: relative;
+  height: 6px;
+  background: var(--surface2);
+  margin: 12px 0 7px;
+}
+.kpi-zero {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: var(--overlay2);
+}
+.kpi-dot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--lavender);
+  border: 2px solid var(--mantle);
+  transform: translate(-50%, -50%);
+}
+.kpi-range {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10.5px;
+  color: var(--overlay2);
+}
+.kpi-verdict {
+  color: var(--subtext0);
+  font-style: italic;
+  text-align: center;
+}
+.ver-frame {
+  font-size: 12px;
+  color: var(--subtext1);
+  line-height: 1.5;
+  background: rgba(137, 180, 250, 0.06);
+  border-left: 2px solid var(--blue);
+  padding: 8px 12px;
+}
+.ver-frame b {
+  color: var(--text);
+}
+.ver-frame i {
+  color: var(--peach);
+  font-style: normal;
+}
+/* Dos grupos de parámetros: anclados en evidencia vs supuestos libres. */
+.sg {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sg + .sg {
+  margin-top: 14px;
+}
+.sg-head {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--surface1);
+}
+.sg-head span {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 10.5px;
+  color: var(--overlay1);
+}
+.sg-head-ev {
+  color: var(--blue);
+}
+.sg-head-inf {
+  color: var(--green);
+}
+.sg-head-as {
+  color: var(--peach);
+}
+/* Cada slider es su propia sección, en una grilla de 3 que cabe sin scroll. */
+.sg-sliders {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  padding: 8px 10px 6px;
+  min-width: 0;
+  cursor: pointer; /* el recuadro se fija al clic (el input conserva su propio cursor) */
+}
+.slider:hover {
+  border-color: var(--surface2);
+}
+/* Parámetro fijado: queda seleccionado y la fila de estudios de abajo colapsa a sus anclas. */
+.slider.pinned {
+  border-color: var(--lavender);
+}
+.slider-ev {
+  font-size: 10px;
+  color: var(--overlay1);
+  line-height: 1.4;
+}
+.slider:hover .slider-ev {
+  color: var(--subtext0);
+}
+.slider-ev-as {
+  color: var(--peach);
+  opacity: 0.9;
+}
+/* Eje de estudios bajo la barra: dots oscuros donde cae cada estudio + cita mínima
+   (apellido 'año), escalonada arriba/abajo para que no choquen. */
+.slider-axis {
+  position: relative;
+  height: 32px;
+  margin: 3px 7px 0;
+}
+.sa-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 14px;
+  height: 1px;
+  background: var(--surface2);
+}
+.sa-dot {
+  position: absolute;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  background: var(--crust);
+  border: 1px solid var(--overlay0);
+  transform: translate(-50%, -50%);
+}
+.sa-cite {
+  position: absolute;
+  transform: translateX(-50%); /* centrada bajo su dot; los bordes se anclan al canto */
+  font-size: 9px;
+  color: var(--overlay2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.sa-cite.edge-l,
+.sa-cite.edge-r {
+  transform: none;
+}
+.sa-cite.up {
+  top: 0;
+}
+.sa-cite.down {
+  top: 21px;
+}
+.slider:hover .sa-dot {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+.slider:hover .sa-cite {
+  color: var(--subtext1);
+}
+.b3-lbl-ev {
+  color: var(--blue);
+}
+.b3-lbl-as {
+  color: var(--peach);
+}
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.slider-label {
+  font-size: 12px;
+  color: var(--text);
+}
+/* Segunda línea del slider: la descripción larga (el nombre corto = el de la fórmula va arriba). */
+.slider-desc {
+  font-size: 10px;
+  color: var(--overlay1);
+  line-height: 1.35;
+  margin-top: -2px;
+}
+.tag {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 1px 5px;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+.tag-ev {
+  background: rgba(137, 180, 250, 0.15);
+  color: var(--blue);
+}
+.tag-as {
+  background: rgba(250, 179, 135, 0.15);
+  color: var(--peach);
+}
+.slider-val {
+  font-size: 11px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.slider input[type="range"] {
+  width: 100%;
+  accent-color: var(--lavender);
+  cursor: pointer;
+}
+.sens {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sens-h {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay1);
+}
+.sens-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sens-track {
+  width: 120px;
+  height: 8px;
+  background: var(--surface1);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.sens-bar {
+  display: block;
+  height: 100%;
+}
+.sens-label {
+  font-size: 11.5px;
+  color: var(--subtext1);
+}
+.sens-swing {
+  color: var(--overlay2);
+  font-variant-numeric: tabular-nums;
+}
+.sens-note {
+  font-size: 10.5px;
+  color: var(--overlay2);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── Comparar lentes: un mismo empuje de IA, leído por cada modelo ──────────────────────────
+   "Comparar" no es una lente más: es un toggle de modo, compacto, al final de la fila. Acento
+   lavanda (el mismo de la divergencia) para distinguirlo de las celdas de lente. */
+.lens-cell.cmp-toggle {
+  flex: 0 0 auto;
+  border-left: 1px solid var(--surface2);
+  color: var(--overlay1);
+}
+button.lens-cell.cmp-toggle:hover:not(.sel) {
+  background: var(--surface0);
+  color: var(--text);
+}
+.lens-cell.cmp-toggle.sel {
+  background: var(--surface0);
+  color: var(--lavender);
+}
+
+.cmp {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+/* La perilla compartida: lo único fijo entre lentes. */
+.cmp-pen {
+  border: 1px solid var(--surface1);
+  background: var(--surface0);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cmp-pen-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.cmp-pen-label {
+  font-size: 12px;
+  color: var(--text);
+}
+.cmp-pen-val {
+  font-size: 13px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.cmp-pen-desc {
+  font-size: 10px;
+  color: var(--overlay1);
+  line-height: 1.35;
+}
+.cmp-pen input[type="range"] {
+  width: 100%;
+  accent-color: var(--lavender);
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* La tabla: filas = lentes, columnas = métricas. Líneas finas, esquinas planas, tabular-nums. */
+.cmp-table {
+  border: 1px solid var(--surface1);
+  font-variant-numeric: tabular-nums;
+}
+.cmp-r {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  border-top: 1px solid var(--surface0);
+}
+.cmp-r:first-child {
+  border-top: none;
+}
+.cmp-c {
+  padding: 8px 13px;
+  display: flex;
+  align-items: center;
+}
+.cmp-head {
+  background: var(--mantle);
+}
+.cmp-head .cmp-c {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+}
+.cmp-col {
+  justify-content: flex-end;
+}
+.cmp-col.sel {
+  color: var(--text);
+}
+/* La columna donde el signo diverge entre lentes: un filo lavanda que la marca como el hallazgo. */
+.cmp-col.div {
+  box-shadow: inset 0 -2px 0 var(--lavender);
+}
+.cmp-lens {
+  color: var(--subtext1);
+  font-size: 12px;
+  gap: 7px;
+}
+.cmp-r.soon .cmp-lens {
+  color: var(--overlay0);
+}
+.cmp-cell {
+  justify-content: flex-end;
+  font-size: 14px;
+}
+.cmp-cell.sel {
+  background: var(--surface0);
+}
+.cmp-r:not(.cmp-head):not(.soon):hover {
+  background: rgba(49, 50, 68, 0.45);
+}
+.cmp-na {
+  color: var(--overlay0);
+}
+.cmp-soon {
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--crust);
+  background: var(--overlay0);
+  padding: 1px 5px;
+}
+.cmp-punch {
+  font-size: 12px;
+  color: var(--subtext1);
+  line-height: 1.5;
+  border-left: 2px solid var(--lavender);
+  padding-left: 11px;
+}
+.cmp-punch b {
+  color: var(--text);
+}
+.cmp-foot {
+  font-size: 10.5px;
+  color: var(--overlay2);
+  font-style: italic;
+  line-height: 1.45;
+}
+.cmp-as {
+  color: var(--peach);
+}
+/* "Sin datos" en una celda de la tabla comparar: el motor calla esa métrica, no es un cero. */
+.cmp-nd {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--overlay1);
+}
+
+/* "Sin datos" cuando la lente activa no mide la métrica seleccionada (Empírico × participación). */
+.kpi-nd {
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  border-left: 2px solid var(--peach);
+  padding: 12px 14px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--overlay2);
+  line-height: 1.5;
+}
+/* "Sin datos" inline en la fila de la fórmula (Empírico × participación). */
+.f-nd {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--overlay2);
+}
+
+/* ── Capas: recuadros aditivos (toggles), bajo los KPI. No son lentes (exclusión) sino
+   acumulables; por eso un check, no un resaltado de selección única. ───────────────────────── */
+.capa-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 12px;
+  border: 1px solid var(--surface1);
+}
+.capa-tag {
+  display: flex;
+  align-items: center;
+  padding: 0 11px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--overlay1);
+  background: var(--mantle);
+  border-right: 1px solid var(--surface1);
+}
+.capa-cell {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--mantle);
+  border: none;
+  border-left: 1px solid var(--surface1);
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--subtext1);
+  cursor: pointer;
+}
+.capa-cell:first-of-type {
+  border-left: none;
+}
+button.capa-cell:hover:not(.on):not(.soon) {
+  background: var(--surface0);
+  color: var(--text);
+}
+.capa-cell.on {
+  background: var(--surface0);
+  color: var(--text);
+}
+.capa-check {
+  font-size: 11px;
+  width: 13px;
+  text-align: center;
+  color: var(--overlay1);
+}
+.capa-cell.on .capa-check {
+  color: var(--green);
+}
+.capa-cell.soon {
+  color: var(--overlay0);
+  cursor: default;
+}
+
+/* El recuadro de Distribución, al inicio del cuerpo del veredicto. */
+.dist {
+  border: 1px solid var(--surface1);
+  border-left: 2px solid var(--blue);
+  background: var(--surface0);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dist-intro {
+  font-size: 11px;
+  color: var(--overlay2);
+  line-height: 1.45;
+}
+.dist-intro b {
+  color: var(--subtext1);
+  font-weight: 600;
+}
+.dist-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.dist-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 56px;
+  align-items: center;
+  gap: 12px;
+}
+.dist-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 12px;
+  color: var(--subtext1);
+}
+.dist-wage {
+  font-size: 9.5px;
+  color: var(--overlay1);
+  font-variant-numeric: tabular-nums;
+}
+.dist-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.dist-bar-track {
+  height: 7px;
+  background: var(--surface1);
+  overflow: hidden;
+}
+.dist-bar {
+  display: block;
+  height: 100%;
+}
+.dist-bar.ai {
+  background: var(--blue);
+}
+.dist-bar.rut {
+  background: var(--overlay0);
+}
+.dist-delta {
+  font-size: 13px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.dist-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 10px;
+  color: var(--overlay2);
+}
+.dist-k {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.dist-k::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+}
+.dist-k.ai::before {
+  background: var(--blue);
+}
+.dist-k.rut::before {
+  background: var(--overlay0);
+}
+.dist-k.delta::before {
+  background: transparent;
+}
+.dist-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 10.5px;
+  color: var(--subtext0);
+  line-height: 1.4;
+}
+.dist-ex-tag {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 1px 5px;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+.dist-ex-tag.up {
+  color: var(--blue);
+  background: rgba(137, 180, 250, 0.13);
+}
+.dist-ex-tag.down {
+  color: var(--overlay1);
+  background: var(--surface0);
+}
+.dist-note {
+  font-size: 10.5px;
+  color: var(--overlay2);
+  font-style: italic;
+  line-height: 1.45;
+}
+.dist-note b {
+  color: var(--subtext1);
+  font-style: normal;
+}
+.dist-src {
+  font-size: 9.5px;
+  color: var(--overlay1);
+  line-height: 1.4;
+  border-top: 1px solid var(--surface0);
+  padding-top: 8px;
+}
+
+/* ── Barra superior: título + iconos de vista ────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 16px;
+  background: var(--crust);
+  border-bottom: 1px solid var(--surface0);
+  flex-shrink: 0;
+}
+.tb-title {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.tb-title:hover .tb-sub {
+  color: var(--subtext0);
+}
+.tb-sub {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--overlay1);
+}
+.tb-nav {
+  display: flex;
+  gap: 2px;
+}
+.tb-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  background: none;
+  border: none;
+  color: var(--overlay1);
+  cursor: pointer;
+  font: inherit;
+}
+.tb-icon:hover {
+  color: var(--subtext1);
+}
+.tb-icon.sel {
+  color: var(--text);
+}
+.tb-label {
+  display: none;
+  font-size: 11px;
+}
+.tb-icon.sel .tb-label {
+  display: inline;
+}
+/* Ícono Lucide vía CDN, recoloreado con mask (hereda currentColor), igual que el chevron. */
+.tb-ico {
+  width: 15px;
+  height: 15px;
+  background-color: currentColor;
+  -webkit-mask: var(--ico) center / 15px no-repeat;
+  mask: var(--ico) center / 15px no-repeat;
+}
+.tb-explorador .tb-ico {
+  --ico: url("https://unpkg.com/lucide-static@latest/icons/compass.svg");
+}
+.tb-sintesis .tb-ico {
+  --ico: url("https://unpkg.com/lucide-static@latest/icons/sparkles.svg");
+}
+.tb-realidad .tb-ico {
+  --ico: url("https://unpkg.com/lucide-static@latest/icons/activity.svg");
+}
+.tb-fuentes .tb-ico {
+  --ico: url("https://unpkg.com/lucide-static@latest/icons/library.svg");
+}
+
+/* ── Vista Síntesis ──────────────────────────────────────────────────────────────────────── */
+.sintesis {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--base);
+}
+.sint-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 30px 24px 64px;
+}
+.sint-intro p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--subtext0);
+  margin: 0 0 8px;
+}
+.sint-meta {
+  font-size: 11px !important;
+  color: var(--overlay1) !important;
+}
+.sint-item {
+  margin-top: 36px;
+  padding-top: 26px;
+  border-top: 1px solid var(--surface0);
+}
+.sint-q {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+.sint-verdict {
+  font-size: 13px;
+  color: var(--text);
+  border-left: 2px solid var(--lavender);
+  padding-left: 12px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.sint-a {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--subtext1);
+  margin: 0 0 12px;
+}
+.sint-trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 15px;
+}
+.sint-cites,
+.sint-lentes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.sint-trail-tag {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+}
+.sint-cite {
+  font-size: 10.5px;
+  color: var(--subtext0);
+  background: var(--surface0);
+  border: 1px solid transparent;
+  padding: 2px 7px;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.sint-cite:hover {
+  color: var(--text);
+  border-color: var(--surface2);
+}
+
+/* ── Charts a medida de la Síntesis ──────────────────────────────────────────────────────── */
+.chart {
+  margin: 8px 0 16px;
+  padding: 14px 16px 12px;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+}
+.chart-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+}
+.chart-sub {
+  font-size: 10.5px;
+  color: var(--overlay2);
+  margin-top: 2px;
+}
+.chart-cap {
+  font-size: 11px;
+  color: var(--overlay2);
+  font-style: italic;
+  line-height: 1.45;
+  margin-top: 12px;
+}
+
+/* Charts: el área de ploteo la maneja Recharts (Chart.tsx). Sólo el cromado vive acá. */
+.chart-plot {
+  margin: 6px 0 2px;
+}
+/* Leyenda del gradiente (Recharts no la dibuja a nuestro gusto). */
+.gr-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 10px;
+  color: var(--overlay2);
+}
+.gr-k {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.gr-k::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+}
+.gr-k.a::before {
+  background: var(--blue);
+}
+.gr-k.b::before {
+  background: var(--overlay0);
+}
+
+.sint-lente {
+  font-size: 10.5px;
+  color: var(--blue);
+  border: 1px solid var(--surface1);
+  padding: 2px 7px;
+}
+
+/* ── Vista Fuentes (biblioteca, maestro-detalle) ─────────────────────────────────────────── */
+.fuentes {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+.fu-list {
+  width: 320px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--surface0);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.fu-head {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--surface0);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.fu-count {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--overlay1);
+}
+.fu-search {
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  padding: 5px 9px;
+}
+.fu-search::placeholder {
+  color: var(--overlay0);
+}
+.fu-rows {
+  overflow-y: auto;
+  flex: 1;
+}
+.fu-row {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--mantle);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font: inherit;
+}
+.fu-row:hover {
+  background: var(--mantle);
+}
+.fu-row.sel {
+  background: var(--surface0);
+}
+.fu-auth {
+  font-size: 12px;
+  color: var(--subtext1);
+}
+.fu-row.sel .fu-auth {
+  color: var(--text);
+}
+.fu-yr {
+  font-size: 10px;
+  color: var(--overlay1);
+  font-variant-numeric: tabular-nums;
+}
+.fu-detail {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+.fu-card {
+  max-width: 720px;
+  padding: 26px 28px 64px;
+}
+.fu-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+.fu-title-yr {
+  color: var(--overlay1);
+  font-weight: 400;
+}
+.fu-venue {
+  font-size: 12px;
+  color: var(--subtext0);
+  margin-bottom: 12px;
+}
+.fu-venue a {
+  color: var(--blue);
+}
+.fu-note {
+  font-size: 11px;
+  color: var(--peach);
+  border-left: 2px solid var(--peach);
+  padding-left: 10px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.fu-sec {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+  margin: 20px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--surface0);
+}
+.fu-est {
+  margin-bottom: 10px;
+}
+.fu-est-val {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 600;
+}
+.fu-est-metric {
+  font-size: 12px;
+  color: var(--subtext1);
+  line-height: 1.45;
+}
+.fu-est-dim {
+  font-size: 10.5px;
+  color: var(--overlay1);
+}
+.fu-conn {
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--subtext1);
+}
+.fu-why {
+  font-size: 11px;
+  color: var(--overlay2);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+.fu-empty {
+  padding: 40px;
+  color: var(--overlay1);
+}
+
+/* ── Vista Realidad (series macro reales, baseline) ──────────────────────────────────────── */
+.realidad {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--base);
+}
+.real-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 30px 24px 64px;
+}
+.real-intro p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--subtext0);
+  margin: 0 0 8px;
+}
+.real-meta {
+  font-size: 11px !important;
+  color: var(--overlay1) !important;
+}
+.real-item {
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid var(--surface0);
+}
+.real-q {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+.real-frame {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--subtext1);
+  margin: 0 0 8px;
+}
+.real-range {
+  font-size: 11px;
+  color: var(--overlay1);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+.real-range b {
+  color: var(--subtext1);
+  font-weight: 600;
+}
+.real-src {
+  font-size: 9.5px;
+  color: var(--overlay1);
+  margin-top: 4px;
+}
+
+/* Reparto de la población (barra apilada) en la vista Realidad. */
+.rep-bar {
+  display: flex;
+  height: 30px;
+  margin: 10px 0;
+  border: 1px solid var(--surface1);
+  overflow: hidden;
+}
+.rep-seg {
+  height: 100%;
+  min-width: 2px;
+}
+.rep-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+}
+.rep-row {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--subtext0);
+  padding-left: 18px;
+  position: relative;
+}
+.rep-row b {
+  color: var(--text);
+  font-weight: 600;
+}
+.rep-row i {
+  color: var(--subtext1);
+  font-style: italic;
+}
+.rep-dot {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+}
+
+/* Mapa de fase σ×η (recursos) — custom SVG, mismo lenguaje que .chart */
+.phasemap {
+  margin: 14px 0 4px;
+  padding: 14px 16px 12px;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+}
+.phasemap-svg {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  display: block;
+}
+.phasemap-legend {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--subtext0);
+}
+.pm-k {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.pm-sw {
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+/* Divergencia de habilitantes (recursos) — grid compacto name + 3 métricas */
+.diverge {
+  margin: 8px 0 4px;
+  padding: 14px 16px 12px;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+}
+.dv-grid {
+  display: grid;
+  grid-template-columns: 92px repeat(3, 1fr);
+  gap: 8px 14px;
+  margin-top: 12px;
+  align-items: center;
+}
+.dv-head {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+}
+.dv-rowgroup {
+  display: contents;
+}
+.dv-name {
+  font-size: 12px;
+  color: var(--subtext1);
+}
+.dv-rowgroup[data-active="true"] .dv-name {
+  color: var(--lavender);
+}
+.dv-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dv-bar-track {
+  flex: 1;
+  height: 9px;
+  background: var(--surface0);
+  position: relative;
+}
+.dv-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--subtext0);
+}
+.dv-rowgroup[data-active="true"] .dv-bar {
+  background: var(--lavender);
+}
+.dv-val {
+  font-size: 11px;
+  color: var(--subtext0);
+  width: 46px;
+  text-align: right;
+}
+
+/* Reasignación de renta + mapa de evidencia (Síntesis) */
+.realloc,
+.evidmap {
+  margin: 20px 0;
+  padding: 16px 18px 14px;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+}
+.rr-rows {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.rr-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 70px;
+  align-items: center;
+  gap: 12px;
+}
+.rr-name {
+  font-size: 12.5px;
+  color: var(--subtext1);
+}
+.rr-row.fisico .rr-name {
+  color: var(--subtext0);
+}
+.rr-track {
+  position: relative;
+  height: 12px;
+  background: var(--surface0);
+}
+.rr-zero {
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--surface2);
+}
+.rr-bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.rr-val {
+  font-size: 11.5px;
+  color: var(--subtext0);
+  text-align: right;
+}
+.em-rows {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.em-row {
+  display: grid;
+  grid-template-columns: 240px 1fr 26px;
+  align-items: center;
+  gap: 12px;
+}
+.em-name {
+  font-size: 11.5px;
+  color: var(--subtext0);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.em-row[data-contested="true"] .em-name {
+  color: var(--text);
+}
+.em-bar {
+  display: flex;
+  height: 12px;
+}
+.em-seg {
+  height: 100%;
+}
+.em-n {
+  font-size: 11px;
+  color: var(--overlay1);
+  text-align: right;
+}
+.em-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--subtext0);
+}
+.em-k {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.em-sw {
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+}
+
+/* ── Portada / umbral ─────────────────────────────────────────────────────────────────────── */
+.portada {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--base);
+}
+.pt-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 72px 24px 80px;
+}
+.pt-kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--overlay1);
+  margin-bottom: 20px;
+}
+.pt-q {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+  color: var(--text);
+  margin: 0 0 22px;
+}
+.pt-lead {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--subtext0);
+  margin: 0 0 36px;
+}
+.pt-cta {
+  margin-bottom: 0;
+}
+.pt-enter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--surface0);
+  padding: 17px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s;
+}
+.pt-enter:last-child {
+  border-bottom: 1px solid var(--surface0);
+}
+.pt-enter:hover {
+  background: var(--mantle);
+}
+/* Ícono Lucide grande, mismas máscaras que la barra superior (recoloreado con currentColor). */
+.pt-ico {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  background-color: var(--overlay2);
+  -webkit-mask: var(--ico) center / 26px no-repeat;
+  mask: var(--ico) center / 26px no-repeat;
+}
+.pt-enter:hover .pt-ico {
+  background-color: var(--lavender);
+}
+.pt-enter-sintesis .pt-ico {
+  --ico: url("https://unpkg.com/lucide-static@latest/icons/sparkles.svg");
+}
+.pt-enter-explorar .pt-ico {
+  --ico: url("https://unpkg.com/lucide-static@latest/icons/compass.svg");
+}
+.pt-enter-txt {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+.pt-enter-t {
+  flex: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.pt-enter:hover .pt-enter-t {
+  color: var(--lavender);
+}
+.pt-enter-d {
+  font-size: 12.5px;
+  color: var(--overlay1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pt-arrow {
+  flex: none;
+  margin-left: auto;
+  padding-left: 10px;
+  font-size: 15px;
+  color: var(--overlay0);
+}
+.pt-enter:hover .pt-arrow {
+  color: var(--lavender);
+}
+.pt-also {
+  font-size: 12.5px;
+  color: var(--overlay1);
+  margin: 16px 0 0;
+}
+.pt-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--subtext0);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--surface2);
+  text-underline-offset: 2px;
+}
+.pt-link:hover {
+  color: var(--text);
+}
+.pt-spirit {
+  margin-top: 52px;
+  padding-top: 28px;
+  border-top: 1px solid var(--surface0);
+}
+.pt-spirit-h {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--overlay2);
+  margin: 0 0 18px;
+}
+.pt-tenets {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pt-tenet {
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--subtext0);
+}
+.pt-tenet-l {
+  color: var(--text);
+  font-weight: 600;
+}
+.pt-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+  margin: 0 2px 0 3px;
+}
+.pt-dot.anchored {
+  background: var(--blue);
+}
+.pt-dot.informed {
+  background: var(--green);
+}
+.pt-dot.assumed {
+  background: var(--peach);
+}
+.pt-foot {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid var(--surface0);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--overlay1);
+}
+.pt-foot a {
+  color: var(--subtext0);
+  text-decoration: underline;
+  text-decoration-color: var(--surface2);
+  text-underline-offset: 2px;
+}
+.pt-foot a:hover {
+  color: var(--text);
+}
+@media (max-width: 640px) {
+  .pt-wrap {
+    padding: 44px 18px 64px;
+  }
+  .pt-q {
+    font-size: 24px;
+  }
+  .pt-lead {
+    font-size: 14px;
+  }
+  .pt-enter-d {
+    display: none;
+  }
+}

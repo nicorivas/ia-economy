@@ -1,0 +1,87 @@
+{
+  "studies": [
+    {
+      "id": "hui-reshef-zhou-2024-online-labor",
+      "authors": "Xiang Hui, Oren Reshef, Luofeng Zhou",
+      "year": 2024,
+      "venue": "Organization Science (2024); working paper CESifo 10601 / SSRN 4527336 (2023). Cifras verificadas contra el PDF primario fechado 2024-10-12.",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4527336",
+      "reliability_note": "VERIFICADO CONTRA EL PDF PRIMARIO (versión 2024-10-12). Las cuatro cifras del cuerpo del paper son: escritura/ChatGPT -2% jobs y -5.2% earnings; imagen (DALL-E 2 abr-2022 + Midjourney jul-2022) -2.1% jobs y -5.2% earnings. CORRECCIÓN IMPORTANTE: las magnitudes de imagen -3.7% jobs / -9.4% earnings que circulan en la nota de prensa de WashU Olin (ago-2023) y en COBS Insights provienen de una versión PREVIA del working paper y FUERON REVISADAS A LA BAJA en el paper publicado, donde imagen y escritura tienen efectos prácticamente IGUALES (~2% jobs, 5.2% earnings). El 'gradiente por tarea' (imagen cae casi el doble que escritura) NO se sostiene en la versión publicada y se eliminó. Los desgloses -1.2% (margen extensivo: prob. de recibir cualquier empleo en el mes) y -4.7% (margen intensivo: nº de trabajos, CONDICIONAL a estar empleado) SÍ están textualmente en el PDF primario; ya no son provisionales. El abstract publicado dice 'reduce overall demand for workers' y NO contiene la frase 'narrow gaps among workers' (esa estaba en el abstract 2023); en el paper la reducción de la brecha de productividad alta-baja calidad aparece solo como explicación ALTERNATIVA, no como hallazgo principal. Plataforma confirmada en el cuerpo: Upwork.",
+      "estimates": [
+        {
+          "value": "-2%",
+          "metric": "Caída en el nº de trabajos mensuales de freelancers de escritura (writing-related) en ocupaciones más afectadas vs. menos afectadas, tras ChatGPT (nov-2022); efecto causal dif-en-dif en Upwork; significativo al 1%. Texto primario: 'decrease of 2% in the number of monthly jobs'",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "-5.2%",
+          "metric": "Caída en los ingresos (earnings) mensuales de freelancers de escritura tras ChatGPT (nov-2022) en Upwork; empleo REALIZADO, no exposición. Texto primario: 'decrease of 5.2% in monthly earnings'",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "-2.1%",
+          "metric": "Caída en el nº de trabajos mensuales de freelancers de imagen (diseño/edición de imagen/arte) tras DALL-E 2 (abr-2022) y Midjourney (jul-2022). CORREGIDO desde -3.7% (cifra de versión previa). Texto primario publicado: 'number of monthly jobs (reduction of 2.1%)'. Efecto prácticamente igual al de escritura, no mayor",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "-5.2%",
+          "metric": "Caída en los ingresos mensuales de freelancers de imagen tras los modelos generativos de imagen. CORREGIDO desde -9.4% (cifra de versión previa). Texto primario publicado: 'total monthly earnings (decrease of 5.2%)'. Es IGUAL a la caída de ingresos en escritura, no el doble: NO hay gradiente por tipo de tarea en la versión publicada",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "-1.2%",
+          "metric": "Margen EXTENSIVO: caída en la probabilidad de recibir cualquier empleo en un mes dado (writing-related, post-ChatGPT). Confirmado en el PDF primario: 'Freelancers are 1.2% less likely to receive any employment in a given month'",
+          "dimension": "dim-employment-separations"
+        },
+        {
+          "value": "-4.7%",
+          "metric": "Margen INTENSIVO: reducción en el nº de trabajos tomados CONDICIONAL a estar empleado (writing-related, post-ChatGPT). Confirmado en el PDF primario: 'take 4.7% fewer jobs, conditional on employment'. (El -2% de jobs combina ambos márgenes)",
+          "dimension": "dim-realized-labor-demand"
+        },
+        {
+          "value": "Top freelancers desproporcionadamente afectados (la calidad no protege)",
+          "metric": "Heterogeneidad por historial/calidad: NO se halla que el servicio de alta calidad ('top-rated', desempeño y empleo pasados) modere los efectos adversos; evidencia SUGESTIVA (resultados 'slightly weaker') de que los freelancers de más alta calidad/experiencia se ven MÁS perjudicados. Texto primario: 'high-quality workers are not shielded'; 'high-quality freelancers are disproportionately hurt'. Cuantificación de heterogeneidad por earnings pasadas reportada en difusión secundaria (por cada +1% de earnings pasadas, ~0.5% más de caída de empleo y ~1.7% más de caída de ingresos) — NO verificada palabra-por-palabra en el cuerpo del PDF que leí",
+          "dimension": "dim-realized-labor-demand"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "hui-reshef-zhou-2024-online-labor",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Es el otro extremo del puente que la columna vertebral declara ausente: aquí NO se mide exposición/susceptibilidad técnica sino el resultado realizado (jobs e ingresos en una plataforma real tras un shock de IA generativa, identificación dif-en-dif). Provee la cantidad que la exposición por sí sola no determina: la traducción exposición->empleo SÍ ocurrió a la baja en este nicho de corto plazo. NO afirma que generaliza al empleo neto agregado (mercado spot, corto plazo, una plataforma)."
+    },
+    {
+      "study_id": "hui-reshef-zhou-2024-online-labor",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "tensiona",
+      "why": "Tensiona la idea de que el impacto laboral realizado va muy por detrás del potencial por inercia de adopción: en un mercado spot/freelance de baja fricción (el empleador renegocia y pivota rápido a IA) el efecto sobre demanda aparece a meses del lanzamiento, no a años. El propio paper dice que 'mientras la IA es aún incipiente para reemplazar empleos full-time, su efecto en un mercado laboral online ya puede ser detectable'. Sugiere que el rezago potencial->realizado depende de la fricción organizacional."
+    },
+    {
+      "study_id": "hui-reshef-zhou-2024-online-labor",
+      "hypothesis": "hyp-gpt-lag",
+      "type": "tensiona",
+      "why": "El rezago largo (decada+) entre despliegue y efectos medibles aplica al empleo agregado via co-invencion; este caso muestra que en un segmento de baja friccion los efectos sobre demanda laboral son detectables en el corto plazo, acotando donde el argumento del rezago de GPT es y no es valido. El propio autor enmarca Upwork como el setting donde el efecto 'ya es detectable' aunque la IA sea incipiente para el empleo formal."
+    },
+    {
+      "study_id": "hui-reshef-zhou-2024-online-labor",
+      "hypothesis": "hyp-task-net-ambiguous",
+      "type": "informa",
+      "why": "En este nicho y horizonte el balance desplazamiento-vs-productividad+reinstauracion se resuelve NETO NEGATIVO sobre la demanda de los freelancers afectados (menos trabajos y menos ingresos): el paper concluye explicitamente que la IA generativa 'constitutes a net substitute for workers in the short run'. Es un dato puntual del signo neto en un segmento, no una afirmacion general."
+    },
+    {
+      "study_id": "hui-reshef-zhou-2024-online-labor",
+      "hypothesis": "hyp-skill-leveling",
+      "type": "tensiona",
+      "why": "La nivelacion de habilidades describe productividad por tarea (la IA sube mas a novatos). Aqui, via demanda de mercado, el resultado es que los freelancers de MAS alta calidad/experiencia caen MAS: el paper propone como explicacion ALTERNATIVA que la IA reduce la brecha de productividad alta-baja calidad (mismo mecanismo de comoditizacion) pero el signo de 'quien pierde empleo/ingresos' se invierte respecto a la lectura optimista de nivelacion. Tension genuina: concuerda en mecanismo, discrepa en quien pierde. (Nota: el efecto top-hurt-mas es 'suggestive'/'slightly weaker', no el hallazgo central.)"
+    },
+    {
+      "study_id": "hui-reshef-zhou-2024-online-labor",
+      "hypothesis": "hyp-ai-targets-high-skill",
+      "type": "informa",
+      "why": "DEGRADADO de 'confirma' a 'informa'. Aporta evidencia de demanda realizada consistente con que la IA generativa no exime al extremo alto-calificado (top freelancers no protegidos, posiblemente mas golpeados). PERO: (1) la propia hipotesis es sobre EXPOSICION por percentil de salario (Webb/Eloundou), y aqui se mide demanda realizada en una plataforma, no el gradiente de exposicion 90:10; (2) el resultado de heterogeneidad es SUGESTIVO y 'slightly weaker', no estadisticamente robusto; (3) 'high-quality en Upwork' no es lo mismo que 'high-skill ocupacional' del argumento Webb. Informa, pero no es confirmacion limpia de la tesis de exposicion alto-calificada."
+    }
+  ]
+}

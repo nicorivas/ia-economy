@@ -1,0 +1,97 @@
+{
+  "_nota": "Spec de nodo para agregar-nodo.py. Scott Galloway, 'Apocalypse No' (No Mercy / No Malice, 8 may 2026). Posición optimista-de-reinstauración.",
+  "studies": [
+    {
+      "id": "galloway2026-apocalypse-no",
+      "authors": "Scott Galloway (Prof G)",
+      "year": "2026",
+      "venue": "No Mercy / No Malice — 'Apocalypse No' (8 may 2026)",
+      "url": "https://www.profgmedia.com/p/apocalypse-no",
+      "source_type": "essay",
+      "accessed": true,
+      "reliability_note": "ENSAYO DE OPINIÓN, no peer-reviewed. Posición claramente optimista-de-reinstauración: argumenta que el 'apocalipsis de empleo por IA' es narrativo/de marketing (Shiller), no basado en datos. Varias cifras citadas de segunda mano. Vale como nodo de POSICIÓN articulada de alto perfil, no como medición.",
+      "estimates": [
+        {
+          "metric": "Empleo tecnológico neto en EE.UU.",
+          "dimension": "dim-realized-employment-change",
+          "value": "8.7M (2020) → 9.6M (2023), plano desde",
+          "unit": "millones de empleos",
+          "horizon": "2020–2023",
+          "geography": "EE.UU.",
+          "sector": "tecnología",
+          "counterfactual": "narrativa de colapso del empleo tech",
+          "quote": "Net technology employment in the U.S. grew from 8.7 million in 2020 to 9.6 million in 2023 and has remained flat since then.",
+          "location": "Apocalypse No"
+        },
+        {
+          "metric": "Contadores tras la planilla de cálculo (reinstauración)",
+          "dimension": "dim-realized-employment-change",
+          "value": "×4 en 40 años (post-1979)",
+          "unit": "múltiplo del headcount",
+          "horizon": "1979–~2019",
+          "geography": "EE.UU.",
+          "sector": "contabilidad",
+          "counterfactual": "predicción de desempleo masivo de contadores",
+          "quote": "the number of accountants increased 4x over the next 40 years",
+          "location": "Apocalypse No (cita a Maksymov, ASU)"
+        },
+        {
+          "metric": "Cobertura técnica de tareas en negocios/finanzas",
+          "dimension": "dim-task-exposure",
+          "value": "~94% de tareas teóricamente cubribles",
+          "unit": "% de tareas (cita secundaria a Anthropic)",
+          "horizon": "2026",
+          "geography": "EE.UU.",
+          "sector": "negocios y finanzas",
+          "counterfactual": "—",
+          "quote": "in business and finance occupations, AI could theoretically cover 94% of tasks",
+          "location": "Apocalypse No (cita a Anthropic, mar 2026)"
+        },
+        {
+          "metric": "Sentimiento pro-IA por ingreso y desigualdad",
+          "dimension": "dim-wage-inequality",
+          "value": "positivo solo >US$200k/año; Gini EE.UU. >0.8",
+          "unit": "cualitativo + índice Gini",
+          "horizon": "2026",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "—",
+          "quote": "only those earning more than $200,000 per year viewing AI as a net positive ... we're higher than 0.8",
+          "location": "Apocalypse No"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "galloway2026-apocalypse-no",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "confirma",
+      "why": "Hace explícito el punto: 94% de tareas 'cubribles' (Anthropic) NO es 94% de empleos perdidos; tratar exposición como destrucción es el error central."
+    },
+    {
+      "study_id": "galloway2026-apocalypse-no",
+      "hypothesis": "hyp-reinstatement-new-tasks",
+      "type": "confirma",
+      "why": "Caso central del ensayo: Jevons + planilla→4× contadores + 'programador como arquitecto'; apuesta a que la demanda de análisis/supervisión es elástica."
+    },
+    {
+      "study_id": "galloway2026-apocalypse-no",
+      "hypothesis": "hyp-task-net-ambiguous",
+      "type": "confirma",
+      "why": "Adopta la descomposición destrucción→productividad→reinstauración y reencuadra la pregunta como velocidad de adaptación, no conteo neto."
+    },
+    {
+      "study_id": "galloway2026-apocalypse-no",
+      "hypothesis": "hyp-displacement-dominant-recent",
+      "type": "tensiona",
+      "why": "Argumenta que la lectura desplazamiento-dominante/apocalipsis es narrativa (Shiller), no datos: los despidos tech recientes son reversión de headcount o capex, no eficiencia de IA."
+    },
+    {
+      "study_id": "galloway2026-apocalypse-no",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "informa",
+      "why": "Concede que la disrupción real es la desigualdad (Gini >0.8) y la dignidad, no el conteo agregado de empleos — la lee como el drama de fondo."
+    }
+  ]
+}
