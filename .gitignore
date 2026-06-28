@@ -4,3 +4,8 @@ dist
 .DS_Store
 __pycache__
 *.pyc
+
+# Material de trabajo privado — no se publica
+fuentes/
+roadmap-lentes.md
+recursos-fisicos.md
