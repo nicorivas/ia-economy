@@ -115,7 +115,7 @@ const KC_YEARS = [1, 2, 3, 4, 5];
 const KC_BASE_YEAR = new Date().getFullYear(); // el eje X muestra años reales: base + horizonte
 
 // Ticks "redondos" para el eje Y (para que la escala del cambio % se lea de un vistazo).
-function niceTicks(lo: number, hi: number, target = 4): number[] {
+export function niceTicks(lo: number, hi: number, target = 4): number[] {
   const span = hi - lo || 1;
   const raw = span / target;
   const mag = Math.pow(10, Math.floor(Math.log10(raw)));

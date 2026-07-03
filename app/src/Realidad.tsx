@@ -5,11 +5,70 @@
 // distintas que rondan el 60% (cuánta gente trabaja · qué tan bajo es el desempleo · qué tajada del
 // INGRESO va al trabajo).
 import type { ReactNode } from "react";
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis } from "recharts";
 import EMPLEO_REAL from "./empleo-real.json";
-import { C, axisTick } from "./chartTheme";
+import { C } from "./chartTheme";
+import { niceTicks } from "./Veredicto";
 
 type Punto = { year: number; value: number };
+
+// Etiquetas de año dispersas (no una por punto): paso en décadas/lustros según el rango.
+function yearTicks(a: number, b: number): number[] {
+  const span = b - a;
+  const step = span > 25 ? 10 : span > 12 ? 5 : span > 6 ? 2 : 1;
+  const t: number[] = [];
+  for (let y = Math.ceil(a / step) * step; y <= b; y += step) t.push(y);
+  return t;
+}
+
+// Chart de una serie histórica REAL — mismo lenguaje visual que el Explorador (SVG a medida,
+// eje Y con escala, gridlines tenues, catppuccin). Sin barras de error: es dato medido, no un
+// escenario con incertidumbre. La línea es la protagonista; un punto marca el último valor.
+function RealChart({ data, unit, color }: { data: Punto[]; unit: string; color: string }) {
+  const vals = data.map((d) => d.value);
+  let lo = Math.min(...vals);
+  let hi = Math.max(...vals);
+  const pad = (hi - lo || 1) * 0.15;
+  lo -= pad;
+  hi += pad;
+  const span = hi - lo || 1;
+  const yMin = data[0].year;
+  const yMax = data[data.length - 1].year;
+  const last = data[data.length - 1];
+
+  const W = 520,
+    H = 140,
+    padL = 34,
+    padR = 12,
+    padT = 10,
+    padB = 18;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const X = (yr: number) => padL + ((yr - yMin) / (yMax - yMin || 1)) * plotW;
+  const Y = (v: number) => padT + ((hi - v) / span) * plotH;
+
+  return (
+    <svg className="kc-svg" viewBox={`0 0 ${W} ${H}`}>
+      {niceTicks(lo, hi, 4).map((t) => (
+        <g key={t}>
+          <line className="kc-grid" x1={padL} x2={W - padR} y1={Y(t)} y2={Y(t)} />
+          <text className="kc-ylab" x={padL - 5} y={Y(t) + 3}>{`${t}${unit}`}</text>
+        </g>
+      ))}
+      <line className="kc-axis" x1={padL} x2={padL} y1={padT} y2={H - padB} />
+      <polyline
+        className="kc-line"
+        style={{ stroke: color }}
+        points={data.map((d) => `${X(d.year)},${Y(d.value)}`).join(" ")}
+      />
+      <circle className="kc-dot" cx={X(last.year)} cy={Y(last.value)} r={3} style={{ fill: color }} />
+      {yearTicks(yMin, yMax).map((yr) => (
+        <text className="kc-xlab" key={yr} x={X(yr)} y={H - 5}>
+          {yr}
+        </text>
+      ))}
+    </svg>
+  );
+}
 
 function Serie({
   title,
@@ -26,9 +85,6 @@ function Serie({
   color: string;
   source: string;
 }) {
-  const vals = data.map((d) => d.value);
-  const lo = Math.floor(Math.min(...vals));
-  const hi = Math.ceil(Math.max(...vals));
   const first = data[0];
   const last = data[data.length - 1];
   return (
@@ -39,20 +95,7 @@ function Serie({
         {first.year}: <b>{first.value}{unit}</b> → {last.year}: <b>{last.value}{unit}</b>
       </div>
       <div className="chart-plot">
-        <ResponsiveContainer width="100%" height={170}>
-          <LineChart data={data} margin={{ top: 8, right: 18, bottom: 4, left: 0 }}>
-            <XAxis dataKey="year" tick={axisTick} tickLine={false} axisLine={{ stroke: C.surface2 }} minTickGap={42} />
-            <YAxis
-              domain={[lo, hi]}
-              tick={axisTick}
-              tickLine={false}
-              axisLine={false}
-              width={38}
-              tickFormatter={(v) => `${v}${unit}`}
-            />
-            <Line type="monotone" dataKey="value" stroke={color} strokeWidth={1.8} dot={false} isAnimationActive={false} />
-          </LineChart>
-        </ResponsiveContainer>
+        <RealChart data={data} unit={unit} color={color} />
       </div>
       <div className="real-src">{source}</div>
     </section>
