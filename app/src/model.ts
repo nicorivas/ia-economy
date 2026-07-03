@@ -170,6 +170,18 @@ export const HORIZON: Record<3 | 5, { adopt: number; reinst: number }> = {
   5: { adopt: 1, reinst: 1 },
 };
 
+// Rampa continua de los factores de horizonte para cualquier año — lineal, anclada a los dos
+// puntos conocidos (año 3 = 0.55/0.65 · año 5 = maduro 1/1) y extrapolada hacia el despliegue
+// temprano antes del año 3. Es supuesto (como los propios factores): el despliegue de la IA y la
+// creación de tareas nuevas crecen con el tiempo. Sirve para trazar la trayectoria año a año.
+export function horizonAt(year: number): HorizonF {
+  const ramp = (mature3: number) => 1 - (5 - year) * ((1 - mature3) / 2);
+  return {
+    adopt: Math.max(0, Math.min(1, ramp(HORIZON[3].adopt))),
+    reinst: Math.max(0, Math.min(1, ramp(HORIZON[3].reinst))),
+  };
+}
+
 export function scopeDefaults(scope: Scope): Vals {
   const us = scope === "us";
   return { a: us ? 0.28 : 0.22, d: us ? 0.35 : 0.25, s: 0.45, r: 0.6, elast: 1, phi: 0.3 };

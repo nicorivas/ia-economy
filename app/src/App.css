@@ -1099,6 +1099,72 @@ button.lens-cell:hover:not(.sel):not(.soon) {
   font-style: italic;
   text-align: center;
 }
+
+/* ── KpiChart: trayectoria año a año con barras de error (envolvente por horizonte) ────────── */
+.kpichart {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 380px;
+}
+.kc-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.kc-point {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+.kc-sub {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--overlay1);
+}
+.kc-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.kc-zero {
+  stroke: var(--overlay0);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+.kc-bar line {
+  stroke: var(--surface2);
+  stroke-width: 1.2;
+}
+.kc-line {
+  fill: none;
+  stroke: var(--lavender);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.kc-dot {
+  stroke: var(--base);
+  stroke-width: 1.2;
+}
+.kc-xlab {
+  fill: var(--overlay0);
+  font-size: 9px;
+  text-anchor: middle;
+}
+.kc-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10.5px;
+  color: var(--overlay2);
+}
+.kc-verdict {
+  color: var(--subtext0);
+  font-style: italic;
+}
 .ver-frame {
   font-size: 12px;
   color: var(--subtext1);

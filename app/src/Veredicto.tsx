@@ -8,6 +8,7 @@ import {
   LENSES,
   ENGINES,
   HORIZON,
+  horizonAt,
   scopeDefaults,
   decompose,
   cesDecompose,
@@ -104,6 +105,98 @@ export function axisMarks(p: ParamDef) {
   return [...byCite.values()]
     .map((e) => ({ id: e.id, cite: e.cite, pct: e.pcts.reduce((a, b) => a + b, 0) / e.pcts.length }))
     .sort((x, y) => x.pct - y.pct);
+}
+
+// Trayectoria del indicador año a año (1→5): la línea central = tu escenario (se mueve con las
+// palancas), las barras de error = la envolvente honesta en cada horizonte (el margen «no está
+// determinado», que se ensancha con el tiempo). Reemplaza las dos tarjetas 3/5 años por un chart
+// que hace visible cómo el efecto madura y la incertidumbre crece. SVG a medida, mínimo.
+const KC_YEARS = [1, 2, 3, 4, 5];
+
+function KpiChart({
+  engine,
+  metric,
+  vals,
+  onHelp,
+}: {
+  engine: Engine;
+  metric: Metric;
+  vals: Vals;
+  onHelp?: (e: HelpEntry | null) => void;
+}) {
+  const suf = META[metric].suf;
+  const data = KC_YEARS.map((yr) => {
+    const h = horizonAt(yr);
+    return { yr, point: engine.delta(metric, vals, h), env: engine.envelope(metric, h) };
+  });
+  const last = data[data.length - 1];
+  const lows = data.map((d) => d.env.min);
+  const highs = data.map((d) => d.env.max);
+  let lo = Math.min(0, ...lows);
+  let hi = Math.max(0, ...highs);
+  const pad = (hi - lo || 1) * 0.08;
+  lo -= pad;
+  hi += pad;
+  const span = hi - lo || 1;
+
+  const W = 280,
+    H = 120,
+    padL = 6,
+    padR = 6,
+    padT = 12,
+    padB = 18;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const X = (yr: number) => padL + ((yr - 1) / 4) * plotW;
+  const Y = (v: number) => padT + ((hi - v) / span) * plotH;
+  const straddles = last.env.min < 0 && last.env.max > 0;
+  const sign = (v: number) =>
+    v < -0.05 ? "var(--peach)" : v > 0.05 ? "var(--green)" : "var(--subtext1)";
+
+  return (
+    <div
+      className="kpichart"
+      onMouseEnter={() => onHelp?.(helpKpi(metric, 5, last.point, last.env, engine.key))}
+      onMouseLeave={() => onHelp?.(null)}
+    >
+      <div className="kc-head">
+        <span className="kc-point" style={{ color: sign(last.point) }}>
+          {fmt(last.point, suf)}
+        </span>
+        <span className="kc-sub">a 5 años · tu escenario</span>
+      </div>
+      <svg className="kc-svg" viewBox={`0 0 ${W} ${H}`}>
+        {/* cero: la frontera entre destruye y crea */}
+        <line className="kc-zero" x1={padL} x2={W - padR} y1={Y(0)} y2={Y(0)} />
+        {/* barras de error = envolvente por año (se ensancha con el horizonte) */}
+        {data.map((d) => (
+          <g className="kc-bar" key={d.yr}>
+            <line x1={X(d.yr)} x2={X(d.yr)} y1={Y(d.env.max)} y2={Y(d.env.min)} />
+            <line x1={X(d.yr) - 3} x2={X(d.yr) + 3} y1={Y(d.env.max)} y2={Y(d.env.max)} />
+            <line x1={X(d.yr) - 3} x2={X(d.yr) + 3} y1={Y(d.env.min)} y2={Y(d.env.min)} />
+          </g>
+        ))}
+        {/* trayectoria central = tu escenario, año a año */}
+        <polyline className="kc-line" points={data.map((d) => `${X(d.yr)},${Y(d.point)}`).join(" ")} />
+        {data.map((d) => (
+          <circle className="kc-dot" key={d.yr} cx={X(d.yr)} cy={Y(d.point)} r={3} style={{ fill: sign(d.point) }} />
+        ))}
+        {/* años */}
+        {data.map((d) => (
+          <text className="kc-xlab" key={d.yr} x={X(d.yr)} y={H - 6}>
+            {d.yr}
+          </text>
+        ))}
+      </svg>
+      <div className="kc-foot">
+        <span>{fmt(lo + pad, suf)}</span>
+        <span className="kc-verdict">
+          {straddles ? "no está determinado" : last.point > 0 ? META[metric].pos : META[metric].neg}
+        </span>
+        <span>{fmt(hi - pad, suf)}</span>
+      </div>
+    </div>
+  );
 }
 
 function KpiCard({
@@ -946,10 +1039,8 @@ export function VeredictoSection({
                 <div className={cx("kpi-group", m === metric && "sel")} key={m}>
                   <div className="kpi-group-label">{METRIC_SHORT[m]}</div>
                   {engine.metrics.includes(m) ? (
-                    <div className="kpis">
-                      <KpiCard engine={engine} metric={m} horizon={3} vals={vals} onHelp={onHelp} />
-                      <KpiCard engine={engine} metric={m} horizon={5} vals={vals} onHelp={onHelp} />
-                    </div>
+                    <KpiChart engine={engine} metric={m} vals={vals} onHelp={onHelp} />
+
                   ) : (
                     <div className="kpi-nd">
                       Este modelo no mide la {METRIC_SHORT[m].toLowerCase()}: ningún estudio empírico
