@@ -1,4 +1,5 @@
-// Paleta catppuccin (espejo de theme.css) para Recharts, que necesita colores literales (no var()).
+// Paleta catppuccin (espejo de theme.css) en literales hex, para colorear SVG/inline-styles donde
+// no sirve var() (marcadores de charts, líneas de series).
 import type { ChartTone } from "./sintesis";
 
 export const C = {
@@ -26,7 +27,3 @@ export const TONE_COLOR: Record<ChartTone, string> = {
   pos: C.green,
   neutral: C.subtext0,
 };
-
-// Estilo común de ejes: finos, tenues, sin grilla — fiel al minimalismo del resto.
-export const axisTick = { fill: C.overlay1, fontSize: 10 } as const;
-export const catTick = { fill: C.subtext1, fontSize: 11 } as const;

@@ -1984,6 +1984,126 @@ button.capa-cell:hover:not(.on):not(.soon) {
   background: var(--overlay0);
 }
 
+/* ── Charts de la Síntesis hechos a mano (reemplazan Recharts) ─────────────────────────────── */
+/* scale: dot-plot sobre una recta numérica compartida (estudios en filas, marcadores cuadrados). */
+.sc-rows {
+  display: flex;
+  flex-direction: column;
+}
+.sc-row {
+  display: grid;
+  grid-template-columns: 122px 1fr;
+  gap: 12px;
+  align-items: center;
+  height: 26px;
+}
+.sc-name {
+  font-size: 11px;
+  color: var(--subtext1);
+  text-align: right;
+  line-height: 1.2;
+}
+.sc-track {
+  position: relative;
+  height: 100%;
+}
+.sc-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--green);
+  opacity: 0.1;
+}
+.sc-vline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--surface2);
+  transform: translateX(-0.5px);
+}
+.sc-vline.dash {
+  width: 0;
+  background: none;
+  border-left: 1px dashed var(--overlay1);
+}
+.sc-mk {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+}
+.sc-marks,
+.sc-axis {
+  display: grid;
+  grid-template-columns: 122px 1fr;
+  gap: 12px;
+}
+.sc-marks {
+  height: 11px;
+  margin-bottom: 2px;
+}
+.sc-axis {
+  margin-top: 5px;
+}
+.sc-cell {
+  position: relative;
+}
+.sc-cell.end {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--overlay1);
+}
+.sc-lab {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 9px;
+  white-space: nowrap;
+}
+.sc-lab.band {
+  color: var(--green);
+}
+.sc-lab.th {
+  color: var(--overlay1);
+}
+/* gradient: dos barras por categoría (p.ej. exposición IA vs rutina por nivel de habilidad). */
+.gr-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 4px 0;
+}
+.gr-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.gr-name {
+  font-size: 11px;
+  color: var(--subtext1);
+  text-align: right;
+  line-height: 1.2;
+}
+.gr-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.gr-bar {
+  height: 9px;
+  min-width: 1px;
+}
+.gr-bar.a {
+  background: var(--blue);
+}
+.gr-bar.b {
+  background: var(--overlay0);
+}
+
 .sint-lente {
   font-size: 10.5px;
   color: var(--blue);

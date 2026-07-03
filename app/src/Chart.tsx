@@ -1,117 +1,68 @@
-// Charts de la Síntesis con Recharts, tematizados al estilo minimal del resto (catppuccin, sin
-// grilla, marcadores cuadrados, ejes finos). El spec (`Chart` en sintesis.ts) no cambia: aquí solo
-// se traduce a Recharts. Tres tipos: scale (dot-plot: un estudio por fila), gradient (barras
-// agrupadas), lenses (barras divergentes desde el cero).
-import {
-  ResponsiveContainer,
-  ScatterChart,
-  Scatter,
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  ReferenceLine,
-  ReferenceArea,
-  LabelList,
-} from "recharts";
+// Charts de la Síntesis, hechos a mano (HTML+CSS, sin librería) en el lenguaje minimal de la
+// plataforma — catppuccin, plano, marcadores cuadrados. Reemplazan a Recharts (sacado del bundle).
+// El spec (`Chart` en sintesis.ts) NO cambió. Tres tipos: scale (dot-plot sobre una recta numérica),
+// gradient (dos barras por categoría), lenses (barras con signo desde un cero central, patrón .rr-*).
 import type { Chart } from "./sintesis";
-import { C, TONE_COLOR, axisTick, catTick } from "./chartTheme";
+import { TONE_COLOR } from "./chartTheme";
 
-const square = (props: { cx?: number; cy?: number; fill?: string }) => {
-  const { cx = 0, cy = 0, fill } = props;
-  const s = 8;
-  return <rect x={cx - s / 2} y={cy - s / 2} width={s} height={s} fill={fill} />;
-};
-
-// Etiqueta de valor al extremo exterior de una barra divergente (derecha si +, izquierda si −).
-// Recharts pasa x/y como string|number; los normalizamos.
-function DivergeLabel(unit: string) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (props: any) => {
-    const x = Number(props.x) || 0;
-    const y = Number(props.y) || 0;
-    const width = Number(props.width) || 0;
-    const height = Number(props.height) || 0;
-    const value = Number(props.value) || 0;
-    const pos = value >= 0;
-    const lx = pos ? x + width + 5 : x - 5;
-    const txt = `${pos ? "+" : "−"}${Math.abs(value).toFixed(1)}${unit}`;
-    return (
-      <text
-        x={lx}
-        y={y + height / 2}
-        fill={pos ? C.green : C.peach}
-        fontSize={11.5}
-        textAnchor={pos ? "start" : "end"}
-        dominantBaseline="central"
-      >
-        {txt}
-      </text>
-    );
-  };
-}
+const pct = (v: number, min: number, max: number) => ((v - min) / (max - min || 1)) * 100;
+const signed = (n: number, unit: string) => `${n >= 0 ? "+" : "−"}${Math.abs(n).toFixed(1)}${unit}`;
 
 export function ChartView({ chart }: { chart: Chart }) {
   if (chart.type === "scale") {
-    const data = chart.points.map((p) => ({ x: p.at, y: p.label, tone: p.tone ?? "neutral" }));
-    const h = chart.points.length * 30 + 34;
+    const X = (v: number) => pct(v, chart.min, chart.max);
     return (
       <div className="chart">
         <div className="chart-title">{chart.title}</div>
-        <div className="chart-plot">
-          <ResponsiveContainer width="100%" height={h}>
-            <ScatterChart margin={{ top: 14, right: 18, bottom: 4, left: 4 }}>
+        {(chart.band || chart.threshold) && (
+          <div className="sc-marks">
+            <span />
+            <div className="sc-cell">
               {chart.band && (
-                <ReferenceArea
-                  x1={chart.band.from}
-                  x2={chart.band.to}
-                  fill={C.green}
-                  fillOpacity={0.1}
-                  ifOverflow="extendDomain"
-                  label={{ value: chart.band.label, position: "insideTop", fill: C.green, fontSize: 9 }}
-                />
-              )}
-              {chart.zero && (
-                <ReferenceLine x={0} stroke={C.surface2} ifOverflow="extendDomain" />
+                <span
+                  className="sc-lab band"
+                  style={{ left: `${X((chart.band.from + chart.band.to) / 2)}%` }}
+                >
+                  {chart.band.label}
+                </span>
               )}
               {chart.threshold && (
-                <ReferenceLine
-                  x={chart.threshold.at}
-                  stroke={C.overlay1}
-                  strokeDasharray="3 3"
-                  ifOverflow="extendDomain"
-                  label={{ value: chart.threshold.label, position: "top", fill: C.overlay1, fontSize: 9 }}
-                />
+                <span className="sc-lab th" style={{ left: `${X(chart.threshold.at)}%` }}>
+                  {chart.threshold.label}
+                </span>
               )}
-              <XAxis
-                type="number"
-                dataKey="x"
-                domain={[chart.min, chart.max]}
-                ticks={[chart.min, chart.max]}
-                tickFormatter={(v) =>
-                  v === chart.min ? chart.minLabel ?? `${v}` : v === chart.max ? chart.maxLabel ?? `${v}` : `${v}`
-                }
-                tick={axisTick}
-                tickLine={false}
-                axisLine={{ stroke: C.surface2 }}
-                interval={0}
-              />
-              <YAxis
-                type="category"
-                dataKey="y"
-                width={132}
-                tick={catTick}
-                tickLine={false}
-                axisLine={false}
-              />
-              <Scatter data={data} shape={square} isAnimationActive={false}>
-                {data.map((d, i) => (
-                  <Cell key={i} fill={TONE_COLOR[d.tone]} />
-                ))}
-              </Scatter>
-            </ScatterChart>
-          </ResponsiveContainer>
+            </div>
+          </div>
+        )}
+        <div className="sc-rows">
+          {chart.points.map((p, i) => (
+            <div className="sc-row" key={i}>
+              <span className="sc-name">{p.label}</span>
+              <div className="sc-track">
+                {chart.band && (
+                  <span
+                    className="sc-band"
+                    style={{ left: `${X(chart.band.from)}%`, width: `${X(chart.band.to) - X(chart.band.from)}%` }}
+                  />
+                )}
+                {chart.zero && <span className="sc-vline" style={{ left: `${X(0)}%` }} />}
+                {chart.threshold && (
+                  <span className="sc-vline dash" style={{ left: `${X(chart.threshold.at)}%` }} />
+                )}
+                <span
+                  className="sc-mk"
+                  style={{ left: `${X(p.at)}%`, background: TONE_COLOR[p.tone ?? "neutral"] }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="sc-axis">
+          <span />
+          <div className="sc-cell end">
+            <span>{chart.minLabel ?? chart.min}</span>
+            <span>{chart.maxLabel ?? chart.max}</span>
+          </div>
         </div>
         {chart.caption && <div className="chart-cap">{chart.caption}</div>}
       </div>
@@ -119,33 +70,20 @@ export function ChartView({ chart }: { chart: Chart }) {
   }
 
   if (chart.type === "gradient") {
-    const max = Math.max(...chart.buckets.flatMap((b) => [b.a, b.b]));
-    const h = chart.buckets.length * 46 + 6;
+    const max = Math.max(...chart.buckets.flatMap((b) => [b.a, b.b]), 0.01);
     return (
       <div className="chart">
         <div className="chart-title">{chart.title}</div>
-        <div className="chart-plot">
-          <ResponsiveContainer width="100%" height={h}>
-            <BarChart
-              data={chart.buckets}
-              layout="vertical"
-              margin={{ top: 4, right: 10, bottom: 4, left: 4 }}
-              barGap={2}
-              barCategoryGap="26%"
-            >
-              <XAxis type="number" domain={[0, max]} hide />
-              <YAxis
-                type="category"
-                dataKey="label"
-                width={110}
-                tick={catTick}
-                tickLine={false}
-                axisLine={false}
-              />
-              <Bar dataKey="a" fill={C.blue} isAnimationActive={false} />
-              <Bar dataKey="b" fill={C.overlay0} isAnimationActive={false} />
-            </BarChart>
-          </ResponsiveContainer>
+        <div className="gr-rows">
+          {chart.buckets.map((b, i) => (
+            <div className="gr-row" key={i}>
+              <span className="gr-name">{b.label}</span>
+              <div className="gr-bars">
+                <span className="gr-bar a" style={{ width: `${(b.a / max) * 100}%` }} />
+                <span className="gr-bar b" style={{ width: `${(b.b / max) * 100}%` }} />
+              </div>
+            </div>
+          ))}
         </div>
         <div className="gr-legend">
           <span className="gr-k a">{chart.aLabel}</span>
@@ -156,39 +94,36 @@ export function ChartView({ chart }: { chart: Chart }) {
     );
   }
 
-  // lenses: barras con signo desde un cero central
-  const maxAbs = Math.max(...chart.rows.map((r) => Math.abs(r.value)));
-  const h = chart.rows.length * 34 + 8;
+  // lenses: barras con signo desde un cero central (reusa el patrón .rr-* de RentReallocation)
+  const maxAbs = Math.max(...chart.rows.map((r) => Math.abs(r.value)), 0.01);
   return (
     <div className="chart">
       <div className="chart-title">{chart.title}</div>
       {chart.sub && <div className="chart-sub">{chart.sub}</div>}
-      <div className="chart-plot">
-        <ResponsiveContainer width="100%" height={h}>
-          <BarChart
-            data={chart.rows}
-            layout="vertical"
-            margin={{ top: 2, right: 50, bottom: 2, left: 4 }}
-            barCategoryGap="28%"
-          >
-            <XAxis type="number" domain={[-maxAbs * 1.15, maxAbs * 1.15]} hide />
-            <YAxis
-              type="category"
-              dataKey="lens"
-              width={110}
-              tick={catTick}
-              tickLine={false}
-              axisLine={false}
-            />
-            <ReferenceLine x={0} stroke={C.surface2} />
-            <Bar dataKey="value" isAnimationActive={false}>
-              {chart.rows.map((r, i) => (
-                <Cell key={i} fill={r.value >= 0 ? C.green : C.peach} />
-              ))}
-              <LabelList dataKey="value" content={DivergeLabel(chart.unit)} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+      <div className="rr-rows">
+        {chart.rows.map((r, i) => {
+          const posv = r.value >= 0;
+          const w = (Math.abs(r.value) / maxAbs) * 48;
+          return (
+            <div className="rr-row" key={i}>
+              <span className="rr-name">{r.lens}</span>
+              <div className="rr-track">
+                <span className="rr-zero" />
+                <span
+                  className="rr-bar"
+                  style={{
+                    left: posv ? "50%" : `${50 - w}%`,
+                    width: `${w}%`,
+                    background: posv ? "var(--green)" : "var(--peach)",
+                  }}
+                />
+              </div>
+              <span className="rr-val" style={{ color: posv ? "var(--green)" : "var(--peach)" }}>
+                {signed(r.value, chart.unit)}
+              </span>
+            </div>
+          );
+        })}
       </div>
       {chart.caption && <div className="chart-cap">{chart.caption}</div>}
     </div>
