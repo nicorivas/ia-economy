@@ -14,7 +14,7 @@ import {
   cesDecompose,
   SK_SL,
 } from "./model";
-import type { Scope, Vals, ParamKey, Metric, ParamDef, Lens, Engine, SensRow } from "./model";
+import type { Scope, Vals, ParamKey, Metric, ParamDef, Lens, Engine, SensRow, HorizonF } from "./model";
 import { readParams, writeParams } from "./urlState";
 import { studyById, surname } from "./data";
 import { Compare } from "./Compare";
@@ -126,21 +126,31 @@ function niceTicks(lo: number, hi: number, target = 4): number[] {
   return ticks;
 }
 
-function KpiChart({
-  engine,
-  metric,
-  vals,
+// Genérico por rama: recibe el motor ya ligado a su métrica (delta/envelope como función del
+// horizonte), el sufijo, los verbos del veredicto, la función de color (trabajo tiñe por signo;
+// recursos va neutro) y la ayuda. Así sirve a "El trabajo" y a "Los recursos físicos".
+export function KpiChart({
+  delta,
+  envelope,
+  suf,
+  pos,
+  neg,
+  color,
+  help,
   onHelp,
 }: {
-  engine: Engine;
-  metric: Metric;
-  vals: Vals;
+  delta: (h: HorizonF) => number;
+  envelope: (h: HorizonF) => { min: number; max: number };
+  suf: string;
+  pos: string;
+  neg: string;
+  color: (v: number) => string;
+  help?: (point5: number, env5: { min: number; max: number }) => HelpEntry;
   onHelp?: (e: HelpEntry | null) => void;
 }) {
-  const suf = META[metric].suf;
   const data = KC_YEARS.map((yr) => {
     const h = horizonAt(yr);
-    return { yr, point: engine.delta(metric, vals, h), env: engine.envelope(metric, h) };
+    return { yr, point: delta(h), env: envelope(h) };
   });
   const last = data[data.length - 1];
   const lows = data.map((d) => d.env.min);
@@ -165,17 +175,15 @@ function KpiChart({
   const Y = (v: number) => padT + ((hi - v) / span) * plotH;
   const yTicks = niceTicks(lo, hi, 4);
   const straddles = last.env.min < 0 && last.env.max > 0;
-  const sign = (v: number) =>
-    v < -0.05 ? "var(--peach)" : v > 0.05 ? "var(--green)" : "var(--subtext1)";
 
   return (
     <div
       className="kpichart"
-      onMouseEnter={() => onHelp?.(helpKpi(metric, 5, last.point, last.env, engine.key))}
+      onMouseEnter={() => onHelp?.(help ? help(last.point, last.env) : null)}
       onMouseLeave={() => onHelp?.(null)}
     >
       <div className="kc-head">
-        <span className="kc-point" style={{ color: sign(last.point) }}>
+        <span className="kc-point" style={{ color: color(last.point) }}>
           {fmt(last.point, suf)}
         </span>
         <span className="kc-sub">a 5 años · tu escenario</span>
@@ -203,7 +211,7 @@ function KpiChart({
         {/* trayectoria central = tu escenario, año a año */}
         <polyline className="kc-line" points={data.map((d) => `${X(d.yr)},${Y(d.point)}`).join(" ")} />
         {data.map((d) => (
-          <circle className="kc-dot" key={d.yr} cx={X(d.yr)} cy={Y(d.point)} r={3} style={{ fill: sign(d.point) }} />
+          <circle className="kc-dot" key={d.yr} cx={X(d.yr)} cy={Y(d.point)} r={3} style={{ fill: color(d.point) }} />
         ))}
         {/* años reales (año actual + horizonte) */}
         {data.map((d) => (
@@ -215,7 +223,7 @@ function KpiChart({
       <div className="kc-foot">
         <span>{fmt(lo + pad, suf)}</span>
         <span className="kc-verdict">
-          {straddles ? "no está determinado" : last.point > 0 ? META[metric].pos : META[metric].neg}
+          {straddles ? "no está determinado" : last.point > 0 ? pos : neg}
         </span>
         <span>{fmt(hi - pad, suf)}</span>
       </div>
@@ -1063,7 +1071,18 @@ export function VeredictoSection({
                 <div className={cx("kpi-group", m === metric && "sel")} key={m}>
                   <div className="kpi-group-label">{METRIC_SHORT[m]}</div>
                   {engine.metrics.includes(m) ? (
-                    <KpiChart engine={engine} metric={m} vals={vals} onHelp={onHelp} />
+                    <KpiChart
+                      delta={(h) => engine.delta(m, vals, h)}
+                      envelope={(h) => engine.envelope(m, h)}
+                      suf={META[m].suf}
+                      pos={META[m].pos}
+                      neg={META[m].neg}
+                      color={(v) =>
+                        v < -0.05 ? "var(--peach)" : v > 0.05 ? "var(--green)" : "var(--subtext1)"
+                      }
+                      help={(p, e) => helpKpi(m, 5, p, e, engine.key)}
+                      onHelp={onHelp}
+                    />
 
                   ) : (
                     <div className="kpi-nd">

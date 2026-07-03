@@ -10,7 +10,7 @@ import type { Vals, ParamKey, ParamDef, RecMetric, Enabler, EnablerCfg } from ".
 import { Section } from "./Section";
 import { PhaseMap } from "./PhaseMap";
 import { DivergeEnablers } from "./DivergeEnablers";
-import { mkFocus, axisMarks } from "./Veredicto";
+import { mkFocus, axisMarks, KpiChart } from "./Veredicto";
 import type { ParamFocus } from "./Veredicto";
 import { helpRecKpi, helpRecParam, HELP_REC_FORMULA, HELP_ENABLER, HELP_ENABLER_DETAIL } from "./help";
 import type { HelpEntry } from "./help";
@@ -360,10 +360,16 @@ export function RecursosVeredicto({
             {REC_METRICS.map((m) => (
               <div className={cx("kpi-group", m === metric && "sel")} key={m}>
                 <div className="kpi-group-label">{recShort(cfg, m)}</div>
-                <div className="kpis">
-                  <RecKpiCard cfg={cfg} metric={m} horizon={3} vals={vals} onHelp={onHelp} />
-                  <RecKpiCard cfg={cfg} metric={m} horizon={5} vals={vals} onHelp={onHelp} />
-                </div>
+                <KpiChart
+                  delta={(h) => cfg.delta(m, vals, h)}
+                  envelope={(h) => cfg.envelope(m, h)}
+                  suf="%"
+                  pos={REC_VERDICT[m].pos}
+                  neg={REC_VERDICT[m].neg}
+                  color={(v) => (Math.abs(v) < 0.05 ? "var(--subtext1)" : "var(--text)")}
+                  help={(p, e) => helpRecKpi(m, 5, p, e)}
+                  onHelp={onHelp}
+                />
               </div>
             ))}
           </div>
