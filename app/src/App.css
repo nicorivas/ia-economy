@@ -1154,6 +1154,19 @@ button.lens-cell:hover:not(.sel):not(.soon) {
   font-size: 9px;
   text-anchor: middle;
 }
+.kc-axis {
+  stroke: var(--surface1);
+  stroke-width: 1;
+}
+.kc-grid {
+  stroke: var(--surface0);
+  stroke-width: 1;
+}
+.kc-ylab {
+  fill: var(--overlay1);
+  font-size: 8.5px;
+  text-anchor: end;
+}
 .kc-foot {
   display: flex;
   justify-content: space-between;

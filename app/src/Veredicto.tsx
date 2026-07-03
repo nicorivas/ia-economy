@@ -112,6 +112,19 @@ export function axisMarks(p: ParamDef) {
 // determinado», que se ensancha con el tiempo). Reemplaza las dos tarjetas 3/5 años por un chart
 // que hace visible cómo el efecto madura y la incertidumbre crece. SVG a medida, mínimo.
 const KC_YEARS = [1, 2, 3, 4, 5];
+const KC_BASE_YEAR = new Date().getFullYear(); // el eje X muestra años reales: base + horizonte
+
+// Ticks "redondos" para el eje Y (para que la escala del cambio % se lea de un vistazo).
+function niceTicks(lo: number, hi: number, target = 4): number[] {
+  const span = hi - lo || 1;
+  const raw = span / target;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const norm = raw / mag;
+  const step = (norm < 1.5 ? 1 : norm < 3 ? 2 : norm < 7 ? 5 : 10) * mag;
+  const ticks: number[] = [];
+  for (let t = Math.ceil(lo / step) * step; t <= hi + 1e-9; t += step) ticks.push(+t.toFixed(6));
+  return ticks;
+}
 
 function KpiChart({
   engine,
@@ -141,14 +154,16 @@ function KpiChart({
 
   const W = 280,
     H = 120,
-    padL = 6,
-    padR = 6,
+    padL = 30,
+    padR = 16,
     padT = 12,
     padB = 18;
-  const plotW = W - padL - padR;
   const plotH = H - padT - padB;
-  const X = (yr: number) => padL + ((yr - 1) / 4) * plotW;
+  const x0 = padL + 8; // los datos arrancan un poco a la derecha del eje
+  const x1 = W - padR;
+  const X = (yr: number) => x0 + ((yr - 1) / 4) * (x1 - x0);
   const Y = (v: number) => padT + ((hi - v) / span) * plotH;
+  const yTicks = niceTicks(lo, hi, 4);
   const straddles = last.env.min < 0 && last.env.max > 0;
   const sign = (v: number) =>
     v < -0.05 ? "var(--peach)" : v > 0.05 ? "var(--green)" : "var(--subtext1)";
@@ -166,8 +181,17 @@ function KpiChart({
         <span className="kc-sub">a 5 años · tu escenario</span>
       </div>
       <svg className="kc-svg" viewBox={`0 0 ${W} ${H}`}>
+        {/* escala Y: gridlines en valores redondos + etiquetas (mínimo, pero deja leer la magnitud) */}
+        {yTicks.map((t) => (
+          <g key={`y${t}`}>
+            {t !== 0 && <line className="kc-grid" x1={padL} x2={x1} y1={Y(t)} y2={Y(t)} />}
+            <text className="kc-ylab" x={padL - 5} y={Y(t) + 3}>{`${t}${suf}`}</text>
+          </g>
+        ))}
         {/* cero: la frontera entre destruye y crea */}
-        <line className="kc-zero" x1={padL} x2={W - padR} y1={Y(0)} y2={Y(0)} />
+        <line className="kc-zero" x1={padL} x2={x1} y1={Y(0)} y2={Y(0)} />
+        {/* eje vertical */}
+        <line className="kc-axis" x1={padL} x2={padL} y1={padT} y2={H - padB} />
         {/* barras de error = envolvente por año (se ensancha con el horizonte) */}
         {data.map((d) => (
           <g className="kc-bar" key={d.yr}>
@@ -181,10 +205,10 @@ function KpiChart({
         {data.map((d) => (
           <circle className="kc-dot" key={d.yr} cx={X(d.yr)} cy={Y(d.point)} r={3} style={{ fill: sign(d.point) }} />
         ))}
-        {/* años */}
+        {/* años reales (año actual + horizonte) */}
         {data.map((d) => (
           <text className="kc-xlab" key={d.yr} x={X(d.yr)} y={H - 6}>
-            {d.yr}
+            {KC_BASE_YEAR + d.yr}
           </text>
         ))}
       </svg>
