@@ -43,6 +43,13 @@ npm run dev      # http://localhost:5173
 - `datos/*.py` — scripts reproducibles para agregar y verificar nodos; regeneran el dossier
   y sincronizan la copia de la app.
 - `dossier.md` — la vista legible del mapa (generada; no editar a mano).
+- `fuentes/` — material bruto del que salen los nodos: transcripciones, entrevistas y
+  notas de investigación, antes de destilarse en un spec. Incluye un video de ~268 MB
+  que no conviene versionar.
+- `roadmap-lentes.md` — la dirección del proyecto: elegir el modelo, no solo los
+  parámetros. Léelo antes de extender el árbol.
+- `recursos-fisicos.md` — nota de diseño y libro de evidencia de la segunda rama
+  interactiva (el motor de los átomos).
 
 ## Agregar o corregir una fuente (datos, no código)
 
