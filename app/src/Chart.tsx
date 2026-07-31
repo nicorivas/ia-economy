@@ -53,6 +53,20 @@ export function ChartView({ chart }: { chart: Chart }) {
                   className="sc-mk"
                   style={{ left: `${X(p.at)}%`, background: TONE_COLOR[p.tone ?? "neutral"] }}
                 />
+                {p.value && (
+                  <span
+                    className="sc-val"
+                    style={{
+                      // cerca del borde derecho el valor se voltea a la izquierda del marcador
+                      ...(X(p.at) > 82
+                        ? { right: `calc(${100 - X(p.at)}% + 9px)` }
+                        : { left: `calc(${X(p.at)}% + 9px)` }),
+                      color: TONE_COLOR[p.tone ?? "neutral"],
+                    }}
+                  >
+                    {p.value}
+                  </span>
+                )}
               </div>
             </div>
           ))}
@@ -61,6 +75,11 @@ export function ChartView({ chart }: { chart: Chart }) {
           <span />
           <div className="sc-cell end">
             <span>{chart.minLabel ?? chart.min}</span>
+            {chart.zero && X(0) > 6 && X(0) < 94 && (
+              <span className="sc-zero-lab" style={{ left: `${X(0)}%` }}>
+                0
+              </span>
+            )}
             <span>{chart.maxLabel ?? chart.max}</span>
           </div>
         </div>

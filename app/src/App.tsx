@@ -108,10 +108,21 @@ export function App() {
   const url0 = readParams();
   const [view, setView] = useState<View>(() => (url0.get("v") as View) || "portada");
   const [fuentesSel, setFuentesSel] = useState<string>(""); // estudio seleccionado en Fuentes
+  const [sintAnchor, setSintAnchor] = useState<string>(""); // pregunta donde aterriza la Síntesis
   // Saltar a Fuentes con un estudio seleccionado (desde una cita clicable en la Síntesis).
   const goToStudy = (id: string) => {
     setFuentesSel(id);
     setView("fuentes");
+  };
+  // Saltar a la Síntesis aterrizando en una pregunta (desde un hallazgo de la portada).
+  const goToSintesis = (id: string) => {
+    setSintAnchor(id);
+    setView("sintesis");
+  };
+  // Navegación general (barra superior, puertas de la portada): limpia el ancla pendiente.
+  const nav = (v: View) => {
+    setSintAnchor("");
+    setView(v);
   };
   const [pinned, setPinned] = useState<Sel[]>([]);
   const [hover, setHover] = useState<Sel | null>(null);
@@ -249,9 +260,9 @@ export function App() {
 
   return (
     <div className="app">
-      <TopBar view={view} onView={setView} />
+      <TopBar view={view} onView={nav} />
       {view === "portada" ? (
-        <Portada onView={setView} />
+        <Portada onView={nav} onCite={goToStudy} onSintesis={goToSintesis} />
       ) : view === "explorador" ? (
         <>
       <header className="tree">
@@ -500,7 +511,7 @@ export function App() {
       )}
         </>
       ) : view === "sintesis" ? (
-        <Sintesis onCite={goToStudy} />
+        <Sintesis onCite={goToStudy} anchor={sintAnchor} />
       ) : view === "realidad" ? (
         <Realidad />
       ) : (

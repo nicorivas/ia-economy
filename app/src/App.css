@@ -1872,6 +1872,7 @@ button.capa-cell:hover:not(.on):not(.soon) {
   margin-top: 36px;
   padding-top: 26px;
   border-top: 1px solid var(--surface0);
+  scroll-margin-top: 14px; /* aterrizaje con aire al llegar anclado desde la portada */
 }
 .sint-q {
   font-size: 19px;
@@ -2033,6 +2034,24 @@ button.capa-cell:hover:not(.on):not(.soon) {
   width: 8px;
   height: 8px;
   transform: translate(-50%, -50%);
+}
+/* La cifra junto al marcador (solo puntos con dato publicado; teñida con el tono del punto). */
+.sc-val {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+/* El cero, nombrado en el eje (la línea sola no se explica). */
+.sc-zero-lab {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--overlay1);
 }
 .sc-marks,
 .sc-axis {
@@ -2554,36 +2573,39 @@ button.capa-cell:hover:not(.on):not(.soon) {
 
 /* ── Portada / umbral ─────────────────────────────────────────────────────────────────────── */
 .portada {
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   background: var(--base);
 }
 .pt-wrap {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 72px 24px 80px;
+  padding: 96px 28px 96px;
 }
 .pt-kicker {
-  font-size: 11px;
+  font-size: 10.5px;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.6px;
   color: var(--overlay1);
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
+/* El titular del informe: serif editorial — es lo que dice "esto es un estudio, no un dashboard". */
 .pt-q {
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.2px;
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.3px;
   color: var(--text);
-  margin: 0 0 22px;
+  margin: 0 0 26px;
 }
 .pt-lead {
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--subtext0);
-  margin: 0 0 36px;
+  margin: 0 0 48px;
 }
 .pt-cta {
   margin-bottom: 0;
@@ -2679,14 +2701,14 @@ button.capa-cell:hover:not(.on):not(.soon) {
   color: var(--text);
 }
 .pt-spirit {
-  margin-top: 52px;
+  margin-top: 72px;
   padding-top: 28px;
   border-top: 1px solid var(--surface0);
 }
 .pt-spirit-h {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.6px;
   font-weight: 600;
   color: var(--overlay2);
   margin: 0 0 18px;
@@ -2738,18 +2760,176 @@ button.capa-cell:hover:not(.on):not(.soon) {
 .pt-foot a:hover {
   color: var(--text);
 }
+/* La franja de cifras del informe: el tamaño del dataset, en vivo desde el mapa. El cuarto
+   número (puentes ausentes) es deliberado: lo que falta también es producto. */
+.pt-stats {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--surface0);
+  border-bottom: 1px solid var(--surface0);
+  padding: 24px 0;
+  gap: 20px 32px;
+}
+.pt-stat {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pt-stat-n {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+}
+.pt-stat-l {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--overlay1);
+}
+/* Secciones del informe (hallazgos, explorar): mismo encabezado que "El método". */
+.pt-sec {
+  margin-top: 72px;
+}
+.pt-h {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-weight: 600;
+  color: var(--overlay2);
+  margin: 0 0 8px;
+}
+/* Un hallazgo: numeral fantasma en serif a la izquierda (aire de informe), la pregunta como
+   kicker, el veredicto como titular editorial, un resumen corto, el chart, y el rastro. */
+.pt-find {
+  position: relative;
+  padding: 34px 0 10px 68px;
+  border-top: 1px solid var(--surface0);
+}
+.pt-sec .pt-find:first-of-type {
+  border-top: none;
+  padding-top: 20px;
+}
+.pt-find-n {
+  position: absolute;
+  left: 0;
+  top: 32px;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--surface2);
+  line-height: 1;
+}
+.pt-sec .pt-find:first-of-type .pt-find-n {
+  top: 18px;
+}
+.pt-find-q {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--overlay1);
+}
+.pt-find-v {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+  color: var(--text);
+  margin: 10px 0 10px;
+}
+.pt-find-d {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--subtext0);
+  margin: 0 0 16px;
+}
+.pt-find-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 18px;
+}
+.pt-more {
+  background: none;
+  border: none;
+  padding: 0 10px 0 0;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--lavender);
+  cursor: pointer;
+}
+.pt-more:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+/* La perilla del hallazgo en vivo (misma penetración compartida de Comparar). */
+.pt-pen {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+.pt-pen-label {
+  font-size: 11px;
+  color: var(--subtext0);
+  white-space: nowrap;
+}
+.pt-pen input[type="range"] {
+  flex: 1;
+  accent-color: var(--lavender);
+  cursor: pointer;
+}
+.pt-pen-val {
+  font-size: 12.5px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  min-width: 34px;
+  text-align: right;
+}
+.pt-explore-d {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--subtext0);
+  margin: 8px 0 20px;
+}
+
 @media (max-width: 640px) {
   .pt-wrap {
-    padding: 44px 18px 64px;
+    padding: 52px 18px 72px;
   }
   .pt-q {
-    font-size: 24px;
+    font-size: 30px;
   }
   .pt-lead {
-    font-size: 14px;
+    font-size: 14.5px;
   }
   .pt-enter-d {
     display: none;
+  }
+  .pt-stat {
+    min-width: 110px;
+  }
+  .pt-stat-n {
+    font-size: 26px;
+  }
+  .pt-find {
+    padding-left: 0;
+  }
+  .pt-find-n {
+    position: static;
+    font-size: 19px;
+  }
+  .pt-find-k {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .pt-find-v {
+    font-size: 19px;
   }
 }
 

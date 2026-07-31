@@ -1,6 +1,7 @@
 // Vista Síntesis — la capa editorial sobre el Explorador. Las grandes preguntas respondidas
 // navegando el grafo, con su rastro de evidencia (estudios reales del mapa). Es un resumen de todo
 // lo demás: lo que concluimos, no solo lo que se puede explorar. Contenido en `sintesis.ts`.
+import { useEffect } from "react";
 import { SINTESIS, SINTESIS_FECHA } from "./sintesis";
 import { studyById, surname } from "./data";
 import { ChartView } from "./Chart";
@@ -13,7 +14,17 @@ const citeLabel = (id: string): string | null => {
   return `${surname(s.authors)} '${String(s.year).slice(2)}`;
 };
 
-export function Sintesis({ onCite }: { onCite?: (studyId: string) => void }) {
+export function Sintesis({
+  onCite,
+  anchor,
+}: {
+  onCite?: (studyId: string) => void;
+  anchor?: string;
+}) {
+  // Aterrizar en una pregunta concreta (p.ej. viniendo de un hallazgo de la portada).
+  useEffect(() => {
+    if (anchor) document.getElementById(`sint-${anchor}`)?.scrollIntoView();
+  }, [anchor]);
   return (
     <div className="sintesis">
       <div className="sint-wrap">
@@ -36,7 +47,7 @@ export function Sintesis({ onCite }: { onCite?: (studyId: string) => void }) {
             .map((id) => ({ id, label: citeLabel(id) }))
             .filter((c) => c.label);
           return (
-            <section className="sint-item" key={it.id}>
+            <section className="sint-item" key={it.id} id={`sint-${it.id}`}>
               <h2 className="sint-q">{it.q}</h2>
               <div className="sint-verdict">{it.verdict}</div>
               {it.answer.map((p, i) => (
