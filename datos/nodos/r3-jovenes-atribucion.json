@@ -1,0 +1,297 @@
+{
+  "_comment": "Ronda 3 (2026-07-08): la ventana mayo-julio 2026. El desarrollo central es la DISPUTA DE ATRIBUCIÓN del deterioro entry-level (IA vs remoto vs ciclo). Fuentes verificadas contra primaria el 2026-07-08 (workflow deep-research con verificación adversarial 3 votos + fetches directos); traza en fuentes/investigacion-2026-05-07.md.",
+  "hypotheses": [
+    {
+      "id": "hyp-entry-level-remoto-o-ciclo",
+      "name": "El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA",
+      "statement": "El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y replica entre datasets, pero su ATRIBUCIÓN a la IA está en disputa: la exposición a GenAI correlaciona fuerte con la exposición al trabajo remoto (otro shock post-pandemia) y las ocupaciones expuestas tienen una ciclicidad distinta, así que el mismo patrón es compatible con al menos tres causas (IA, remoto, ciclo macro) que los datos existentes no separan. Es la pregunta de identificación central del debate 2026."
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "dim-atribucion-entry-level",
+      "name": "Atribución del deterioro entry-level (IA vs remoto vs ciclo)"
+    }
+  ],
+  "studies": [
+    {
+      "id": "sdel-adp-2026-canaries-dashboard",
+      "authors": "Brynjolfsson, Chandar, Chen (Stanford DEL) + ADP Research",
+      "year": 2026,
+      "venue": "Canaries Dashboard + Research Note No. 1 'AI Economic Indicators: June 2026 Update' (Stanford Digital Economy Lab × ADP Research; serie mensual, 10-jun-2026)",
+      "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+      "reliability_note": "La continuación VIVA de Canaries (ver brynjolfsson-chandar-chen-2025-canaries): dashboard actualizado mensualmente (última actualización verificada: 1-jul-2026; datos hasta abril 2026) + Research Note No. 1 (PDF: digitaleconomy.stanford.edu/app/uploads/2026/06/AIEI_SDEL_Research_Note_01.pdf). Panel BALANCEADO de 25.000 firmas ADP (ventana rodante de 5 años) que en nov-2022 empleaban 4,6M de trabajadores matcheados a ocupación (730+ ocupaciones, SOC 2018; exposición Eloundou et al. 2024). El propio sitio aclara que el panel NO es representativo de todo el mercado laboral de EE.UU. y que mide CORRELACIÓN, no causalidad. Cifras verificadas verbatim contra el PDF y el dashboard (fetch 2026-07-08); el dato YoY −4,2/−1,7 tuvo verificación adversarial 2-1, el resto 3-0.",
+      "estimates": [
+        {
+          "value": "−3,8%/año (22-25 en más expuestas) vs +2,0%/año (menos expuestas)",
+          "metric": "Tasa ANUALIZADA de cambio de empleo desde nov-2022 (datos a abril 2026), trabajadores 22-25: 'employment in AI-exposed occupations is contracting at 3.8% per year, compared to the least exposed, which are growing at 2.0% per year'. La nota: 'declines in exposed occupations not only persist, but deepen', con 'muted evidence of similar patterns for workers up to age 34'. Descriptivo/correlacional.",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "22-25: −4,2% vs −1,7% YoY · todas las edades: −0,2% vs +0,1% YoY",
+          "metric": "Interanual a abril 2026 (Figura 1 de la Research Note): para 22-25, las más expuestas −4,2% vs −1,7% las menos expuestas (brecha 2,5pp); para TODAS las edades, −0,2% vs +0,1% (brecha 0,3pp). Las dos hipótesis del mapa a la vez: el agregado casi no se mueve mientras el margen joven/expuesto diverge.",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "caídas donde el uso AUTOMATIZA; sin relación clara donde AUMENTA",
+          "metric": "Cruce del empleo ADP con el tipo de uso del Anthropic Economic Index (Figura 5): 'automation-related usage is correlated with employment trends, while augmentation-related usage is not'; matiz exacto: 'no clear monotonic relationship' para aumentación y 'declines or more muted increases' (no caída uniforme) para automatización. Asociación a nivel ocupación, no causal. Persiste en el dashboard actualizado a julio (verificación 2-1).",
+          "dimension": "dim-collaboration-mode"
+        }
+      ]
+    },
+    {
+      "id": "lambert-schindler-2026-broken-ladder",
+      "authors": "Peter John Lambert, Yannick Schindler",
+      "year": 2026,
+      "venue": "LSE Centre for Economic Performance DP2193 / SSRN 6787638 (10-jun-2026)",
+      "url": "https://cep-serviceaddress.lse.ac.uk/_NEW/PUBLICATIONS/abstract.asp?index=12306",
+      "reliability_note": "La crítica más seria a la lectura causal de Canaries hasta la fecha. Working paper NO revisado por pares. 243M contrataciones + 407M avisos, EE.UU./UK/Canadá/Australia, 2017-2025, diseños diff-in-diff sobre medidas de exposición. Autores y abstract verificados contra el espejo LSE CEP y SSRN (2026-07-08; verificación adversarial 3-0 en tres claims). OJO con la lectura: la correlación GenAI↔WFH es tan alta (~0,77) que la regresión conjunta plantea un problema de IDENTIFICACIÓN más que una exoneración de la IA — el paper no prueba que 'no es la IA', prueba que los datos existentes no la separan del remoto. Robustez: medidas alternativas de exposición, residualización, controles no paramétricos, adopción real de WFH como tratamiento. Sin réplica de Brynjolfsson et al. al 2026-07-08.",
+      "estimates": [
+        {
+          "value": "~−5pp share junior de contrataciones (cada shock, por separado)",
+          "metric": "Estimados POR SEPARADO, +2 desviaciones estándar de exposición a GenAI o a WFH predicen cada una, a 2025, '~a fall of around 5pp in the junior-share of new hires' y ~3pp en el share de avisos que piden poca experiencia — es decir, la correlación descriptiva de Canaries SÍ replica en 4 países.",
+          "dimension": "dim-atribucion-entry-level"
+        },
+        {
+          "value": "conjunto: WFH persiste; GenAI se atenúa a ~0",
+          "metric": "Estimados CONJUNTAMENTE: 'the WFH effect remains, while the GenAI coefficient attenuates sharply and is often statistically indistinguishable from zero' (verbatim del abstract). Crítica de variable omitida a la atribución IA del deterioro entry-level; consistente entre múltiples diseños.",
+          "dimension": "dim-atribucion-entry-level"
+        }
+      ]
+    },
+    {
+      "id": "emanuel-harrington-pallais-2026-remote",
+      "authors": "Natalia Emanuel, Emma Harrington, Amanda Pallais",
+      "year": 2026,
+      "venue": "NY Fed Liberty Street Economics (1-jun-2026) + SSRN 6863238; datos CPS",
+      "url": "https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/",
+      "reliability_note": "Segunda línea INDEPENDIENTE pro-remoto (blog de staff NY Fed + paper SSRN; el trío tiene historial de investigación causal sobre trabajo remoto y mentoría). Descomposición correlacional (back-of-the-envelope), NO causal. Citas verificadas verbatim contra el post (2026-07-08; verificación adversarial 3-0). Los autores conceden que 'generative AI and other factors may play a more primary role... going forward'. OJO definicional: su 3,7% es desempleo de graduados <29 PROMEDIO 2022-25 — NO comparable con el 5,7% del tracker NY Fed de recién graduados (22-27, puntual Q1-2026).",
+      "estimates": [
+        {
+          "value": "graduados <29: 3,1% → 3,7% · experimentados: 1,9% → 1,8%",
+          "metric": "Desempleo de graduados universitarios jóvenes (<29): 3,1% promedio 2017-19 → 3,7% en 2022-25 (~+20%), MIENTRAS el de graduados experimentados BAJÓ de 1,9% a 1,8% — la brecha es específica a la entrada, no general.",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "el remoto explica ~64% del alza",
+          "metric": "Cálculo back-of-the-envelope: 'remote work can explain 64 percent of the increase in unemployment for all young college graduates between 2017−19 and 2022−24' (mecanismo: pérdida de entrenamiento/mentoría presencial). Además, el timing empuja contra la IA: 'the uptick in youth unemployment rates predates the rapid diffusion of AI', y la brecha joven/viejo persiste en ocupaciones remotables Y no remotables aun controlando exposición a IA.",
+          "dimension": "dim-atribucion-entry-level"
+        }
+      ]
+    },
+    {
+      "id": "oecd-eo-2026-jovenes",
+      "authors": "OECD",
+      "year": 2026,
+      "venue": "OECD Employment Outlook 2026, sección 1.3 (7-jul-2026)",
+      "url": "https://www.oecd.org/en/publications/oecd-employment-outlook-2026_7e710f54-en.html",
+      "reliability_note": "El árbitro institucional del período: examen directo de la tesis Canaries con datos de 6 economías (Australia, Canadá, UE, Nueva Zelanda, Reino Unido, EE.UU.). Su explicación alternativa es CICLO MACRO (las ocupaciones expuestas son más sensibles a shocks agregados y en downturns se corta primero la contratación entry-level), distinta del remoto de Lambert-Schindler/Emanuel — o sea, hay ya TRES atribuciones rivales en juego. Cita a ambos bandos (Brynjolfsson et al. vs Humlum-Vestergaard, Gimbel et al.). Fechan el uso intensivo de LLMs (vía LinkedIn) en mediados-2023 a inicios-2024. Conclusión y evidencia verificadas contra el PDF del reporte (fetch 2026-07-08).",
+      "estimates": [
+        {
+          "value": "'the role of LLMs... appears to be limited'",
+          "metric": "Conclusión textual (§1.3.1): 'So far, the role of LLMs in explaining the difficulties encountered by young people entering the labour market appears to be limited'. Evidencia: (1) el gap de desempleo de graduados jóvenes sube desde ANTES de la pandemia, mucho antes del uso intensivo de LLMs, sin punto de quiebre en ningún país analizado; (2) para jóvenes SIN título el patrón es inconsistente entre países (EE.UU. sube desde 2024, Australia BAJA desde mediados de 2024, Canadá/eurozona planos) — incompatible con una causa tecnológica común.",
+          "dimension": "dim-atribucion-entry-level"
+        },
+        {
+          "value": "vacantes junior expuestas: sin caída desproporcionada (fines 2023)",
+          "metric": "Box 1.6 (Lightcast × exposición Felten-Raj-Seamans): las vacantes JUNIOR en ocupaciones de alta exposición a LLM en EE.UU. no cayeron desproporcionadamente al final de 2023; las ocupaciones expuestas sí son más sensibles a shocks macro (cita Curto Millet & Iscenko 2026 y la literatura de que en downturns se recorta primero la contratación entry-level).",
+          "dimension": "dim-realized-labor-demand"
+        }
+      ]
+    },
+    {
+      "id": "budgetlab-yale-2026-sdid",
+      "authors": "The Budget Lab at Yale (Ryan Nunn; paper técnico: Martha Gimbel et al.)",
+      "year": 2026,
+      "venue": "Budget Lab (Yale), 'AI Is Probably Not (Yet) the Reason for Labor Market Weakening' + paper técnico (7-may-2026)",
+      "url": "https://budgetlab.yale.edu/research/ai-probably-not-yet-reason-labor-market-weakening",
+      "reliability_note": "La versión ECONOMÉTRICA de la postura escéptica de Yale (reemplaza como evidencia al nodo budgetlab-yale-2025, que era grey-lit referida de oídas): synthetic differences-in-differences (Arkhangelsky et al. 2021) sobre microdata CPS, ocupaciones tercil superior de exposición vs tercil inferior. Citas verificadas verbatim contra el post (fetch directo 2026-07-08). Dos límites que los PROPIOS autores declaran (paper técnico): el SDID no puede separar la IA de eventos correlacionados con la exposición — citan explícitamente el trabajo remoto como confusor — y la CPS está subpoderada para el grupo 22-27, así que este resultado NO refuta Canaries: mide el agregado, no el margen joven. Contexto que fija: payrolls ~+20.000/mes en el último año; desempleo 3,4% (abr-2023) → 4,3% (mar-2026).",
+      "estimates": [
+        {
+          "value": "efecto IA sobre empleo de expuestas ≈ 0 (indistinguible de cero)",
+          "metric": "SDID sobre CPS: 'we find no strong evidence of impacts as of yet... The estimate is close to zero and cannot be distinguished from it, statistically speaking' — y lo mismo para salarios reales por hora. El paper técnico reporta que el desempleo de expuestos subió ~0,5pp más que su control sintético (más en 16-34) pero NO significativo a Q1-2026. Complementa su análisis previo de rotación ocupacional (sin alza inusual de churn).",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "las expuestas eran MENOS cíclicas pre-pandemia",
+          "metric": "Hallazgo metodológico con carga para toda la literatura: 'prior to the pandemic, AI-exposed occupation employment is considerably less cyclical than unexposed employment' — las comparaciones crudas expuesto/no-expuesto están sesgadas por ciclicidad diferencial; cualquier atribución necesita un diseño que la acomode.",
+          "dimension": "dim-atribucion-entry-level"
+        }
+      ]
+    },
+    {
+      "id": "massenkoff-mccrory-2026-cps",
+      "authors": "Massenkoff, McCrory (Anthropic)",
+      "year": 2026,
+      "venue": "Anthropic research report 'AI and labor market impacts' (5-mar-2026); datos CPS",
+      "url": "https://www.anthropic.com/research/labor-market-impacts",
+      "reliability_note": "CONFLICTO DE INTERÉS a la vista: investigación de Anthropic sobre el impacto de su propia categoría de producto (igual que el AEI). Publicado 5-mar-2026 (antes de la ventana de la ronda 3; se integra porque no estaba en el mapa). Diff-in-diff sobre CPS: cuartil superior de 'observed exposure' vs el ~30% con exposición cero. Correlacional/descriptivo, no causal. Citas verificadas verbatim (verificación adversarial 3-0). Crítica publicada (Forbes 8-mar-2026, PIIE): el error de medición en la exposición sesga el DiD hacia CERO — el null agregado es débil como evidencia de 'no efecto'. Valor para el mapa: convergencia INDEPENDIENTE (CPS, hogares) con el patrón joven de Canaries (ADP, nóminas), por el margen de contratación.",
+      "estimates": [
+        {
+          "value": "agregado: brecha ≈ 0 ('small and insignificant')",
+          "metric": "DiD post-ChatGPT sobre desempleo de trabajadores expuestos (todas las edades): 'The average change in the gap since the release of ChatGPT is small and insignificant' — sin aumento sistemático de desempleo para expuestos desde fines de 2022.",
+          "dimension": "dim-realized-employment-change"
+        },
+        {
+          "value": "job finding rate 22-25 en expuestas: −14% vs 2022",
+          "metric": "'a 14% drop in the job finding rate compared to that in 2022 in the exposed occupations, although this is just barely statistically significant. (There is no such decrease for workers older than 25.)' — de ~2%/mes a ~1,5%/mes, series que 'visually diverge in 2024', por el margen de CONTRATACIÓN y no de separaciones. El reporte dice explícitamente que 'echoes' a Canaries.",
+          "dimension": "dim-realized-labor-demand"
+        }
+      ]
+    },
+    {
+      "id": "lindenlaub-etal-2026-beyond-exposure",
+      "authors": "Ilse Lindenlaub, Ryungha Oh, Maria Alejandra Rodriguez, Laura Veldkamp",
+      "year": 2026,
+      "venue": "NBER Working Paper 35271 (mayo 2026)",
+      "url": "https://www.nber.org/papers/w35271",
+      "reliability_note": "Working paper (no peer-reviewed). Encuesta alemana de empleados (DiWaBe) enlazada a datos de establecimiento. Abstract y cifras verificados contra la página NBER (fetch 2026-07-08). Evidencia directa para la espina del mapa: la EXPOSICIÓN técnica predice mal la ADOPCIÓN real — el eslabón que falta entre 'la IA puede hacer la tarea' y cualquier efecto de empleo.",
+      "estimates": [
+        {
+          "value": "ventaja comparativa explica ~60% de la adopción; solo-exposición 14%",
+          "metric": "Correlación DÉBIL entre exposición predicha y uso reportado de IA. Su índice alternativo (adopción por ventaja comparativa: ganancia de productividad de la IA vs costos de implementación relativos a productividad y salario del trabajador) explica 'almost 60% of cross-occupation variation in observed AI adoption, compared to 14% for an exposure-only model'; ambos enfoques divergen sustancialmente para ~30% de los trabajadores.",
+          "dimension": "dim-ai-adoption-use"
+        }
+      ]
+    },
+    {
+      "id": "afrouzi-etal-2026-learning-careers",
+      "authors": "Hassan Afrouzi, Andres Blanco, Andrés Drenik, Erik Hurst",
+      "year": 2026,
+      "venue": "NBER Working Paper 35157 (abril 2026)",
+      "url": "https://www.nber.org/papers/w35157",
+      "reliability_note": "TEORÍA (modelo de equilibrio general en tiempo continuo), no evidencia empírica. Abstract verificado contra la página NBER (fetch 2026-07-08). Formaliza el mecanismo 'escalera rota': si los trabajadores adquieren habilidad HACIENDO las tareas, automatizar las tareas de entrada destruye el canal de aprendizaje — con equilibrios múltiples.",
+      "estimates": [
+        {
+          "value": "equilibrios duales; tecnología más barata puede ser trampa",
+          "metric": "En economías con alta capacidad de aprendizaje hay PARES de equilibrios estacionarios ordenados por la tasa agregada de aprendizaje, y 'cheaper technology has opposite effects across the two': en el equilibrio de alto aprendizaje sube el bienestar vía el propio canal de aprendizaje; en el de bajo aprendizaje 'it tips the economy into a human-capital trap'. First-best del planificador: impuesto a los beneficios de automatización + subsidio a mantener la frontera de tareas, a una tasa común.",
+          "dimension": "dim-task-content-shift"
+        }
+      ]
+    },
+    {
+      "id": "anthropic-aei-2026-cadences",
+      "authors": "Anthropic Economic Index team",
+      "year": 2026,
+      "venue": "Anthropic (lab report 'Cadences', 26-jun-2026)",
+      "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "reliability_note": "Actualización de la serie AEI (ver anthropic-aei-2026-primitives). Encuesta a ~9.700 usuarios de Claude LINKEADA a su uso real (campo: abril–principios de junio 2026). Muestra NO representativa (usuarios activos de Claude; Computer & Mathematical 30% vs 4% del empleo de EE.UU.). Mide exposición PERCIBIDA y EXPECTATIVAS, no resultados de empleo; el propio reporte reconoce que 'reported exposure systematically exceeds observed exposure'. Conflicto de interés: Anthropic sobre su propio producto. Citas verificadas verbatim (verificación adversarial 3-0). Baseline del footnote 23: tasa de layoffs-and-discharges de JOLTS ~13,4% anualizada (NO separaciones totales).",
+      "estimates": [
+        {
+          "value": "~10pp menos exposición percibida con 15+ años de experiencia",
+          "metric": "La exposición PERCIBIDA se concentra en juniors: 'People with at least 15 years of experience put that share of tasks AI can do roughly 10 percentage points lower than those in their first year of work'.",
+          "dimension": "dim-perception-gap"
+        },
+        {
+          "value": "10% ve probable perder su empleo en 12m; >1/3 da >60% a que lo pierda un colega junior",
+          "metric": "Expectativas de pérdida de empleo: '10% rated losing their own jobs as likely or very likely' (de esos, 38% lo atribuye a IA — COTA SUPERIOR: la pregunta mezclaba cambio y pérdida de empleo), pero concentradas en colegas junior: 'over one third stating that the probability of a junior colleague losing their job in the next year was over 60%'. Además, >1/3 espera que la IA pueda hacer 'most or nearly all' de sus tareas en 12 meses y ~6 de 10 eligió una banda de exposición mayor para el año próximo.",
+          "dimension": "dim-perception-gap"
+        }
+      ]
+    }
+  ],
+  "study_hypothesis_edges": [
+    {
+      "study_id": "sdel-adp-2026-canaries-dashboard",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "tensiona",
+      "why": "La serie viva extiende la tensión de Canaries 7 meses más (sep-2025 → abr-2026): la exposición SÍ se traduce en empleo realizado negativo en el margen joven, y la brecha se PROFUNDIZA en vez de cerrarse (−3,8%/año, con patrones atenuados hasta los 34). Pero el agregado sigue casi plano (−0,2% vs +0,1% YoY todas las edades), así que exposición sigue sin ser empleo neto agregado. Misma lógica que la arista del paper original, ahora con serie mensual."
+    },
+    {
+      "study_id": "sdel-adp-2026-canaries-dashboard",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "informa",
+      "why": "Actualiza el Fact 3 del paper original con datos a abril 2026: el empleo entry-level cae donde el uso (medido por el AEI) es tipo automatización y no muestra relación clara donde es aumentación. Sigue siendo asociación a nivel ocupación (no causal), por eso informa y no confirma — el mismo estatus que le dio el verificador de la ronda 2 al paper original."
+    },
+    {
+      "study_id": "sdel-adp-2026-canaries-dashboard",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "tensiona",
+      "why": "El lado Canaries de la disputa: sus chequeos de robustez (heredados del paper: excluir todo el sector tech, excluir ocupaciones remotables Dingel-Neiman, sin patrón pre-2022 incluida la crisis COVID) apuntan a que ni el remoto ni el ciclo explican TODO el patrón; Brynjolfsson en prensa (Fortune 27-jun-2026): sacar el sector tech completo o aislar teletrabajo no mata el efecto, y las ocupaciones más sensibles a tasas (construcción) son las MENOS expuestas. Pero no hay respuesta econométrica formal a Lambert-Schindler/Emanuel al cierre de esta ronda — tensiona, no refuta."
+    },
+    {
+      "study_id": "sdel-adp-2026-canaries-dashboard",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "informa",
+      "why": "La textura mensual de 'neto pequeño con reasignación por debajo': agregado ~plano mientras el margen joven/expuesto diverge con fuerza — quién absorbe el ajuste (entry-level expuesto) visible en serie viva."
+    },
+    {
+      "study_id": "lambert-schindler-2026-broken-ladder",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "confirma",
+      "why": "El resultado central del paper ES la hipótesis: la correlación descriptiva de Canaries replica en 4 países (~−5pp de share junior por +2sd de exposición GenAI, por separado), pero estimando GenAI y WFH conjuntamente el efecto WFH persiste y el coeficiente GenAI se atenúa a menudo hasta ser indistinguible de cero. Con la salvedad (declarada en la reliability_note) de que la altísima correlación GenAI↔WFH hace de esto un problema de identificación, no una exoneración."
+    },
+    {
+      "study_id": "lambert-schindler-2026-broken-ladder",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Refina la espina por el lado de la atribución: la exposición a GenAI SÍ correlaciona con menos contratación junior (el puente descriptivo existe), pero está tan entrelazada con la exposición al remoto que el paso de correlación a función causal exposición→empleo sigue sin poder darse — el puente ausente central del mapa gana una razón más de por qué está ausente."
+    },
+    {
+      "study_id": "emanuel-harrington-pallais-2026-remote",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "confirma",
+      "why": "Línea independiente (CPS, no postings) que converge con Lambert-Schindler: el remoto explica ~64% del alza de desempleo de graduados jóvenes (mecanismo: pérdida de entrenamiento y mentoría presencial), el timing del alza PRECEDE la difusión rápida de la IA, y la brecha joven/viejo persiste en ocupaciones remotables y no remotables aun controlando exposición a IA. Back-of-the-envelope, no causal — y los autores conceden que la IA puede volverse el factor primario hacia adelante."
+    },
+    {
+      "study_id": "oecd-eo-2026-jovenes",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "confirma",
+      "why": "El árbitro institucional se inclina por la hipótesis, con una TERCERA atribución rival (ciclo macro, no remoto): 'So far, the role of LLMs... appears to be limited'. Su evidencia es la más difícil de cuadrar con una causa-IA: el gap de graduados jóvenes sube desde antes de la pandemia sin punto de quiebre en ningún país, el patrón entre países es inconsistente con una causa tecnológica común, y las vacantes junior de alta exposición no cayeron desproporcionadamente (Lightcast, Box 1.6)."
+    },
+    {
+      "study_id": "oecd-eo-2026-jovenes",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Evidencia multi-país de que la exposición a LLM no se traduce (aún) en el resultado de empleo joven que la tesis del golpe predeciría: refuerza que del lado exposición→empleo neto falta la función, ahora con datos comparados de 6 economías."
+    },
+    {
+      "study_id": "budgetlab-yale-2026-sdid",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "confirma",
+      "why": "Con el diseño que acomoda la ciclicidad diferencial (SDID sobre CPS), el efecto de la IA sobre el empleo y los salarios de las ocupaciones expuestas es ≈0 e indistinguible de cero a Q1-2026: la exposición, medida limpio contra su contrafactual sintético, no está produciendo empleo neto diferencial en el agregado. Con sus límites declarados: no separa IA de remoto y está subpoderado para 22-27 (NO refuta Canaries; mide otra cosa)."
+    },
+    {
+      "study_id": "budgetlab-yale-2026-sdid",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "informa",
+      "why": "Aporta la pieza metodológica de la disputa: las ocupaciones expuestas eran considerablemente MENOS cíclicas pre-pandemia, así que las comparaciones crudas expuesto/no-expuesto (el diseño de casi toda la evidencia del golpe) están sesgadas por ciclicidad diferencial. No adjudica entre IA/remoto/ciclo (declara que su método no puede), pero muestra por qué la adjudicación exige más que la correlación."
+    },
+    {
+      "study_id": "massenkoff-mccrory-2026-cps",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Las dos caras en un mismo dataset (CPS): el agregado post-ChatGPT no muestra brecha de desempleo para expuestos ('small and insignificant') — la exposición no se vuelve empleo neto —, PERO la tasa de entrada a empleos de los 22-25 en ocupaciones expuestas cae 14% vs 2022 (margen de contratación, desde 2024, 'barely statistically significant'). Convergencia independiente con Canaries desde datos de hogares; con conflicto de interés (Anthropic) y la crítica de que el error de medición sesga el DiD hacia cero."
+    },
+    {
+      "study_id": "lindenlaub-etal-2026-beyond-exposure",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "confirma",
+      "why": "Evidencia directa del eslabón que rompe la cadena exposición→empleo: la exposición técnica predice mal la ADOPCIÓN real (correlación débil con uso reportado; un modelo solo-exposición explica 14% de la variación de adopción entre ocupaciones vs ~60% de su índice de ventaja comparativa que incorpora costos de implementación y salarios). Si la exposición ni siquiera predice la adopción, menos puede predecir el empleo neto — la espina del mapa, medida."
+    },
+    {
+      "study_id": "lindenlaub-etal-2026-beyond-exposure",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "confirma",
+      "why": "El potencial técnico (exposición) está limitado por la adopción real, y la adopción se decide por ventaja comparativa (ganancia de la IA vs costos de implementación relativos al salario del trabajador) — exactamente el mecanismo de gating que la hipótesis postula, ahora con un índice que explica ~60% de la variación observada."
+    },
+    {
+      "study_id": "afrouzi-etal-2026-learning-careers",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "informa",
+      "why": "Da el modelo del lado-IA de la disputa: si la habilidad se adquiere haciendo las tareas, automatizar las tareas de entrada rompe el canal de aprendizaje (la 'escalera rota') — un mecanismo por el que el golpe entry-level SÍ sería de la IA y además auto-reforzante (trampa de capital humano en el equilibrio malo). Teoría pura: no adjudica la disputa empírica, pero muestra qué estaría en juego si la atribución IA resulta cierta."
+    },
+    {
+      "study_id": "afrouzi-etal-2026-learning-careers",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "informa",
+      "why": "El first-best del planificador (impuesto a los beneficios de automatización + subsidio a mantener la frontera de tareas humanas) es la versión en equilibrio general de la tesis de dirección-de-diseño: no toda automatización rentable es socialmente óptima cuando destruye el canal de aprendizaje."
+    },
+    {
+      "study_id": "anthropic-aei-2026-cadences",
+      "hypothesis": "hyp-perception-gap",
+      "type": "confirma",
+      "why": "El propio reporte reconoce que 'reported exposure systematically exceeds observed exposure' — la exposición auto-reportada excede sistemáticamente la medida en uso real, en el dataset más grande que cruza ambas (encuesta ~9.700 usuarios linkeada a su telemetría). Y añade estructura: la brecha de percepción tiene gradiente de experiencia (~10pp entre primer año y 15+ años) y las expectativas de pérdida de empleo se concentran en los colegas junior."
+    }
+  ]
+}

@@ -5,11 +5,13 @@
 // (versionadas); `cites` son
 // studyId reales del mapa (la vista los resuelve a "apellido 'año"). Actualizar con la fecha al editar.
 
-export const SINTESIS_FECHA = "2026-06-20";
+export const SINTESIS_FECHA = "2026-07-08";
 
 // ── Charts hechos a medida (sin librería) que ejemplifican una respuesta. Anclados a datos reales.
 export type ChartTone = "accent" | "neg" | "pos" | "neutral";
-export type ScalePoint = { at: number; label: string; tone?: ChartTone };
+// `value`: la cifra impresa junto al marcador. Solo donde es un dato publicado tal cual —
+// las posiciones que son colocación curada (p.ej. las anclas de φ) van sin valor, a propósito.
+export type ScalePoint = { at: number; label: string; tone?: ChartTone; value?: string };
 
 export type Chart =
   // Recta numérica: estimaciones de varios estudios sobre un mismo eje, con umbral y/o banda.
@@ -62,8 +64,8 @@ export const SINTESIS: SintesisItem[] = [
     verdict: "No está determinado: el dato no fija ni el signo. Depende de la reinstauración, que nadie ha medido para la IA.",
     answer: [
       "La respuesta honesta es un rango que cruza el cero, no un número. La descomposición de tareas (desplazamiento − reinstauración + productividad) deja la conclusión en manos de cuántas tareas nuevas crea la IA — la reinstauración —, y eso nadie lo ha medido para la IA. Históricamente, cerca de la mitad del crecimiento del empleo vino de tareas que antes no existían (Acemoglu & Restrepo); si la IA repite eso, el empleo aguanta; si no, cae.",
-      "La evidencia realizada es temprana y apunta a lados distintos según dónde mires. En la rebanada más expuesta hay efectos reales: −2% de trabajos en freelancers de escritura tras ChatGPT (Hui-Reshef-Zhou, causal), −6% de empleo en jóvenes de ocupaciones top-expuestas (Brynjolfsson, «Canaries»). Pero a nivel de firma las reducciones por IA son raras —solo 2% de las empresas las reportan (Census BTOS)— y el empleo agregado sigue creciendo.",
-      "El veredicto, entonces: el agregado todavía no muestra destrucción neta, pero las rebanadas expuestas sí. Que eso se generalice o no depende de una apuesta —la reinstauración— que la evidencia no resuelve.",
+      "La evidencia realizada es temprana y apunta a lados distintos según dónde mires. En la rebanada más expuesta hay efectos reales: −2% de trabajos en freelancers de escritura tras ChatGPT (Hui-Reshef-Zhou, causal), −6% de empleo en jóvenes de ocupaciones top-expuestas (Brynjolfsson, «Canaries») — una brecha que la serie mensual que continúa ese estudio muestra profundizándose todavía en 2026. Pero a nivel de firma las reducciones por IA siguen raras —solo ~2% de las empresas las reportan (Census BTOS)—, el empleo agregado sigue creciendo, y con el método que corrige por la ciclicidad distinta de las ocupaciones expuestas, el efecto agregado de la IA es indistinguible de cero (Budget Lab de Yale).",
+      "El veredicto, entonces: el agregado todavía no muestra destrucción neta, pero las rebanadas expuestas sí — y hasta la firma de ese golpe joven está ahora en disputa (ver la pregunta siguiente). Que eso se generalice o no depende de una apuesta —la reinstauración— que la evidencia no resuelve.",
     ],
     chart: {
       type: "scale",
@@ -74,9 +76,9 @@ export const SINTESIS: SintesisItem[] = [
       maxLabel: "+2%",
       zero: true,
       points: [
-        { at: 0, label: "Firmas · BTOS", tone: "neutral" },
-        { at: -2, label: "Upwork · Hui", tone: "neg" },
-        { at: -6, label: "Jóvenes · ADP", tone: "neg" },
+        { at: 0, label: "Firmas · BTOS", tone: "neutral", value: "≈0" },
+        { at: -2, label: "Upwork · Hui", tone: "neg", value: "−2%" },
+        { at: -6, label: "Jóvenes · ADP", tone: "neg", value: "−6%" },
       ],
       caption: "El agregado apenas se mueve; las rebanadas más expuestas, claramente negativas.",
     },
@@ -84,10 +86,50 @@ export const SINTESIS: SintesisItem[] = [
       "acemoglu-restrepo-2019-newtasks",
       "hui-reshef-zhou-2024-online-labor",
       "brynjolfsson-chandar-chen-2025-canaries",
+      "sdel-adp-2026-canaries-dashboard",
       "bonney-btos-2026-microstructure",
-      "budgetlab-yale-2025",
+      "budgetlab-yale-2026-sdid",
     ],
     lentes: ["Tareas", "Empírico"],
+  },
+  {
+    id: "jovenes-atribucion",
+    q: "¿Lo que se ve en los jóvenes ya es la IA?",
+    verdict:
+      "El patrón es real y se profundiza; la firma está en disputa — IA, trabajo remoto o ciclo, y los datos de hoy no los separan.",
+    answer: [
+      "El patrón descriptivo está fuera de duda y ahora es una serie mensual: en el panel de nóminas de ADP (Stanford), el empleo de 22-25 años en las ocupaciones más expuestas se contrae 3,8% al año desde fines de 2022 mientras en las menos expuestas crece 2,0% — y la brecha se profundiza en vez de cerrarse. Un dataset independiente (CPS) converge: la tasa a la que los jóvenes consiguen empleo en ocupaciones expuestas cayó 14% respecto de 2022. Y el mecanismo asoma: el empleo cae donde el uso de la IA es tipo automatización; donde es aumentación, no.",
+      "Lo que 2026 puso en disputa es la firma del golpe. La exposición a la IA está tan entrelazada con la exposición al trabajo remoto —otro shock post-pandemia; correlacionan ~0,77— que, estimadas juntas, el efecto del remoto persiste y el de la IA se atenúa a menudo hasta cero (Lambert-Schindler, 243M de contrataciones en 4 países). Una línea independiente calcula que el remoto explica ~64% del alza de desempleo de graduados jóvenes, con un timing que precede a la difusión de la IA (NY Fed). Y la OCDE, mirando seis economías, concluye que «el papel de los LLMs parece limitado»: el deterioro viene desde antes de los LLMs, no tiene punto de quiebre en ningún país, y las ocupaciones expuestas son más sensibles al ciclo.",
+      "Hay una lectura que ordena la disputa sin resolverla: esa correlación entre las dos exposiciones no es ruido — miden casi la misma propiedad del trabajo, que sea codificable y viaje por una pantalla. El teletrabajo fue la prueba de que un empleo no depende del lugar; el LLM es el paso siguiente: que deje de depender de la persona. Bajo esa lectura, los shocks son etapas secuenciales de una misma exposición — el remoto debilitó la escalera de entrada (se llevó la mentoría presencial), la IA compone sobre ese margen debilitado — y preguntar «¿cuál de los dos fue?» es, en parte, preguntar mal. Lo que sí discrimina entre un shock que ya pasó y una tecnología en difusión es la pendiente: la divergencia joven se acelera (sobre 4% anual desde abril de 2024) y se ordena por el tipo de uso — cae donde la IA automatiza, no donde aumenta —, una huella que ni las tasas ni el remoto producen con facilidad. Dos hechos, eso sí, mantienen la disputa abierta: el patrón aparece también en ocupaciones expuestas que no se pueden hacer remoto (la IA tiene componente propio), y la brecha joven persiste incluso en las no remotables controlando exposición (algo más ancho también opera). Lo que la adjudicaría: si la brecha se extiende a los 26-34 en los próximos meses de la serie, la tercera ola del suplemento del Census, o una réplica que use adopción real a nivel de firma —no exposición— como tratamiento.",
+      "El lado Canaries responde con robustez —sin el sector tech y sin ocupaciones remotables el patrón persiste, y no existía antes de 2022— pero al cierre no hay réplica econométrica formal. Y mientras tanto, el desempleo joven agregado incluso mejoró en el año (7,1% en junio de 2026 contra 8,2% un año antes, CPS): los desplazados parecen reasignarse, no quedar fuera, y el costo migra del desempleo a la calidad — el subempleo de recién graduados sigue en 41,5% (NY Fed) y los roles de entrada se redefinen hacia arriba, exigiendo habilidades que eran de senior (la «seniorización» que documenta PwC). Ahí las dos causas convergen sobre el mismo activo: el primer empleo era, de contrabando, el mecanismo con que la economía producía trabajadores expertos. El remoto le quitó la mentoría; la IA automatiza las tareas con las que se aprendía. Sea cual sea la firma del golpe, el primer peldaño quedó más alto — y la pregunta que casi nadie está midiendo no es quién lo subió, sino qué produce ahora al experto.",
+    ],
+    chart: {
+      type: "scale",
+      title: "Empleo interanual a abril 2026, panel ADP, por exposición a IA",
+      min: -5,
+      max: 1,
+      minLabel: "−5%",
+      maxLabel: "+1%",
+      zero: true,
+      points: [
+        { at: -4.2, label: "22-25 · expuestas", tone: "neg", value: "−4,2%" },
+        { at: -1.7, label: "22-25 · no expuestas", tone: "neg", value: "−1,7%" },
+        { at: -0.2, label: "todas · expuestas", tone: "neutral", value: "−0,2%" },
+        { at: 0.1, label: "todas · no expuestas", tone: "pos", value: "+0,1%" },
+      ],
+      caption:
+        "La brecha joven (2,5pp) contra la brecha agregada (0,3pp): el patrón es nítido; la causa, disputada.",
+    },
+    cites: [
+      "sdel-adp-2026-canaries-dashboard",
+      "lambert-schindler-2026-broken-ladder",
+      "emanuel-harrington-pallais-2026-remote",
+      "oecd-eo-2026-jovenes",
+      "massenkoff-mccrory-2026-cps",
+      "budgetlab-yale-2026-sdid",
+      "afrouzi-etal-2026-learning-careers",
+    ],
+    lentes: ["Empírico", "capa Distribución"],
   },
   {
     id: "puestos-o-sueldos",
@@ -135,11 +177,11 @@ export const SINTESIS: SintesisItem[] = [
       maxLabel: "1,4",
       threshold: { at: 1, label: "σ=1 · tajada fija" },
       points: [
-        { at: 0.5, label: "Chirinko", tone: "accent" },
-        { at: 0.6, label: "Oberfield-Raval", tone: "accent" },
-        { at: 0.66, label: "Knoblach", tone: "accent" },
-        { at: 0.78, label: "Antràs", tone: "accent" },
-        { at: 1.25, label: "K-Neiman", tone: "neg" },
+        { at: 0.5, label: "Chirinko", tone: "accent", value: "0,5" },
+        { at: 0.6, label: "Oberfield-Raval", tone: "accent", value: "0,6" },
+        { at: 0.66, label: "Knoblach", tone: "accent", value: "0,66" },
+        { at: 0.78, label: "Antràs", tone: "accent", value: "0,78" },
+        { at: 1.25, label: "K-Neiman", tone: "neg", value: "1,25" },
       ],
       caption: "El centro empírico cae bajo 1 (complementos): el modelo predice que la tajada del trabajo SUBE. Solo K-N queda sobre 1.",
     },
@@ -161,7 +203,7 @@ export const SINTESIS: SintesisItem[] = [
     verdict: "Golpea hacia arriba: medio-alto y jóvenes. La primera ola que toca de lleno el trabajo cognitivo.",
     answer: [
       "A diferencia de la automatización rutinaria —que vació el MEDIO de la escala de habilidades y respetó los extremos (Autor & Dorn)—, la exposición a la IA apunta hacia ARRIBA. Los empleos de mayor ingreso están más expuestos (Eloundou et al.); la exposición trepa con la calificación y hace pico cerca del percentil 90, con el top 1% más protegido (Webb); el Anthropic Economic Index ubica el pico en el salario medio-alto.",
-      "La evidencia realizada lo confirma en su margen más nítido: los más golpeados son los jóvenes en ocupaciones expuestas —caídas de empleo de hasta ~20% en programadores de 22-25 años (Brynjolfsson, «Canaries»)—, mientras los trabajadores mayores crecen. Es la primera ola tecnológica que toca de lleno el trabajo cognitivo y de cuello blanco.",
+      "La evidencia realizada lo confirma en su margen más nítido: los más golpeados son los jóvenes en ocupaciones expuestas —caídas de empleo de hasta ~20% en programadores de 22-25 años (Brynjolfsson, «Canaries»), una brecha que a abril de 2026 sigue profundizándose (−3,8% al año en la serie mensual ADP)—, mientras los trabajadores mayores crecen. Es la primera ola tecnológica que toca de lleno el trabajo cognitivo y de cuello blanco. La atribución de ese golpe joven a la IA, eso sí, quedó en disputa en 2026 (ver «¿Lo que se ve en los jóvenes ya es la IA?»).",
       "El «para quién», entonces, se invierte: no el obrero rutinario del medio, sino el profesional de habilidad media-alta y el que recién entra al mercado.",
     ],
     chart: {
@@ -182,6 +224,7 @@ export const SINTESIS: SintesisItem[] = [
       "webb-2020-ai-labor",
       "anthropic-aei-2026-primitives",
       "brynjolfsson-chandar-chen-2025-canaries",
+      "sdel-adp-2026-canaries-dashboard",
     ],
     lentes: ["capa Distribución"],
   },
@@ -220,10 +263,10 @@ export const SINTESIS: SintesisItem[] = [
       sub: "Δ empleo a 5 años",
       unit: "%",
       rows: [
-        { lens: "Tareas", value: -0.7 },
+        { lens: "Tareas", value: -1.0 },
         { lens: "Agregado·CES", value: 1.9 },
         { lens: "Empírico", value: -1.0 },
-        { lens: "Crecimiento", value: -1.6 },
+        { lens: "Crecimiento", value: -1.5 },
       ],
       caption: "El mismo empuje: solo el modelo agregado (σ<1) da positivo. El signo depende del marco, no del dato.",
     },
@@ -243,14 +286,17 @@ export const SINTESIS: SintesisItem[] = [
     verdict: "El puente clave —exposición → empleo neto— no existe validado. La dispersión y los puentes ausentes SON el producto.",
     answer: [
       "El hueco mayor: no existe una función validada que lleve de «la IA puede hacer esta tarea» a «se pierden o se crean estos empleos netos». Es el puente ausente central del mapa. La exposición se mide bien (Eloundou, Felten, Webb); el empleo neto que resulta, no — porque faltan la adopción real, las tareas nuevas y la respuesta de los salarios.",
-      "La evidencia realizada que sí existe es temprana y correlacional: los propios autores del estudio de ADP advierten que no es identificación causal limpia. La reinstauración para la IA no está medida. σ está en disputa. φ está informado, no fijado. Cada una de esas piezas es un supuesto rotulado, no un dato cerrado.",
-      "Por eso el producto honesto de todo esto no es un pronóstico: es el RANGO y los puentes que faltan. Mostrar dónde se acaba el conocimiento es la mitad del trabajo.",
+      "La evidencia realizada que sí existe es temprana y correlacional: los propios autores del estudio de ADP advierten que no es identificación causal limpia — y 2026 lo confirmó por la vía dura: ni siquiera el golpe joven que sí se ve tiene firma resuelta (IA, remoto y ciclo compiten por el mismo patrón, y la exposición ni siquiera predice bien la adopción real). La reinstauración para la IA no está medida. σ está en disputa. φ está informado, no fijado. Cada una de esas piezas es un supuesto rotulado, no un dato cerrado.",
+      "Por eso el producto honesto de todo esto no es un pronóstico: es el RANGO y los puentes que faltan. Mostrar dónde se acaba el conocimiento es la mitad del trabajo. Y la pregunta abierta más nueva (2026): si el primer empleo era el mecanismo con que la economía producía expertos —aprender haciendo, con mentoría al lado— y ese peldaño está subiendo, ¿qué lo reemplaza? La teoría ya formalizó qué se juega ahí (una trampa de capital humano, si el canal de aprendizaje se rompe); la medición todavía no empieza.",
     ],
     cites: [
       "eloundou-2023-gpts",
       "felten-2021-aioe",
       "webb-2020-ai-labor",
       "brynjolfsson-chandar-chen-2025-canaries",
+      "lambert-schindler-2026-broken-ladder",
+      "lindenlaub-etal-2026-beyond-exposure",
+      "afrouzi-etal-2026-learning-careers",
       "acemoglu-restrepo-2019-newtasks",
     ],
     lentes: ["Empírico"],

@@ -9,7 +9,7 @@ publico: false
 
 > Dossier de investigación — **semilla, ronda 1, auditada**. Material de base para la plataforma interactiva y para escritura. Generado desde `datos/mapa.json`; **no editar a mano** — regenerar con `datos/generar-dossier.py`.
 
-**27 hipótesis · 80 estudios · 55 dimensiones · 35 conversiones · 164 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
+**28 hipótesis · 89 estudios · 58 dimensiones · 35 conversiones · 181 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
 
 ## La tesis: por qué esto no se lee de un titular
 
@@ -217,9 +217,14 @@ En un modelo de dos factores —inteligencia (abundante) y recursos físicos (es
 
 Añadir generación eléctrica firme y empaquetado avanzado de chips toma años: la capacidad de corto plazo está fija (curva de oferta vertical, merit-order) y los lead times son largos. La oferta física es entonces marcadamente inelástica en 1–5 años (el horizonte del ciclo de IA actual) y solo moderadamente elástica a largo plazo (>7–10 años). Esa inelasticidad de corto plazo es la condición bajo la cual los dueños del factor físico capturan la renta; su relajación de largo plazo es la salida.
 
+### El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA
+`hyp-entry-level-remoto-o-ciclo`
+
+El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y replica entre datasets, pero su ATRIBUCIÓN a la IA está en disputa: la exposición a GenAI correlaciona fuerte con la exposición al trabajo remoto (otro shock post-pandemia) y las ocupaciones expuestas tienen una ciclicidad distinta, así que el mismo patrón es compatible con al menos tres causas (IA, remoto, ciclo macro) que los datos existentes no separan. Es la pregunta de identificación central del debate 2026.
+
 ## Capa de medición: dimensiones y conversiones
 
-55 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
+58 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
 
 ### Ausentes — no hay puente (es un hallazgo, no se fabrica) — 8
 
@@ -366,6 +371,7 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 
 - **Abundancia y costo del cómputo (la oferta de inteligencia)** (`dim-abundancia-computo`): Cuán rápido cae el costo por unidad de capacidad de IA (FLOP por dólar del hardware, precio de inferencia, progreso algorítmico) frente a cuánto escala el cómputo de frontera. Es el lado de la oferta de 'inteligencia' que vuelve barato ese factor — el empuje g del motor. Unidad: tasas de cambio (x/año).
 - **Adopción / intensidad de uso** (`dim-ai-adoption-use`): Intensidad de uso de un producto de IA: usuarios activos, mensajes/semana, uso per cápita (OpenAI 18B msg/sem, 700M usuarios; cobertura ocupacional 49% de empleos con uso en ≥25% de tareas). Crecimiento más rápido en países de ingreso bajo-medio; elasticidad-ingreso 0.7. Unidad: usuarios, mensajes o índice per cápita.
+- **Atribución del deterioro entry-level (IA vs remoto vs ciclo)** (`dim-atribucion-entry-level`): 
 - **Potencial de aumento** (`dim-augmentation-potential`): Share de empleo donde la IA complementa/asiste sin sustituir el rol (automatiza algunas tareas, libera tiempo para otras). Explícitamente separado del potencial de automatización por ILO (10-13%) y de desplazamiento por IMF (complementariedad). Unidad: % de empleo.
 - **Tiempo/horas de trabajo automatizable** (`dim-automatable-hours`): Share de horas pagadas o tiempo de actividad laboral que la IA actual podría automatizar (McKinsey 60-70% del tiempo de empleados; EE.UU. 21.5%→29.5% de horas a 2030). Medida de contenido-tiempo, NO un conteo de puestos. Unidad: % de horas/tiempo.
 - **Potencial de automatización** (`dim-automation-potential`): Share de empleo (o de tiempo de trabajo) que la IA podría en principio SUSTITUIR (la cola del lado-desplazamiento de la exposición). ILO 0.4-5.5%, OECD 27%. Capacidad/potencial, no realizado. Unidad: % de empleo u horas.
@@ -378,7 +384,6 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 - **Share de difusión (capacidad/adoptantes instalada)** (`dim-diffusion-share`): Fracción de una base de capital o de adoptantes que incorpora la nueva tecnología (David: <5% del accionamiento mecánico electrificado en 1899; 3% de hogares con luz eléctrica). Penetración tecnológica, no efectos laborales. Unidad: % de capacidad o de adoptantes.
 - **Efecto de desplazamiento** (`dim-displacement-effect`): Componente del giro de contenido de tareas por el cual el capital toma tareas antes hechas por trabajo, reduciendo demanda de trabajo. Negativo por construcción. Unidad: %/año o % acumulado.
 - **Valor económico de casos de uso (dólares)** (`dim-economic-value`): Valor económico anual potencial de casos de uso de IA generativa (McKinsey $2.6-4.4T/año, 63 casos). NO es conteo de empleo. Unidad: USD/año.
-- **Elasticidad-precio de la oferta de insumos físicos (η)** (`dim-elasticidad-oferta-fisica`): Cuánto responde la cantidad ofrecida de electricidad firme o de empaquetado/HBM a un alza de su precio. Inelástica (corto plazo, capacidad fija, lead times largos) → el alza va al PRECIO y los dueños del factor físico capturan la renta; elástica (largo plazo) → la cantidad se expande y la abundancia se traslada. Es la perilla central del motor. Unidad: adimensional (Δ%cantidad / Δ%precio).
 - **Elasticidad de sustitución capital–trabajo (σ)** (`dim-elasticidad-sustitucion`): Cuán fácilmente la producción reemplaza trabajo por capital cuando cambian sus precios relativos. σ>1 = sustitutos brutos (el capital barato desplaza trabajo y baja su tajada); σ<1 = complementos (el trabajo se vuelve el factor escaso y su tajada sube); σ=1 = Cobb-Douglas (tajadas fijas). Es el parámetro que decide el signo del efecto de la IA sobre la participación del trabajo en el modelo agregado. Unidad: adimensional.
 - **Cambio en razón empleo-población** (`dim-emp-pop-ratio-change`): Cambio en la razón empleo-población, en pp, atribuible a una unidad de exposición tecnológica (p.ej. por robot/1000 trabajadores). Resultado de empleo NETO realizado a una geografía. Unidad: pp.
 - **Empleo: separaciones / rotación de incumbentes** (`dim-employment-separations`): Continuidad laboral a nivel trabajador: atrición, retención, separaciones (Brynjolfsson: atrición cae, por retención de novatos). Mide salidas de incumbentes, NO creación/destrucción neta de mercado. Unidad: dirección o % de atrición.
@@ -394,6 +399,9 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 - **Exposición ocupacional** (`dim-occupation-exposure`): Índice continuo o share de empleo en ocupaciones expuestas, agregando exposición de tareas al nivel ocupacional y ponderando por headcount (AIOE de Felten: 10 apps IA × 52 habilidades O*NET; IMF ~40%). Direccionalmente AGNÓSTICA: incluye tanto desplazamiento potencial como complementariedad. Unidad: índice estandarizado o % de empleo.
 - **Susceptibilidad ocupacional** (`dim-occupation-susceptibility`): Probabilidad modelada de que una ocupación entera sea automatizable dada la tecnología actual/previsible, ponderada por empleo (Frey-Osborne: clasificador de procesos gaussianos, 47% en alto riesgo P>0.7). Probabilidad de factibilidad, no de tiempo ni de realización. Unidad: % de empleo en un bucket de probabilidad.
 - **Transiciones ocupacionales requeridas** (`dim-occupational-transitions`): Conteo o share de trabajadores que deben moverse a una ocupación DISTINTA porque la suya se contrae (McKinsey: 12M adicionales en EE.UU. a 2030; salario bajo hasta 14x más propenso). Medida de carga de ajuste, no de pérdida neta. Unidad: número de trabajadores.
+- **Elasticidad de la oferta de cómputo (empaquetado de frontera)** (`dim-oferta-computo`): Cuánto responde la capacidad de cómputo de frontera a un alza de precio. Bimodal: el die lógico es relativamente elástico (se redirige capacidad existente pujando precio), pero el empaquetado avanzado (CoWoS) y la memoria (HBM) son el cuello duro e inelástico (fabs nuevas, lead times largos, ~90% consumido por los 4 grandes). El precio por FLOP cae; el del cuello vinculante sube.
+- **Elasticidad de la oferta de energía (entrega)** (`dim-oferta-energia`): Cuánto responde la electricidad firme/conectada a un alza de precio. Inelástica en el corto plazo (capacidad de generación fija, colas de interconexión de ~5 años, transformadores y turbinas escasos), más elástica a largo plazo. El costo de generación cae, pero la ENTREGA —red, energía firme donde se necesita— es el cuello.
+- **Elasticidad de la oferta de tierra/materia** (`dim-oferta-tierra`): Cuánto responde la tierra/espacio/minerales para datacenters a un alza de precio. El factor genuinamente fijo (Korinek-Suh, Trammell): sin estimación econométrica limpia, inelástico por construcción en el corto plazo.
 - **Calidad del output** (`dim-output-quality`): Calidad del producto del trabajo evaluada externamente, fijando la tarea (Noy-Zhang grados +0.45 SD; NPS de cliente sin cambio significativo). Ortogonal al tiempo/velocidad. Unidad: SD de grado o pp de métrica de cliente.
 - **Brecha de percepción (auto-reporte vs medido)** (`dim-perception-gap`): Diferencia entre el efecto de productividad declarado/pronosticado por un trabajador y el efecto externamente medido en la misma tarea (METR: +20% percibido vs -19% medido, ~39pp). Meta-dimensión sobre la fiabilidad del auto-reporte como evidencia. Unidad: pp de diferencia.
 - **Crecimiento del PIB** (`dim-pib-crecimiento`): Cambio en el PIB (nivel acumulado a un horizonte, o tasa anual). Difiere de TFP por la respuesta del stock de capital (Acemoglu: PIB 0.93-1.56% vs TFP <0.66%). Unidad: % de nivel o %/año.
@@ -594,7 +602,7 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 `johnson-supply-elasticity2014` · Energy Economics (WP Georgia Tech 2011) — Price Elasticity of Supply of Renewable Electricity Generation · [fuente](https://www.sciencedirect.com/science/article/abs/pii/S0140988314000425)  ⚠ **Estimación IV publicada, identificada con el calendario de los RPS estatales. ES la única estimación econométrica dura de elasticidad de OFERTA que se halló (la literatura mide casi siempre demanda — laguna real). Pero es de capacidad RENOVABLE de LARGO PLAZO en un periodo de costos cayendo → probablemente el TECHO de elasticidad; la generación firme y el corto plazo son mucho más inelásticos.**
 
 - **≈2,7 (preferida 2,714)** — Elasticidad-precio de la oferta de generación renovable (largo plazo)
-  *dim:* dim-elasticidad-oferta-fisica · *horizonte:* largo plazo · *ámbito:* EE.UU./generación renovable
+  *dim:* dim-oferta-energia · *horizonte:* largo plazo · *ámbito:* EE.UU./generación renovable
   > my preferred estimate of the supply elasticity is 2.7 ... for every 1% increase in the price of RECs, there will [be] approximately a 2.7% increase in renewable generating capacity
 
   *engancha:* `tensiona` La oferta de energía y cómputo es inelástica en el horizonte relevante
@@ -651,7 +659,7 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 
   *engancha:* `confirma` Automatización vs aumento (dirección de diseño, Turing Trap); `confirma` Exposición no es empleo neto; `confirma` Efecto neto de signo ambiguo (desplazamiento/productividad/reinstauración); `informa` Desplazamiento domina en el periodo reciente (post-1987); `informa` La IA ensancha (no reduce) la desigualdad
 
-### U.S. Energy Information Administration (2018)
+### EIA (U.S. Energy Information Administration) (2018)
 `eia-energy-gdp-share` · EIA — Today in Energy: total energy expenditures as share of GDP · [fuente](https://www.eia.gov/todayinenergy/detail.php?id=36754)  ⚠ **Fuente primaria (EIA, leída directa) para el 5,6% de 2016. El rango oscilante 4,8% (2020) – 6,7% (2022) y el pico >8% en los shocks petroleros de los 70–80 vienen de otras páginas EIA vía búsqueda, no verificados verbatim. Ancla la constante s_P (tajada física actual) del motor, ~0,05–0,08.**
 
 - **5,6% (2016); rango histórico ~5–7%** — Gasto total en energía como % del PIB (EE.UU.)
@@ -986,6 +994,9 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 - **sube-luego-colapsa (acotada; colapso ~3 años en escenario agresivo) vs sube-para-siempre (no acotada)** — Trayectoria salarial según cola de tareas (acotada vs no acotada)
   *dim:* dim-wages · *horizonte:* transición ~3-20 años / infinito · *ámbito:* modelo/economía completa
   > wages grow slightly during the initial periods but then collapse before full automation is reached... both output and wages rise forever
+- **materia/energía = el factor genuinamente fijo (el cómputo es reproducible)** — El factor fijo (materia/energía) es la fuente última de escasez
+  *dim:* dim-captura-renta-factor-fijo · *horizonte:* largo plazo · *ámbito:* —/—
+  > In the longer-term, matter or, equivalently, energy (E = mc^2) may be the ultimate source of scarcity
 
   *engancha:* `confirma` La distribución de complejidad de tareas decide todo (bifurcación); `tensiona` Macro modesto (Hulten) vs extremo (AGI), reconciliables por horizonte/medición; `informa` Los weak links acotan el crecimiento y capturan el retorno (Jones); `confirma` La escasez se muda del trabajo a los recursos físicos; `informa` Si son complementos y la oferta es inelástica, los átomos capturan la renta
 
@@ -1022,6 +1033,9 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 - **de modesto a explosivo según supuestos (automatización de tareas, cuellos de botella de Baumol, sustituibilidad)** — Crecimiento bajo IA transformadora
   *dim:* dim-pib-crecimiento · *horizonte:* largo plazo · *ámbito:* global/economía completa
   > Economic Growth under Transformative AI (marco)
+- **tajada del factor fijo → 1 si es complemento (ρ<0)** — El dueño del factor de oferta fija recibe ~todo el producto
+  *dim:* dim-captura-renta-factor-fijo · *horizonte:* largo plazo · *ámbito:* —/—
+  > the resource in fixed supply constrains growth and its owners receive approximately all output
 
   *engancha:* `informa` Macro modesto (Hulten) vs extremo (AGI), reconciliables por horizonte/medición; `informa` Los weak links acotan el crecimiento y capturan el retorno (Jones); `confirma` Si son complementos y la oferta es inelástica, los átomos capturan la renta
 
@@ -1090,11 +1104,11 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 
   *engancha:* `confirma` La escasez se muda del trabajo a los recursos físicos
 
-### Lawrence Berkeley National Laboratory (EMP) (2024)
+### LBNL (Lawrence Berkeley National Laboratory, EMP) (2024)
 `lbnl-queued-up2024` · Berkeley Lab — Queued Up: 2024 Edition (datos a fin de 2023) · [fuente](https://emp.lbl.gov/queues)  ⚠ **Confiabilidad muy alta: dataset de referencia del sector (Berkeley Lab/DOE), datos administrativos de las colas de interconexión de los ISO/RTO. Es la cuantificación más dura de la inelasticidad de la oferta eléctrica: añadir generación tarda ~5 años y casi nada de la cola se construye.**
 
 - **~5 años de solicitud a operación (vs <2 en 2008); solo 19% de proyectos / 14% de capacidad construidos; >70% se retira** — Lead time y tasa de completación de nueva generación
-  *dim:* dim-elasticidad-oferta-fisica · *horizonte:* 2000–2023 · *ámbito:* EE.UU./generación eléctrica
+  *dim:* dim-oferta-energia · *horizonte:* 2000–2023 · *ámbito:* EE.UU./generación eléctrica
   > The typical project built in 2023 took nearly 5 years from the interconnection request to commercial operations, compared to 3 years in 2015 and <2 years in 2008.
 
   *engancha:* `confirma` La oferta de energía y cómputo es inelástica en el horizonte relevante; `confirma` Si son complementos y la oferta es inelástica, los átomos capturan la renta
@@ -1208,7 +1222,7 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
   *engancha:* `confirma` El sector relacional puede sostener el empleo (con condiciones)
 
 ### The Budget Lab at Yale (2025)
-`budgetlab-yale-2025` · Budget Lab (Yale) — análisis de exposición ocupacional a IA · [fuente](https://budgetlab.yale.edu/)  ⚠ **Grey-lit institucional, referida por Imas en el podcast (no leída directamente). Rastrea en vivo el supuesto 'white-collar apocalypse'. TENSIONA nuestra lente Empírico: ellos leen la señal de jóvenes como ruido, nosotros como dato.**
+`budgetlab-yale-2025` · Budget Lab (Yale) — análisis de exposición ocupacional a IA · [fuente](https://budgetlab.yale.edu/)  ⚠ **Grey-lit institucional, referida por Imas en el podcast (no leída directamente). Rastrea en vivo el supuesto 'white-collar apocalypse'. TENSIONA nuestra lente Empírico: ellos leen la señal de jóvenes como ruido, nosotros como dato. SUPERADO COMO EVIDENCIA (2026-07-08): ver budgetlab-yale-2026-sdid — la versión econométrica de esta misma postura (SDID sobre CPS, 7-may-2026), leída contra primaria. Este nodo queda como registro de cómo entró la postura al mapa (vía Imas, de oídas).**
 
 - **hay que entrecerrar los ojos para ver algo; los devs junior crecen más LENTO que la tendencia (no una caída de nivel) y la demanda de devs senior sube si acaso** — ¿Hay automatización/desempleo masivo por IA ya (cuello blanco)?
   *dim:* dim-realized-labor-demand · *horizonte:* 2024-2025 · *ámbito:* EE.UU./cuello blanco / software
@@ -1225,14 +1239,14 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 
   *engancha:* `informa` La escasez se muda del trabajo a los recursos físicos
 
-### International Energy Agency (2025)
+### IEA (International Energy Agency) (2025)
 `iea-energy-ai2025` · IEA — Energy and AI (flagship report) · [fuente](https://www.iea.org/reports/energy-and-ai)  ⚠ **Fuente primaria, leída verbatim de las páginas oficiales. Las proyecciones a 2030 son escenarios (Base Case), no hechos. Matiz anti-aire central: a escala global los datacenters son ~1/10 del crecimiento eléctrico (menos que A/C, motores industriales o EVs) — el cuello es local (EE.UU./China ~80% del crecimiento) y de ritmo, no una escasez planetaria.**
 
 - **1,5% mundial en 2024 (415 TWh) → ~945 TWh en 2030; IA en servidores acelerados +30%/año** — Consumo eléctrico de datacenters (nivel y proyección)
   *dim:* dim-cuello-energetico · *horizonte:* 2024–2030 · *ámbito:* global (EE.UU. = 45%)/datacenters
   > Data centres accounted for around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh).
 - **~20% de los proyectos planificados en riesgo; datacenter 2-3 años vs sistema energético 'longer lead times'** — Riesgo de demora por restricciones de red (oferta inelástica)
-  *dim:* dim-elasticidad-oferta-fisica · *horizonte:* a 2030 · *ámbito:* global/red eléctrica
+  *dim:* dim-oferta-energia · *horizonte:* a 2030 · *ámbito:* global/red eléctrica
   > unless these risks are addressed, around 20% of planned data centre projects could be at risk of delays
 
   *engancha:* `confirma` La escasez se muda del trabajo a los recursos físicos; `confirma` La oferta de energía y cómputo es inelástica en el horizonte relevante
@@ -1250,7 +1264,7 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 `epoch-chip-supply2025` · Epoch AI — Advanced packaging and HBM were the bottlenecks on AI chip production · [fuente](https://epoch.ai/data-insights/ai-chip-supply-chain-constraints)  ⚠ **Fuente primaria para el hallazgo cualitativo (alto): el cuello de la oferta de chips de IA es bimodal — el empaquetado CoWoS y la memoria HBM son inelásticos (fabs nuevas, lead times largos), mientras el die lógico es relativamente elástico (se redirige capacidad pujando precio). Las cifras puntuales de wafers/lead-times son de prensa de industria (media).**
 
 - **top-4 consumen ~90% del CoWoS y HBM (inelástico); solo 12% del die lógico (elástico)** — Concentración y elasticidad de la oferta de chips de IA
-  *dim:* dim-elasticidad-oferta-fisica · *horizonte:* 2025 · *ámbito:* global/semiconductores
+  *dim:* dim-oferta-computo · *horizonte:* 2025 · *ámbito:* global/semiconductores
   > the four largest AI chip designers collectively consumed around 90% of global CoWoS capacity and HBM supply in 2025, while consuming only 12% of advanced logic die production
 
   *engancha:* `confirma` La oferta de energía y cómputo es inelástica en el horizonte relevante
@@ -1322,7 +1336,7 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
   *engancha:* `confirma` La IA expone trabajo alto-calificado (a diferencia de automatización previa); `confirma` La IA ensancha (no reduce) la desigualdad
 
 ### Bonney, Breaux, Dinlersoz, Foster, Haltiwanger, Pande (2026)
-`bonney-btos-2026-microstructure` · Census CES-WP-26-25 / NBER Working Paper No. 35141 (abril 2026) · [fuente](https://www.nber.org/papers/w35141)  ⚠ **Cifras verificadas verbatim contra el abstract/highlights del CES-WP-26-25 y la página NBER w35141 (título y autores confirmados; publicado abril 2026). Las asociaciones de la regresión son CORRELACIONALES (transversales, auto-reporte de efectos de empleo por la firma respondente, no del trabajador); no son estimaciones causales. La medida de adopción ('cualquier función de negocio') es más amplia que la de 2024 — el salto 5.4%→18% mezcla difusión real con cambio de definición (NO es una serie temporal limpia). McElheran no es autora.**
+`bonney-btos-2026-microstructure` · Census CES-WP-26-25 / NBER Working Paper No. 35141 (abril 2026) · [fuente](https://www.nber.org/papers/w35141)  ⚠ **Cifras verificadas verbatim contra el abstract/highlights del CES-WP-26-25 y la página NBER w35141 (título y autores confirmados; publicado abril 2026). Las asociaciones de la regresión son CORRELACIONALES (transversales, auto-reporte de efectos de empleo por la firma respondente, no del trabajador); no son estimaciones causales. La medida de adopción ('cualquier función de negocio') es más amplia que la de 2024 — el salto 5.4%→18% mezcla difusión real con cambio de definición (NO es una serie temporal limpia). McElheran no es autora. QUIEBRE DE SERIE (para cualquier gráfico): el Census cambió la redacción de la pregunta central de IA el 17-nov-2025 ('in producing goods or services' → 'in any of its business functions'); se observó un salto de nivel ~10%→~17% coincidente y el Census abrió una serie temporal NUEVA desde el release del 4-dic-2025 (nota metodológica 'AI Question Wording Updates', census.gov/hfp/btos). Parte del salto a 17-20% es definicional, no adopción real; corroborado por FEDS Note 3-abr-2026 y St. Louis Fed jun-2026. La serie núcleo (olas dic-2025→may-2026, Census story 26-may-2026) da uso 17-20% con fuerte gradiente por tamaño (250+ empleados: 37%; ≤4: <20%).**
 
 - **18% (32% empleo-ponderado)** — Tasa de firmas que usaron IA en una FUNCIÓN DE NEGOCIO (medida ampliada del suplemento, ref. dos semanas previas), período nov-2025–ene-2026; 18% por firma, 32% ponderado por empleo. Esperado: 22% dentro de seis meses. VERIFICADO verbatim contra abstract/highlights CES-WP-26-25.
   *dim:* dim-firm-adoption · *horizonte:*  · *ámbito:* /
@@ -1335,6 +1349,8 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 - **2% de firmas** — PUENTE adopción→empleo realizado: 'AI-related employment decreases are rare, occurring in only 2% of firms' (VERIFICADO verbatim). Auto-reportado por las firmas en el suplemento BTOS; no causal.
   *dim:* dim-realized-labor-demand · *horizonte:*  · *ámbito:* /
 - **amplitud funcional e inversión: + ; tarea-trabajador: n.s.** — Regresión transversal a nivel firma: 'Functional breadth and operational investment are positively associated with employment decreases, whereas worker-task integration shows no significant link to headcount reduction once functional integration and operational investment are taken into account' (VERIFICADO verbatim). También: correlación positiva entre desempeño comercial y amplitud de integración de IA. CORRELACIONAL, no causal.
+  *dim:* dim-realized-labor-demand · *horizonte:*  · *ámbito:* /
+- **intensidad al alza: 'large number' de tareas 2,5% → 7% (small: 85% → 71%)** — Señal direccional NUEVA del 2º suplemento: aunque la sustitución sigue rara (~2% de firmas reduce empleo por IA), su INTENSIDAD sube — entre firmas que sustituyen tareas, las que reportan reemplazar un 'large number' pasaron de 2,5% (1er suplemento, inicios 2024) a 7%, y 'small number' cayó de 85% a 71% (Sección 5.1, Pregunta 26, Figura 16). VERIFICADO verbatim contra el executive summary del CES-WP-26-25. La redacción de ESTA pregunta no cambió entre olas (footnote 4), aunque otras del suplemento sí (footnote 29). Condicional a firmas sustituyentes (subconjunto chico). ¿Curva en J de adopción→desplazamiento o artefacto de cuestionario? La 3ª ola es el test.
   *dim:* dim-realized-labor-demand · *horizonte:*  · *ámbito:* /
 
   *engancha:* `confirma` El potencial está limitado por la adopción y la co-invención; `informa` Exposición no es empleo neto; `confirma` El uso real predomina en augmentation; `informa` Automatización vs aumento (dirección de diseño, Turing Trap)
@@ -1375,6 +1391,94 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 
   *engancha:* `confirma` La escasez se muda del trabajo a los recursos físicos; `confirma` La oferta de energía y cómputo es inelástica en el horizonte relevante
 
+### Brynjolfsson, Chandar, Chen (Stanford DEL) + ADP Research (2026)
+`sdel-adp-2026-canaries-dashboard` · Canaries Dashboard + Research Note No. 1 'AI Economic Indicators: June 2026 Update' (Stanford Digital Economy Lab × ADP Research; serie mensual, 10-jun-2026) · [fuente](https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/)  ⚠ **La continuación VIVA de Canaries (ver brynjolfsson-chandar-chen-2025-canaries): dashboard actualizado mensualmente (última actualización verificada: 1-jul-2026; datos hasta abril 2026) + Research Note No. 1 (PDF: digitaleconomy.stanford.edu/app/uploads/2026/06/AIEI_SDEL_Research_Note_01.pdf). Panel BALANCEADO de 25.000 firmas ADP (ventana rodante de 5 años) que en nov-2022 empleaban 4,6M de trabajadores matcheados a ocupación (730+ ocupaciones, SOC 2018; exposición Eloundou et al. 2024). El propio sitio aclara que el panel NO es representativo de todo el mercado laboral de EE.UU. y que mide CORRELACIÓN, no causalidad. Cifras verificadas verbatim contra el PDF y el dashboard (fetch 2026-07-08); el dato YoY −4,2/−1,7 tuvo verificación adversarial 2-1, el resto 3-0.**
+
+- **−3,8%/año (22-25 en más expuestas) vs +2,0%/año (menos expuestas)** — Tasa ANUALIZADA de cambio de empleo desde nov-2022 (datos a abril 2026), trabajadores 22-25: 'employment in AI-exposed occupations is contracting at 3.8% per year, compared to the least exposed, which are growing at 2.0% per year'. La nota: 'declines in exposed occupations not only persist, but deepen', con 'muted evidence of similar patterns for workers up to age 34'. Descriptivo/correlacional.
+  *dim:* dim-realized-employment-change · *horizonte:*  · *ámbito:* /
+- **22-25: −4,2% vs −1,7% YoY · todas las edades: −0,2% vs +0,1% YoY** — Interanual a abril 2026 (Figura 1 de la Research Note): para 22-25, las más expuestas −4,2% vs −1,7% las menos expuestas (brecha 2,5pp); para TODAS las edades, −0,2% vs +0,1% (brecha 0,3pp). Las dos hipótesis del mapa a la vez: el agregado casi no se mueve mientras el margen joven/expuesto diverge.
+  *dim:* dim-realized-employment-change · *horizonte:*  · *ámbito:* /
+- **caídas donde el uso AUTOMATIZA; sin relación clara donde AUMENTA** — Cruce del empleo ADP con el tipo de uso del Anthropic Economic Index (Figura 5): 'automation-related usage is correlated with employment trends, while augmentation-related usage is not'; matiz exacto: 'no clear monotonic relationship' para aumentación y 'declines or more muted increases' (no caída uniforme) para automatización. Asociación a nivel ocupación, no causal. Persiste en el dashboard actualizado a julio (verificación 2-1).
+  *dim:* dim-collaboration-mode · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `tensiona` Exposición no es empleo neto; `informa` Automatización vs aumento (dirección de diseño, Turing Trap); `tensiona` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `informa` Mucha rotación, neto pequeño e incierto
+
+### Peter John Lambert, Yannick Schindler (2026)
+`lambert-schindler-2026-broken-ladder` · LSE Centre for Economic Performance DP2193 / SSRN 6787638 (10-jun-2026) · [fuente](https://cep-serviceaddress.lse.ac.uk/_NEW/PUBLICATIONS/abstract.asp?index=12306)  ⚠ **La crítica más seria a la lectura causal de Canaries hasta la fecha. Working paper NO revisado por pares. 243M contrataciones + 407M avisos, EE.UU./UK/Canadá/Australia, 2017-2025, diseños diff-in-diff sobre medidas de exposición. Autores y abstract verificados contra el espejo LSE CEP y SSRN (2026-07-08; verificación adversarial 3-0 en tres claims). OJO con la lectura: la correlación GenAI↔WFH es tan alta (~0,77) que la regresión conjunta plantea un problema de IDENTIFICACIÓN más que una exoneración de la IA — el paper no prueba que 'no es la IA', prueba que los datos existentes no la separan del remoto. Robustez: medidas alternativas de exposición, residualización, controles no paramétricos, adopción real de WFH como tratamiento. Sin réplica de Brynjolfsson et al. al 2026-07-08.**
+
+- **~−5pp share junior de contrataciones (cada shock, por separado)** — Estimados POR SEPARADO, +2 desviaciones estándar de exposición a GenAI o a WFH predicen cada una, a 2025, '~a fall of around 5pp in the junior-share of new hires' y ~3pp en el share de avisos que piden poca experiencia — es decir, la correlación descriptiva de Canaries SÍ replica en 4 países.
+  *dim:* dim-atribucion-entry-level · *horizonte:*  · *ámbito:* /
+- **conjunto: WFH persiste; GenAI se atenúa a ~0** — Estimados CONJUNTAMENTE: 'the WFH effect remains, while the GenAI coefficient attenuates sharply and is often statistically indistinguishable from zero' (verbatim del abstract). Crítica de variable omitida a la atribución IA del deterioro entry-level; consistente entre múltiples diseños.
+  *dim:* dim-atribucion-entry-level · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `confirma` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `informa` Exposición no es empleo neto
+
+### Natalia Emanuel, Emma Harrington, Amanda Pallais (2026)
+`emanuel-harrington-pallais-2026-remote` · NY Fed Liberty Street Economics (1-jun-2026) + SSRN 6863238; datos CPS · [fuente](https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/)  ⚠ **Segunda línea INDEPENDIENTE pro-remoto (blog de staff NY Fed + paper SSRN; el trío tiene historial de investigación causal sobre trabajo remoto y mentoría). Descomposición correlacional (back-of-the-envelope), NO causal. Citas verificadas verbatim contra el post (2026-07-08; verificación adversarial 3-0). Los autores conceden que 'generative AI and other factors may play a more primary role... going forward'. OJO definicional: su 3,7% es desempleo de graduados <29 PROMEDIO 2022-25 — NO comparable con el 5,7% del tracker NY Fed de recién graduados (22-27, puntual Q1-2026).**
+
+- **graduados <29: 3,1% → 3,7% · experimentados: 1,9% → 1,8%** — Desempleo de graduados universitarios jóvenes (<29): 3,1% promedio 2017-19 → 3,7% en 2022-25 (~+20%), MIENTRAS el de graduados experimentados BAJÓ de 1,9% a 1,8% — la brecha es específica a la entrada, no general.
+  *dim:* dim-realized-employment-change · *horizonte:*  · *ámbito:* /
+- **el remoto explica ~64% del alza** — Cálculo back-of-the-envelope: 'remote work can explain 64 percent of the increase in unemployment for all young college graduates between 2017−19 and 2022−24' (mecanismo: pérdida de entrenamiento/mentoría presencial). Además, el timing empuja contra la IA: 'the uptick in youth unemployment rates predates the rapid diffusion of AI', y la brecha joven/viejo persiste en ocupaciones remotables Y no remotables aun controlando exposición a IA.
+  *dim:* dim-atribucion-entry-level · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `confirma` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA
+
+### OECD (2026)
+`oecd-eo-2026-jovenes` · OECD Employment Outlook 2026, sección 1.3 (7-jul-2026) · [fuente](https://www.oecd.org/en/publications/oecd-employment-outlook-2026_7e710f54-en.html)  ⚠ **El árbitro institucional del período: examen directo de la tesis Canaries con datos de 6 economías (Australia, Canadá, UE, Nueva Zelanda, Reino Unido, EE.UU.). Su explicación alternativa es CICLO MACRO (las ocupaciones expuestas son más sensibles a shocks agregados y en downturns se corta primero la contratación entry-level), distinta del remoto de Lambert-Schindler/Emanuel — o sea, hay ya TRES atribuciones rivales en juego. Cita a ambos bandos (Brynjolfsson et al. vs Humlum-Vestergaard, Gimbel et al.). Fechan el uso intensivo de LLMs (vía LinkedIn) en mediados-2023 a inicios-2024. Conclusión y evidencia verificadas contra el PDF del reporte (fetch 2026-07-08).**
+
+- **'the role of LLMs... appears to be limited'** — Conclusión textual (§1.3.1): 'So far, the role of LLMs in explaining the difficulties encountered by young people entering the labour market appears to be limited'. Evidencia: (1) el gap de desempleo de graduados jóvenes sube desde ANTES de la pandemia, mucho antes del uso intensivo de LLMs, sin punto de quiebre en ningún país analizado; (2) para jóvenes SIN título el patrón es inconsistente entre países (EE.UU. sube desde 2024, Australia BAJA desde mediados de 2024, Canadá/eurozona planos) — incompatible con una causa tecnológica común.
+  *dim:* dim-atribucion-entry-level · *horizonte:*  · *ámbito:* /
+- **vacantes junior expuestas: sin caída desproporcionada (fines 2023)** — Box 1.6 (Lightcast × exposición Felten-Raj-Seamans): las vacantes JUNIOR en ocupaciones de alta exposición a LLM en EE.UU. no cayeron desproporcionadamente al final de 2023; las ocupaciones expuestas sí son más sensibles a shocks macro (cita Curto Millet & Iscenko 2026 y la literatura de que en downturns se recorta primero la contratación entry-level).
+  *dim:* dim-realized-labor-demand · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `confirma` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `informa` Exposición no es empleo neto
+
+### The Budget Lab at Yale (Ryan Nunn; paper técnico: Martha Gimbel et al.) (2026)
+`budgetlab-yale-2026-sdid` · Budget Lab (Yale), 'AI Is Probably Not (Yet) the Reason for Labor Market Weakening' + paper técnico (7-may-2026) · [fuente](https://budgetlab.yale.edu/research/ai-probably-not-yet-reason-labor-market-weakening)  ⚠ **La versión ECONOMÉTRICA de la postura escéptica de Yale (reemplaza como evidencia al nodo budgetlab-yale-2025, que era grey-lit referida de oídas): synthetic differences-in-differences (Arkhangelsky et al. 2021) sobre microdata CPS, ocupaciones tercil superior de exposición vs tercil inferior. Citas verificadas verbatim contra el post (fetch directo 2026-07-08). Dos límites que los PROPIOS autores declaran (paper técnico): el SDID no puede separar la IA de eventos correlacionados con la exposición — citan explícitamente el trabajo remoto como confusor — y la CPS está subpoderada para el grupo 22-27, así que este resultado NO refuta Canaries: mide el agregado, no el margen joven. Contexto que fija: payrolls ~+20.000/mes en el último año; desempleo 3,4% (abr-2023) → 4,3% (mar-2026).**
+
+- **efecto IA sobre empleo de expuestas ≈ 0 (indistinguible de cero)** — SDID sobre CPS: 'we find no strong evidence of impacts as of yet... The estimate is close to zero and cannot be distinguished from it, statistically speaking' — y lo mismo para salarios reales por hora. El paper técnico reporta que el desempleo de expuestos subió ~0,5pp más que su control sintético (más en 16-34) pero NO significativo a Q1-2026. Complementa su análisis previo de rotación ocupacional (sin alza inusual de churn).
+  *dim:* dim-realized-employment-change · *horizonte:*  · *ámbito:* /
+- **las expuestas eran MENOS cíclicas pre-pandemia** — Hallazgo metodológico con carga para toda la literatura: 'prior to the pandemic, AI-exposed occupation employment is considerably less cyclical than unexposed employment' — las comparaciones crudas expuesto/no-expuesto están sesgadas por ciclicidad diferencial; cualquier atribución necesita un diseño que la acomode.
+  *dim:* dim-atribucion-entry-level · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `confirma` Exposición no es empleo neto; `informa` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA
+
+### Massenkoff, McCrory (Anthropic) (2026)
+`massenkoff-mccrory-2026-cps` · Anthropic research report 'AI and labor market impacts' (5-mar-2026); datos CPS · [fuente](https://www.anthropic.com/research/labor-market-impacts)  ⚠ **CONFLICTO DE INTERÉS a la vista: investigación de Anthropic sobre el impacto de su propia categoría de producto (igual que el AEI). Publicado 5-mar-2026 (antes de la ventana de la ronda 3; se integra porque no estaba en el mapa). Diff-in-diff sobre CPS: cuartil superior de 'observed exposure' vs el ~30% con exposición cero. Correlacional/descriptivo, no causal. Citas verificadas verbatim (verificación adversarial 3-0). Crítica publicada (Forbes 8-mar-2026, PIIE): el error de medición en la exposición sesga el DiD hacia CERO — el null agregado es débil como evidencia de 'no efecto'. Valor para el mapa: convergencia INDEPENDIENTE (CPS, hogares) con el patrón joven de Canaries (ADP, nóminas), por el margen de contratación.**
+
+- **agregado: brecha ≈ 0 ('small and insignificant')** — DiD post-ChatGPT sobre desempleo de trabajadores expuestos (todas las edades): 'The average change in the gap since the release of ChatGPT is small and insignificant' — sin aumento sistemático de desempleo para expuestos desde fines de 2022.
+  *dim:* dim-realized-employment-change · *horizonte:*  · *ámbito:* /
+- **job finding rate 22-25 en expuestas: −14% vs 2022** — 'a 14% drop in the job finding rate compared to that in 2022 in the exposed occupations, although this is just barely statistically significant. (There is no such decrease for workers older than 25.)' — de ~2%/mes a ~1,5%/mes, series que 'visually diverge in 2024', por el margen de CONTRATACIÓN y no de separaciones. El reporte dice explícitamente que 'echoes' a Canaries.
+  *dim:* dim-realized-labor-demand · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `informa` Exposición no es empleo neto
+
+### Ilse Lindenlaub, Ryungha Oh, Maria Alejandra Rodriguez, Laura Veldkamp (2026)
+`lindenlaub-etal-2026-beyond-exposure` · NBER Working Paper 35271 (mayo 2026) · [fuente](https://www.nber.org/papers/w35271)  ⚠ **Working paper (no peer-reviewed). Encuesta alemana de empleados (DiWaBe) enlazada a datos de establecimiento. Abstract y cifras verificados contra la página NBER (fetch 2026-07-08). Evidencia directa para la espina del mapa: la EXPOSICIÓN técnica predice mal la ADOPCIÓN real — el eslabón que falta entre 'la IA puede hacer la tarea' y cualquier efecto de empleo.**
+
+- **ventaja comparativa explica ~60% de la adopción; solo-exposición 14%** — Correlación DÉBIL entre exposición predicha y uso reportado de IA. Su índice alternativo (adopción por ventaja comparativa: ganancia de productividad de la IA vs costos de implementación relativos a productividad y salario del trabajador) explica 'almost 60% of cross-occupation variation in observed AI adoption, compared to 14% for an exposure-only model'; ambos enfoques divergen sustancialmente para ~30% de los trabajadores.
+  *dim:* dim-ai-adoption-use · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `confirma` Exposición no es empleo neto; `confirma` El potencial está limitado por la adopción y la co-invención
+
+### Hassan Afrouzi, Andres Blanco, Andrés Drenik, Erik Hurst (2026)
+`afrouzi-etal-2026-learning-careers` · NBER Working Paper 35157 (abril 2026) · [fuente](https://www.nber.org/papers/w35157)  ⚠ **TEORÍA (modelo de equilibrio general en tiempo continuo), no evidencia empírica. Abstract verificado contra la página NBER (fetch 2026-07-08). Formaliza el mecanismo 'escalera rota': si los trabajadores adquieren habilidad HACIENDO las tareas, automatizar las tareas de entrada destruye el canal de aprendizaje — con equilibrios múltiples.**
+
+- **equilibrios duales; tecnología más barata puede ser trampa** — En economías con alta capacidad de aprendizaje hay PARES de equilibrios estacionarios ordenados por la tasa agregada de aprendizaje, y 'cheaper technology has opposite effects across the two': en el equilibrio de alto aprendizaje sube el bienestar vía el propio canal de aprendizaje; en el de bajo aprendizaje 'it tips the economy into a human-capital trap'. First-best del planificador: impuesto a los beneficios de automatización + subsidio a mantener la frontera de tareas, a una tasa común.
+  *dim:* dim-task-content-shift · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `informa` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `informa` Automatización vs aumento (dirección de diseño, Turing Trap)
+
+### Anthropic Economic Index team (2026)
+`anthropic-aei-2026-cadences` · Anthropic (lab report 'Cadences', 26-jun-2026) · [fuente](https://www.anthropic.com/research/economic-index-june-2026-report)  ⚠ **Actualización de la serie AEI (ver anthropic-aei-2026-primitives). Encuesta a ~9.700 usuarios de Claude LINKEADA a su uso real (campo: abril–principios de junio 2026). Muestra NO representativa (usuarios activos de Claude; Computer & Mathematical 30% vs 4% del empleo de EE.UU.). Mide exposición PERCIBIDA y EXPECTATIVAS, no resultados de empleo; el propio reporte reconoce que 'reported exposure systematically exceeds observed exposure'. Conflicto de interés: Anthropic sobre su propio producto. Citas verificadas verbatim (verificación adversarial 3-0). Baseline del footnote 23: tasa de layoffs-and-discharges de JOLTS ~13,4% anualizada (NO separaciones totales).**
+
+- **~10pp menos exposición percibida con 15+ años de experiencia** — La exposición PERCIBIDA se concentra en juniors: 'People with at least 15 years of experience put that share of tasks AI can do roughly 10 percentage points lower than those in their first year of work'.
+  *dim:* dim-perception-gap · *horizonte:*  · *ámbito:* /
+- **10% ve probable perder su empleo en 12m; >1/3 da >60% a que lo pierda un colega junior** — Expectativas de pérdida de empleo: '10% rated losing their own jobs as likely or very likely' (de esos, 38% lo atribuye a IA — COTA SUPERIOR: la pregunta mezclaba cambio y pérdida de empleo), pero concentradas en colegas junior: 'over one third stating that the probability of a junior colleague losing their job in the next year was over 60%'. Además, >1/3 espera que la IA pueda hacer 'most or nearly all' de sus tareas en 12 meses y ~6 de 10 eligió una banda de exposición mayor para el año próximo.
+  *dim:* dim-perception-gap · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `confirma` Brecha de percepción (auto-reporte sobreestima el efecto medido)
+
 ## Auditoría anti-aire
 
 **Veredicto: aceptable-con-reservas.**
@@ -1404,12 +1508,3 @@ La ronda 2 leyó estas fuentes pero no se integró (tope de 64K en el reconcilia
 Built the map from empty across five reader batches (foundational task-based theory; macro/growth; exposure/susceptibility indices; productivity RCTs; lab usage indices; institutional reports ILO/IMF/OECD/WEF/McKinsey; GPT-diffusion history; polarization/RBTC). Deduplicated 25 distinct studies (no paper appeared twice across batches, but acemoglu2024 reused third-party RCTs that ARE separate nodes here: Noy-Zhang, Peng-Copilot, Brynjolfsson-Li-Raymond). Unified ~30 proposed hypotheses into 13 by fusing cross-language duplicates: the single most important fusion is the 'exposure is not net employment' idea, stated independently in all five batches (H-task-net-ambiguous, exposure-is-not-displacement, H-tareas-no-empleos, H-task-exposure-not-net-employment, exposure_is_not_displacement, H-task-not-occupation) — all collapsed into hyp-exposure-not-employment as the spine of the map. Built the typed graph so that lighting one cell teaches the inferential structure. The central structural finding: NO validated conversion exists from any technical-exposure measure (task/occupation/hours) to net employment — registered as multiple 'absent' bridges and elevated to findings.
 
 Construido por un workflow multiagente (2026-06-15/16): lectores en paralelo extraen evidencia verificada contra fuente por cluster; un reconciliador converge el mapa por rondas; un auditor escéptico caza aire. Ronda 1 completa y auditada; ronda 2 leída pero no integrada (límite de salida de 64K — arreglo conocido: que el reconciliador emita solo estructura y la tabla de estudios la ensamble el script). Números verificados contra fuente primaria por el auditor.
-
-## Referido por
-
-<!-- AUTO-GENERADO por claude/grafo-backlinks.py · no editar a mano · el «por qué» vive en el origen (## Conexiones) -->
-
-- `profundiza` ← [Rama "Recursos físicos": el motor de los átomos](recursos-fisicos.md)
-- `profundiza` ← [Lentes: elegir el modelo, no solo los parámetros](roadmap-lentes.md)
-- `usa-molde-de` ← [Natalidad Chile — dossier (proyecto en PAUSA)](../natalidad/dossier.md)
-- `tensiona` ← [Inside YC's AI Playbook — nota](../../referencia/artículos/2026-05-27-yc-ai-playbook/nota.md)
