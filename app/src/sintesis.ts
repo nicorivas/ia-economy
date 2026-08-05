@@ -5,7 +5,7 @@
 // (versionadas); `cites` son
 // studyId reales del mapa (la vista los resuelve a "apellido 'año"). Actualizar con la fecha al editar.
 
-export const SINTESIS_FECHA = "2026-07-08";
+export const SINTESIS_FECHA = "2026-08-04";
 
 // ── Charts hechos a medida (sin librería) que ejemplifican una respuesta. Anclados a datos reales.
 export type ChartTone = "accent" | "neg" | "pos" | "neutral";
@@ -65,6 +65,7 @@ export const SINTESIS: SintesisItem[] = [
     answer: [
       "La respuesta honesta es un rango que cruza el cero, no un número. La descomposición de tareas (desplazamiento − reinstauración + productividad) deja la conclusión en manos de cuántas tareas nuevas crea la IA — la reinstauración —, y eso nadie lo ha medido para la IA. Históricamente, cerca de la mitad del crecimiento del empleo vino de tareas que antes no existían (Acemoglu & Restrepo); si la IA repite eso, el empleo aguanta; si no, cae.",
       "La evidencia realizada es temprana y apunta a lados distintos según dónde mires. En la rebanada más expuesta hay efectos reales: −2% de trabajos en freelancers de escritura tras ChatGPT (Hui-Reshef-Zhou, causal), −6% de empleo en jóvenes de ocupaciones top-expuestas (Brynjolfsson, «Canaries») — una brecha que la serie mensual que continúa ese estudio muestra profundizándose todavía en 2026. Pero a nivel de firma las reducciones por IA siguen raras —solo ~2% de las empresas las reportan (Census BTOS)—, el empleo agregado sigue creciendo, y con el método que corrige por la ciclicidad distinta de las ocupaciones expuestas, el efecto agregado de la IA es indistinguible de cero (Budget Lab de Yale).",
+      "Hay un margen que casi nadie mira y que da la señal más limpia de rezago: el internacional. A 42 meses de ChatGPT, las exportaciones de servicios de oficina —el trabajo que la IA supuestamente barrería primero, ya deslocalizado y sin fricción de despido de por medio— siguen creciendo en las nueve economías exportadoras principales, con India acelerando respecto de su propia tendencia previa (Baldwin). Ahí el desplazamiento tenía el camino más barato disponible: rescindir un contrato es mucho más fácil que despedir, y aun así los contratos se siguen firmando. El límite del dato es que mide facturación, no dotación — el mismo trabajo registra a una de las grandes indias recortando 12.000 puestos mientras sus exportaciones crecen, que es ingreso por empleado subiendo, no industria preservada.",
       "El veredicto, entonces: el agregado todavía no muestra destrucción neta, pero las rebanadas expuestas sí — y hasta la firma de ese golpe joven está ahora en disputa (ver la pregunta siguiente). Que eso se generalice o no depende de una apuesta —la reinstauración— que la evidencia no resuelve.",
     ],
     chart: {
@@ -89,6 +90,7 @@ export const SINTESIS: SintesisItem[] = [
       "sdel-adp-2026-canaries-dashboard",
       "bonney-btos-2026-microstructure",
       "budgetlab-yale-2026-sdid",
+      "baldwin-2026-obs-booming",
     ],
     lentes: ["Tareas", "Empírico"],
   },
@@ -286,7 +288,7 @@ export const SINTESIS: SintesisItem[] = [
     verdict: "El puente clave —exposición → empleo neto— no existe validado. La dispersión y los puentes ausentes SON el producto.",
     answer: [
       "El hueco mayor: no existe una función validada que lleve de «la IA puede hacer esta tarea» a «se pierden o se crean estos empleos netos». Es el puente ausente central del mapa. La exposición se mide bien (Eloundou, Felten, Webb); el empleo neto que resulta, no — porque faltan la adopción real, las tareas nuevas y la respuesta de los salarios.",
-      "La evidencia realizada que sí existe es temprana y correlacional: los propios autores del estudio de ADP advierten que no es identificación causal limpia — y 2026 lo confirmó por la vía dura: ni siquiera el golpe joven que sí se ve tiene firma resuelta (IA, remoto y ciclo compiten por el mismo patrón, y la exposición ni siquiera predice bien la adopción real). La reinstauración para la IA no está medida. σ está en disputa. φ está informado, no fijado. Cada una de esas piezas es un supuesto rotulado, no un dato cerrado.",
+      "La evidencia realizada que sí existe es temprana y correlacional: los propios autores del estudio de ADP advierten que no es identificación causal limpia — y 2026 lo confirmó por la vía dura: ni siquiera el golpe joven que sí se ve tiene firma resuelta (IA, remoto y ciclo compiten por el mismo patrón, y la exposición ni siquiera predice bien la adopción real). La reinstauración para la IA no está medida. σ está en disputa. φ está informado, no fijado. Cada una de esas piezas es un supuesto rotulado, no un dato cerrado. Y hay un canal entero que ninguna de estas medidas toca: el internacional. Si la IA abarata coordinar trabajo a distancia más rápido de lo que abarata reemplazarlo, parte del empleo que se pierde localmente no se automatiza — se muda; las series de comercio de servicios, que hoy crecen en las nueve economías offshore principales, registran el flujo pero no separan una cosa de la otra, y ninguna medida de exposición ocupacional incluye la transabilidad.",
       "Por eso el producto honesto de todo esto no es un pronóstico: es el RANGO y los puentes que faltan. Mostrar dónde se acaba el conocimiento es la mitad del trabajo. Y la pregunta abierta más nueva (2026): si el primer empleo era el mecanismo con que la economía producía expertos —aprender haciendo, con mentoría al lado— y ese peldaño está subiendo, ¿qué lo reemplaza? La teoría ya formalizó qué se juega ahí (una trampa de capital humano, si el canal de aprendizaje se rompe); la medición todavía no empieza.",
     ],
     cites: [

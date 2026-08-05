@@ -9,7 +9,7 @@ publico: false
 
 > Dossier de investigación — **semilla, ronda 1, auditada**. Material de base para la plataforma interactiva y para escritura. Generado desde `datos/mapa.json`; **no editar a mano** — regenerar con `datos/generar-dossier.py`.
 
-**28 hipótesis · 89 estudios · 58 dimensiones · 35 conversiones · 181 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
+**29 hipótesis · 90 estudios · 59 dimensiones · 35 conversiones · 188 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
 
 ## La tesis: por qué esto no se lee de un titular
 
@@ -222,9 +222,14 @@ Añadir generación eléctrica firme y empaquetado avanzado de chips toma años:
 
 El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y replica entre datasets, pero su ATRIBUCIÓN a la IA está en disputa: la exposición a GenAI correlaciona fuerte con la exposición al trabajo remoto (otro shock post-pandemia) y las ocupaciones expuestas tienen una ciclicidad distinta, así que el mismo patrón es compatible con al menos tres causas (IA, remoto, ciclo macro) que los datos existentes no separan. Es la pregunta de identificación central del debate 2026.
 
+### La IA expande el offshoring en vez de repatriarlo (telemigración)
+`hyp-ia-expande-telemigracion`
+
+La IA generativa abarata y estandariza justo lo que hace transable un servicio —traducir, resumir, documentar, controlar calidad a distancia—, así que su primer efecto sobre el trabajo remoto internacional es AMPLIARLO, no eliminarlo: baja el costo de coordinar a un trabajador barato y lejano por debajo de lo que baja el costo de reemplazarlo por una máquina. Bajo esta hipótesis, parte del daño al empleo local que se atribuye a la IA es arbitraje laboral internacional habilitado por la IA, y el margen donde primero se ve no es el desempleo doméstico sino el comercio de servicios. Corolario incómodo: el shock 'remoto' y el shock 'IA' de la disputa de atribución entry-level no son rivales, son el mismo shock en dos monedas.
+
 ## Capa de medición: dimensiones y conversiones
 
-58 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
+59 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
 
 ### Ausentes — no hay puente (es un hallazgo, no se fabrica) — 8
 
@@ -378,6 +383,7 @@ El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y r
 - **Autonomía de la IA** (`dim-autonomy`): Grado en que la IA toma decisiones sin intervención humana, escala ordinal 1-5 (Anthropic ~3.5). Unidad: escala 1-5.
 - **El factor fijo captura la renta (resultado teórico)** (`dim-captura-renta-factor-fijo`): El resultado de que, cuando los demás factores se vuelven reproducibles/abundantes (la IA convierte la inteligencia y luego el trabajo en factores reproducibles), el factor que queda fijo o escaso captura una tajada creciente —en el límite, toda— de la renta. Formaliza '¿quién hereda el cuello cuando la inteligencia es abundante?'. Condicionado a la complementariedad (σ<1). Unidad: tajada del ingreso (0–1).
 - **Modo de colaboración (augment vs automate)** (`dim-collaboration-mode`): Clasificación de cada interacción humano-IA en augmentation (ida y vuelta) vs automation (delegación de tarea completa). Anthropic 52-57% augment; ILO/IMF usan variantes. NO es empleo: una tarea 'automatizada' en una conversación no implica un puesto eliminado. Unidad: % de conversaciones/tareas.
+- **Comercio de servicios offshore (BPO/back-office): exportaciones como termómetro del desplazamiento** (`dim-comercio-servicios-offshore`): 
 - **La energía como cuello físico de la IA** (`dim-cuello-energetico`): Demanda eléctrica de los datacenters (nivel, crecimiento, concentración geográfica) frente a la capacidad del sistema de entregarla. Mide si la energía se vuelve la restricción de ritmo y lugar de la IA. Caveat: a escala global los datacenters son un actor menor del crecimiento eléctrico — la escasez es local/temporal, no una pared malthusiana. Unidad: TWh, %/año, % del consumo.
 - **Elasticidad de demanda (la bisagra empleo↑/↓)** (`dim-demand-elasticity`): Cuánto crece la demanda de un bien cuando su precio cae. Decide el signo del efecto de automatizar una tarea: si la demanda es elástica (software, Jevons) el bien más barato se compra mucho más y el empleo del resto de tareas SUBE; si se sacia (comida, petróleo, insulina) la demanda no responde y el empleo CAE. Imas: 'no tenemos datos' sobre estas elasticidades — la pieza que más falta. Unidad: elasticidad / cualitativo.
 - **Rezago de difusión** (`dim-diffusion-lag`): Tiempo entre disponibilidad/breakthrough inicial de una tecnología y la fecha en que alcanza un umbral de difusión (p.ej. 50%) o muestra efectos agregados medibles (electrificación ~2 décadas a 50%, ~4 décadas al impacto en productividad). Magnitud TEMPORAL. Unidad: años.
@@ -1478,6 +1484,22 @@ El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y r
   *dim:* dim-perception-gap · *horizonte:*  · *ámbito:* /
 
   *engancha:* `confirma` Brecha de percepción (auto-reporte sobreestima el efecto medido)
+
+### Richard Baldwin (2026)
+`baldwin-2026-obs-booming` · Substack 'Factful Friday' (rbaldwin.substack.com) + LinkedIn Pulse, 31-jul-2026. Baldwin es profesor de economía internacional en IMD (Lausana) y autor de 'The Globotics Upheaval' (2019). · [fuente](https://rbaldwin.substack.com/p/the-jobs-ai-was-supposed-to-eliminate)  ⚠ **GREY LIT de autor de primer nivel, no revisada por pares ni working paper: es una columna con gráficos propios sobre estadísticas oficiales. Datos: WTO quarterly/monthly commercial services statistics, línea 'other business services', sumas móviles de 4 trimestres (BoP bruta, partner World) indexadas a Q4-2022=100, 9 economías (India, RU, EE.UU., Alemania, Singapur, Francia, China, Bélgica, Filipinas), con RBI BoP para el trimestre indio más reciente; excluye Irlanda, Países Bajos y Luxemburgo por distorsiones fiscales. TRES CAVEATS QUE PESAN. (1) ⚠ MAGNITUD NO RECONCILIADA: su cifra de India (185 mil millones USD de 'other business services' en 2025) no calza con la fuente oficial india — el gobierno reporta para FY2025-26 exportaciones de servicios por 421,3 mil millones, de los cuales 206,6 en 'telecommunications, computer and information services' y 124,2 en 'business services' (PIB/Ministerio de Comercio, sobre datos RBI). No pude consultar stats.wto.org directamente para cerrar la brecha; puede ser diferencia de frontera entre la OBS del WTO y la 'business services' del RBI, o año calendario vs fiscal. El ARGUMENTO no depende del nivel (se sostiene sobre tasas y sobre 'ninguna de las nueve se contrae'), pero la cifra no se debe citar sin este asterisco. (2) LÍMITE CONCEPTUAL: 'other business services' EXCLUYE computación e información, que es ~49% de las exportaciones de servicios de India y donde vive el grueso del trabajo de software; el artículo argumenta sobre empleos que incluyen programación con una serie que deja fuera el software. (3) MIDE FACTURACIÓN, NO EMPLEO — el propio autor lo dice y da el contraejemplo (TCS). Sesgo de encuadre a declarar: Baldwin es el autor de la tesis de la telemigración; el resultado le confirma su marco. Crítica publicada (M. Nunes, Substack, sin datos nuevos): la categoría mezcla consultoría/legal/ingeniería con trabajo rutinario y podría estar ocultando un vaciamiento del medio; los contratos de outsourcing plurianuales generan inercia; la tendencia base 2015-2022 incluye la pandemia; y la aceleración es de solo 1,6pp.**
+
+- **India: 121 → 185 mil millones USD (2022 → 2025) ⚠ magnitud sin reconciliar** — Exportaciones indias de 'other business services' (WTO), de 2022 (año del lanzamiento de ChatGPT) a 2025. Es la cifra ancla del artículo y la que no cuadra contra la fuente oficial india (ver reliability_note): tratarla como orden de magnitud, no como dato citable.
+  *dim:* dim-comercio-servicios-offshore · *horizonte:*  · *ámbito:* /
+- **15,1%/año post-ChatGPT vs 13,5%/año antes (+1,6pp)** — Crecimiento anual compuesto de las exportaciones indias de OBS: 2022-2025 contra la tendencia log-lineal ajustada sobre 2015-2022. El artículo reporta además que a marzo 2026 India va ~27% por encima de esa tendencia pre-IA. La aceleración es real pero modesta, y la base incluye el salto pandémico de digitalización.
+  *dim:* dim-comercio-servicios-offshore · *horizonte:*  · *ámbito:* /
+- **nueve de nueve creciendo (Q4-2022 = 100): India 153 · Francia y Alemania 139 · China 126 · EE.UU. 123 · Filipinas 120** — Índices a los últimos datos disponibles (mayo 2026 para EE.UU./China/Francia, abril para Alemania, marzo para Filipinas). Ninguna de las nueve economías del panel muestra contracción 42 meses después de ChatGPT. Es el hallazgo central y el más robusto del artículo: no depende del nivel absoluto de ninguna serie.
+  *dim:* dim-comercio-servicios-offshore · *horizonte:*  · *ámbito:* /
+- **Filipinas +3,2% interanual — el más bajo del panel** — Interanual a marzo 2026, contra +10,9% de China, +9,6% de Alemania, +8,9% de Francia y +4,7% de EE.UU. Filipinas es la economía del panel más concentrada en centros de contacto por voz, lo más directamente sustituible por IA conversacional. El artículo no subraya el contraste; es la señal más parecida a desplazamiento selectivo que hay dentro de sus propios datos, y la lectura de que ahí está el margen que se mueve es una inferencia sobre su gráfico, no una afirmación suya.
+  *dim:* dim-comercio-servicios-offshore · *horizonte:*  · *ámbito:* /
+- **TCS: −12.000 empleos (~2% de la plantilla) con exportaciones creciendo ~17%** — El contraejemplo que el propio autor ofrece: el ingreso por empleado sube, no es que la industria se preserve. Verificado por fuera del artículo: TCS anunció el recorte a fines de julio de 2025 para el año fiscal 2026 (~12.000, 2% de la dotación global, concentrado en grados medios y senior) y en enero de 2026 declaró el proceso a mitad de camino. La cifra es correcta; el año que le pone el artículo es el fiscal, no el calendario.
+  *dim:* dim-comercio-servicios-offshore · *horizonte:*  · *ámbito:* /
+
+  *engancha:* `informa` La IA expande el offshoring en vez de repatriarlo (telemigración); `confirma` El potencial está limitado por la adopción y la co-invención; `confirma` Rezago de tecnología de propósito general (GPT); `informa` Exposición no es empleo neto; `informa` La elasticidad de demanda decide si automatizar sube o baja el empleo; `informa` Mucha rotación, neto pequeño e incierto; `informa` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA
 
 ## Auditoría anti-aire
 

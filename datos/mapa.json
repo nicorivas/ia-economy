@@ -265,6 +265,11 @@
       "id": "hyp-entry-level-remoto-o-ciclo",
       "name": "El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA",
       "statement": "El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y replica entre datasets, pero su ATRIBUCIÓN a la IA está en disputa: la exposición a GenAI correlaciona fuerte con la exposición al trabajo remoto (otro shock post-pandemia) y las ocupaciones expuestas tienen una ciclicidad distinta, así que el mismo patrón es compatible con al menos tres causas (IA, remoto, ciclo macro) que los datos existentes no separan. Es la pregunta de identificación central del debate 2026."
+    },
+    {
+      "id": "hyp-ia-expande-telemigracion",
+      "name": "La IA expande el offshoring en vez de repatriarlo (telemigración)",
+      "statement": "La IA generativa abarata y estandariza justo lo que hace transable un servicio —traducir, resumir, documentar, controlar calidad a distancia—, así que su primer efecto sobre el trabajo remoto internacional es AMPLIARLO, no eliminarlo: baja el costo de coordinar a un trabajador barato y lejano por debajo de lo que baja el costo de reemplazarlo por una máquina. Bajo esta hipótesis, parte del daño al empleo local que se atribuye a la IA es arbitraje laboral internacional habilitado por la IA, y el margen donde primero se ve no es el desempleo doméstico sino el comercio de servicios. Corolario incómodo: el shock 'remoto' y el shock 'IA' de la disputa de atribución entry-level no son rivales, son el mismo shock en dos monedas."
     }
   ],
   "dimensions": [
@@ -556,6 +561,10 @@
     {
       "id": "dim-atribucion-entry-level",
       "name": "Atribución del deterioro entry-level (IA vs remoto vs ciclo)"
+    },
+    {
+      "id": "dim-comercio-servicios-offshore",
+      "name": "Comercio de servicios offshore (BPO/back-office): exportaciones como termómetro del desplazamiento"
     }
   ],
   "conversions": [
@@ -3723,6 +3732,43 @@
           "dimension": "dim-perception-gap"
         }
       ]
+    },
+    {
+      "id": "baldwin-2026-obs-booming",
+      "authors": "Richard Baldwin",
+      "year": 2026,
+      "venue": "Substack 'Factful Friday' (rbaldwin.substack.com) + LinkedIn Pulse, 31-jul-2026. Baldwin es profesor de economía internacional en IMD (Lausana) y autor de 'The Globotics Upheaval' (2019).",
+      "url": "https://rbaldwin.substack.com/p/the-jobs-ai-was-supposed-to-eliminate",
+      "source_type": "essay",
+      "accessed": "2026-08-04",
+      "reliability_note": "GREY LIT de autor de primer nivel, no revisada por pares ni working paper: es una columna con gráficos propios sobre estadísticas oficiales. Datos: WTO quarterly/monthly commercial services statistics, línea 'other business services', sumas móviles de 4 trimestres (BoP bruta, partner World) indexadas a Q4-2022=100, 9 economías (India, RU, EE.UU., Alemania, Singapur, Francia, China, Bélgica, Filipinas), con RBI BoP para el trimestre indio más reciente; excluye Irlanda, Países Bajos y Luxemburgo por distorsiones fiscales. TRES CAVEATS QUE PESAN. (1) ⚠ MAGNITUD NO RECONCILIADA: su cifra de India (185 mil millones USD de 'other business services' en 2025) no calza con la fuente oficial india — el gobierno reporta para FY2025-26 exportaciones de servicios por 421,3 mil millones, de los cuales 206,6 en 'telecommunications, computer and information services' y 124,2 en 'business services' (PIB/Ministerio de Comercio, sobre datos RBI). No pude consultar stats.wto.org directamente para cerrar la brecha; puede ser diferencia de frontera entre la OBS del WTO y la 'business services' del RBI, o año calendario vs fiscal. El ARGUMENTO no depende del nivel (se sostiene sobre tasas y sobre 'ninguna de las nueve se contrae'), pero la cifra no se debe citar sin este asterisco. (2) LÍMITE CONCEPTUAL: 'other business services' EXCLUYE computación e información, que es ~49% de las exportaciones de servicios de India y donde vive el grueso del trabajo de software; el artículo argumenta sobre empleos que incluyen programación con una serie que deja fuera el software. (3) MIDE FACTURACIÓN, NO EMPLEO — el propio autor lo dice y da el contraejemplo (TCS). Sesgo de encuadre a declarar: Baldwin es el autor de la tesis de la telemigración; el resultado le confirma su marco. Crítica publicada (M. Nunes, Substack, sin datos nuevos): la categoría mezcla consultoría/legal/ingeniería con trabajo rutinario y podría estar ocultando un vaciamiento del medio; los contratos de outsourcing plurianuales generan inercia; la tendencia base 2015-2022 incluye la pandemia; y la aceleración es de solo 1,6pp.",
+      "estimates": [
+        {
+          "value": "India: 121 → 185 mil millones USD (2022 → 2025) ⚠ magnitud sin reconciliar",
+          "metric": "Exportaciones indias de 'other business services' (WTO), de 2022 (año del lanzamiento de ChatGPT) a 2025. Es la cifra ancla del artículo y la que no cuadra contra la fuente oficial india (ver reliability_note): tratarla como orden de magnitud, no como dato citable.",
+          "dimension": "dim-comercio-servicios-offshore"
+        },
+        {
+          "value": "15,1%/año post-ChatGPT vs 13,5%/año antes (+1,6pp)",
+          "metric": "Crecimiento anual compuesto de las exportaciones indias de OBS: 2022-2025 contra la tendencia log-lineal ajustada sobre 2015-2022. El artículo reporta además que a marzo 2026 India va ~27% por encima de esa tendencia pre-IA. La aceleración es real pero modesta, y la base incluye el salto pandémico de digitalización.",
+          "dimension": "dim-comercio-servicios-offshore"
+        },
+        {
+          "value": "nueve de nueve creciendo (Q4-2022 = 100): India 153 · Francia y Alemania 139 · China 126 · EE.UU. 123 · Filipinas 120",
+          "metric": "Índices a los últimos datos disponibles (mayo 2026 para EE.UU./China/Francia, abril para Alemania, marzo para Filipinas). Ninguna de las nueve economías del panel muestra contracción 42 meses después de ChatGPT. Es el hallazgo central y el más robusto del artículo: no depende del nivel absoluto de ninguna serie.",
+          "dimension": "dim-comercio-servicios-offshore"
+        },
+        {
+          "value": "Filipinas +3,2% interanual — el más bajo del panel",
+          "metric": "Interanual a marzo 2026, contra +10,9% de China, +9,6% de Alemania, +8,9% de Francia y +4,7% de EE.UU. Filipinas es la economía del panel más concentrada en centros de contacto por voz, lo más directamente sustituible por IA conversacional. El artículo no subraya el contraste; es la señal más parecida a desplazamiento selectivo que hay dentro de sus propios datos, y la lectura de que ahí está el margen que se mueve es una inferencia sobre su gráfico, no una afirmación suya.",
+          "dimension": "dim-comercio-servicios-offshore"
+        },
+        {
+          "value": "TCS: −12.000 empleos (~2% de la plantilla) con exportaciones creciendo ~17%",
+          "metric": "El contraejemplo que el propio autor ofrece: el ingreso por empleado sube, no es que la industria se preserve. Verificado por fuera del artículo: TCS anunció el recorte a fines de julio de 2025 para el año fiscal 2026 (~12.000, 2% de la dotación global, concentrado en grados medios y senior) y en enero de 2026 declaró el proceso a mitad de camino. La cifra es correcta; el año que le pone el artículo es el fiscal, no el calendario.",
+          "dimension": "dim-comercio-servicios-offshore"
+        }
+      ]
     }
   ],
   "study_hypothesis_edges": [
@@ -4811,6 +4857,48 @@
       "hypothesis": "hyp-perception-gap",
       "type": "confirma",
       "why": "El propio reporte reconoce que 'reported exposure systematically exceeds observed exposure' — la exposición auto-reportada excede sistemáticamente la medida en uso real, en el dataset más grande que cruza ambas (encuesta ~9.700 usuarios linkeada a su telemetría). Y añade estructura: la brecha de percepción tiene gradiente de experiencia (~10pp entre primer año y 15+ años) y las expectativas de pérdida de empleo se concentran en los colegas junior."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-ia-expande-telemigracion",
+      "type": "informa",
+      "why": "Es el estudio que planta la hipótesis en el mapa, y la sostiene por el lado débil: muestra que el offshoring NO se está repatriando ni contrayendo (nueve de nueve creciendo, India acelerando), que es condición necesaria de la tesis pero no prueba el mecanismo. Para confirmarla haría falta evidencia de que la IA baja el costo de coordinación transfronteriza más rápido que el de sustitución —el propio Baldwin lo propone como mecanismo, no lo mide—. Informa, no confirma."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "confirma",
+      "why": "42 meses después del lanzamiento de ChatGPT, el sector señalado como primera víctima factura más que nunca. Es exactamente el patrón de impacto realizado muy por detrás del potencial técnico, con el cuello en la reorganización: los flujos de trabajo, los contratos plurianuales y las estructuras de proveedor no se rehacen en trimestres. El propio artículo lo nombra como su tercer mecanismo (lentitud organizacional)."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-gpt-lag",
+      "type": "confirma",
+      "why": "Evidencia macro directa del rezago de tecnología de propósito general en el margen donde el desplazamiento debería verse primero y más barato (un contrato, no un despido). El artículo enmarca su propio resultado en esa literatura: los rezagos entre capacidad e impacto laboral se miden en décadas, no en trimestres, y declara que 42 meses no prueban que nunca ocurrirá."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Suma un caso masivo del corte central del mapa —exposición técnica alta y actividad creciendo— pero por una vía que NO mide empleo: son exportaciones, es decir facturación. El puente sigue ausente por partida doble: de exposición a facturación no se sigue empleo, y el propio contraejemplo del artículo (TCS recorta 12.000 mientras las exportaciones suben) muestra que la facturación puede crecer con la dotación cayendo. Informa la espina; no la mueve."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-elasticidad-decide-empleo",
+      "type": "informa",
+      "why": "El segundo mecanismo del artículo es el knob de elasticidad de demanda que ya corre en la lente Tareas: si abaratar el servicio expande el menú (las firmas compran análisis que antes salteaban), la productividad crea demanda en vez de destruir puestos. El artículo es consistente con demanda elástica en servicios empresariales, pero no la estima: no separa expansión del menú de crecimiento del PIB ni de sustitución de proveedores locales."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "informa",
+      "why": "El par TCS/exportaciones es la textura de reorganización bruta grande con neto sectorial pequeño, vista desde el lado de la empresa: el sector crece en ventas mientras recorta en grados medios y senior. Lo que se reasigna aquí no es solo entre ocupaciones sino entre niveles de jerarquía y entre países."
+    },
+    {
+      "study_id": "baldwin-2026-obs-booming",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "informa",
+      "why": "Toca la disputa de atribución de la ronda 3 por el lado que faltaba. Si el deterioro entry-level en EE.UU. se explica por exposición al trabajo remoto (Lambert-Schindler, Emanuel et al.), entonces las exportaciones de servicios de las economías offshore son el otro extremo de ese mismo canal: parte del trabajo remotizable no se automatizó, se mudó. Eso no arbitra la disputa —Baldwin no mide empleo de EE.UU. ni cruza sus series con exposición ocupacional—, pero reencuadra el eje: 'remoto' e 'IA' pueden ser el mismo shock medido en dos monedas, que es la lectura de variable latente que ya está en la Síntesis."
     }
   ],
   "findings": [
