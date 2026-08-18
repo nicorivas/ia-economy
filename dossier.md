@@ -9,7 +9,7 @@ publico: false
 
 > Dossier de investigación — **semilla, ronda 1, auditada**. Material de base para la plataforma interactiva y para escritura. Generado desde `datos/mapa.json`; **no editar a mano** — regenerar con `datos/generar-dossier.py`.
 
-**29 hipótesis · 90 estudios · 59 dimensiones · 35 conversiones · 188 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
+**34 hipótesis · 100 estudios · 64 dimensiones · 35 conversiones · 209 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
 
 ## La tesis: por qué esto no se lee de un titular
 
@@ -227,9 +227,34 @@ El patrón descriptivo del golpe a jóvenes en ocupaciones expuestas es real y r
 
 La IA generativa abarata y estandariza justo lo que hace transable un servicio —traducir, resumir, documentar, controlar calidad a distancia—, así que su primer efecto sobre el trabajo remoto internacional es AMPLIARLO, no eliminarlo: baja el costo de coordinar a un trabajador barato y lejano por debajo de lo que baja el costo de reemplazarlo por una máquina. Bajo esta hipótesis, parte del daño al empleo local que se atribuye a la IA es arbitraje laboral internacional habilitado por la IA, y el margen donde primero se ve no es el desempleo doméstico sino el comercio de servicios. Corolario incómodo: el shock 'remoto' y el shock 'IA' de la disputa de atribución entry-level no son rivales, son el mismo shock en dos monedas.
 
+### La base gravable se erosiona con la participación del trabajo
+`hyp-base-gravable-erosiona-con-participacion`
+
+La capacidad de un Estado para repartir no es una decisión política independiente del shock: es una función de la participación del trabajo, porque la recaudación descansa sobre la nómina. En EE.UU., el 84% de los ingresos federales de 2024 vino de impuesto a la renta personal más contribuciones sociales, y solo el 11% de las utilidades corporativas. Bajo esta hipótesis, si la IA reduce la tajada del trabajo, la recaudación cae ANTES de que nadie decida nada, y la fuente que tendría que reemplazarla es hoy ocho veces menor. El corolario incómodo: el mismo shock que crea la necesidad de redistribuir destruye el instrumento para hacerlo, y el momento de máxima demanda de transferencias coincide con el de mínima capacidad de financiarlas.
+
+### El sistema tributario subsidia la automatización (no solo la compensa después)
+`hyp-sistema-tributario-subsidia-automatizacion`
+
+El Estado no entra al problema al final, repartiendo: ya está adentro al principio, inclinando la cancha. El código tributario de EE.UU. grava el trabajo a una tasa efectiva en torno a 25,5% y el equipo y software —el capital que automatiza— a cerca del 10% en la década de 2010, que cayó a ~5% tras la reforma de 2017. Esa brecha es un subsidio implícito a sustituir personas por máquinas, y empuja la automatización más allá del nivel socialmente eficiente, incluyendo tareas donde la máquina apenas mejora la productividad pero sí desplaza al trabajador. Bajo esta hipótesis, parte del desplazamiento que se atribuye a la tecnología es política fiscal, y la primera palanca del Estado no es un impuesto nuevo sino dejar de pagar por el resultado que después lamenta.
+
+### El impuesto al robot es el instrumento equivocado
+`hyp-impuesto-robot-instrumento-equivocado`
+
+El debate público pide gravar a los robots; la literatura de tributación óptima converge, desde tres modelos distintos, en que ese no es el instrumento. Guerreiro-Rebelo-Teles: es óptimo gravarlos solo mientras siga activa la generación de trabajadores rutinarios que ya no puede recolocarse — cuando se jubila, el impuesto óptimo es cero. Costinot-Werning: la magnitud del impuesto óptimo DECRECE a medida que la automatización se profundiza y la desigualdad crece, justo al revés de la intuición. Thuemmel: en el modelo calibrado, casi todas las ganancias de bienestar vienen de ajustar el impuesto a la renta (1.000–4.000 USD per cápita al año), mientras que gravar robots distinto del resto del equipo capital aporta ganancias cercanas a cero. Bajo esta hipótesis, el instrumento correcto es el impuesto a la renta y la corrección del sesgo pro-capital; el impuesto al robot es una respuesta simbólica a un problema real.
+
+### Lo que se puede gravar es lo que no se puede mover
+`hyp-fuga-limita-gravar-capital`
+
+La capacidad fiscal sobre el capital está acotada por la movilidad de la base, no por la voluntad política. Cerca del 36-40% de los beneficios multinacionales se declaran en paraísos fiscales, y el capital de la IA es del tipo más móvil que existe: intangible, sin arraigo físico, con la propiedad intelectual reubicable por contrato. La primera prueba coordinada a escala mundial —el impuesto mínimo global del 15%— dio menos de lo prometido: la propia OCDE recortó su estimación de recaudación adicional desde 6,5-8,1% del impuesto corporativo global (evaluación de enero de 2024) a 3,2-5,4% anual (evaluación de julio de 2026). Bajo esta hipótesis el eje que decide quién captura la renta decide también a quién se le puede cobrar: lo inmóvil —energía, tierra, redes físicas, presencia local— es gravable; el beneficio de intangibles se fuga. Es el mismo principio de escasez visto desde el fisco, no una historia aparte.
+
+### Repartir no restaura el ingreso laboral (y el diseño decide cuánto se pierde)
+`hyp-transferencia-no-restaura-ingreso`
+
+Una transferencia no reconstituye el ingreso que el trabajo dejó de generar: parte de ella se compensa con menos trabajo propio. En el mayor experimento aleatorizado de renta garantizada, 12.000 USD al año durante tres años redujeron el ingreso individual propio en unos 1.800 USD al año y la participación laboral en 4,1 puntos porcentuales, sin mejorar la calidad del empleo. Pero el diseño manda: el dividendo universal y permanente de Alaska, pagado a todos y desde 1982, no redujo el empleo agregado y aumentó el trabajo a tiempo parcial en 1,8 puntos. La diferencia entre focalizado-temporal y universal-permanente —y el efecto de equilibrio general de gastar el dinero en la economía local— cambia el signo del resultado. Bajo esta hipótesis, la pregunta útil no es «¿UBI sí o no?» sino cuánto ingreso se recupera por cada punto transferido, y bajo qué diseño.
+
 ## Capa de medición: dimensiones y conversiones
 
-59 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
+64 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
 
 ### Ausentes — no hay puente (es un hallazgo, no se fabrica) — 8
 
@@ -384,18 +409,21 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
 - **El factor fijo captura la renta (resultado teórico)** (`dim-captura-renta-factor-fijo`): El resultado de que, cuando los demás factores se vuelven reproducibles/abundantes (la IA convierte la inteligencia y luego el trabajo en factores reproducibles), el factor que queda fijo o escaso captura una tajada creciente —en el límite, toda— de la renta. Formaliza '¿quién hereda el cuello cuando la inteligencia es abundante?'. Condicionado a la complementariedad (σ<1). Unidad: tajada del ingreso (0–1).
 - **Modo de colaboración (augment vs automate)** (`dim-collaboration-mode`): Clasificación de cada interacción humano-IA en augmentation (ida y vuelta) vs automation (delegación de tarea completa). Anthropic 52-57% augment; ILO/IMF usan variantes. NO es empleo: una tarea 'automatizada' en una conversación no implica un puesto eliminado. Unidad: % de conversaciones/tareas.
 - **Comercio de servicios offshore (BPO/back-office): exportaciones como termómetro del desplazamiento** (`dim-comercio-servicios-offshore`): 
+- **Composición de la base gravable: qué fracción de la recaudación descansa sobre el trabajo** (`dim-composicion-base-gravable`): Participación de cada fuente en los ingresos fiscales (impuesto a la renta personal, contribuciones sociales/nómina, impuesto corporativo, otros). Mide de qué depende la caja del Estado y, por lo tanto, cuánto de ella está expuesta a una caída de la participación del trabajo. Caveat: el impuesto a la renta personal no es puramente laboral — grava también dividendos, ganancias de capital, intereses y rentas de sociedades transparentes, así que la fracción estrictamente laboral es algo menor que la suma personal+nómina.
 - **La energía como cuello físico de la IA** (`dim-cuello-energetico`): Demanda eléctrica de los datacenters (nivel, crecimiento, concentración geográfica) frente a la capacidad del sistema de entregarla. Mide si la energía se vuelve la restricción de ritmo y lugar de la IA. Caveat: a escala global los datacenters son un actor menor del crecimiento eléctrico — la escasez es local/temporal, no una pared malthusiana. Unidad: TWh, %/año, % del consumo.
 - **Elasticidad de demanda (la bisagra empleo↑/↓)** (`dim-demand-elasticity`): Cuánto crece la demanda de un bien cuando su precio cae. Decide el signo del efecto de automatizar una tarea: si la demanda es elástica (software, Jevons) el bien más barato se compra mucho más y el empleo del resto de tareas SUBE; si se sacia (comida, petróleo, insulina) la demanda no responde y el empleo CAE. Imas: 'no tenemos datos' sobre estas elasticidades — la pieza que más falta. Unidad: elasticidad / cualitativo.
 - **Rezago de difusión** (`dim-diffusion-lag`): Tiempo entre disponibilidad/breakthrough inicial de una tecnología y la fecha en que alcanza un umbral de difusión (p.ej. 50%) o muestra efectos agregados medibles (electrificación ~2 décadas a 50%, ~4 décadas al impacto en productividad). Magnitud TEMPORAL. Unidad: años.
 - **Share de difusión (capacidad/adoptantes instalada)** (`dim-diffusion-share`): Fracción de una base de capital o de adoptantes que incorpora la nueva tecnología (David: <5% del accionamiento mecánico electrificado en 1899; 3% de hogares con luz eléctrica). Penetración tecnológica, no efectos laborales. Unidad: % de capacidad o de adoptantes.
 - **Efecto de desplazamiento** (`dim-displacement-effect`): Componente del giro de contenido de tareas por el cual el capital toma tareas antes hechas por trabajo, reduciendo demanda de trabajo. Negativo por construcción. Unidad: %/año o % acumulado.
 - **Valor económico de casos de uso (dólares)** (`dim-economic-value`): Valor económico anual potencial de casos de uso de IA generativa (McKinsey $2.6-4.4T/año, 63 casos). NO es conteo de empleo. Unidad: USD/año.
+- **Fuga de la base gravable: fracción del beneficio que se desplaza o desaparece al gravarlo** (`dim-elasticidad-fuga-base`): Cuánta base imponible se traslada a jurisdicciones de baja tributación, o deja de declararse, en respuesta a un diferencial de tasas. Se mide por la fracción de beneficios multinacionales declarada en paraísos y por la brecha entre la recaudación proyectada de una reforma y la efectivamente obtenida.
 - **Elasticidad de sustitución capital–trabajo (σ)** (`dim-elasticidad-sustitucion`): Cuán fácilmente la producción reemplaza trabajo por capital cuando cambian sus precios relativos. σ>1 = sustitutos brutos (el capital barato desplaza trabajo y baja su tajada); σ<1 = complementos (el trabajo se vuelve el factor escaso y su tajada sube); σ=1 = Cobb-Douglas (tajadas fijas). Es el parámetro que decide el signo del efecto de la IA sobre la participación del trabajo en el modelo agregado. Unidad: adimensional.
 - **Cambio en razón empleo-población** (`dim-emp-pop-ratio-change`): Cambio en la razón empleo-población, en pp, atribuible a una unidad de exposición tecnológica (p.ej. por robot/1000 trabajadores). Resultado de empleo NETO realizado a una geografía. Unidad: pp.
 - **Empleo: separaciones / rotación de incumbentes** (`dim-employment-separations`): Continuidad laboral a nivel trabajador: atrición, retención, separaciones (Brynjolfsson: atrición cae, por retención de novatos). Mide salidas de incumbentes, NO creación/destrucción neta de mercado. Unidad: dirección o % de atrición.
 - **Cambio de participación en el empleo** (`dim-employment-share-change`): Cambio en la participación de una ocupación/grupo en el total de horas o empleo, en pp o % proporcional, sobre un periodo y geografía. RELATIVO y suma-cero entre ocupaciones; NO es conteo neto de puestos ni resultado a nivel de trabajador. (Goos-Manning-Salomons, Autor-Dorn.) Unidad: pp o % del share.
 - **Gradiente exposición-por-salario/habilidad** (`dim-exposure-skill-gradient`): Signo y forma de la correlación entre una medida de exposición/susceptibilidad y el salario o educación ocupacional (positivo = alto salario más expuesto, Webb/Eloundou; negativo = bajo salario más susceptible, Frey-Osborne). Unidad: cualitativo/signo o coeficiente.
 - **Tasa de adopción de IA por firmas** (`dim-firm-adoption`): Share de empresas que han desplegado IA (OECD 2-23% en la UE). Medida de difusión que condiciona si cualquier potencial (exposición/horas) se realiza. Unidad: % de empresas.
+- **Impuesto óptimo a la automatización: signo, magnitud y trayectoria** (`dim-impuesto-optimo-automatizacion`): Tasa de impuesto (o subsidio) sobre el capital que automatiza que maximiza el bienestar en modelos de tributación óptima, y cómo cambia esa tasa a medida que cae el precio de la máquina y se profundiza la automatización. Incluye la comparación de su ganancia de bienestar contra la de ajustar el impuesto a la renta.
 - **Tipo de interacción económica (Asking/Doing/Expressing)** (`dim-interaction-type`): Rúbrica OpenAI: Asking = soporte a decisión (no produce output), Doing = produce output enchufable a un proceso, Expressing = sin contenido económico. 49/40/11%. Proxy del canal de valor. Correlacionado pero no redundante con augment/automate. Unidad: % de mensajes.
 - **Empleos por robot** (`dim-jobs-per-robot`): Número de trabajadores cuyo empleo se pierde por un robot industrial adicional, en un equilibrio definido (local cerrado -6.2, GE con comercio -5.6, cota inferior -3.0). Unidad: trabajadores/robot.
 - **Intensidad laboral por establecimiento** (`dim-labor-intensity-establishment`): Número de trabajadores de un tipo requeridos para operar un establecimiento (Bessen: cajeros por sucursal ~21→13). Medida de desplazamiento dentro-de-establecimiento; puede caer aunque el empleo ocupacional total suba si crece el número de establecimientos. Unidad: trabajadores/establecimiento.
@@ -420,7 +448,9 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
 - **Demanda laboral realizada (ex-post)** (`dim-realized-labor-demand`): Cambio observado ex-post en empleo/contratación atribuible a la IA hasta la fecha (OECD: 'limitado hasta ahora'). La única dimensión de resultado directamente medido entre los reportes institucionales; el resto es potencial o pronóstico. Unidad: direccional o % de cambio.
 - **Efecto de reinstauración** (`dim-reinstatement-effect`): Componente por el cual nuevas tareas intensivas en trabajo restauran trabajo en la producción, elevando demanda de trabajo. Positivo por construcción. Unidad: %/año o % acumulado.
 - **Valor relacional (el humano-en-el-loop como parte del valor)** (`dim-relational-value`): Bienes/servicios donde el hecho de que un humano esté en el loop ES parte del valor para el consumidor (no porque el humano sea un insumo reemplazable, sino por una preferencia intrínseca por empatía/conexión/autenticidad). Su tajada sostiene empleo solo si la preferencia es fuerte, amplia y su variedad crece. Unidad: disposición a pagar / cualitativo.
+- **Respuesta de la oferta laboral a una transferencia incondicional** (`dim-respuesta-oferta-laboral-transferencia`): Cambio en participación, horas e ingreso laboral propio provocado por una transferencia de efectivo sin contraprestación. Determina cuánto del ingreso transferido se traduce en ingreso adicional neto para el hogar y cuánto se compensa con menos trabajo. Se distingue por diseño: focalizada y temporal frente a universal y permanente.
 - **Densidad de robots** (`dim-robot-density`): Robots industriales instalados por cada mil trabajadores en un mercado laboral local (zona de commuting). Es densidad de hardware instalado, NO susceptibilidad técnica del contenido del trabajo (exposición). Unidad: robots/1000 trabajadores.
+- **Sesgo tributario capital–trabajo: brecha entre la tasa efectiva sobre el trabajo y sobre el capital que automatiza** (`dim-sesgo-tributario-capital-trabajo`): Diferencia entre la tasa efectiva de impuesto sobre el trabajo y la que recae sobre equipo y software, incorporando depreciación acelerada, tasas corporativas efectivas y tributación de los dueños del capital. Es el precio relativo que el Estado le pone a sustituir una persona por una máquina.
 - **Rotación estructural (bruta)** (`dim-structural-churn`): Rotación bruta = puestos creados MÁS destruidos sobre un horizonte, como share de la fuerza laboral (WEF 22-23%). Distinta del cambio neto; alta rotación es compatible con neto ~cero. Unidad: % de la fuerza laboral.
 - **Elasticidad de sustitución energía ↔ otros factores (σ)** (`dim-sustitucion-energia-factores`): Cuán fácil reemplaza la economía energía/insumos físicos por capital, trabajo o inteligencia cuando cambian sus precios relativos. σ<1 (complementos) = la inteligencia abundante vuelve MÁS valioso el factor físico y su tajada de la renta sube; σ>1 (sustitutos) = la inteligencia lo reemplaza y su tajada cae; σ=1 = tajada fija. Es el parámetro que decide el signo de '¿los átomos capturan la renta?'. Análogo físico de dim-elasticidad-sustitucion. Unidad: adimensional.
 - **Giro del contenido de tareas (desplazamiento vs reinstauración)** (`dim-task-content-shift`): Cambio en la participación de tareas de producción asignadas a trabajo vs capital (Acemoglu-Restrepo 2019), medido como el cambio residual de la participación del trabajo neto del efecto de sustitución de factores. Se descompone en desplazamiento (negativo) y reinstauración (positivo). Unidad: % por año de demanda de trabajo (o acumulado).
@@ -705,7 +735,7 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   *dim:* dim-captura-renta-factor-fijo · *horizonte:* largo plazo · *ámbito:* —/—
   > in the long run, growth will likely be limited by some other irreproducible factor, and all the benefits of technological progress will accrue to that factor
 
-  *engancha:* `confirma` Si son complementos y la oferta es inelástica, los átomos capturan la renta
+  *engancha:* `confirma` Si son complementos y la oferta es inelástica, los átomos capturan la renta; `tensiona` Repartir no restaura el ingreso laboral (y el diseño decide cuánto se pierde); `tensiona` La base gravable se erosiona con la participación del trabajo
 
 ### Philippe Aghion, Benjamin F. Jones & Charles I. Jones (2019)
 `aghion-jones-jones2019` · The Economics of AI (NBER), cap. 9 / NBER WP 23928 · [fuente](https://web.stanford.edu/~chadj/AJJ-AIandGrowth.pdf)  ⚠ **Fuente primaria. Aporta el motor Baumol que conecta σ<1 con el cuello: lo esencial y difícil de mejorar gobierna el crecimiento. Su extensión 'natural laws' apunta explícitamente a la física/termodinámica como restricción última — el mecanismo es agnóstico al tipo de factor, aplica a los átomos. Distinto de jones2025 (ya en el mapa); es el paper de 2019.**
@@ -762,6 +792,30 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   *dim:* dim-elasticidad-sustitucion (σ) · *horizonte:* largo plazo · *ámbito:* EE.UU./economía completa
 
   *engancha:* `tensiona` La IA erosiona la participación del trabajo (si σ>1)
+
+### Daron Acemoglu, Andrea Manera & Pascual Restrepo (2020)
+`acemoglu-manera-restrepo-2020-tax` · Brookings Papers on Economic Activity, Spring 2020 / NBER Working Paper 27052 · [fuente](https://www.nber.org/papers/w27052)  ⚠ **Publicado en BPEA (conferencia con discusión formal) y con working paper NBER. Verificado sobre el PDF primario extraído localmente: abstract y sección de tasas efectivas leídos verbatim. Las tasas efectivas son estimaciones propias de los autores y son MÁS BAJAS que las del CBO (2014) por dos razones que ellos mismos declaran: incorporan la depreciación acelerada (bonus depreciation), que el CBO omite, y usan la tasa corporativa efectiva en vez de la estatutaria. Un lector que compare contra cifras del CBO verá números distintos por esa razón, no por error.**
+
+- **25,5% (referencia); rango 25,5–33,5% según el tratamiento de programas focalizados** — Tasa efectiva de impuesto sobre el trabajo en EE.UU.
+  *dim:* dim-sesgo-tributario-capital-trabajo · *horizonte:* 1981–2018 · *ámbito:* EE.UU./economía completa
+  > Our benchmark effective tax on labor ... hovers around 25.5%.
+- **≈20% en 2000 → ≈10% en la década de 2010 → ≈5% tras la reforma de 2017** — Tasa efectiva sobre el capital que automatiza (equipo y software)
+  *dim:* dim-sesgo-tributario-capital-trabajo · *horizonte:* 2000–2018 · *ámbito:* EE.UU./equipo y software
+  > effective taxes on equipment and software decreased further, to about 5%, following the 2017 tax reform
+- **empleo +4,02%; participación del trabajo +0,78 pp; se restaura el nivel óptimo de automatización** — Efecto de pasar del sistema tributario de la década de 2010 a la tributación óptima de capital y trabajo
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* estado estacionario · *ámbito:* EE.UU./economía completa
+  > Moving from the US tax system in the 2010s to optimal taxation of capital and labor would raise employment by 4.02% and the labor share by 0.78 percentage points
+- **empleo +1,14–1,96%, pero entonces conviene añadir un impuesto a la automatización para bajar su nivel de equilibrio** — Reformas más modestas (si la tributación óptima es inviable)
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* estado estacionario · *ámbito:* EE.UU./economía completa
+  > more modest reforms can still increase employment by 1.14–1.96%, but in this case efficiency can be increased by imposing an additional automation tax
+- **las tareas automatizadas en el margen aportan poca productividad y sí desplazan trabajadores** — Mecanismo: por qué el sesgo produce automatización excesiva
+  *dim:* dim-sesgo-tributario-capital-trabajo · *horizonte:* — · *ámbito:* EE.UU./economía completa
+  > marginal automated tasks do not bring much productivity gains but displace workers, reducing employment below its socially optimal level
+- **≈18,6% del PIB (25,5% × ingreso laboral + 10% × ingreso neto de capital), coincidente con 18,7% observado en NIPA 1981–2018** — Tamaño de la caja que producen esos instrumentos
+  *dim:* dim-composicion-base-gravable · *horizonte:* 1981–2018 · *ámbito:* EE.UU./economía completa
+  > the net tax revenue collected by the government with these instruments is roughly 18.6% of GDP
+
+  *engancha:* `informa` La base gravable se erosiona con la participación del trabajo; `confirma` El sistema tributario subsidia la automatización (no solo la compensa después); `informa` Desplazamiento domina en el periodo reciente (post-1987); `informa` Efecto neto de signo ambiguo (desplazamiento/productividad/reinstauración)
 
 ### Erik Brynjolfsson, Daniel Rock, Chad Syverson (2021)
 `brynjolfsson2021jcurve` · AEJ: Macroeconomics 13(1):333-372 (NBER WP 25148) · [fuente](https://www.nber.org/system/files/working_papers/w25148/w25148.pdf)
@@ -840,6 +894,30 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   > (roughly) exponentially at a rate near 10% per year
 
   *engancha:* `refuta` Si son complementos y la oferta es inelástica, los átomos capturan la renta
+
+### Joao Guerreiro, Sergio Rebelo & Pedro Teles (2022)
+`guerreiro-rebelo-teles-2022-robots` · The Review of Economic Studies 89(1): 279–311 / NBER Working Paper 23806 · [fuente](https://academic.oup.com/restud/article-abstract/89/1/279/6219962)  ⚠ **Revisado por pares en una de las cinco revistas principales. Abstract verificado en la primaria (NBER w23806). El resultado es de un modelo cuantitativo con elección endógena de habilidad calibrado a EE.UU.; su fuerza es la estructura del argumento (el impuesto óptimo es transitorio porque compensa a una cohorte que no puede recolocarse), no una cifra puntual de tasa, que el abstract no reporta.**
+
+- **positivo mientras siga activa la cohorte de trabajadores rutinarios que ya no puede moverse a ocupaciones no rutinarias; cero una vez que se jubila** — Signo y duración del impuesto óptimo a los robots
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* una generación laboral · *ámbito:* EE.UU. (modelo calibrado)/economía completa
+  > it is optimal to tax robots while the current generations of routine workers ... are active in the labor force. Once these workers retire, optimal robot taxes are zero.
+- **una caída sostenida del costo de automatizar puede producir un alza masiva de la desigualdad de ingresos** — Riesgo distributivo bajo el sistema tributario vigente
+  *dim:* dim-sesgo-tributario-capital-trabajo · *horizonte:* décadas · *ámbito:* EE.UU./economía completa
+  > given the current U.S. tax system, a sustained fall in automation costs can lead to a massive rise in income inequality
+
+  *engancha:* `confirma` El sistema tributario subsidia la automatización (no solo la compensa después); `informa` El impuesto al robot es el instrumento equivocado
+
+### Damon Jones & Ioana Marinescu (2022)
+`jones-marinescu-2022-alaska` · American Economic Journal: Economic Policy 14(2): 315–340 · [fuente](https://www.aeaweb.org/articles?id=10.1257/pol.20190299)  ⚠ **Revisado por pares; abstract verificado en la primaria (AEA). No es un experimento: usa control sintético sobre la Current Population Survey, así que la identificación depende de la calidad del contrafactual construido. Es el mejor caso disponible de transferencia UNIVERSAL y PERMANENTE, que es justamente el diseño que el debate sobre IA suele proponer y que los pilotos focalizados no prueban.**
+
+- **sin efecto sobre el empleo agregado; trabajo a tiempo parcial +1,8 pp (+17%)** — Efecto del dividendo universal y permanente de Alaska sobre el empleo
+  *dim:* dim-respuesta-oferta-laboral-transferencia · *horizonte:* desde 1982 · *ámbito:* EE.UU. (Alaska)/población completa del estado
+  > the dividend had no effect on employment and increased part-time work by 1.8 percentage points (17 percent)
+- **efecto de equilibrio general: el efectivo estimula la economía local; los sectores no transables responden con más empleo que los transables** — Mecanismo que explica la ausencia de caída del empleo
+  *dim:* dim-respuesta-oferta-laboral-transferencia · *horizonte:* décadas · *ámbito:* EE.UU. (Alaska)/transables vs no transables
+  > Nontradable sectors have a more positive employment response than tradable sectors
+
+  *engancha:* `tensiona` Repartir no restaura el ingreso laboral (y el diseño decide cuánto se pierde)
 
 ### Tyna Eloundou, Sam Manning, Pamela Mishkin, Daniel Rock (2023)
 `eloundou-2023-gpts` · Science 384(6702):1306-1308 (2024); preprint arXiv:2303.10130 (2023) · [fuente](https://www.science.org/doi/10.1126/science.adj0998)
@@ -971,6 +1049,45 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   > An additional 12 million occupational transitions may be needed by 2030... lower-wage jobs are up to 14 times more likely to need to change occupations
 
   *engancha:* `confirma` Exposición no es empleo neto; `confirma` La IA ensancha (no reduce) la desigualdad; `confirma` Mucha rotación, neto pequeño e incierto
+
+### Arnaud Costinot & Iván Werning (2023)
+`costinot-werning-2023-luddism` · The Review of Economic Studies / NBER Working Paper 25103 ('Robots, Trade, and Luddism: A Sufficient Statistic Approach to Optimal Technology Regulation') · [fuente](https://www.nber.org/papers/w25103)  ⚠ **Revisado por pares. Abstract verificado en la primaria (NBER). Aporta la forma del problema —una fórmula de estadística suficiente que se puede implementar con evidencia sobre el impacto distributivo observado— más que una tasa calibrada. El resultado contraintuitivo (la magnitud del impuesto óptimo decrece a medida que la automatización se profundiza) es comparativa estática del modelo, no una predicción empírica.**
+
+- **estadística suficiente: la evidencia sobre el impacto distributivo de la tecnología entre hogares** — Qué hace falta para fijar el impuesto óptimo a la tecnología
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* — · *ámbito:* general/robots y comercio
+  > sufficient statistics that can be implemented using evidence on the distributional impact of new technologies, such as robots and trade
+- **no cero, pero su magnitud puede DECRECER a medida que la automatización y la globalización se profundizan y la desigualdad aumenta** — Trayectoria de la magnitud del impuesto óptimo
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* largo plazo · *ámbito:* general/robots y comercio
+  > while distributional concerns create a rationale for non-zero taxes on robots and trade, the magnitude of these taxes may decrease as the process of automation and globalization deepens
+
+  *engancha:* `informa` El impuesto al robot es el instrumento equivocado
+
+### Uwe Thuemmel (2023)
+`thuemmel-2023-robots` · Journal of the European Economic Association 21(3): 1154–1190 · [fuente](https://academic.oup.com/jeea/article/21/3/1154/6798383)  ⚠ **Revisado por pares, acceso abierto (CC-BY). Verificado sobre el PDF primario extraído localmente: abstract e introducción cuantitativa leídos verbatim. Es el más útil de los tres para decidir instrumentos porque compara magnitudes de bienestar entre reformas, no solo signos. Las cifras en USD per cápita son del modelo calibrado a EE.UU., no observaciones.**
+
+- **con robots caros, lo óptimo es SUBSIDIARLOS; a medida que se abaratan, pasa a ser óptimo gravarlos** — Signo del impuesto óptimo a los robots según su precio
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* — · *ámbito:* EE.UU. (modelo calibrado)/economía completa
+  > when robots are expensive, a robot subsidy is optimal. As robots get cheaper, it becomes optimal to tax them.
+- **impuesto a la renta óptimo: 1.000–4.000 USD per cápita al año · afinar impuestos al capital (con robots y equipo gravados igual): 2–20 USD adicionales · gravar robots distinto del equipo: ganancias adicionales casi nulas** — Ganancia de bienestar por instrumento (reforma desde el status quo)
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* estado estacionario · *ámbito:* EE.UU. (modelo calibrado)/economía completa
+  > Additional gains between 2 and 20 USD can be achieved by optimally setting taxes on capital ... Allowing for differential taxation of robots and equipment leads to almost no additional welfare gains.
+- **siempre positivo y mayor que el impuesto al robot; llega a un máximo de cerca de 2% y luego declina. El capital en estructuras no debería gravarse** — Nivel del impuesto óptimo al capital en la calibración
+  *dim:* dim-impuesto-optimo-automatizacion · *horizonte:* trayectoria con precio de robots decreciente · *ámbito:* EE.UU. (modelo calibrado)/capital
+  > always positive and larger than the robot tax, peaking at about 2% and then declining
+
+  *engancha:* `confirma` El impuesto al robot es el instrumento equivocado; `tensiona` El sistema tributario subsidia la automatización (no solo la compensa después)
+
+### Thomas R. Tørsløv, Ludvig S. Wier & Gabriel Zucman (2023)
+`torslov-wier-zucman-2023-missing-profits` · The Review of Economic Studies ('The Missing Profits of Nations') / NBER Working Paper 24701; cifras actualizadas en missingprofits.world · [fuente](https://missingprofits.world/)  ⚠ **Revisado por pares; el sitio de los autores mantiene la serie actualizada. La cifra de 2015 (36%) es la del paper; la de ~40% y ~1 billón de USD corresponde a 2019 en la actualización de los autores. Metodología macro basada en estadísticas de filiales extranjeras: mide beneficios declarados, no evasión probada, y el propio ejercicio es contrafactual (dónde estarían los beneficios si todos los países tuvieran la misma tasa efectiva). Nota relevante para el mapa: la OCDE sostiene en 2026 que el desplazamiento de beneficios ha caído desde entonces, lo que reduce tanto la recaudación potencial como el diagnóstico original.**
+
+- **36% en 2015; cerca de 40% en 2019 (≈1 billón de USD)** — Fracción de los beneficios multinacionales desplazada a paraísos fiscales
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* 2015–2019 · *ámbito:* global/multinacionales
+  > close to 40% of multinational profits ... are shifted to tax havens each year
+- **más de 200 mil millones de USD, ≈10% de la recaudación corporativa global** — Recaudación perdida por el desplazamiento de beneficios
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* 2019 · *ámbito:* global/multinacionales
+  > reduces corporate income tax revenue by more than $200 billion, or 10% of global corporate tax receipts
+
+  *engancha:* `confirma` Lo que se puede gravar es lo que no se puede mover; `informa` Si son complementos y la oferta es inelástica, los átomos capturan la renta
 
 ### Daron Acemoglu (2024)
 `acemoglu2024simple` · NBER Working Paper No. 32487 · [fuente](https://www.nber.org/system/files/working_papers/w32487/w32487.pdf)
@@ -1118,6 +1235,30 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   > The typical project built in 2023 took nearly 5 years from the interconnection request to commercial operations, compared to 3 years in 2015 and <2 years in 2008.
 
   *engancha:* `confirma` La oferta de energía y cómputo es inelástica en el horizonte relevante; `confirma` Si son complementos y la oferta es inelástica, los átomos capturan la renta
+
+### CBO (Congressional Budget Office) (2024)
+`cbo-2024-receipts` · Monthly Budget Review: September 2024 (publicación 60730) — cifras preliminares del año fiscal 2024, Tabla 2 'Receipts, October–September' · [fuente](https://www.cbo.gov/publication/60730/html)  ⚠ **Estadística oficial. Leída directamente en la tabla del CBO (el fetch automático da 403; se leyó el HTML en navegador). Las cifras del año fiscal 2024 son PRELIMINARES en esta publicación (basadas en el Monthly Treasury Statement de agosto y los Daily Treasury Statements de septiembre). Caveat conceptual que importa para no sobreleer el 84%: el impuesto a la renta personal no grava solo trabajo — incluye dividendos, ganancias de capital, intereses y rentas de sociedades transparentes; la fracción estrictamente laboral es algo menor.**
+
+- **total 4.918 mil millones USD: renta personal 2.425 (49,3%), nómina/seguridad social 1.709 (34,7%), corporativo 529 (10,8%), otros 255 (5,2%)** — Composición de los ingresos federales de EE.UU., año fiscal 2024
+  *dim:* dim-composicion-base-gravable · *horizonte:* año fiscal 2024 · *ámbito:* EE.UU. (gobierno federal)/economía completa
+  > Receipts totaled $4.9 trillion during fiscal year 2024
+- **84,1% (4.134 de 4.918 mil millones USD) frente a 10,8% del impuesto corporativo: la caja depende ~8 veces más de la base personal/laboral que de las utilidades** — Fracción de la recaudación federal que descansa sobre personas y nóminas
+  *dim:* dim-composicion-base-gravable · *horizonte:* año fiscal 2024 · *ámbito:* EE.UU. (gobierno federal)/economía completa
+  > Combined Individual Income and Payroll Taxes ... Total 4,134
+
+  *engancha:* `confirma` La base gravable se erosiona con la participación del trabajo; `informa` La IA erosiona la participación del trabajo (si σ>1)
+
+### OECD (Inclusive Framework on BEPS) (2024)
+`oecd-2024-gmt-eia` · Economic Impact Assessment of the Global Minimum Tax (enero de 2024), resumen ejecutivo · [fuente](https://www.oecd.org/content/dam/oecd/en/topics/policy-issues/cross-border-and-international-tax/summary-economic-impact-assessment-global-minimum-tax-january-2024.pdf)  ⚠ **Informe oficial de la OCDE, verificado sobre el PDF primario extraído localmente. Es una PROYECCIÓN ex ante, no recaudación observada: su valor en el mapa es servir de par al informe de 2026 y hacer visible cuánto se corrigió la estimación al llegar los datos.**
+
+- **155.000–192.000 millones de USD al año, equivalentes a 6,5–8,1% de la recaudación corporativa global; un tercio de esa ganancia proviene de menor desplazamiento de beneficios** — Recaudación adicional proyectada del impuesto mínimo global del 15%
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* anual, régimen establecido · *ámbito:* global/multinacionales con ingresos ≥750 millones de euros
+  > The GMT is estimated to raise additional CIT revenues of USD 155-192 billion globally each year or between 6.5% and 8.1% of global CIT revenues
+- **el beneficio global gravado por debajo del 15% cae de 36% a ~7% del beneficio total (reducción de ~80%)** — Reducción proyectada del beneficio poco gravado
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* régimen establecido (escenario año diez) · *ámbito:* global/multinacionales
+  > The GMT is estimated to reduce global low-taxed profit by about 80%; from 36% of all profit globally to about 7%.
+
+  *engancha:* `tensiona` Lo que se puede gravar es lo que no se puede mover
 
 ### Joel Becker, Nate Rush, Beth Barnes, David Rein et al. (METR) (2025)
 `metr-2025` · METR (arXiv 2507.09089) · [fuente](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
@@ -1274,6 +1415,18 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   > the four largest AI chip designers collectively consumed around 90% of global CoWoS capacity and HBM supply in 2025, while consuming only 12% of advanced logic die production
 
   *engancha:* `confirma` La oferta de energía y cómputo es inelástica en el horizonte relevante
+
+### Eva Vivalt, Elizabeth Rhodes, Alexander Bartik, David Broockman, Patrick Krause & Sarah Miller (2025)
+`vivalt-etal-2025-guaranteed-income` · 'The Employment Effects of a Guaranteed Income: Experimental Evidence from Two U.S. States', versión del 31 de diciembre de 2025 (NBER Working Paper 32719; programa de OpenResearch) · [fuente](https://www.nber.org/papers/w32719)  ⚠ **Experimento aleatorizado, pre-registrado (AEARCTR-0006750), con datos de encuesta, registros administrativos y una app; el mayor de su tipo. Verificado sobre el PDF de la versión del 31-dic-2025, no sobre resúmenes: OJO, las cifras de la versión de julio de 2024 que circulan ampliamente son distintas de las actuales. Límites que importan para no sobreleerlo: la muestra es de personas de BAJOS INGRESOS (no población general), la transferencia dura tres años (no es permanente) y el grupo de control recibe 50 USD al mes. Es evidencia sobre una transferencia focalizada y temporal — el par natural es Alaska, que es universal y permanente.**
+
+- **ingreso individual excluyendo la transferencia −1.800 USD/año; participación laboral −4,1 pp; horas trabajadas −1 a −2 h/semana (y las parejas reducen horas en magnitud comparable)** — Efecto de 1.000 USD/mes durante 3 años sobre el ingreso propio y la participación
+  *dim:* dim-respuesta-oferta-laboral-transferencia · *horizonte:* 3 años · *ámbito:* EE.UU. (dos estados)/personas de bajos ingresos
+  > The transfer caused total individual income excluding the transfers to fall by about $1,800/year relative to the control group and a 4.1 percentage point decrease in labor market participation.
+- **sin efecto sobre la calidad del empleo (los intervalos de confianza descartan incluso mejoras pequeñas); el mayor aumento de uso del tiempo fue en ocio; el bienestar subjetivo sube el primer año y luego vuelve al nivel del control** — Calidad del empleo y uso del tiempo liberado
+  *dim:* dim-respuesta-oferta-laboral-transferencia · *horizonte:* 3 años · *ámbito:* EE.UU. (dos estados)/personas de bajos ingresos
+  > we find no impact on quality of employment, and our confidence intervals can rule out even small improvements
+
+  *engancha:* `confirma` Repartir no restaura el ingreso laboral (y el diseño decide cuánto se pierde); `informa` La elasticidad de demanda decide si automatizar sube o baja el empleo
 
 ### Anthropic Economic Index team (2026)
 `anthropic-aei-2026-primitives` · Anthropic (lab report, enero 2026) · [fuente](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report)
@@ -1500,6 +1653,21 @@ La IA generativa abarata y estandariza justo lo que hace transable un servicio �
   *dim:* dim-comercio-servicios-offshore · *horizonte:*  · *ámbito:* /
 
   *engancha:* `informa` La IA expande el offshoring en vez de repatriarlo (telemigración); `confirma` El potencial está limitado por la adopción y la co-invención; `confirma` Rezago de tecnología de propósito general (GPT); `informa` Exposición no es empleo neto; `informa` La elasticidad de demanda decide si automatizar sube o baja el empleo; `informa` Mucha rotación, neto pequeño e incierto; `informa` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA
+
+### OECD (Inclusive Framework on BEPS); análisis complementario de Felix Hugger, Pierce O'Reilly & Laura Contreras ('MNE Responses to the Global Minimum Tax', OECD Taxation Working Papers) (2026)
+`oecd-2026-gmt-eia` · Economic Impact Assessment of the Global Minimum Tax 2026, publicada el 15 de julio de 2026 · [fuente](https://www.oecd.org/en/about/news/announcements/2026/07/oecd-publishes-new-analysis-on-the-economic-impacts-of-the-global-minimum-tax.html)  ⚠ **Anuncio oficial de la OCDE leído en su fuente (el fetch automático lo bloquea Cloudflare; se leyó en navegador). Las cifras citadas son las del anuncio, que resume el informe y el working paper; NO se accedió al working paper completo. La evidencia post-implementación es del PRIMER AÑO y se basa en estados financieros consolidados de 2024: los propios autores la presentan como preliminar. El dato de recaudación efectiva del primer año que circula en prensa (79.000–109.000 millones de euros, 2,4–3,4% del impuesto corporativo global) NO aparece en el anuncio oficial y quedó fuera del mapa por eso; lo que sí es primario, y dice lo mismo, es que la propia estimación de la OCDE bajó de 6,5–8,1% a 3,2–5,4%.**
+
+- **+3,2–5,4% de la recaudación corporativa global al año — cerca de la mitad de lo proyectado en enero de 2024 (6,5–8,1%), con más datos y mejor modelación** — Recaudación adicional estimada del impuesto mínimo global (estimación revisada, 2026)
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* anual · *ámbito:* global/multinacionales en alcance
+  > Global CIT revenues are estimated to rise by 3.2-5.4% per year.
+- **22,6–44,6% (frente a la reducción a la mitad que estimaba la evaluación de 2024)** — Reducción estimada del desplazamiento de beneficios
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* régimen establecido · *ámbito:* global/multinacionales
+  > The GMT is estimated to reduce profit-shifting substantially with an estimated reduction of between 22.6-44.6%.
+- **tasas efectivas +2,8–3,7 pp promedio (+5,5–6,9 pp en hubs de inversión); sin evidencia estadísticamente significativa de caídas de inversión o empleo en las empresas alcanzadas durante el primer año** — Alza de tasas efectivas y efecto sobre inversión y empleo en el primer año
+  *dim:* dim-elasticidad-fuga-base · *horizonte:* primer año de implementación (datos 2024) · *ámbito:* global/multinacionales en alcance vs. fuera de alcance
+  > finding no statistically significant evidence of reductions in investment or employment among in-scope firms during the first year
+
+  *engancha:* `confirma` Lo que se puede gravar es lo que no se puede mover; `informa` La renta de la IA: ¿electricidad (difusa) o plataforma (concentrada)?
 
 ## Auditoría anti-aire
 
