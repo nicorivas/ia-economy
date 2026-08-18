@@ -1,0 +1,169 @@
+{
+  "_comment": "RONDA 6 — La versión de AGOSTO 2026 del 'Canaries in the Coal Mine' (Brynjolfsson, Chandar & Chen), con datos ADP hasta junio de 2026. Procesada el 2026-08-17, verificada sobre el PDF primario descargado del Stanford Digital Economy Lab y extraído localmente. Es la actualización del estudio más citado del mapa sobre el deterioro entry-level, y trae DOS cambios que obligan a tocar nodos existentes: (1) la brecha creció de 15% (versión de julio-2025) a 19%; (2) los autores AHORA RECONOCEN tendencias divergentes que predatan ChatGPT —lo contrario de lo que afirmaba la versión de noviembre-2025 ya integrada al mapa, que decía 'sin patrón pre-2022'—, y además nombran la educación como el control que más atenúa sus estimaciones. Al mismo tiempo el estudio REPLICA la especificación de Lambert-Schindler y encuentra que la exposición a IA sigue prediciendo la caída de la participación junior tras controlar por trabajo remoto. El efecto neto sobre el mapa es que la disputa de atribución de la ronda 3 se ESTRECHA sin cerrarse. El parche a los nodos viejos va en datos/aplicar-r6.py.",
+
+  "hypotheses": [],
+
+  "dimensions": [
+    {
+      "id": "dim-brecha-acumulada-jovenes-expuestos",
+      "name": "Brecha acumulada de empleo de jóvenes en ocupaciones expuestas (medida «kept-pace»)",
+      "definition": "Cuánto por debajo está el empleo de trabajadores de 22-25 años en ocupaciones expuestas a IA respecto de dónde estaría si hubiera seguido el ritmo de sus pares menos expuestos. Es un nivel acumulado y relativo, no una tasa de cambio ni una caída absoluta de dotación: hay que leerla como distancia respecto de un contrafactual construido, y no es comparable con las cifras de cambio de headcount ni con las variaciones interanuales."
+    }
+  ],
+
+  "studies": [
+    {
+      "id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "authors": "Erik Brynjolfsson, Bharat Chandar & Ruyu Chen",
+      "year": 2026,
+      "venue": "Stanford Digital Economy Lab / SIEPR working paper, versión de agosto de 2026 ('Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence'), con datos de nómina ADP hasta junio de 2026",
+      "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+      "source_type": "paper",
+      "accessed": "2026-08-17",
+      "reliability_note": "Working paper, no revisado por pares; verificado sobre el PDF primario extraído localmente. Los propios autores marcan el límite con claridad: «this work does not estimate a causal impact of AI: these are descriptive facts». La muestra es el panel de nómina de ADP, que puede diferir del mercado laboral estadounidense: los autores reconocen que la divergencia es direccionalmente consistente pero MÁS PRONUNCIADA en ADP que en las encuestas nacionales. Ojo con la unidad: el 19% es una brecha ACUMULADA respecto de un contrafactual («si hubiera seguido el ritmo de los menos expuestos»), no comparable con el −6% de cambio de dotación de la versión de noviembre-2025 ni con las variaciones interanuales del dashboard. Los coeficientes por panel de control no se transcriben aquí: la tabla no se pudo leer con confianza desde el PDF extraído, así que solo se registra lo que el texto afirma en prosa.",
+      "estimates": [
+        {
+          "metric": "Brecha de empleo de jóvenes (22-25) en ocupaciones expuestas, medida «kept-pace», y su evolución entre versiones del estudio",
+          "dimension": "dim-brecha-acumulada-jovenes-expuestos",
+          "value": "19% por debajo a junio de 2026 (era 15% en la versión de julio de 2025); los trabajadores con experiencia no muestran brecha comparable",
+          "unit": "% respecto del contrafactual",
+          "horizon": "nov-2022 a jun-2026",
+          "geography": "EE.UU.",
+          "sector": "ocupaciones expuestas a IA vs menos expuestas",
+          "counterfactual": "haber seguido el ritmo de empleo de los pares menos expuestos",
+          "quote": "employment of young workers (ages 22–25) in AI-exposed occupations now stands 19% below where it would be had it kept pace with that of their less-exposed peers",
+          "location": "Abstract, hecho 2"
+        },
+        {
+          "metric": "Estimación de regresión ocupacional: quintil más expuesto vs menos expuesto, 22-25 años, sin controles",
+          "dimension": "dim-atribucion-entry-level",
+          "value": "−0,179 (≈18 puntos porcentuales), significativo al 1%; las estimaciones para grupos de mayor edad son menores",
+          "unit": "puntos porcentuales de cambio de empleo",
+          "horizon": "nov-2022 a jun-2026",
+          "geography": "EE.UU. (panel ADP, firmas balanceadas desde ene-2018)",
+          "sector": "quintil 5 vs quintil 1 de exposición",
+          "counterfactual": "quintil menos expuesto",
+          "quote": "employment in the most exposed quintile declined by about 18 percentage points relative to the least exposed quintile (Panel A; −0.179)",
+          "location": "Sección 2.2, Tabla 1 Panel A"
+        },
+        {
+          "metric": "Mecanismo del ajuste: por dónde se produce la caída",
+          "dimension": "dim-atribucion-entry-level",
+          "value": "opera principalmente por MENOR CONTRATACIÓN de jóvenes, no por más separaciones; y el ajuste ocurre vía empleo, no vía compensación base",
+          "unit": "cualitativo (mecanismo)",
+          "horizon": "nov-2022 a jun-2026",
+          "geography": "EE.UU.",
+          "sector": "ocupaciones expuestas",
+          "counterfactual": "ajuste por despidos o por salarios",
+          "quote": "It operates primarily through reduced hiring of young workers rather than increased separations.",
+          "location": "Abstract, hechos 4 y 6"
+        },
+        {
+          "metric": "Dirección de uso: dónde se concentran las caídas",
+          "dimension": "dim-collaboration-mode",
+          "value": "las caídas se concentran donde el uso de IA SUSTITUYE tareas humanas; donde COMPLEMENTA, el empleo es plano o creciente, especialmente para trabajadores con experiencia",
+          "unit": "cualitativo (contraste)",
+          "horizon": "nov-2022 a jun-2026",
+          "geography": "EE.UU.",
+          "sector": "por tipo de uso de IA en la ocupación",
+          "counterfactual": "ocupaciones donde la IA complementa",
+          "quote": "Declines are concentrated in occupations where AI usage primarily substitutes for human tasks; where usage primarily complements workers, employment is flat or rising",
+          "location": "Abstract, hecho 5"
+        },
+        {
+          "metric": "Robustez frente a las explicaciones rivales (la disputa de atribución)",
+          "dimension": "dim-atribucion-entry-level",
+          "value": "la divergencia persiste al excluir firmas tecnológicas y ocupaciones de computación, al controlar por exposición ocupacional a las alzas de tasas de interés y por trabajo remoto, y con cinco medidas alternativas de exposición a IA",
+          "unit": "cualitativo (robustez)",
+          "horizon": "nov-2022 a jun-2026",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "que el patrón lo explicaran el ciclo de tasas, el sector tecnológico o el trabajo remoto",
+          "quote": "The divergence is not explained by several prominent alternative factors: it persists when excluding technology firms and computer occupations, when controlling for exposure to interest-rate increases and for remote work",
+          "location": "Abstract y Sección 3"
+        },
+        {
+          "metric": "Réplica directa a Lambert-Schindler siguiendo SU especificación",
+          "dimension": "dim-atribucion-entry-level",
+          "value": "siguiendo la especificación de Lambert-Schindler lo más cerca posible, la exposición a IA sigue prediciendo una caída de la participación junior en las nuevas contrataciones tras controlar por trabajo desde casa; los autores atribuyen la diferencia de resultados a los datos (nómina administrativa contra perfiles y avisos de empleo en línea)",
+          "unit": "cualitativo (réplica)",
+          "horizon": "hasta jun-2026",
+          "geography": "EE.UU.",
+          "sector": "nuevas contrataciones",
+          "counterfactual": "el resultado de Lambert-Schindler, donde controlar por remoto atenúa la correlación",
+          "quote": "AI exposure continues to predict a decline in the junior share of new hires after accounting for work-from-home",
+          "location": "Sección 4.3, «Reconciling Remote Work Estimates»"
+        },
+        {
+          "metric": "Los tres patrones de la propia evidencia que los autores marcan como debilidades",
+          "dimension": "dim-atribucion-entry-level",
+          "value": "(1) hay tendencias divergentes entre ocupaciones más y menos expuestas que PREDATAN ChatGPT, sobre todo alrededor de la pandemia; (2) las estimaciones se atenúan al controlar por nivel educativo de la ocupación —la educación es el único control que las atenúa—, lo que puede ser una explicación alternativa o el canal mismo por el que opera la IA; (3) la divergencia es más pronunciada en el panel ADP que en las encuestas nacionales",
+          "unit": "cualitativo (caveats de los autores)",
+          "horizon": "2018-2026",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "una firma limpia y exclusiva de la IA generativa",
+          "quote": "Education is the one control that attenuates these estimates",
+          "location": "Secciones 3 y 4"
+        },
+        {
+          "metric": "Los cuatro argumentos con que los autores contrapesan esas debilidades",
+          "dimension": "dim-atribucion-entry-level",
+          "value": "la divergencia siguió ampliándose hasta mediados de 2026, mucho después del pico de tasas; para noviembre de 2022 las ocupaciones expuestas ya habían vuelto a su posición relativa prepandemia, así que la caída posterior lleva la brecha POR DEBAJO de esa línea base en vez de devolverla a ella; las caídas cargan específicamente sobre el uso de IA para automatizar y con gradiente de edad, un patrón que las historias de tasas, educación y remoto no predicen; y los datos administrativos del gobierno muestran patrones crudos consistentes",
+          "unit": "cualitativo (contraargumentos)",
+          "horizon": "2022-2026",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "que el patrón fuera artefacto de ciclo, educación o remoto",
+          "quote": "the declines load specifically on AI usage for automation with a clear age gradient, a pattern that interest-rate, education, and remote-work stories do not predict",
+          "location": "Introducción, párrafo de los cuatro hallazgos contrapuestos"
+        }
+      ]
+    }
+  ],
+
+  "study_hypothesis_edges": [
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "tensiona",
+      "why": "Es la respuesta directa a la hipótesis rival: la divergencia persiste al controlar por tasas de interés y por trabajo remoto, y al replicar la especificación de Lambert-Schindler la exposición a IA sigue prediciendo la caída de la participación junior. La disputa de atribución se estrecha, aunque los propios autores reconocen que la educación atenúa sus estimaciones y que hay tendencias previas a ChatGPT."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-ai-targets-high-skill",
+      "type": "confirma",
+      "why": "El deterioro se concentra en trabajo de conocimiento codificado y en los jóvenes que entran a él; los trabajadores con experiencia no muestran brecha comparable, y en ocupaciones de conocimiento tácito su empleo crece más rápido."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "confirma",
+      "why": "Cuarta medición consecutiva del mismo contraste, ahora con datos a junio de 2026: las caídas se concentran donde el uso de IA sustituye tareas, y donde complementa el empleo es plano o creciente. Es el hecho más estable del estudio a través de sus versiones."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-ajuste-cae-en-empleo",
+      "type": "confirma",
+      "why": "El ajuste ocurre vía empleo y no vía compensación base, y dentro del empleo por el margen de la contratación y no el de las separaciones: φ bajo, y además concentrado en la puerta de entrada."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Aporta la medición más granular disponible del tramo que va de exposición a empleo realizado, y a la vez marca su propio límite: son hechos descriptivos, no estimaciones causales, y más pronunciados en el panel ADP que en las encuestas nacionales."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-displacement-dominant-recent",
+      "type": "confirma",
+      "why": "La brecha creció de 15% a 19% entre julio de 2025 y junio de 2026: el desplazamiento no solo domina en la rebanada expuesta, sino que se profundiza mientras el agregado sigue sin moverse."
+    },
+    {
+      "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "confirma",
+      "why": "Primer hecho del estudio: no hay evidencia de desplazamiento generalizado en la economía. El neto agregado sigue siendo pequeño mientras la composición por edad y exposición se mueve fuerte."
+    }
+  ]
+}

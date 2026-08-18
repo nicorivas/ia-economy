@@ -442,7 +442,7 @@ export const EMP_PARAMS: ParamDef[] = [
     label: "Efecto de empleo medido en lo más expuesto",
     anchored: true,
     evidence:
-      "Efecto realizado en las ocupaciones más expuestas: Upwork −2% de trabajos (Hui-Reshef-Zhou, causal), jóvenes 22-25 −6% absoluto / −16% relativo (ADP Canaries; devs ~−20%), firmas ~0 (BTOS: reducciones por IA en 2% de las firmas, agregado robusto). Disperso por diseño.",
+      "Efecto realizado en las ocupaciones más expuestas: Upwork −2% de trabajos (Hui-Reshef-Zhou, causal), jóvenes 22-25 −6% absoluto / −16% relativo con datos a sep-2025 (ADP Canaries; devs ~−20%), firmas ~0 (BTOS: reducciones por IA en 2% de las firmas, agregado robusto). Disperso por diseño. Las anclas conservan la cifra de la versión que las publicó: la versión de ago-2026 del Canaries lleva la brecha de los jóvenes a 19% bajo el contrafactual de sus pares menos expuestos, que es una medida acumulada distinta y no se puede colocar en este eje.",
     anchors: [
       { studyId: "bonney-btos-2026-microstructure", at: 0 },
       { studyId: "hui-reshef-zhou-2024-online-labor", at: -2 },

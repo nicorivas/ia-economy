@@ -19,7 +19,7 @@ const FINDINGS: { id: string; deck: string; live?: boolean }[] = [
   },
   {
     id: "jovenes-atribucion",
-    deck: "El golpe a los jóvenes en ocupaciones expuestas ya es una serie mensual y se profundiza. Pero en 2026 dos estudios independientes mostraron que el trabajo remoto explica el mismo patrón, y la OCDE concluyó que «el papel de los LLMs parece limitado». Tres causas rivales, sin árbitro.",
+    deck: "El golpe a los jóvenes en ocupaciones expuestas se profundiza: 19% por debajo de sus pares menos expuestos a junio de 2026. Tres causas compiten —IA, trabajo remoto y ciclo—, y en agosto de 2026 el estudio replicó a la rival del remoto y sostuvo su resultado, mientras reconocía tendencias previas a la IA. La disputa se estrechó sin cerrarse.",
   },
   {
     id: "puestos-o-sueldos",
