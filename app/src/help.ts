@@ -5,7 +5,7 @@
 // Color del kicker: azul = anclado en evidencia, durazno = supuesto que la literatura no fija.
 
 import type { ReactNode } from "react";
-import type { Metric, ParamDef, Lens, RecMetric } from "./model";
+import type { Metric, ParamDef, Lens, RecMetric, EstMetric } from "./model";
 import { studyById, surname } from "./data";
 
 export type HelpEntry = {
@@ -765,3 +765,187 @@ export const HELP_ENABLER_DETAIL: Record<string, HelpEntry> = {
   },
 };
 
+
+// ── Rama LOS ESTADOS ─────────────────────────────────────────────────────────────────────────
+
+const estTitleFor = (m: EstMetric) =>
+  m === "recaudacion"
+    ? "¿Cuánto entra a la caja?"
+    : m === "fuga"
+      ? "¿Cuánto se escapa al gravarlo?"
+      : "¿Alcanza para reponer lo perdido?";
+
+export function helpEstMetric(m: EstMetric): HelpEntry {
+  if (m === "recaudacion")
+    return {
+      kicker: "Indicador · los Estados",
+      title: estTitleFor(m),
+      body: [
+        "Mide el cambio de la caja fiscal en puntos del producto, sumando dos cosas que casi nunca se cuentan juntas: lo que el Estado PIERDE solo, porque la base migró del trabajo (gravado al 25,5%) al capital (gravado al 10%), y lo que GANA con el instrumento que elijas.",
+        "El primer término no requiere que nadie cambie ninguna ley: es aritmética del código tributario vigente. Por eso el momento de máxima necesidad de repartir coincide con el de mínima capacidad de financiarlo.",
+      ],
+      read: "Pasa el cursor sobre el número para ver qué significa tu escenario.",
+    };
+  if (m === "fuga")
+    return {
+      kicker: "Indicador · los Estados",
+      title: estTitleFor(m),
+      body: [
+        "Mide qué fracción de la base desaparece cuando se la grava: se declara en otra jurisdicción, se reestructura o no se invierte. No es evasión probada — es la diferencia entre lo que una tasa promete recaudar y lo que recauda.",
+        "Es el número que separa la política fiscal deseada de la posible. Lo que se puede gravar es lo que no se puede mover, y las tres bases de esta rama se mueven muy distinto.",
+      ],
+      read: "Pasa el cursor sobre el número para ver qué significa tu escenario.",
+    };
+  return {
+    kicker: "Indicador · los Estados",
+    title: estTitleFor(m),
+    body: [
+      "Mide qué porcentaje del ingreso laboral perdido llega efectivamente de vuelta a los hogares. Es la pregunta que el debate sobre renta básica suele saltarse: no si se puede repartir, sino cuánto queda repuesto después de la fuga y de la respuesta de la oferta laboral.",
+      "La pérdida contra la que se compara viene de la OTRA rama: la caída de participación del trabajo que calcula la lente que elijas arriba. Cambiar de lente cambia el tamaño del hoyo que hay que tapar.",
+    ],
+    read: "Pasa el cursor sobre el número para ver qué significa tu escenario.",
+  };
+}
+
+export function helpEstKpi(
+  metric: EstMetric,
+  horizon: 3 | 5,
+  point: number,
+  env: { min: number; max: number },
+): HelpEntry {
+  const b: string[] = [];
+  if (metric === "recaudacion") {
+    b.push(
+      point < 0
+        ? `Con tu escenario la caja CAE ${fmt(point, " pp")} del producto a ${horizon} años: el instrumento no alcanza a cubrir lo que la migración de la base se llevó sola.`
+        : `Con tu escenario la caja sube ${fmt(point, " pp")} del producto a ${horizon} años, ya descontada la erosión de la base laboral.`,
+    );
+    b.push(
+      "Para escala: la recaudación federal de EE.UU. ronda 18,6% del producto con los instrumentos que miden Acemoglu-Manera-Restrepo. Un punto porcentual del producto no es poco — es más de la mitad de lo que recauda hoy el impuesto corporativo.",
+    );
+  } else if (metric === "fuga") {
+    b.push(
+      point > 25
+        ? `Se escapa ${point.toFixed(0)}% de la base: más de una cuarta parte de lo que la tasa prometía. A esta movilidad, subir la tasa rinde cada vez menos.`
+        : point > 8
+          ? `Se escapa ${point.toFixed(0)}% de la base. Hay pérdida, pero el instrumento sigue rindiendo.`
+          : `Se escapa ${point.toFixed(0)}% de la base: prácticamente todo lo gravado se recauda. Es lo que ocurre cuando la base no puede irse a ninguna parte.`,
+    );
+    b.push(
+      "El rango de referencia: cerca del 36-40% de los beneficios multinacionales ya se declara en paraísos, y la OCDE recortó a la mitad su propia estimación de lo que rendiría el piso global del 15% cuando llegaron los datos.",
+    );
+  } else {
+    b.push(
+      point <= 0
+        ? "Con tu escenario no queda nada que repartir: lo recaudado no alcanza siquiera a cubrir la erosión de la base."
+        : point < 50
+          ? `Se repone ${point.toFixed(0)}% del ingreso laboral perdido: la transferencia amortigua, no compensa.`
+          : point < 100
+            ? `Se repone ${point.toFixed(0)}% del ingreso laboral perdido: buena parte del hoyo queda tapada, pero no todo.`
+            : `Se repone ${point.toFixed(0)}%: el instrumento cubre la pérdida entera. Vale la pena mirar si la tasa que lo logra es plausible.`,
+    );
+    b.push(
+      "Ojo con leer esto como bienestar: repone ingreso, no empleo ni el lugar que el trabajo ocupaba. Y el retorno nunca es de uno a uno — parte de la transferencia se compensa con menos trabajo propio.",
+    );
+  }
+  b.push(
+    env.min < 0 && env.max > 0
+      ? `El rango honesto va de ${fmt(env.min)} a ${fmt(env.max)} y cruza el cero: ni el signo está fijo.`
+      : `El rango honesto va de ${fmt(env.min)} a ${fmt(env.max)}.`,
+  );
+  return { kicker: "Tu escenario · los Estados", title: estTitleFor(metric), body: b };
+}
+
+export function helpEstParam(p: ParamDef, value: number): HelpEntry {
+  const kicker = p.informed
+    ? "Informado · la evidencia lo acota"
+    : p.anchored
+      ? "Palanca · anclada en evidencia"
+      : "Supuesto · la literatura no lo fija";
+  const tone: "ev" | "as" | "inf" = p.informed ? "inf" : p.anchored ? "ev" : "as";
+  const body: string[] = [];
+  if (p.key === "dtau") {
+    body.push(
+      `Agregas ${Math.round(value * 100)} puntos de tasa sobre esta base. Es una decisión de política, no un hallazgo: nadie ha medido cuánto se puede subir antes de que el costo político o la fuga lo detengan.`,
+    );
+  } else if (p.key === "eps") {
+    body.push(
+      value >= 2.5
+        ? `Asumes una base muy móvil (ε=${value.toFixed(1)}): al gravarla, buena parte se declara en otra parte. Es el caso del beneficio de intangibles.`
+        : value >= 0.8
+          ? `Asumes una base semi-móvil (ε=${value.toFixed(1)}): responde, pero no se va entera. La decisión de invertir cambia; el activo instalado se queda.`
+          : `Asumes una base con arraigo (ε=${value.toFixed(1)}): casi todo lo gravado se recauda. Una central o un terreno no cambian de jurisdicción.`,
+    );
+  } else if (p.key === "rho") {
+    body.push(
+      value >= 0.97
+        ? `Asumes que cada punto transferido llega entero al hogar (ρ=${value.toFixed(2)}): el caso de Alaska, universal y permanente, sin caída del empleo agregado.`
+        : `Asumes que por cada punto transferido el hogar retiene ${Math.round(value * 100)}% (ρ=${value.toFixed(2)}): el resto se compensa con menos trabajo propio, como en el experimento de renta garantizada.`,
+    );
+  }
+  body.push(p.evidence.replace(/^(INFORMADO|SUPUESTO) — /, ""));
+  return { kicker, title: p.label, body, tone };
+}
+
+export const HELP_EST_FORMULA: HelpEntry = {
+  kicker: "El motor, a la vista · los Estados",
+  title: "Lo que se puede gravar es lo que no se puede mover",
+  body: [
+    "La cuenta tiene dos mitades. La primera no la decide nadie: si la participación del trabajo cae, la base migra de lo que se grava al 25,5% a lo que se grava al 10%, y la caja pierde 0,155 puntos del producto por cada punto de participación que se muda. Es aritmética del código vigente, no una predicción.",
+    "La segunda es la respuesta: eliges una base y una tasa. Lo que entra es la tasa por el tamaño de la base, multiplicado por lo que sobrevive al gravamen. Ahí aparece el intercambio que organiza la rama: la base grande —el capital— es la que se mueve; la base que no se mueve —energía, tierra, presencia física— es chica.",
+    "La suficiencia cierra el círculo contra la otra rama: compara lo recaudado con el ingreso laboral que el shock se llevó, descontando que una transferencia nunca llega entera al hogar.",
+  ],
+  read: "Cambia de instrumento con la misma tasa y mira cómo se dan vuelta fuga y recaudación. Ese contraste es el resultado, no un detalle.",
+  tone: "inf",
+};
+
+export const HELP_EST_BRANCH: HelpEntry = {
+  kicker: "La capa de redistribución",
+  title: "¿Cuánto se puede gravar y repartir?",
+  body: [
+    "Esta rama corre después de la captura: dado que alguien se quedó con la renta, pregunta cuánto de eso puede el Estado recaudar y devolver. La respuesta fácil —tasa por renta dividido población— es aritmética de servilleta; el problema real es que la base se mueve y la transferencia no llega entera.",
+    "La teoría es optimista: Korinek y Stiglitz sostienen que bajo condiciones plausibles existe una tributación no distorsionaria capaz de compensar a los perdedores. La evidencia de instrumento tensiona esa promesa desde tres lados: la base gravable se erosiona sola, el capital se fuga, y repartir se compensa en parte con menos trabajo propio. La brecha no es de voluntad, es de instrumento.",
+    "Lo que la literatura de tributación óptima sí descarta es el instrumento que el debate público más pide: gravar al robot. Guerreiro-Rebelo-Teles lo hacen transitorio, Costinot-Werning lo hacen decreciente justo cuando el daño crece, y Thuemmel encuentra que gravar robots distinto del resto del equipo aporta casi cero — lo que rinde es el impuesto a la renta.",
+  ],
+  read: "Elige el instrumento arriba, mueve la tasa y mira la fuga. La evidencia está abajo, incluida la que tensiona la tesis (Alaska, y la propia proyección de la OCDE).",
+};
+
+export const HELP_INSTRUMENTO: HelpEntry = {
+  kicker: "El instrumento",
+  title: "Sobre qué base cae el impuesto",
+  body: [
+    "No son variantes de la misma palanca: son bases distintas, con tamaños y movilidades distintas. Elegir instrumento es elegir a quién se le puede cobrar, y ahí es donde la política fiscal se encuentra con la física de la renta.",
+    "El orden en que están puestos es el del intercambio: de la base más grande y más fugable a la más chica y más arraigada.",
+  ],
+  read: "El capital y la automatización están informados por evidencia; el tamaño de la base inmóvil y su fuga son lo más débil de la rama, y están rotulados así.",
+};
+
+export const HELP_INSTRUMENTO_DETAIL: Record<string, HelpEntry> = {
+  capital: {
+    kicker: "Instrumento · El capital",
+    title: "La base grande, la que se mueve",
+    body: [
+      "El ingreso neto de capital es ~38% del producto: la base más grande disponible, y la que hereda la renta que el trabajo cede. También la más móvil — cerca del 36-40% de los beneficios multinacionales ya se declara en paraísos.",
+      "Hay una prueba coordinada a escala mundial: el piso mínimo global del 15%. La OCDE proyectó en 2024 que recaudaría 6,5-8,1% del impuesto corporativo global; en 2026, con datos de implementación, recortó su estimación a 3,2-5,4%. La dirección es correcta y el rendimiento es menor que el diseñado.",
+    ],
+    read: "Tørsløv-Wier-Zucman (REStud); OCDE, evaluaciones de impacto 2024 y 2026.",
+  },
+  automatizacion: {
+    kicker: "Instrumento · La automatización",
+    title: "Corregir el sesgo, no gravar al robot",
+    body: [
+      "El código tributario ya toma partido: grava el trabajo a 25,5% y el equipo y software a ~10%, y a ~5% desde 2017. Esa brecha es un subsidio implícito a sustituir personas por máquinas, y empuja la automatización más allá de lo eficiente. Corregirla sube el empleo 4,02% y la participación del trabajo 0,78 puntos.",
+      "Ojo con confundirlo con un impuesto al robot. La literatura de tributación óptima lo acota o lo descarta: en la calibración de Thuemmel, gravar robots distinto del resto del equipo capital aporta ganancias cercanas a cero, mientras que ajustar el impuesto a la renta rinde entre 1.000 y 4.000 dólares por persona al año.",
+    ],
+    read: "Acemoglu-Manera-Restrepo (BPEA 2020); Thuemmel (JEEA 2023); Guerreiro-Rebelo-Teles (REStud 2022); Costinot-Werning (REStud).",
+  },
+  inmovil: {
+    kicker: "Instrumento · Lo inmóvil",
+    title: "Energía, tierra, presencia física",
+    body: [
+      "Lo que no puede declararse en otra jurisdicción: una central, una línea de transmisión, un terreno, un centro de datos ya construido. Si la escasez se muda a los átomos —lo que pregunta la rama de recursos físicos—, esta base crece justo cuando las otras se fugan.",
+      "Es el instrumento con menos evidencia dura de los tres. Nadie ha medido su elasticidad de fuga, y el tamaño de la base (~11% del producto, sumando energía, cómputo y tierra) viene de las mismas tajadas que usa la otra rama. Va razonado, no medido.",
+    ],
+    read: "Sin estimación de elasticidad propia. Las tajadas vienen de la rama de recursos físicos (EIA, capex de cómputo).",
+  },
+};

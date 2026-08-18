@@ -6,6 +6,7 @@ import { Band3 } from "./Band3";
 import { VeredictoSection } from "./Veredicto";
 import type { ParamFocus } from "./Veredicto";
 import { RecursosVeredicto } from "./RecursosVeredicto";
+import { EstadosVeredicto } from "./EstadosVeredicto";
 import { Section } from "./Section";
 import { TopBar } from "./TopBar";
 import type { View } from "./TopBar";
@@ -13,8 +14,16 @@ import { Portada } from "./Portada";
 import { Sintesis } from "./SintesisView";
 import { Realidad } from "./Realidad";
 import { Fuentes } from "./Fuentes";
-import type { Metric, RecMetric } from "./model";
-import { HELP_HOME, HELP_TREE, helpMetric, helpRecMetric, HELP_REC_BRANCH } from "./help";
+import type { Metric, RecMetric, EstMetric } from "./model";
+import {
+  HELP_HOME,
+  HELP_TREE,
+  helpMetric,
+  helpRecMetric,
+  HELP_REC_BRANCH,
+  helpEstMetric,
+  HELP_EST_BRANCH,
+} from "./help";
 import type { HelpEntry } from "./help";
 import "./App.css";
 
@@ -93,9 +102,13 @@ const MOTHER = [
       {
         t: "Los Estados",
         opens: "¿Cuánto se puede gravar y repartir?",
-        live: false,
-        kind: "construir",
-        why: "La capa de redistribución (impuestos, UBI, capital básico). Eje nuevo, aunque corre después de la captura.",
+        live: true,
+        branch: "estados",
+        metrics: [
+          { t: "¿Cuánto entra a la caja?", m: "recaudacion" },
+          { t: "¿Cuánto se escapa al gravarlo?", m: "fuga" },
+          { t: "¿Alcanza para reponer lo perdido?", m: "suficiencia" },
+        ],
       },
     ],
   },
@@ -151,6 +164,7 @@ export function App() {
   const metricRaw = metrics ? metrics[met].m : "empleo";
   const metric = metricRaw as Metric; // rama "El trabajo"
   const recMetric = metricRaw as RecMetric; // rama "Los recursos físicos"
+  const estMetric = metricRaw as EstMetric; // rama "Los Estados"
 
   // Sincroniza la posición (vista + árbol + métrica) al hash. La rebanada del escenario
   // (lente, escala, palancas) la escribe Veredicto. Juntas, el hash describe el escenario.
@@ -308,7 +322,13 @@ export function App() {
                 key={i}
                 className={cx("tree-cell", "sel", i === met && "focus")}
                 onClick={() => setMet(i)}
-                {...hp(branch === "recursos" ? helpRecMetric(mt.m as RecMetric) : helpMetric(mt.m as Metric))}
+                {...hp(
+                  branch === "estados"
+                    ? helpEstMetric(mt.m as EstMetric)
+                    : branch === "recursos"
+                      ? helpRecMetric(mt.m as RecMetric)
+                      : helpMetric(mt.m as Metric),
+                )}
               >
                 {mt.t}
               </button>
@@ -324,7 +344,9 @@ export function App() {
       {live ? (
       <div className="body">
         <div className="bands">
-          {branch === "recursos" ? (
+          {branch === "estados" ? (
+            <EstadosVeredicto metric={estMetric} onParamFocus={setParamFocus} onHelp={setHelp} />
+          ) : branch === "recursos" ? (
             <RecursosVeredicto metric={recMetric} onParamFocus={setParamFocus} onHelp={setHelp} />
           ) : (
             <VeredictoSection metric={metric} onParamFocus={setParamFocus} onHelp={setHelp} />
@@ -465,7 +487,15 @@ export function App() {
           ) : focus ? (
             <Detail focus={focus} />
           ) : (
-            <Help entry={branch === "recursos" ? HELP_REC_BRANCH : HELP_HOME} />
+            <Help
+              entry={
+                branch === "estados"
+                  ? HELP_EST_BRANCH
+                  : branch === "recursos"
+                    ? HELP_REC_BRANCH
+                    : HELP_HOME
+              }
+            />
           )}
         </aside>
       </div>

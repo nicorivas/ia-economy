@@ -138,6 +138,7 @@ export function KpiChart({
   color,
   help,
   onHelp,
+  fmtPoint,
 }: {
   delta: (h: HorizonF) => number;
   envelope: (h: HorizonF) => { min: number; max: number };
@@ -147,6 +148,9 @@ export function KpiChart({
   color: (v: number) => string;
   help?: (point5: number, env5: { min: number; max: number }) => HelpEntry;
   onHelp?: (e: HelpEntry | null) => void;
+  // Formato alternativo del número grande. Por defecto lleva signo (la mayoría de las métricas
+  // pueden ir en las dos direcciones); una métrica que nunca es negativa —la fuga— pasa el suyo.
+  fmtPoint?: (v: number) => string;
 }) {
   const data = KC_YEARS.map((yr) => {
     const h = horizonAt(yr);
@@ -184,7 +188,7 @@ export function KpiChart({
     >
       <div className="kc-head">
         <span className="kc-point" style={{ color: color(last.point) }}>
-          {fmt(last.point, suf)}
+          {fmtPoint ? fmtPoint(last.point) : fmt(last.point, suf)}
         </span>
         <span className="kc-sub">a 5 años · tu escenario</span>
       </div>

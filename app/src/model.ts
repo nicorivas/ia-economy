@@ -920,3 +920,258 @@ export function compareRow(
   const cell = (m: Metric) => (e.metrics.includes(m) ? e.delta(m, v, h) : null);
   return { empleo: cell("empleo"), salarios: cell("salarios"), participacion: cell("participacion") };
 }
+
+// ── Rama LOS ESTADOS: el motor de la capacidad fiscal ────────────────────────────────────────
+// TERCERA RAMA del árbol ("¿cuánto se puede gravar y repartir?"), hermana de Recursos físicos: sus
+// PROPIAS métricas (recaudación / fuga / suficiencia), su propio motor y su propio veredicto. No es
+// una lente del trabajo ni una capa: no reparte el ΔEmpleo, responde otra pregunta. Derivación y
+// libro de evidencia en estados-fiscal.md.
+//
+// La tesis del modelo, y la razón de que no sea aritmética de servilleta: LO QUE SE PUEDE GRAVAR ES
+// LO QUE NO SE PUEDE MOVER. El eje que decide quién captura la renta decide también a quién se le
+// puede cobrar. Por eso el instrumento no es una tasa sino un par (base, movilidad de esa base), y
+// el resultado central es un intercambio: la base grande se fuga, la base que no se fuga es chica.
+//
+// El punto de partida NO es inventado: es la aritmética de Acemoglu-Manera-Restrepo (2020, nota 22),
+// verificada verbatim contra el paper. Ellos resumen el sistema tributario de EE.UU. como una tasa
+// efectiva de 25,5% sobre el trabajo y 10% sobre el equipo y software, y observan que
+//   25,5% × ingreso laboral + 10% × ingreso neto de capital ≈ 18,6% del PIB,
+// que coincide con el 18,7% observado en NIPA 1981-2018. Con s_L = 0,58 y s_K = 0,38 la identidad
+// cierra exactamente. De ahí salen las tres constantes de abajo.
+const TAU_L = 0.255; // tasa efectiva sobre el trabajo (AMR 2020; rango declarado 25,5–33,5%)
+const TAU_K = 0.1; // tasa efectiva sobre equipo y software (AMR 2020, década de 2010; ~5% tras 2017)
+const S_L0 = 0.58; // participación del trabajo de partida
+const S_K0 = 0.38; // ingreso neto de capital / PIB (menor que 1−s_L: descuenta depreciación)
+
+export type EstMetric = "recaudacion" | "fuga" | "suficiencia";
+export const EST_METRICS: EstMetric[] = ["recaudacion", "fuga", "suficiencia"];
+
+// Instrumentos: qué base se grava. No son variantes de la misma palanca — son bases distintas, con
+// tamaños y movilidades distintas, y cada una con su calidad de evidencia. El selector de la rama.
+export type Instrumento = "capital" | "automatizacion" | "inmovil";
+
+export interface EstDecomp {
+  dsL: number; // shock: Δ participación del trabajo, en pp (viene de la lente activa del Trabajo)
+  erosion: number; // Δ recaudación por el shock, sin que nadie cambie ninguna ley (pp del PIB)
+  bruta: number; // recaudación adicional del instrumento ANTES de la fuga (pp del PIB)
+  retenido: number; // fracción de la base que sobrevive al gravamen (0–1)
+  neta: number; // recaudación adicional efectiva del instrumento (pp del PIB)
+  recaudacion: number; // erosión + neta = Δ total de la caja (pp del PIB)
+  fuga: number; // % de la base que desaparece al gravarla
+  fugaPP: number; // lo que esa fuga cuesta, en pp del PIB
+  perdida: number; // ingreso laboral perdido por el shock (pp del PIB) — el hoyo a tapar
+  suficiencia: number; // % del ingreso laboral perdido que la transferencia repone en los hogares
+  result: number;
+}
+
+// Comparativa estática de la caja fiscal ante un shock a la participación del trabajo y una tasa
+// adicional sobre una base con movilidad ε:
+//   erosión   = (τ_L − τ_K) · Δs_L                      la caja cede sola: la base migra de lo
+//                                                        gravado al 25,5% a lo gravado al 10%
+//   retenido  = exp(−ε · Δτ)                            respuesta de la base declarada al gravamen
+//                                                        (forma semi-elástica, el estándar de la
+//                                                        literatura de desplazamiento de beneficios)
+//   neta      = Δτ · s_base · retenido                  lo que efectivamente entra
+//   suficiencia = (erosión + neta) · ρ / (−Δs_L)        cuánto del ingreso laboral perdido llega de
+//                                                        vuelta a los hogares, descontado el ρ de la
+//                                                        evidencia de transferencias
+// ρ < 1 porque una transferencia se compensa en parte con menos trabajo propio: en el RCT de renta
+// garantizada, 12.000 USD/año redujeron el ingreso propio en 1.800 → ρ ≈ 0,85. El dividendo de
+// Alaska (universal y permanente) no bajó el empleo agregado → ρ ≈ 1. El diseño manda.
+export function estDecompose(
+  metric: EstMetric,
+  v: Vals,
+  h: HorizonF,
+  sBase: number,
+  dsL: number,
+): EstDecomp {
+  const dtau = v.dtau * h.adopt; // la política también se implementa gradualmente
+  const erosion = (TAU_L - TAU_K) * dsL; // pp del PIB; negativo si la participación cae
+  const bruta = dtau * sBase * 100; // pp del PIB
+  const retenido = Math.exp(-v.eps * dtau);
+  const neta = bruta * retenido;
+  const recaudacion = erosion + neta;
+  const fuga = (1 - retenido) * 100;
+  const fugaPP = bruta - neta;
+  const perdida = -dsL; // pp del PIB de ingreso laboral que el shock se llevó (positivo si cayó)
+  // Sin pérdida no hay nada que reponer: la suficiencia no está definida y se reporta como 0 para
+  // no fabricar un infinito. La UI lo dice con palabras, no con el número.
+  const suficiencia = perdida > 0.01 ? ((recaudacion * v.rho) / perdida) * 100 : 0;
+  const result =
+    metric === "recaudacion" ? recaudacion : metric === "fuga" ? fuga : suficiencia;
+  return {
+    dsL,
+    erosion,
+    bruta,
+    retenido,
+    neta,
+    recaudacion,
+    fuga,
+    fugaPP,
+    perdida,
+    suficiencia,
+    result,
+  };
+}
+
+// La tasa adicional y el retorno de la transferencia son compartidos por los tres instrumentos: la
+// decisión de política es una sola, lo que cambia es sobre qué base cae.
+const DTAU_PARAM: ParamDef = {
+  key: "dtau",
+  short: "tasa adicional",
+  label: "Cuántos puntos de tasa se agregan sobre esta base",
+  anchored: false,
+  evidence:
+    "SUPUESTO — es la palanca de política, no un dato: nadie ha medido cuánto se puede subir. Como referencia de escala, el piso mínimo global acordado es de 15% y la reforma de 2017 movió la tasa efectiva sobre equipo y software unos 5 puntos.",
+  anchors: [],
+  dims: ["dim-impuesto-optimo-automatizacion"],
+  min: 0,
+  max: 0.2,
+  step: 0.01,
+  fmt: (v) => `${Math.round(v * 100)} pp`,
+};
+
+const RHO_PARAM: ParamDef = {
+  key: "rho",
+  short: "retorno de la transferencia",
+  label: "Cuánto ingreso neto llega al hogar por cada punto transferido",
+  anchored: true,
+  evidence:
+    "Una transferencia se compensa en parte con menos trabajo propio. En el mayor experimento aleatorizado (Vivalt et al.), 12.000 USD al año bajaron el ingreso propio en 1.800 → ρ ≈ 0,85. El dividendo universal y permanente de Alaska (Jones-Marinescu) no redujo el empleo agregado → ρ ≈ 1. La diferencia es de diseño: focalizado y temporal contra universal y permanente.",
+  anchors: [
+    { studyId: "vivalt-etal-2025-guaranteed-income", at: 0.85 },
+    { studyId: "jones-marinescu-2022-alaska", at: 1 },
+  ],
+  dims: ["dim-respuesta-oferta-laboral-transferencia"],
+  min: 0.6,
+  max: 1,
+  step: 0.01,
+  fmt: (v) => v.toFixed(2),
+};
+
+export interface InstrumentoCfg {
+  key: Instrumento;
+  label: string;
+  sub: string;
+  built: boolean;
+  sBase: number; // tajada del producto que constituye la base (fracción del PIB)
+  baseNote: string; // qué es exactamente esa base, y de dónde sale su tamaño
+  params: ParamDef[];
+  defaults: Vals;
+  delta: (m: EstMetric, v: Vals, h: HorizonF, dsL: number) => number;
+  envelope: (m: EstMetric, h: HorizonF, dsL: number) => { min: number; max: number };
+  sensitivity: (m: EstMetric, v: Vals, h: HorizonF, dsL: number) => SensRow[];
+}
+
+type InstrumentoSpec = Omit<InstrumentoCfg, "delta" | "envelope" | "sensitivity">;
+function mkInstrumento(c: InstrumentoSpec): InstrumentoCfg {
+  return {
+    ...c,
+    delta: (m, v, h, dsL) => estDecompose(m, v, h, c.sBase, dsL).result,
+    envelope: (m, h, dsL) =>
+      envelopeOf(c.params, (v) => estDecompose(m, v, h, c.sBase, dsL).result),
+    sensitivity: (m, v, h, dsL) =>
+      sensitivityOf(c.params, v, (vv) => estDecompose(m, vv, h, c.sBase, dsL).result),
+  };
+}
+
+export const INSTRUMENTOS: InstrumentoCfg[] = [
+  mkInstrumento({
+    key: "capital",
+    label: "El capital",
+    sub: "la base grande, la que se mueve",
+    built: true,
+    sBase: S_K0,
+    baseNote:
+      "El ingreso neto de capital, ~38% del PIB (la contraparte de la participación del trabajo en la identidad de Acemoglu-Manera-Restrepo). Es la base más grande y la más móvil: el beneficio de intangibles se declara donde convenga.",
+    defaults: { dtau: 0.1, eps: 3, rho: 0.85 },
+    params: [
+      DTAU_PARAM,
+      {
+        key: "eps",
+        short: "movilidad de la base",
+        label: "Cuánta base se va cuando la gravas (semi-elasticidad ε)",
+        anchored: true,
+        informed: true,
+        evidence:
+          "INFORMADO — cerca del 36% de los beneficios multinacionales se declaraba en paraísos en 2015 y ~40% en 2019 (Tørsløv-Wier-Zucman). La prueba coordinada: la OCDE proyectó en 2024 que el piso global del 15% recaudaría 6,5–8,1% del impuesto corporativo mundial y en 2026, con datos de implementación, recortó la estimación a 3,2–5,4%. Esa brecha acota la dirección y el orden de magnitud; no es una elasticidad estimada, y parte de ella son exclusiones y adopción parcial, no solo fuga.",
+        anchors: [{ studyId: "torslov-wier-zucman-2023-missing-profits", at: 4 }],
+        dims: ["dim-elasticidad-fuga-base"],
+        min: 0.5,
+        max: 7,
+        step: 0.1,
+        fmt: (v) => v.toFixed(1),
+      },
+      RHO_PARAM,
+    ],
+  }),
+  mkInstrumento({
+    key: "automatizacion",
+    label: "La automatización",
+    sub: "corregir el sesgo, no gravar al robot",
+    built: true,
+    sBase: 0.08,
+    baseNote:
+      "SUPUESTO el tamaño: la renta atribuible a equipo y software, tomada como ~8% del producto. Ninguna de las fuentes del mapa reporta esa tajada; es el parámetro más débil de la rama y está aquí rotulado, no escondido. Lo que sí está medido es la BRECHA que se corrige: 25,5% al trabajo contra ~10% (y ~5% desde 2017) a esta base.",
+    defaults: { dtau: 0.1, eps: 1.2, rho: 0.85 },
+    params: [
+      DTAU_PARAM,
+      {
+        key: "eps",
+        short: "movilidad de la base",
+        label: "Cuánta base se va cuando la gravas (semi-elasticidad ε)",
+        anchored: true,
+        informed: true,
+        evidence:
+          "INFORMADO — una máquina instalada no cambia de jurisdicción, pero la decisión de instalarla sí responde al precio: Acemoglu-Manera-Restrepo muestran que la caída de la tasa efectiva de ~20% (2000) a ~5% (post-2017) empujó la automatización por encima de su nivel eficiente, y la mitad de esa caída vino de la depreciación acelerada. La respuesta es real y menor que la del beneficio declarado.",
+        anchors: [{ studyId: "acemoglu-manera-restrepo-2020-tax", at: 1.2 }],
+        dims: ["dim-sesgo-tributario-capital-trabajo"],
+        min: 0.2,
+        max: 4,
+        step: 0.1,
+        fmt: (v) => v.toFixed(1),
+      },
+      RHO_PARAM,
+    ],
+  }),
+  mkInstrumento({
+    key: "inmovil",
+    label: "Lo inmóvil",
+    sub: "energía, tierra, presencia física",
+    built: true,
+    sBase: 0.11,
+    baseNote:
+      "Los factores con arraigo: energía (~6% del PIB) más cómputo (~3%) más tierra, las mismas tajadas que usa la rama de recursos físicos. Base chica, y ese es justamente el punto: es lo único que no puede declararse en otra jurisdicción.",
+    defaults: { dtau: 0.1, eps: 0.2, rho: 0.85 },
+    params: [
+      DTAU_PARAM,
+      {
+        key: "eps",
+        short: "movilidad de la base",
+        label: "Cuánta base se va cuando la gravas (semi-elasticidad ε)",
+        anchored: false,
+        evidence:
+          "SUPUESTO — una central, un terreno o una línea de transmisión no se trasladan, así que la fuga debería ser cercana a cero; pero nadie la ha medido para esta base y algo de respuesta hay (dónde se instala el próximo centro de datos sí se elige). El valor bajo es un razonamiento, no un dato.",
+        anchors: [],
+        dims: ["dim-elasticidad-fuga-base"],
+        min: 0,
+        max: 1.5,
+        step: 0.05,
+        fmt: (v) => v.toFixed(2),
+      },
+      RHO_PARAM,
+    ],
+  }),
+];
+
+export const INSTRUMENTO_BY_KEY: Record<Instrumento, InstrumentoCfg> = Object.fromEntries(
+  INSTRUMENTOS.map((i) => [i.key, i]),
+) as Record<Instrumento, InstrumentoCfg>;
+
+// EL PUENTE con la rama del trabajo. La suficiencia solo tiene sentido contra algo perdido, y ese
+// algo lo calcula la OTRA rama: Δ participación del trabajo (en pp) según la lente que se elija, a
+// la penetración compartida. Devuelve null si esa lente no opina de participación — el Empírico
+// calla, y callar es un resultado, no un cero.
+export function shockDesdeTrabajo(lens: Lens, pen: number, h: HorizonF, scope: Scope): number | null {
+  return compareRow(lens, pen, h, scope)?.participacion ?? null;
+}
