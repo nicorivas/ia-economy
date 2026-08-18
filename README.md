@@ -33,7 +33,8 @@ npm run dev      # http://localhost:5173
 
 ## Estructura
 
-- `app/` — la aplicación (React + Vite + TypeScript). Vistas: **Portada**, **Explorador**
+- `app/` — la aplicación (React + Vite + TypeScript). El Explorador tiene tres ramas con
+  motor propio: el trabajo, los recursos físicos y los Estados. Vistas: **Portada**, **Explorador**
   (arma un escenario y mira la evidencia), **Síntesis** (las conclusiones en prosa),
   **Realidad** (series de datos reales) y **Fuentes** (la biblioteca de estudios).
 - `datos/mapa.json` — el dataset canónico, neutral a la herramienta: estudios, hipótesis,
@@ -43,13 +44,10 @@ npm run dev      # http://localhost:5173
 - `datos/*.py` — scripts reproducibles para agregar y verificar nodos; regeneran el dossier
   y sincronizan la copia de la app.
 - `dossier.md` — la vista legible del mapa (generada; no editar a mano).
-- `fuentes/` — material bruto del que salen los nodos: transcripciones, entrevistas y
-  notas de investigación, antes de destilarse en un spec. Incluye un video de ~268 MB
-  que no conviene versionar.
-- `roadmap-lentes.md` — la dirección del proyecto: elegir el modelo, no solo los
-  parámetros. Léelo antes de extender el árbol.
-- `recursos-fisicos.md` — nota de diseño y libro de evidencia de la segunda rama
-  interactiva (el motor de los átomos).
+
+El material de trabajo —las fuentes en bruto de las que salen los nodos y las notas de
+diseño de cada rama— se queda fuera del repo. Lo que sí es público y auditable es el
+resultado: el dataset, el dossier, el modelo y el código.
 
 ## Agregar o corregir una fuente (datos, no código)
 

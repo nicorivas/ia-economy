@@ -5,7 +5,7 @@
 // (versionadas); `cites` son
 // studyId reales del mapa (la vista los resuelve a "apellido 'año"). Actualizar con la fecha al editar.
 
-export const SINTESIS_FECHA = "2026-08-04";
+export const SINTESIS_FECHA = "2026-08-17";
 
 // ── Charts hechos a medida (sin librería) que ejemplifican una respuesta. Anclados a datos reales.
 export type ChartTone = "accent" | "neg" | "pos" | "neutral";
@@ -326,5 +326,46 @@ export const SINTESIS: SintesisItem[] = [
     ],
     cites: ["dwarkesh2026-economia-agi", "autor-2024-rebuild-middle-class", "karabarbounis-neiman2014", "galloway2026-apocalypse-no"],
     lentes: ["rama «Las plataformas»"],
+  },
+  {
+    id: "estado-compensacion",
+    q: "¿Puede el Estado compensar lo que el trabajo pierda?",
+    verdict:
+      "En teoría sí; los tres instrumentos disponibles fallan por lados distintos. Y la caja se achica sola justo cuando más se la necesita.",
+    answer: [
+      "La promesa teórica es firme y viene del mismo linaje que el resto de este mapa: Korinek y Stiglitz muestran que, bajo condiciones plausibles, existe una tributación no distorsionaria capaz de compensar a quienes pierden con el progreso técnico. La discusión útil no está ahí, sino un paso más abajo, en el instrumento con que se cobra.",
+      "Empieza por un hecho que rara vez entra al debate: la caja del Estado descansa sobre la base que el shock erosiona. En el año fiscal 2024, el 84% de los ingresos federales de EE.UU. vino de impuesto a la renta personal y contribuciones sociales, y el 11% de las utilidades corporativas (CBO). Como el código grava el trabajo a una tasa efectiva de 25,5% y el equipo y software a cerca del 10% (Acemoglu-Manera-Restrepo), cada punto de participación que migra del trabajo al capital le cuesta al fisco unos 0,155 puntos del producto, sin que nadie cambie ninguna ley. El momento de máxima demanda de transferencias coincide con el de mínima capacidad de financiarlas.",
+      "El instrumento que el debate público más pide —gravar al robot— es el que la literatura de tributación óptima acota o descarta, y lo hace desde tres modelos independientes. Guerreiro, Rebelo y Teles lo encuentran óptimo solo mientras siga activa la cohorte de trabajadores rutinarios que ya no puede recolocarse: cuando se jubila, la tasa óptima es cero. Costinot y Werning muestran que su magnitud decrece a medida que la automatización se profundiza y la desigualdad crece, al revés de la intuición. Thuemmel, en un modelo calibrado, encuentra que gravar robots distinto del resto del equipo capital aporta ganancias de bienestar cercanas a cero, mientras que ajustar el impuesto a la renta rinde entre 1.000 y 4.000 dólares por persona al año. La palanca fiscal con evidencia más sólida es más aburrida: dejar de subsidiar la automatización. Corregir el sesgo del código sube el empleo 4,02% y la participación del trabajo 0,78 puntos (Acemoglu-Manera-Restrepo).",
+      "Gravar directamente al capital choca con la movilidad de su base. Cerca del 36% de los beneficios multinacionales se declaraba en paraísos en 2015 y alrededor del 40% en 2019 (Tørsløv, Wier y Zucman), y el capital de la IA es del tipo más móvil que existe: intangible, reubicable por contrato. La prueba a escala mundial ya corrió, y su resultado está en el gráfico. Lo que no se puede mover —energía, tierra, presencia física— se deja gravar casi sin pérdida, pero es una base varias veces menor. Ese es el intercambio de fondo: lo que se puede gravar es lo que no se puede mover, y resulta ser el mismo eje que decide quién captura la renta.",
+      "Queda el último tramo, el reparto, y tampoco es de uno a uno. En el mayor experimento aleatorizado de renta garantizada, 12.000 dólares al año durante tres años redujeron el ingreso propio en unos 1.800 al año y la participación laboral en 4,1 puntos, sin mejorar la calidad del empleo (Vivalt et al.). Pero el diseño manda: el dividendo de Alaska, universal y permanente desde 1982, no redujo el empleo agregado y aumentó el trabajo a tiempo parcial en 1,8 puntos (Jones y Marinescu), y sus autores lo atribuyen a que el efectivo estimula la economía local. La pregunta útil no es si repartir, sino cuánto ingreso se recupera por punto transferido y bajo qué diseño.",
+      "El veredicto que queda: la compensación es posible en el papel y difícil en el instrumento. La base se erosiona sola, la parte grande de lo que queda se fuga, la parte que no se fuga es chica, y lo que se reparte llega recortado. Nada de eso dice que no se pueda; dice dónde hay que trabajar.",
+    ],
+    chart: {
+      type: "scale",
+      title: "Lo que promete un piso fiscal global, antes y después de los datos",
+      min: 0,
+      max: 10,
+      minLabel: "0",
+      maxLabel: "10% del impuesto corporativo global",
+      points: [
+        { at: 7.3, label: "Proyección '24", tone: "neutral", value: "6,5–8,1%" },
+        { at: 4.3, label: "Con datos '26", tone: "accent", value: "3,2–5,4%" },
+      ],
+      caption:
+        "La misma reforma —el impuesto mínimo global del 15%—, estimada dos veces por la misma institución: la recaudación esperada se redujo cerca de la mitad cuando llegaron los datos del primer año.",
+    },
+    cites: [
+      "korinek-stiglitz2019",
+      "cbo-2024-receipts",
+      "acemoglu-manera-restrepo-2020-tax",
+      "guerreiro-rebelo-teles-2022-robots",
+      "costinot-werning-2023-luddism",
+      "thuemmel-2023-robots",
+      "torslov-wier-zucman-2023-missing-profits",
+      "oecd-2026-gmt-eia",
+      "vivalt-etal-2025-guaranteed-income",
+      "jones-marinescu-2022-alaska",
+    ],
+    lentes: ["rama «Los Estados»"],
   },
 ];
