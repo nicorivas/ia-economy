@@ -1,0 +1,203 @@
+{
+  "_comment": "RONDA 7 — BIS Working Paper 1325 (enero 2026), 'AI adoption, productivity and employment: evidence from European firms'. Procesado el 2026-08-18, verificado sobre el PDF primario de bis.org extraído localmente. Entra por dos huecos del mapa: es la primera evidencia CAUSAL A NIVEL DE FIRMA que trae, y la primera EUROPEA de peso (el mapa venía muy escorado a EE.UU.). Su resultado tensiona el desplazamiento por el lado de la empresa —+4% de productividad sin efecto sobre el empleo— y a la vez desplaza el eje de la desigualdad: lo que mide no es la brecha entre trabajadores sino entre EMPRESAS. Ojo con dos lecturas que circulan en resúmenes de prensa y que el nodo corrige: el resultado de salarios NO tiene el mismo estatus causal que el de productividad, y la desigualdad entre personas es una conjetura de los autores, no un hallazgo. El dato metodológico más valioso: la correlación cruda asocia la IA con +8% de empleo y esa relación se desvanece al instrumentar — el dato bruto exagera a favor de la IA.",
+
+  "hypotheses": [
+    {
+      "id": "hyp-brecha-entre-firmas",
+      "name": "La desigualdad de la IA se juega entre empresas, no solo entre trabajadores",
+      "statement": "El debate sobre desigualdad y IA se plantea casi siempre entre personas —quién sabe usarla y quién no—, pero la evidencia causal a nivel de firma sitúa la brecha un nivel más arriba: entre empresas. La adopción está estratificada por tamaño (45% de las firmas grandes contra 24% de las pequeñas en la UE) y por desarrollo financiero del país, y las ganancias de productividad se concentran en las medianas y grandes, en regiones financieramente avanzadas y en sectores intensivos en tecnología. Bajo esta hipótesis, la IA ensancha primero la dispersión de productividad ENTRE empresas —y con ella la de salarios, porque quien paga mejor es la firma que adoptó—, y la desigualdad entre trabajadores es en parte un efecto derivado de en qué empresa se trabaja. El corolario de política es distinto al habitual: no basta con capacitar personas si las firmas chicas no alcanzan la masa crítica para adoptar."
+    }
+  ],
+
+  "dimensions": [
+    {
+      "id": "dim-productividad-firma-ia",
+      "name": "Efecto causal de la adopción de IA sobre la productividad laboral de la firma",
+      "definition": "Cambio en el nivel de productividad laboral atribuible a que una empresa adopte IA, estimado con identificación causal (no correlación entre adoptantes y no adoptantes). Se distingue de las mediciones de productividad por tarea en experimentos con trabajadores: aquí la unidad es la firma y el resultado incorpora la reorganización, la inversión y el equilibrio interno de la empresa."
+    },
+    {
+      "id": "dim-inversiones-complementarias-ia",
+      "name": "Retorno marginal de las inversiones complementarias a la IA",
+      "definition": "Cuánto aumenta el efecto de la adopción de IA sobre la productividad por cada punto porcentual adicional invertido en activos complementarios: software y datos, capacitación de la plantilla, infraestructura. Mide la co-invención — la parte del rendimiento de la IA que no viene de la herramienta sino de lo que la empresa construye alrededor."
+    },
+    {
+      "id": "dim-brecha-adopcion-por-tamano",
+      "name": "Brecha de adopción de IA por tamaño de empresa y por país",
+      "definition": "Diferencia en la tasa de adopción de IA entre firmas grandes y pequeñas, y entre países según su desarrollo financiero. Es el margen por el que la desigualdad de la IA se juega entre empresas antes que entre personas."
+    }
+  ],
+
+  "studies": [
+    {
+      "id": "bis-2026-wp1325-firmas-europeas",
+      "authors": "Iñaki Aldasoro, Leonardo Gambacorta, Rozalia Pal, Debora Revoltella, Christoph Weiss & Marcin Wolski",
+      "year": 2026,
+      "venue": "BIS Working Papers No 1325 (Bank for International Settlements, Monetary and Economic Department), enero de 2026; publicado también como EIB Working Paper 2026/02 y CEPR DP21082",
+      "url": "https://www.bis.org/publ/work1325.pdf",
+      "source_type": "paper",
+      "accessed": "2026-08-18",
+      "reliability_note": "Working paper de banco central, no revisado por pares; verificado sobre el PDF primario. Datos: encuesta EIBIS (~12.000 firmas no financieras de la UE y ~800 de EE.UU.) emparejada con estados financieros de ORBIS, corte transversal agrupado 2019-2024. LÍMITES QUE PESAN. (1) La identificación descansa en un instrumento fuerte: se asigna a cada firma europea la tasa de adopción de sus pares estadounidenses, lo que exige suponer que esa adopción externa afecta la productividad europea SOLO a través de la propia adopción; es un supuesto de exclusión discutible en sectores con cadenas de suministro compartidas. (2) La adopción se mide por autorreporte en encuesta, no por uso observado. (3) ⚠ EL RESULTADO DE SALARIOS NO TIENE EL MISMO ESTATUS QUE EL DE PRODUCTIVIDAD: el +4% es el estimador causal, mientras que los salarios se reportan como comparación entre firmas adoptantes y no adoptantes con controles y efectos fijos, y los propios autores lo fraseán como algo que ocurre «hasta ahora» y queda por ver en el mediano plazo. Los resúmenes de prensa suelen presentar ambas cifras con el mismo peso. (4) ⚠ LA DESIGUALDAD MEDIDA ES ENTRE EMPRESAS, no entre trabajadores: que los beneficios vayan desproporcionadamente a trabajadores calificados que coordinan flujos aumentados por IA es una conjetura que los autores dejan planteada en una nota, no un resultado estimado. (5) Todos los efectos de empleo son de CORTO PLAZO y los autores declaran que el largo plazo sigue incierto.",
+      "estimates": [
+        {
+          "metric": "Efecto causal de adoptar IA sobre el nivel de productividad laboral de la firma",
+          "dimension": "dim-productividad-firma-ia",
+          "value": "+4%",
+          "unit": "% del nivel de productividad laboral",
+          "horizon": "corto plazo (muestra 2019-2024)",
+          "geography": "Unión Europea",
+          "sector": "empresas no financieras",
+          "counterfactual": "firmas comparables que no adoptaron IA, con la adopción instrumentada por la de sus pares estadounidenses",
+          "quote": "AI adoption increases the level of labor productivity by 4%",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Efecto sobre el empleo de la firma, y cuánto exagera la correlación cruda",
+          "dimension": "dim-realized-labor-demand",
+          "value": "sin efecto significativo. La especificación ingenua asocia la IA con +8% de empleo, y esa relación DESAPARECE al usar la adopción instrumentada: el dato bruto exagera a favor de la IA y la corrección va hacia abajo",
+          "unit": "% de empleo de la firma",
+          "horizon": "corto plazo; los autores declaran incierto el largo plazo",
+          "geography": "Unión Europea",
+          "sector": "empresas no financieras",
+          "counterfactual": "firmas comparables que no adoptaron",
+          "quote": "While our naïve specifications associate AI with 8% higher employment, the relationship vanishes after using predicted AI adoption.",
+          "location": "Sección de resultados, discusión de las Tablas 2 y 3"
+        },
+        {
+          "metric": "Mecanismo: por qué sube la productividad sin caer el empleo",
+          "dimension": "dim-collaboration-mode",
+          "value": "intensificación de capital (capital deepening): la firma aumenta el producto por trabajador sin reducir la dotación. Los autores lo leen como aumento del output del trabajador antes que reemplazo del trabajo, en el corto plazo",
+          "unit": "cualitativo (mecanismo)",
+          "horizon": "corto plazo",
+          "geography": "Unión Europea",
+          "sector": "empresas no financieras",
+          "counterfactual": "desplazamiento de trabajo",
+          "quote": "Productivity gains are due to capital deepening, as we find no adverse effects on firm-level employment.",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Salarios en firmas adoptantes (comparación con controles, NO el estimador causal)",
+          "dimension": "dim-wages",
+          "value": "las firmas que adoptan IA muestran salarios más altos —masa salarial total y salario medio por empleado— controlando por edad, tamaño y efectos fijos país-sector-ola. Los autores lo presentan como que las ganancias han beneficiado a los empleados «hasta ahora», y advierten que queda por ver si se sostiene en el mediano y largo plazo",
+          "unit": "log de masa salarial y de salario por empleado",
+          "horizon": "2019-2024",
+          "geography": "Unión Europea",
+          "sector": "empresas no financieras",
+          "counterfactual": "firmas no adoptantes con los mismos controles",
+          "quote": "AI-adopting firms are more innovative and their workers earn higher wages",
+          "location": "Abstract y Tabla 4"
+        },
+        {
+          "metric": "Concentración de los beneficios: dónde caen las ganancias de productividad",
+          "dimension": "dim-brecha-adopcion-por-tamano",
+          "value": "concentradas en empresas medianas y grandes, regiones financieramente desarrolladas y sectores intensivos en tecnología, con riesgo de mayor polarización económica",
+          "unit": "cualitativo (distribución)",
+          "horizon": "2019-2024",
+          "geography": "Unión Europea",
+          "sector": "por tamaño, región y sector",
+          "counterfactual": "un reparto parejo de las ganancias entre firmas",
+          "quote": "productivity benefits of AI adoption are unevenly distributed and concentrate in medium and large firms",
+          "location": "Abstract y conclusión"
+        },
+        {
+          "metric": "Estratificación de la adopción por tamaño de firma y por país",
+          "dimension": "dim-brecha-adopcion-por-tamano",
+          "value": "45% de las firmas grandes (más de 250 empleados) despliega IA contra 24% de las pequeñas (10-49). Por país: Suecia 52%, EE.UU. 34%, Rumania 22%",
+          "unit": "% de firmas",
+          "horizon": "muestra 2019-2024",
+          "geography": "UE y EE.UU.",
+          "sector": "empresas no financieras",
+          "counterfactual": "adopción pareja entre tamaños y países",
+          "quote": "45% of large firms (more than 250 employees) deploy AI, compared to only 24% of small firms (10 to 49 employees)",
+          "location": "Sección de datos, hechos estilizados"
+        },
+        {
+          "metric": "Retorno marginal de las inversiones complementarias (la co-invención, cuantificada)",
+          "dimension": "dim-inversiones-complementarias-ia",
+          "value": "un punto porcentual adicional gastado en software y datos aumenta el efecto de la adopción sobre la productividad en ~2,4%; un punto adicional en capacitación, en ~5,9%. La inversión en edificios e infraestructura también multiplica el efecto, pero con magnitudes pequeñas en comparación",
+          "unit": "% de efecto adicional por punto porcentual invertido",
+          "horizon": "2019-2024",
+          "geography": "Unión Europea",
+          "sector": "empresas no financieras",
+          "counterfactual": "adoptar IA sin inversión complementaria",
+          "quote": "An extra percentage point spent on software and data increases the effect of AI adoption on labor productivity by around 2.4%, and an extra percentage point spent on training by 5.9%.",
+          "location": "Tabla 6 y su discusión"
+        },
+        {
+          "metric": "Cómo se sitúan los autores en el debate macro",
+          "dimension": "dim-productivity-tfp",
+          "value": "califican el +4% como una ganancia sustancial pero mesurada, alineada con las proyecciones macroeconómicas de rango medio y no con las estimaciones más transformadoras; y sostienen que sus hallazgos ponen en duda las afirmaciones de destrucción dramática de empleo por IA, mientras subrayan la preocupación por su impacto desigual",
+          "unit": "cualitativo (posicionamiento)",
+          "horizon": "corto plazo",
+          "geography": "Unión Europea",
+          "sector": "economía completa",
+          "counterfactual": "los escenarios de crecimiento explosivo o de destrucción masiva",
+          "quote": "Our findings cast some doubts on claims of dramatic AI-driven job destruction, while underscoring pressing concerns about its uneven economic impact.",
+          "location": "Introducción"
+        }
+      ]
+    }
+  ],
+
+  "study_hypothesis_edges": [
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-brecha-entre-firmas",
+      "type": "confirma",
+      "why": "Es el estudio que establece la hipótesis: mide la estratificación de la adopción (45% de las grandes contra 24% de las pequeñas) y muestra que las ganancias de productividad se concentran en medianas y grandes, en regiones financieramente desarrolladas y en sectores intensivos en tecnología."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "confirma",
+      "why": "Evidencia causal a nivel de firma de que el neto de empleo no se mueve: la productividad sube 4% y el empleo no cae. La reorganización ocurre dentro de la empresa sin cambiar la dotación."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "confirma",
+      "why": "El mecanismo estimado es intensificación de capital, no desplazamiento: la IA aumenta el producto por trabajador sin reducir la dotación. Es el caso de aumentación medido a nivel de empresa y no de tarea."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "confirma",
+      "why": "Cuantifica la co-invención, que hasta ahora el mapa tenía en términos cualitativos: cada punto porcentual extra en software y datos suma ~2,4% al efecto, y cada punto en capacitación ~5,9%. La herramienta sola rinde bastante menos que la herramienta con lo que se construye alrededor."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-displacement-dominant-recent",
+      "type": "tensiona",
+      "why": "Por el lado de la empresa no aparece desplazamiento: los autores declaran que sus hallazgos ponen en duda las afirmaciones de destrucción dramática de empleo. Mide otra cosa que las series por cohorte —la firma completa, no la puerta de entrada—, así que acota el alcance del desplazamiento sin refutarlo."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "confirma",
+      "why": "Confirma el ensanchamiento, pero reencuadra dónde ocurre: la dispersión se abre entre empresas antes que entre personas. Los autores dejan la desigualdad salarial entre trabajadores como pregunta abierta, no como resultado."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Aporta el eslabón que casi siempre falta —adopción real medida a nivel de firma, con identificación causal, en vez de exposición ocupacional— y muestra que en ese tramo el empleo no se mueve."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-macro-modest-vs-extreme",
+      "type": "confirma",
+      "why": "Los autores sitúan explícitamente su +4% en el rango medio de las proyecciones macro y lejos de las estimaciones transformadoras: evidencia microfundada del lado modesto del debate."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "informa",
+      "why": "El mecanismo es intensificación de capital con empleo constante, que es la receta por la que la participación del trabajo cedería; pero los salarios en las firmas adoptantes son más altos, lo que empuja en la dirección contraria. El estudio deja las dos fuerzas medidas y sin resolver entre sí."
+    },
+    {
+      "study_id": "bis-2026-wp1325-firmas-europeas",
+      "hypothesis": "hyp-perception-gap",
+      "type": "informa",
+      "why": "Caso limpio de cuánto exagera la correlación cruda: la especificación ingenua asocia la IA con +8% de empleo y la relación se desvanece al instrumentar. Lo que se ve sin identificación es selección de firmas, no efecto de la tecnología."
+    }
+  ]
+}

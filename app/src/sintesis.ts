@@ -5,7 +5,7 @@
 // (versionadas); `cites` son
 // studyId reales del mapa (la vista los resuelve a "apellido 'año"). Actualizar con la fecha al editar.
 
-export const SINTESIS_FECHA = "2026-08-17";
+export const SINTESIS_FECHA = "2026-08-18";
 
 // ── Charts hechos a medida (sin librería) que ejemplifican una respuesta. Anclados a datos reales.
 export type ChartTone = "accent" | "neg" | "pos" | "neutral";
@@ -64,7 +64,7 @@ export const SINTESIS: SintesisItem[] = [
     verdict: "No está determinado: el dato no fija ni el signo. Depende de la reinstauración, que nadie ha medido para la IA.",
     answer: [
       "La respuesta honesta es un rango que cruza el cero, no un número. La descomposición de tareas (desplazamiento − reinstauración + productividad) deja la conclusión en manos de cuántas tareas nuevas crea la IA — la reinstauración —, y eso nadie lo ha medido para la IA. Históricamente, cerca de la mitad del crecimiento del empleo vino de tareas que antes no existían (Acemoglu & Restrepo); si la IA repite eso, el empleo aguanta; si no, cae.",
-      "La evidencia realizada es temprana y apunta a lados distintos según dónde mires. En la rebanada más expuesta hay efectos reales: −2% de trabajos en freelancers de escritura tras ChatGPT (Hui-Reshef-Zhou, causal), −6% de empleo en jóvenes de ocupaciones top-expuestas con datos a septiembre de 2025 (Brynjolfsson, «Canaries») — una brecha que sigue profundizándose: la versión de agosto de 2026 del mismo estudio la sitúa 19% por debajo del contrafactual de sus pares menos expuestos, contra 15% un año antes. Pero a nivel de firma las reducciones por IA siguen raras —solo ~2% de las empresas las reportan (Census BTOS)—, el empleo agregado sigue creciendo, y con el método que corrige por la ciclicidad distinta de las ocupaciones expuestas, el efecto agregado de la IA es indistinguible de cero (Budget Lab de Yale).",
+      "La evidencia realizada es temprana y apunta a lados distintos según dónde mires. En la rebanada más expuesta hay efectos reales: −2% de trabajos en freelancers de escritura tras ChatGPT (Hui-Reshef-Zhou, causal), −6% de empleo en jóvenes de ocupaciones top-expuestas con datos a septiembre de 2025 (Brynjolfsson, «Canaries») — una brecha que sigue profundizándose: la versión de agosto de 2026 del mismo estudio la sitúa 19% por debajo del contrafactual de sus pares menos expuestos, contra 15% un año antes. Pero a nivel de firma no aparece el desplazamiento: las reducciones por IA siguen raras en el autorreporte —solo ~2% de las empresas las declaran (Census BTOS)—, y la primera estimación causal europea, sobre 12.000 empresas con la adopción instrumentada, encuentra que adoptar IA sube la productividad 4% sin efecto sobre el empleo, por intensificación de capital antes que por reemplazo (BIS). Ese mismo trabajo deja una advertencia de método que conviene llevarse: la correlación cruda asociaba la IA con 8% MÁS empleo, y esa relación se desvanece al instrumentar — el dato bruto exagera, y la corrección va hacia abajo. El empleo agregado sigue creciendo, y con el método que corrige por la ciclicidad distinta de las ocupaciones expuestas, el efecto agregado de la IA es indistinguible de cero (Budget Lab de Yale).",
       "Hay un margen que casi nadie mira y que da la señal más limpia de rezago: el internacional. A 42 meses de ChatGPT, las exportaciones de servicios de oficina —el trabajo que la IA supuestamente barrería primero, ya deslocalizado y sin fricción de despido de por medio— siguen creciendo en las nueve economías exportadoras principales, con India acelerando respecto de su propia tendencia previa (Baldwin). Ahí el desplazamiento tenía el camino más barato disponible: rescindir un contrato es mucho más fácil que despedir, y aun así los contratos se siguen firmando. El límite del dato es que mide facturación, no dotación — el mismo trabajo registra a una de las grandes indias recortando 12.000 puestos mientras sus exportaciones crecen, que es ingreso por empleado subiendo, no industria preservada.",
       "El veredicto, entonces: el agregado todavía no muestra destrucción neta, pero las rebanadas expuestas sí — y hasta la firma de ese golpe joven está ahora en disputa (ver la pregunta siguiente). Que eso se generalice o no depende de una apuesta —la reinstauración— que la evidencia no resuelve.",
     ],
@@ -90,6 +90,7 @@ export const SINTESIS: SintesisItem[] = [
       "sdel-adp-2026-canaries-dashboard",
       "bonney-btos-2026-microstructure",
       "budgetlab-yale-2026-sdid",
+      "bis-2026-wp1325-firmas-europeas",
       "baldwin-2026-obs-booming",
     ],
     lentes: ["Tareas", "Empírico"],
@@ -207,7 +208,8 @@ export const SINTESIS: SintesisItem[] = [
     answer: [
       "A diferencia de la automatización rutinaria —que vació el MEDIO de la escala de habilidades y respetó los extremos (Autor & Dorn)—, la exposición a la IA apunta hacia ARRIBA. Los empleos de mayor ingreso están más expuestos (Eloundou et al.); la exposición trepa con la calificación y hace pico cerca del percentil 90, con el top 1% más protegido (Webb); el Anthropic Economic Index ubica el pico en el salario medio-alto.",
       "La evidencia realizada lo confirma en su margen más nítido: los más golpeados son los jóvenes en ocupaciones expuestas —caídas de empleo de hasta ~20% en programadores de 22-25 años (Brynjolfsson, «Canaries»), una brecha que a abril de 2026 sigue profundizándose (−3,8% al año en la serie mensual ADP)—, mientras los trabajadores mayores crecen. Es la primera ola tecnológica que toca de lleno el trabajo cognitivo y de cuello blanco. La atribución de ese golpe joven a la IA, eso sí, quedó en disputa en 2026 (ver «¿Lo que se ve en los jóvenes ya es la IA?»).",
-      "El «para quién», entonces, se invierte: no el obrero rutinario del medio, sino el profesional de habilidad media-alta y el que recién entra al mercado.",
+      "Hay un «para quién» que la discusión suele saltarse, y que la evidencia europea sitúa un nivel más arriba: entre empresas antes que entre personas. La adopción está estratificada —45% de las firmas grandes contra 24% de las pequeñas en la UE, y 52% en Suecia contra 22% en Rumania—, y las ganancias de productividad se concentran en las medianas y grandes, en regiones financieramente desarrolladas y en sectores intensivos en tecnología (BIS). Buena parte de lo que se vive como desigualdad entre trabajadores puede ser, en realidad, en qué empresa se trabaja. Y lo que decide el rendimiento no es la herramienta sino lo que se construye alrededor: cada punto porcentual adicional invertido en software y datos suma ~2,4% al efecto de adoptar, y cada punto en capacitación ~5,9%.",
+      "El «para quién», entonces, se invierte: no el obrero rutinario del medio, sino el profesional de habilidad media-alta y el que recién entra al mercado — y, un nivel más arriba, la empresa que no alcanza la masa crítica para adoptar.",
     ],
     chart: {
       type: "gradient",
@@ -222,6 +224,7 @@ export const SINTESIS: SintesisItem[] = [
       caption: "La IA trepa con la habilidad; la rutina hizo pico en el medio. El golpe se mueve hacia arriba.",
     },
     cites: [
+      "bis-2026-wp1325-firmas-europeas",
       "autor-dorn-2013",
       "eloundou-2023-gpts",
       "webb-2020-ai-labor",
