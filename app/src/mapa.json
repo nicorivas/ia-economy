@@ -1014,7 +1014,8 @@
           "sector": "economía completa",
           "counterfactual": "visión ingenua solo-sustitución",
           "quote": "Automation also complements labor, raises output in ways that leads to higher demand for labor... commentators tend to overstate the extent of machine substitution",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Polarización del mercado laboral; afirma que no persistirá",
@@ -1026,7 +1027,8 @@
           "sector": "economía completa",
           "counterfactual": "crecimiento salarial uniforme",
           "quote": "this polarization is unlikely to continue very far into future",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1050,7 +1052,8 @@
           "sector": "todos (manufactura)",
           "counterfactual": "zona sin exposición a robots",
           "quote": "one more robot per thousand workers reduces the employment to population ratio by about 0.18-0.34 percentage points and wages by 0.25-0.5 percent",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Empleos desplazados por robot (local sin comercio / GE con comercio / cota inferior)",
@@ -1062,7 +1065,8 @@
           "sector": "todos",
           "counterfactual": "sin adopción de robots",
           "quote": "one more robot in a commuting zone reduces employment by 6.2 workers... 5.6 workers... as low as... 3 workers",
-          "location": "Introduction"
+          "location": "Introduction",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1086,7 +1090,8 @@
           "sector": "economía completa",
           "counterfactual": "sin giro de contenido de tareas",
           "quote": "the displacement effect reduced labor demand at about 0.48 percent per year, but... reinstatement effect... 0.47 percent per year",
-          "location": "Figure 3"
+          "location": "Figure 3",
+          "geo": "us"
         },
         {
           "metric": "Desplazamiento vs reinstauración, periodo reciente",
@@ -1098,7 +1103,8 @@
           "sector": "economía privada",
           "counterfactual": "balance compensado 1947-1987",
           "quote": "reinstatement increased labor demand only by 0.35 percent per year... displacement reduced labor demand by 0.7 percent per year",
-          "location": "Figure 5"
+          "location": "Figure 5",
+          "geo": "us"
         },
         {
           "metric": "Share del crecimiento del empleo en ocupaciones con tareas nuevas/cambiadas",
@@ -1110,7 +1116,8 @@
           "sector": "economía completa",
           "counterfactual": "sin nuevas tareas",
           "quote": "about half of employment growth over 1980-2015 took place in occupations in which job titles or tasks performed by workers changed",
-          "location": "Introduction"
+          "location": "Introduction",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1134,17 +1141,20 @@
           "sector": "economía completa",
           "counterfactual": "sin IA generativa actual",
           "quote": "no more than a 0.66% increase in total factor productivity (TFP) over 10 years",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "value": "20% de tareas expuestas",
           "metric": "Tareas expuestas a LLMs",
-          "dimension": "dim-task-exposure"
+          "dimension": "dim-task-exposure",
+          "geo": "na"
         },
         {
           "value": "23% rentables de automatizar; 27% ahorro por tarea; 14.4% ahorro agregado",
           "metric": "Automatización rentable y ahorro de costo por tarea",
-          "dimension": "dim-automation-potential"
+          "dimension": "dim-automation-potential",
+          "geo": "na"
         },
         {
           "metric": "Crecimiento del PIB a 10 años",
@@ -1156,7 +1166,8 @@
           "sector": "economía completa",
           "counterfactual": "baseline sin IA",
           "quote": "GDP is also estimated to grow by 0.93% − 1.16% over the next 10 years... upper bound... 1.4% − 1.56%",
-          "location": "Sec.1"
+          "location": "Sec.1",
+          "geo": "us"
         },
         {
           "metric": "Cambio de desigualdad salarial entre-grupos",
@@ -1168,7 +1179,8 @@
           "sector": "economía completa",
           "counterfactual": "baseline",
           "quote": "the between-group standard deviation of log wages... increases slightly, from 0.35 to 0.36",
-          "location": "Sec.7"
+          "location": "Sec.7",
+          "geo": "us"
         }
       ],
       "ola": "teoria"
@@ -1192,7 +1204,8 @@
           "sector": "economía completa",
           "counterfactual": "sin automatización plena vs automatización plena",
           "quote": "output grows at approximately 2% per year... steady-state growth of 18% per year",
-          "location": "Sec.3, Figure 5"
+          "location": "Sec.3, Figure 5",
+          "geo": "na"
         },
         {
           "metric": "Trayectoria salarial según cola de tareas (acotada vs no acotada)",
@@ -1204,7 +1217,8 @@
           "sector": "economía completa",
           "counterfactual": "complejidad de tareas acotada vs no acotada con cola gruesa",
           "quote": "wages grow slightly during the initial periods but then collapse before full automation is reached... both output and wages rise forever",
-          "location": "Sec.1, Sec.3"
+          "location": "Sec.1, Sec.3",
+          "geo": "na"
         },
         {
           "metric": "El factor fijo (materia/energía) es la fuente última de escasez",
@@ -1215,7 +1229,8 @@
           "geography": "—",
           "sector": "—",
           "counterfactual": "ningún factor fijo (reparto estable)",
-          "quote": "In the longer-term, matter or, equivalently, energy (E = mc^2) may be the ultimate source of scarcity"
+          "quote": "In the longer-term, matter or, equivalently, energy (E = mc^2) may be the ultimate source of scarcity",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -1239,7 +1254,8 @@
           "sector": "n/a",
           "counterfactual": "n/a",
           "quote": "when AI... automates existing human capabilities, machines become better substitutes for human labor and workers lose economic and political bargaining power",
-          "location": "p.273-274"
+          "location": "p.273-274",
+          "geo": "na"
         },
         {
           "metric": "Tendencia de la participación del trabajo",
@@ -1251,7 +1267,8 @@
           "sector": "economía completa",
           "counterfactual": "n/a",
           "quote": "the labor share of the economy declining... changes in technology deployment are the single biggest explanation",
-          "location": "p.275"
+          "location": "p.275",
+          "geo": "us"
         }
       ],
       "ola": "teoria"
@@ -1275,7 +1292,8 @@
           "sector": "economía completa",
           "counterfactual": "TFP oficial BLS",
           "quote": "adjusted measure TFP is... 15.9% higher than official measures at the end of 2017... initially be underestimated... Later... overestimates",
-          "location": "Abstract / Sec.1"
+          "location": "Abstract / Sec.1",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1299,7 +1317,8 @@
           "sector": "economía completa",
           "counterfactual": "introducción de GPTs vs sin acceso",
           "quote": "around 80% of the U.S. workforce could have at least 10% of their work tasks affected... 19% of workers may see at least 50% of their tasks impacted",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Tareas completables más rápido: LLM solo vs con tooling",
@@ -1311,7 +1330,8 @@
           "sector": "economía completa",
           "counterfactual": "acceso a LLM vs ninguno",
           "quote": "about 15% of all worker tasks... increases to between 47 and 56%... when incorporating software and tooling",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Gradiente exposición-salario",
@@ -1323,7 +1343,8 @@
           "sector": "economía completa",
           "counterfactual": "a través de la distribución salarial",
           "quote": "higher-income jobs potentially facing greater exposure",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "generativa"
@@ -1347,7 +1368,8 @@
           "sector": "todas las ocupaciones",
           "counterfactual": "ninguno — exposición no es contrafactual de resultado",
           "quote": "We create and validate a new measure of an occupation's exposure to AI that we call the AI Occupational Exposure (AIOE)",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1371,7 +1393,8 @@
           "sector": "economía completa",
           "counterfactual": "ocupaciones de baja exposición misma industria",
           "quote": "moving from the 25th to the 75th percentile of exposure to robots is associated with a decline in within-industry employment shares of between 9 and 18%... wages of between 8 and 14%",
-          "location": "Introduction"
+          "location": "Introduction",
+          "geo": "us"
         },
         {
           "metric": "Caída software (25→75 pctil)",
@@ -1383,7 +1406,8 @@
           "sector": "economía completa",
           "counterfactual": "baja exposición misma industria",
           "quote": "For software... declines of 7-11% and 2-6%",
-          "location": "Introduction"
+          "location": "Introduction",
+          "geo": "us"
         },
         {
           "metric": "Proyección de desigualdad 90:10 desde IA (coef software / robot)",
@@ -1395,7 +1419,8 @@
           "sector": "economía completa",
           "counterfactual": "relación histórica exposición-salario aplicada a IA",
           "quote": "I project a 4% decrease in 90:10 inequality; using the robot coefficient, the decrease is 9%",
-          "location": "Introduction"
+          "location": "Introduction",
+          "geo": "us"
         },
         {
           "metric": "Gradiente de habilidad de la exposición a IA",
@@ -1407,7 +1432,8 @@
           "sector": "economía completa",
           "counterfactual": "vs software/robots",
           "quote": "high-skill occupations are most exposed to AI, with exposure peaking at about the ninetieth percentile",
-          "location": "Introduction"
+          "location": "Introduction",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1431,7 +1457,8 @@
           "sector": "economía completa (702 ocupaciones)",
           "counterfactual": "solo efecto sustitución; mezcla 2010 fija; sin nuevos empleos",
           "quote": "47 percent of total US employment is in the high risk category... potentially automatable over some unspecified number of years",
-          "location": "Sec.IV.A"
+          "location": "Sec.IV.A",
+          "geo": "us"
         },
         {
           "metric": "Gradiente probabilidad-salario/educación",
@@ -1443,7 +1470,8 @@
           "sector": "economía completa",
           "counterfactual": "a través de la distribución",
           "quote": "wages and educational attainment exhibit a strong negative relationship with an occupation's probability of computerisation",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -1460,12 +1488,14 @@
         {
           "value": "+15% issues resueltos/hora en promedio (QJE 2025)",
           "metric": "Productividad laboral (resoluciones/hora), DiD escalonado, 5.172 agentes de soporte",
-          "dimension": "dim-productivity-task-rct"
+          "dimension": "dim-productivity-task-rct",
+          "geo": "na"
         },
         {
           "value": "~+30% los menos calificados (+36% el quintil más bajo); ~0% los más calificados",
           "metric": "Heterogeneidad de la ganancia de productividad por habilidad",
-          "dimension": "dim-productivity-dispersion"
+          "dimension": "dim-productivity-dispersion",
+          "geo": "na"
         },
         {
           "metric": "Atrición de trabajadores",
@@ -1477,7 +1507,8 @@
           "sector": "call center",
           "counterfactual": "pre/post",
           "quote": "a decrease in worker attrition, which is driven by the retention of newer workers",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         },
         {
           "metric": "Satisfacción del cliente (NPS)",
@@ -1489,7 +1520,8 @@
           "sector": "call center",
           "counterfactual": "pre/post",
           "quote": "no economically significant change in customer satisfaction... -0.12 percentage points",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -1506,12 +1538,14 @@
         {
           "value": "−40% tiempo promedio (Science 2024; el WP MIT daba −37%)",
           "metric": "Tiempo en tarea de escritura profesional (RCT, 453 profesionales)",
-          "dimension": "dim-productivity-task-rct"
+          "dimension": "dim-productivity-task-rct",
+          "geo": "na"
         },
         {
           "value": "+18% calidad del output (Science 2024; el WP daba +0.45 SD — normalización distinta, no equiparar)",
           "metric": "Calidad del output evaluada (RCT)",
-          "dimension": "dim-output-quality"
+          "dimension": "dim-output-quality",
+          "geo": "na"
         },
         {
           "metric": "Compresión de desigualdad entre trabajadores",
@@ -1523,7 +1557,8 @@
           "sector": "escritura profesional",
           "counterfactual": "tratamiento vs control",
           "quote": "correlation of 0.49... is only 0.25 (p-value on difference in slopes = 0.004)",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         },
         {
           "metric": "Sustitución vs complementariedad",
@@ -1535,7 +1570,8 @@
           "sector": "escritura profesional",
           "counterfactual": "patrón dentro del tratamiento",
           "quote": "68% of treated participants report submitting ChatGPT's initial output without editing it",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -1559,7 +1595,8 @@
           "sector": "desarrollo de software",
           "counterfactual": "control sin GitHub Copilot",
           "quote": "the treated group completed the task 55.8% faster (95% CI: 21-89%)",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "otro"
         },
         {
           "metric": "Heterogeneidad por experiencia",
@@ -1571,7 +1608,8 @@
           "sector": "software",
           "counterfactual": "dentro del tratamiento",
           "quote": "Developers with less programming experience, older programmers... benefited the most",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -1595,7 +1633,8 @@
           "sector": "software (mantenimiento de repos propios 22k+ stars)",
           "counterfactual": "mismos devs, tareas aleatorizadas IA-sí vs IA-no",
           "quote": "When developers are allowed to use AI tools, they take 19% longer to complete issues",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         },
         {
           "metric": "Brecha percibido vs real",
@@ -1607,7 +1646,8 @@
           "sector": "software",
           "counterfactual": "creencia vs medido",
           "quote": "developers expected AI to speed them up by 24%... they still believed AI had sped them up by 20%",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -1631,7 +1671,8 @@
           "sector": "transversal",
           "counterfactual": "sin uso de IA / distintos σ",
           "quote": "implied productivity growth falls from 1.8 to 1.2 percentage points per year... at σ=0.5... 0.7-0.9... at σ=1.5... 2.2-2.6",
-          "location": "Chapter 4"
+          "location": "Chapter 4",
+          "geo": "global"
         },
         {
           "metric": "Share augmentación vs automatización",
@@ -1643,7 +1684,8 @@
           "sector": "transversal",
           "counterfactual": "vs mes anterior",
           "quote": "augmented jumped 5pp to 52% and the share deemed automated fell 4pp to 45%",
-          "location": "Chapter 1"
+          "location": "Chapter 1",
+          "geo": "global"
         },
         {
           "metric": "Tasa de éxito por complejidad/duración",
@@ -1655,7 +1697,8 @@
           "sector": "transversal/enterprise",
           "counterfactual": "n/a",
           "quote": "70% success rate, but this drops to 66% for college-level... 60% for sub-hour tasks to roughly 45% for tasks... 5+ hours",
-          "location": "Chapter 4"
+          "location": "Chapter 4",
+          "geo": "global"
         },
         {
           "metric": "Cobertura ocupacional de tareas",
@@ -1667,7 +1710,8 @@
           "sector": "transversal",
           "counterfactual": "vs feb 2025",
           "quote": "49% of jobs have seen AI usage for at least a quarter of their tasks",
-          "location": "Chapter 4"
+          "location": "Chapter 4",
+          "geo": "global"
         }
       ],
       "ola": "generativa"
@@ -1691,7 +1735,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "57% of tasks being augmented and 43% of tasks being automated",
-          "location": "sección Augmentation vs automation"
+          "location": "sección Augmentation vs automation",
+          "geo": "global"
         },
         {
           "metric": "Profundidad de adopción por ocupación",
@@ -1703,7 +1748,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "only approximately 4% of jobs used AI for at least 75% of tasks... 36% of jobs had some use of AI for at least 25%",
-          "location": "sección de profundidad"
+          "location": "sección de profundidad",
+          "geo": "global"
         },
         {
           "metric": "Uso por nivel salarial",
@@ -1715,7 +1761,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "occupations in the mid-to-high median salary ranges, like computer programmers and copywriters... among the heaviest users",
-          "location": "sección de salarios"
+          "location": "sección de salarios",
+          "geo": "global"
         }
       ],
       "ola": "generativa"
@@ -1739,7 +1786,8 @@
           "sector": "consumer",
           "counterfactual": "n/a",
           "quote": "18 billion messages were being sent each week by 700 million users... 10% of the global adult population",
-          "location": "intro"
+          "location": "intro",
+          "geo": "global"
         },
         {
           "metric": "Share no laboral de mensajes",
@@ -1751,7 +1799,8 @@
           "sector": "consumer",
           "counterfactual": "n/a",
           "quote": "53% of messages were not related to work in June 2024, which climbed to 73% by June 2025",
-          "location": "sección Work vs non-work"
+          "location": "sección Work vs non-work",
+          "geo": "global"
         },
         {
           "metric": "Clasificación Asking/Doing/Expressing",
@@ -1763,7 +1812,8 @@
           "sector": "consumer",
           "counterfactual": "n/a",
           "quote": "about 49% of messages are Asking, 40% are Doing, and 11% are Expressing",
-          "location": "texto principal"
+          "location": "texto principal",
+          "geo": "global"
         },
         {
           "metric": "Mecanismo de valor económico",
@@ -1775,7 +1825,8 @@
           "sector": "knowledge work",
           "counterfactual": "n/a",
           "quote": "ChatGPT provides economic value through decision support, which is especially important in knowledge-intensive jobs",
-          "location": "abstract"
+          "location": "abstract",
+          "geo": "global"
         }
       ],
       "ola": "generativa"
@@ -1799,7 +1850,8 @@
           "sector": "trabajo clerical",
           "counterfactual": "vs otros grupos ocupacionales",
           "quote": "24 per cent of clerical tasks considered highly exposed and an additional 58 percent with medium-level exposure",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "global"
         },
         {
           "metric": "Empleo con potencial de automatización (LIC vs HIC)",
@@ -1811,7 +1863,8 @@
           "sector": "economía completa",
           "counterfactual": "vs país de otro ingreso",
           "quote": "In low-income countries, only 0.4 per cent... in high-income countries the share rises to 5.5 percent",
-          "location": "Abstract / Sec.4.2"
+          "location": "Abstract / Sec.4.2",
+          "geo": "multi"
         },
         {
           "metric": "Empleo con potencial de aumento",
@@ -1823,7 +1876,8 @@
           "sector": "economía completa",
           "counterfactual": "n/a",
           "quote": "augmentation... 10.4 percent of employment in low-income countries and 13.4 percent... in high-income countries",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "multi"
         }
       ],
       "ola": "generativa"
@@ -1847,7 +1901,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "Almost 40% percent of global employment is exposed to AI... 60% of AE jobs... 40% in EMs... 26% in LICs",
-          "location": "slides 'Key Findings'"
+          "location": "slides 'Key Findings'",
+          "geo": "multi"
         },
         {
           "metric": "Split desplazamiento vs complementariedad dentro de expuestos",
@@ -1859,7 +1914,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "AI may negatively affect half of these jobs; the other half could gain productivity",
-          "location": "slides"
+          "location": "slides",
+          "geo": "global"
         },
         {
           "metric": "Relación complementariedad-desigualdad",
@@ -1871,7 +1927,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "AI may lead to higher income and wealth inequality. AI complementarity is highly correlated with income",
-          "location": "slides"
+          "location": "slides",
+          "geo": "global"
         }
       ],
       "ola": "generativa"
@@ -1895,7 +1952,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "the impact of AI on job levels has been limited so far",
-          "location": "exec summary"
+          "location": "exec summary",
+          "geo": "multi"
         },
         {
           "metric": "Empleo en ocupaciones de mayor riesgo de automatización",
@@ -1907,7 +1965,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "the occupations at the highest risk of automation account for 27% of employment",
-          "location": "Ch.3"
+          "location": "Ch.3",
+          "geo": "multi"
         },
         {
           "metric": "Trabajadores que esperan que la IA baje salarios (finanzas/manufactura)",
@@ -1919,7 +1978,8 @@
           "sector": "finanzas y manufactura",
           "counterfactual": "n/a",
           "quote": "42% of workers surveyed in finance expected that AI would decrease wages... In manufacturing, 41%",
-          "location": "Ch.4"
+          "location": "Ch.4",
+          "geo": "multi"
         },
         {
           "metric": "Adopción de IA por empresas (UE)",
@@ -1931,7 +1991,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "enterprise-level AI adoption ranges from 23% in Ireland... to... 2% in Latvia",
-          "location": "Ch.3"
+          "location": "Ch.3",
+          "geo": "eu"
         }
       ],
       "ola": "mixta"
@@ -1955,7 +2016,8 @@
           "sector": "transversal",
           "counterfactual": "pronóstico de empleadores",
           "quote": "83 million jobs are projected to be lost and 69 million... created... reduction... of 14 million jobs, or 2%",
-          "location": "p.6"
+          "location": "p.6",
+          "geo": "multi"
         },
         {
           "metric": "Rotación estructural",
@@ -1967,7 +2029,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "structural labour-market churn of 152 million jobs, or 23% of the 673 million",
-          "location": "p.6"
+          "location": "p.6",
+          "geo": "multi"
         }
       ],
       "ola": "generativa"
@@ -1991,7 +2054,8 @@
           "sector": "transversal",
           "counterfactual": "pronóstico de empleadores",
           "quote": "170 million jobs are projected to be created and 92 million... displaced... net employment increase of 7%, or 78 [million]",
-          "location": "p.~10"
+          "location": "p.~10",
+          "geo": "global"
         },
         {
           "metric": "Empleos por driver IA específicamente",
@@ -2003,7 +2067,8 @@
           "sector": "transversal",
           "counterfactual": "driver IA aislado",
           "quote": "AI and information processing technology are expected to create 11 million jobs, while simultaneously displacing 9 million",
-          "location": "Ch.2"
+          "location": "Ch.2",
+          "geo": "global"
         },
         {
           "metric": "Rotación estructural",
@@ -2015,7 +2080,8 @@
           "sector": "transversal",
           "counterfactual": "n/a",
           "quote": "structural labour market churn of 22% of the 1.2 billion formal jobs",
-          "location": "p.~10"
+          "location": "p.~10",
+          "geo": "global"
         }
       ],
       "ola": "generativa"
@@ -2039,7 +2105,8 @@
           "sector": "63 casos de uso",
           "counterfactual": "n/a",
           "quote": "generative AI could add the equivalent of $2.6 trillion to $4.4 trillion annually",
-          "location": "exec summary"
+          "location": "exec summary",
+          "geo": "global"
         },
         {
           "metric": "Tiempo de empleados automatizable",
@@ -2051,7 +2118,8 @@
           "sector": "transversal",
           "counterfactual": "vs estimación previa ~50%",
           "quote": "automate work activities that absorb 60 to 70 percent of employees' time today",
-          "location": "exec summary"
+          "location": "exec summary",
+          "geo": "global"
         },
         {
           "metric": "Crecimiento de productividad laboral",
@@ -2063,7 +2131,8 @@
           "sector": "transversal",
           "counterfactual": "IA generativa sola; dependiente de adopción",
           "quote": "labor productivity growth of 0.1 to 0.6 percent annually through 2040",
-          "location": "exec summary"
+          "location": "exec summary",
+          "geo": "global"
         }
       ],
       "ola": "generativa"
@@ -2087,7 +2156,8 @@
           "sector": "transversal",
           "counterfactual": "con IA gen vs baseline",
           "quote": "Without generative AI... 21.5 percent... With generative AI, that share has jumped to 29.5 percent",
-          "location": "resumen"
+          "location": "resumen",
+          "geo": "us"
         },
         {
           "metric": "Transiciones ocupacionales adicionales y carga regresiva",
@@ -2099,7 +2169,8 @@
           "sector": "transversal",
           "counterfactual": "adicional por IA gen",
           "quote": "An additional 12 million occupational transitions may be needed by 2030... lower-wage jobs are up to 14 times more likely to need to change occupations",
-          "location": "resumen"
+          "location": "resumen",
+          "geo": "us"
         }
       ],
       "ola": "generativa"
@@ -2123,7 +2194,8 @@
           "sector": "manufactura",
           "counterfactual": "n/a",
           "quote": "less than 5 percent of factory mechanical drive... attain the 50 percent diffusion level... four decades after the first central power station",
-          "location": "Sec.II"
+          "location": "Sec.II",
+          "geo": "us"
         },
         {
           "metric": "Rezago de difusión / impacto en productividad",
@@ -2135,7 +2207,8 @@
           "sector": "manufactura",
           "counterfactual": "n/a",
           "quote": "factory electrification did not... have an impact on productivity growth in manufacturing before the early 1920s",
-          "location": "Sec.II"
+          "location": "Sec.II",
+          "geo": "us"
         },
         {
           "metric": "Share de aceleración de TFP manufacturera 1919-29 por motores secundarios",
@@ -2147,7 +2220,8 @@
           "sector": "manufactura",
           "counterfactual": "vs década 1909-19",
           "quote": "approximately half of the 5 percentage point acceleration... is accounted for statistically simply by the growth in manufacturing secondary electric motor capacity",
-          "location": "p.360"
+          "location": "p.360",
+          "geo": "us"
         }
       ],
       "ola": "historica"
@@ -2171,7 +2245,8 @@
           "sector": "banca",
           "counterfactual": "dotación pre-ATM",
           "quote": "The average bank branch in an urban area required about 21 tellers... cut because of the ATM machine to about 13 tellers",
-          "location": "AEI/EconTalk"
+          "location": "AEI/EconTalk",
+          "geo": "us"
         },
         {
           "metric": "Tendencia de empleo de cajeros tras difusión del ATM",
@@ -2183,7 +2258,8 @@
           "sector": "banca",
           "counterfactual": "predicción de que el ATM eliminaría cajeros",
           "quote": "Since 2000, not only have teller jobs increased, but they've been growing a bit faster than the labor force",
-          "location": "AEI/EconTalk"
+          "location": "AEI/EconTalk",
+          "geo": "us"
         }
       ],
       "ola": "historica"
@@ -2207,7 +2283,8 @@
           "sector": "economía completa",
           "counterfactual": "n/a",
           "quote": "GPT's are characterized by pervasiveness, inherent potential for technical improvements, and 'innovational complementarities'",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "na"
         },
         {
           "metric": "Falla de coordinación ('too little, too late')",
@@ -2219,7 +2296,8 @@
           "sector": "economía completa",
           "counterfactual": "innovación coordinada/integrada",
           "quote": "arms-length market transactions between the GPT and its users may result in 'too little, too late' innovation",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -2243,7 +2321,8 @@
           "sector": "todas las ocupaciones",
           "counterfactual": "cambio observado (descriptivo)",
           "quote": "High-paying occupations... 5.62... Middling occupations... -9.27... lowest-paid... 3.65",
-          "location": "Table 4"
+          "location": "Table 4",
+          "geo": "eu"
         },
         {
           "metric": "Efecto de RTI sobre crecimiento de empleo (offshorability no significativa)",
@@ -2255,7 +2334,8 @@
           "sector": "todas las industrias",
           "counterfactual": "controlando offshorability",
           "quote": "one standard deviation more intense in RTI is growing 0.90 percentage points less fast each year... offshorability... not statistically significantly different from zero",
-          "location": "Table 3"
+          "location": "Table 3",
+          "geo": "eu"
         },
         {
           "metric": "Fracción del cambio observado explicada por el modelo RBTC+offshoring",
@@ -2267,7 +2347,8 @@
           "sector": "todas",
           "counterfactual": "predicción vs actual",
           "quote": "79 percent (4.45/5.62)... 74 percent (6.86/9.27)... 66 percent (2.41/3.65)",
-          "location": "Sec.IV"
+          "location": "Sec.IV",
+          "geo": "eu"
         }
       ],
       "ola": "pre-generativa"
@@ -2291,7 +2372,8 @@
           "sector": "ocupaciones de servicio",
           "counterfactual": "descriptivo",
           "quote": "the share of US labor hours in service occupations grew by 30 percent between 1980 and 2005",
-          "location": "Table 1"
+          "location": "Table 1",
+          "geo": "us"
         },
         {
           "metric": "Efecto del share rutinario inicial (RSH) de la CZ sobre cambio de empleo rutinario/servicios",
@@ -2303,7 +2385,8 @@
           "sector": "ocupaciones rutinarias/servicio",
           "counterfactual": "CZ 80 vs 20 pctil RSH",
           "quote": "a commuting zone at the 80th percentile of 1980 RSH experienced a 1.8 percentage points larger contraction of the routine occupation share per decade",
-          "location": "Resultados CZ"
+          "location": "Resultados CZ",
+          "geo": "us"
         },
         {
           "metric": "Crecimiento del salario real en ocupaciones de servicio",
@@ -2315,7 +2398,8 @@
           "sector": "ocupaciones de servicio",
           "counterfactual": "descriptivo",
           "quote": "real wage growth in service occupations... averaging 6.4 percent per decade",
-          "location": "Resultados"
+          "location": "Resultados",
+          "geo": "us"
         }
       ],
       "ola": "pre-generativa"
@@ -2339,7 +2423,8 @@
           "sector": "software / escritura / call center",
           "counterfactual": "control sin IA",
           "quote": "about 56% faster... fell across the board by 40%... 14% improvement in productivity... most pronounced among novice workers",
-          "location": "texto del ensayo"
+          "location": "texto del ensayo",
+          "geo": "na"
         },
         {
           "metric": "Tesis: la IA podría revertir la polarización extendiendo expertise a trabajadores ordinarios",
@@ -2351,7 +2436,8 @@
           "sector": "economía completa",
           "counterfactual": "patrón RBTC histórico",
           "quote": "the biggest quality improvements were concentrated at the bottom",
-          "location": "texto del ensayo"
+          "location": "texto del ensayo",
+          "geo": "us"
         }
       ],
       "ola": "generativa"
@@ -2376,7 +2462,8 @@
           "sector": "tecnología",
           "counterfactual": "narrativa de colapso del empleo tech",
           "quote": "Net technology employment in the U.S. grew from 8.7 million in 2020 to 9.6 million in 2023 and has remained flat since then.",
-          "location": "Apocalypse No"
+          "location": "Apocalypse No",
+          "geo": "us"
         },
         {
           "metric": "Contadores tras la planilla de cálculo (reinstauración)",
@@ -2388,7 +2475,8 @@
           "sector": "contabilidad",
           "counterfactual": "predicción de desempleo masivo de contadores",
           "quote": "the number of accountants increased 4x over the next 40 years",
-          "location": "Apocalypse No (cita a Maksymov, ASU)"
+          "location": "Apocalypse No (cita a Maksymov, ASU)",
+          "geo": "us"
         },
         {
           "metric": "Cobertura técnica de tareas en negocios/finanzas",
@@ -2400,7 +2488,8 @@
           "sector": "negocios y finanzas",
           "counterfactual": "—",
           "quote": "in business and finance occupations, AI could theoretically cover 94% of tasks",
-          "location": "Apocalypse No (cita a Anthropic, mar 2026)"
+          "location": "Apocalypse No (cita a Anthropic, mar 2026)",
+          "geo": "us"
         },
         {
           "metric": "Sentimiento pro-IA por ingreso y desigualdad",
@@ -2412,7 +2501,8 @@
           "sector": "economía completa",
           "counterfactual": "—",
           "quote": "only those earning more than $200,000 per year viewing AI as a net positive ... we're higher than 0.8",
-          "location": "Apocalypse No"
+          "location": "Apocalypse No",
+          "geo": "us"
         }
       ],
       "ola": "mixta"
@@ -2437,7 +2527,8 @@
           "sector": "economía completa",
           "counterfactual": "relato de capital-se-come-al-trabajo",
           "quote": "Imas: con metodología constante el labor share ni siquiera ha caído (paráfrasis de la discusión)",
-          "location": "podcast, vía discusión"
+          "location": "podcast, vía discusión",
+          "geo": "us"
         },
         {
           "metric": "Signo del efecto sobre el empleo",
@@ -2449,7 +2540,8 @@
           "sector": "economía completa",
           "counterfactual": "lump of labor",
           "quote": "si la demanda es suficientemente elástica, automatizar tareas puede subir el empleo (paráfrasis)",
-          "location": "podcast, vía discusión"
+          "location": "podcast, vía discusión",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -2474,7 +2566,8 @@
           "sector": "economía completa",
           "counterfactual": "narrativa de declive del labor share",
           "quote": "Alternative Facts about the Labor Share (tesis, vía discusión)",
-          "location": "abstract"
+          "location": "abstract",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -2499,7 +2592,8 @@
           "sector": "economía completa",
           "counterfactual": "automatización tarea-a-tarea lineal",
           "quote": "O-Ring Automation (NBER w34639), tesis vía discusión",
-          "location": "abstract"
+          "location": "abstract",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -2524,7 +2618,8 @@
           "sector": "cuello blanco",
           "counterfactual": "trayectoria sin colapso de demanda",
           "quote": "The 2028 Global Intelligence Crisis (escenario)",
-          "location": "citriniresearch.com/p/2028gic"
+          "location": "citriniresearch.com/p/2028gic",
+          "geo": "us-eu"
         }
       ],
       "ola": "generativa"
@@ -2549,7 +2644,8 @@
           "sector": "trabajo de oficina/conocimiento",
           "counterfactual": "transición compensada",
           "quote": "The Messy Middle (tesis, vía discusión)",
-          "location": "substack"
+          "location": "substack",
+          "geo": "us"
         }
       ],
       "ola": "generativa"
@@ -2574,7 +2670,8 @@
           "sector": "economía completa",
           "counterfactual": "—",
           "quote": "Economic Growth under Transformative AI (marco)",
-          "location": "Annual Review of Economics"
+          "location": "Annual Review of Economics",
+          "geo": "global"
         },
         {
           "metric": "El dueño del factor de oferta fija recibe ~todo el producto",
@@ -2585,7 +2682,8 @@
           "geography": "—",
           "sector": "—",
           "counterfactual": "factor fijo sustituto (tajada → 0)",
-          "quote": "the resource in fixed supply constrains growth and its owners receive approximately all output"
+          "quote": "the resource in fixed supply constrains growth and its owners receive approximately all output",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -2600,42 +2698,50 @@
         {
           "value": "-0.129",
           "metric": "Elasticidad OWN-INDUSTRY del empleo respecto a TFP (col. 1, Tabla 3A): un aumento de 1% en la TFP propia de la industria predice una caida de ~0.13% en el empleo de esa misma industria. Las horas caen 30-40% mas que el empleo (margen extensivo+intensivo). Es el EFECTO DIRECTO antes de derrames. VERIFICADO contra el texto primario (p. ~18).",
-          "dimension": "dim-displacement-effect"
+          "dimension": "dim-displacement-effect",
+          "geo": "na"
         },
         {
           "value": "+0.30 (empleo), +0.30 (horas), +0.63 (salario), +0.93 (masa salarial)",
           "metric": "Efecto de DEMANDA FINAL (NO es el 'efecto de productividad' del marco Acemoglu-Restrepo): elasticidad del empleo/horas/salario/masa-salarial respecto al valor agregado AGREGADO nacional (beta2, col. 3, Tabla 3A). Captura el canal por el que el crecimiento de productividad de una industria, al subir el ingreso agregado, AUMENTA la demanda de trabajo en toda la economia. Es lo que contrarresta el efecto directo de desplazamiento. VERIFICADO (p. ~22). Mapeado a dim-productivity-effect por ser el mecanismo productividad->demanda-laboral; el catalogo solo da nombres de dimension, no definiciones.",
-          "dimension": "dim-productivity-effect"
+          "dimension": "dim-productivity-effect",
+          "geo": "na"
         },
         {
           "value": "directo -0.068; demanda final +0.073; upstream grande positivo; downstream negligible; NETO +0.16/100 anual ≈ +5.92 (~6) log puntos sobre 37 años (1970-2007)",
           "metric": "Descomposicion del efecto NETO de la TFP sobre el EMPLEO AGREGADO en los 4 canales (Figura 1A). El efecto directo (-0.068, ~-2.5% sobre 37 años: 0.068/100*37=2.5) es MAS QUE COMPENSADO por demanda final (+0.073) y derrames upstream hacia industrias clientes. Resultado: automatizacion NO es desplazadora de empleo neto a nivel agregado. VERIFICADO (p. ~26-27).",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "-0.34",
           "metric": "Elasticidad OWN-INDUSTRY de la PARTICIPACION DEL TRABAJO respecto a la TFP (col. 4, panel D, Tabla 3B): un aumento de 1% en TFP predice una caida de 0.34% en la participacion del trabajo en el valor agregado de esa industria. Es el punto-estimado directo; algebraicamente equivale a wagebill-TFP=0.11 menos value-added-TFP=0.45 (=−0.34 en logs, identidad participacion=wagebill/VA). VERIFICADO (p. ~23-24).",
-          "dimension": "dim-labor-share"
+          "dimension": "dim-labor-share",
+          "geo": "na"
         },
         {
           "value": "directo -0.23/100 anual; offset upstream +0.12/100 anual (~mitad del directo); demanda final y supplier sin offset; NETO -0.143/100 anual = -5.3 log puntos sobre 1970-2007 (vs -6.3 observado, -0.169/100 anual)",
           "metric": "Descomposicion del efecto NETO de la TFP sobre la PARTICIPACION DEL TRABAJO (Figura 1C). A diferencia del empleo, el efecto directo negativo solo se compensa PARCIALMENTE (~mitad, 0.12/0.23≈0.52) via clientes (upstream); NO hay offset por demanda final ni proveedores. Resultado NETO negativo: automatizacion SI es desplazadora de la participacion del trabajo. El modelo reproduce ~el cambio observado (-5.3 estimado vs -6.3 observado). VERIFICADO (p. ~27).",
-          "dimension": "dim-labor-share"
+          "dimension": "dim-labor-share",
+          "geo": "na"
         },
         {
           "value": "-0.14 (1970s) → -0.32 (1980s) → -0.34 (1990s) → -0.47 (2000s)",
           "metric": "Elasticidad participacion-del-trabajo respecto a TFP por decada (Tabla 6B): se vuelve monotonicamente mas negativa. El efecto NETO desplazador de participacion fue 'esencialmente cero' en los 1970s y -4.51 log puntos entre 1980-2007 (Figura 2B). Conducido por la masa-salarial-TFP que cae monotonicamente de 0.17 (1970s) a 0.04 (2000s): debilitamiento de la respuesta de la masa salarial. VERIFICADO (p. ~29-30).",
-          "dimension": "dim-labor-share"
+          "dimension": "dim-labor-share",
+          "geo": "na"
         },
         {
           "value": "-0.35",
           "metric": "Efecto de la TFP (INSTRUMENTADA por flujos de citas de patentes extranjeras, 2SLS) sobre la participacion del trabajo (Tabla 8, col. 8 = -0.348**, sig.): muy comparable al OLS de Tabla 4 col. 8 (-0.348), con error estandar mayor. El instrumento de robots (IFR; primera etapa: +1 robot/1000 trab. → +0.175 log TFP, sig.) da segunda etapa cualitativamente igual (own-industry labor share -0.195, 'en el rango' pero imprecisa). Da plausibilidad CAUSAL al vinculo TFP→participacion. VERIFICADO (p. ~32-34).",
-          "dimension": "dim-labor-share"
+          "dimension": "dim-labor-share",
+          "geo": "na"
         },
         {
           "value": "0.45 (value-added-TFP); ~-0.40 (precio-TFP; coef. preciso -0.387) → elasticidad de demanda implicita 1.2 (=0.455/0.387)",
           "metric": "Un aumento de 1% en TFP predice +0.45% en valor agregado nominal y ~-0.40% en el deflactor de precios de la industria; implica una elasticidad-demanda de producto de ~1.2. Mecanismo del canal de productividad: la TFP baja precios y expande output, lo que sostiene la demanda de trabajo via clientes. VERIFICADO (p. ~23): el texto dice 'aproximadamente 0.40' y usa -0.387/0.455 para el calculo de 1.2.",
-          "dimension": "dim-productivity-tfp"
+          "dimension": "dim-productivity-tfp",
+          "geo": "na"
         }
       ],
       "reliability_note": "Cifras verificadas contra el texto primario (borrador BPEA, 27-feb-2018, PDF de Brookings, extraido con pdftotext -layout). TODAS las cifras coinciden con Tablas 3A/3B/4/6B/8 y Figuras 1A/1C/2B. 'TFP' es la medida omnibus de cambio tecnologico (automatizacion), NO una medida directa de exposicion a IA ni IA generativa. Sample principal: 28 industrias, 18 paises OCDE, desde 1970 (hasta 2007, EU KLEMS). IV de patentes: USPTO citas (US y no-US), N=14,942. IV de robots (IFR): 16 industrias agregadas, 1993-2007, sin Canada/Irlanda/Luxemburgo/Japon. Extension 2007-2015 (Tabla 7) usa EUKLEMS 2017, 13 paises, no directamente comparable.",
@@ -2652,42 +2758,50 @@
         {
           "value": "50-70%",
           "metric": "Fracción de los cambios en la ESTRUCTURA SALARIAL de EE.UU. 1980-2016 que el desplazamiento DIRECTO de tareas explica en forma reducida (regresiones de base sobre 500 grupos demográficos por educación/género/edad/raza/estatus migratorio). Cita verbatim (intro §1): 'direct task displacement explains 50-70% of the changes in wage structure across groups between 1980 and 2016.' El abstract lo fraseado como 'between 50% and 70% of changes in the U.S. wage structure ... are accounted for by relative wage declines of worker groups specialized in routine tasks in industries experiencing rapid automation.' Mide VARIANZA ENTRE GRUPOS de salarios relativos, NO participación del trabajo ni puestos. (En equilibrio general con efectos ripple esta cifra sube a 94%, no usada aquí.)",
-          "dimension": "dim-wage-inequality"
+          "dimension": "dim-wage-inequality",
+          "geo": "na"
         },
         {
           "value": "50%",
           "metric": "Fracción de los cambios en la estructura salarial 1980-2016 atribuida a la automatización incorporando efectos de EQUILIBRIO GENERAL (composición industrial + efectos ripple por reasignación de tareas), distinta de la cifra reducida 50-70%. Cita verbatim: 'automation —incorporating general equilibrium effects— accounts for 50% of the changes in the wage structure during this period' (la conclusión §6 la describe como 'close to 50%').",
-          "dimension": "dim-wage-inequality"
+          "dimension": "dim-wage-inequality",
+          "geo": "na"
         },
         {
           "value": "80%",
           "metric": "Fracción del AUMENTO de la prima universitaria (college premium) 1980-2016 explicada por la automatización en equilibrio general. Cita verbatim: 'explains 80% of the rise in the college premium.' (En el cuerpo: el desplazamiento de tareas genera un alza de 21% en la prima universitaria = 80% del aumento observado.)",
-          "dimension": "dim-wage-inequality"
+          "dimension": "dim-wage-inequality",
+          "geo": "na"
         },
         {
           "value": "-8.8% (hombres) / -2.3% (mujeres)",
           "metric": "Efecto NIVEL en equilibrio general de la automatización sobre el salario real de desertores de secundaria (high-school dropouts) 1980-2016, por género. Cita verbatim: 'automation reduced the real wage of high-school dropout men by 8.8% and high-school dropout women by 2.3%.' (Contexto del paper: el salario real observado de hombres sin secundaria es 15% menor que en 1980 —'now 15% lower than they were in 1980'—; la atribución de ~8.8pp de esos 15 a la automatización es inferencia del lector, no afirmación textual.)",
-          "dimension": "dim-wages"
+          "dimension": "dim-wages",
+          "geo": "na"
         },
         {
           "value": "3.4% (acumulado)",
           "metric": "Aumento ACUMULADO de la TFP atribuible a la automatización 1980-2016. Cita verbatim: 'automation accounts only for a (cumulative) 3.4% increase in TFP between 1980 and 2016.' Núcleo del argumento 'so-so automation': grandes efectos distributivos con ganancias de productividad modestas. Descomposición del paper: ≈10% del PIB en tareas desplazadas × ~30% de ahorro de costos ≈ 3% ('0.1 × 0.3 ≈ 3%'). Comparar: la TFP OBSERVADA creció 35% en el periodo ('in the data TFP grew by 35% during this period') — confirmado verbatim.",
-          "dimension": "dim-productivity-tfp"
+          "dimension": "dim-productivity-tfp",
+          "geo": "na"
         },
         {
           "value": "45%",
           "metric": "Fracción de los cambios OBSERVADOS en la participación del trabajo por industria (1987-2016) que los proxies de automatización (adopción de robots, software especializado y maquinaria dedicada) explican. Cita verbatim: 'These proxies of automation account for 45% of the observed changes in industry labor shares from 1987 to 2016.'",
-          "dimension": "dim-labor-share"
+          "dimension": "dim-labor-share",
+          "geo": "na"
         },
         {
           "value": "10%",
           "metric": "Fracción de los cambios en la estructura salarial atribuible a formas estándar de SBTC (productividad de los trabajadores evolucionando por educación/género) — pequeño frente al 50-70% del desplazamiento de tareas. Cita verbatim: 'standard forms of SBTC ... which account for 10% of the changes in the wage structure.'",
-          "dimension": "dim-wage-inequality"
+          "dimension": "dim-wage-inequality",
+          "geo": "na"
         },
         {
           "value": "13% / un tercio",
           "metric": "El desplazamiento de tareas dentro de la manufactura genera una reducción de 13% en la masa salarial (wage bill) del sector, lo que da cuenta de un tercio de la caída de la demanda laboral en manufactura 1980-2016. Cita verbatim: 'task displacement within manufacturing generates a large, 13%, reduction in the wage bill of that sector, accounting for a third of the decline in manufacturing labor demand for 1980-2016.'",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         }
       ],
       "reliability_note": "TODAS las cifras verificadas verbatim contra el PDF primario de Econometrica (vol. 90 no. 5, copia abierta alojada en economics.mit.edu): 50-70% (intro, 'direct task displacement explains 50-70%...'); 50%/80% (GE, 'automation —incorporating general equilibrium effects— accounts for 50%... 80% of the rise in the college premium'); -8.8%/-2.3% (GE nivel, verbatim); 3.4% TFP acumulada (verbatim, vs 35% observada verbatim); 45% labor shares 1987-2016 (verbatim); 10% SBTC (verbatim); 13%/un tercio manufactura (verbatim). El verificador NO eliminó ni degradó ninguna cifra. CUIDADO con cifras que suenan iguales: el 50-70% es FORMA REDUCIDA (asociación entre 500 grupos, varianza de salarios relativos); el 50%/80%/-8.8%/-2.3%/3.4% son resultados de EQUILIBRIO GENERAL del ejercicio cuantitativo. El 50-70% mide varianza de salarios relativos entre grupos, NO 'puestos perdidos' ni participación del trabajo; los autores advierten explícitamente (verbatim) que 'task displacement does not need to be associated with job loss'. Única atribución que es inferencia del lector (no textual): el desglose de los 15pp de caída del salario real de hombres sin secundaria en ~8.8pp por automatización.",
@@ -2704,37 +2818,44 @@
         {
           "value": "-2%",
           "metric": "Caída en el nº de trabajos mensuales de freelancers de escritura (writing-related) en ocupaciones más afectadas vs. menos afectadas, tras ChatGPT (nov-2022); efecto causal dif-en-dif en Upwork; significativo al 1%. Texto primario: 'decrease of 2% in the number of monthly jobs'",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "-5.2%",
           "metric": "Caída en los ingresos (earnings) mensuales de freelancers de escritura tras ChatGPT (nov-2022) en Upwork; empleo REALIZADO, no exposición. Texto primario: 'decrease of 5.2% in monthly earnings'",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "-2.1%",
           "metric": "Caída en el nº de trabajos mensuales de freelancers de imagen (diseño/edición de imagen/arte) tras DALL-E 2 (abr-2022) y Midjourney (jul-2022). CORREGIDO desde -3.7% (cifra de versión previa). Texto primario publicado: 'number of monthly jobs (reduction of 2.1%)'. Efecto prácticamente igual al de escritura, no mayor",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "-5.2%",
           "metric": "Caída en los ingresos mensuales de freelancers de imagen tras los modelos generativos de imagen. CORREGIDO desde -9.4% (cifra de versión previa). Texto primario publicado: 'total monthly earnings (decrease of 5.2%)'. Es IGUAL a la caída de ingresos en escritura, no el doble: NO hay gradiente por tipo de tarea en la versión publicada",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "-1.2%",
           "metric": "Margen EXTENSIVO: caída en la probabilidad de recibir cualquier empleo en un mes dado (writing-related, post-ChatGPT). Confirmado en el PDF primario: 'Freelancers are 1.2% less likely to receive any employment in a given month'",
-          "dimension": "dim-employment-separations"
+          "dimension": "dim-employment-separations",
+          "geo": "na"
         },
         {
           "value": "-4.7%",
           "metric": "Margen INTENSIVO: reducción en el nº de trabajos tomados CONDICIONAL a estar empleado (writing-related, post-ChatGPT). Confirmado en el PDF primario: 'take 4.7% fewer jobs, conditional on employment'. (El -2% de jobs combina ambos márgenes)",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "Top freelancers desproporcionadamente afectados (la calidad no protege)",
           "metric": "Heterogeneidad por historial/calidad: NO se halla que el servicio de alta calidad ('top-rated', desempeño y empleo pasados) modere los efectos adversos; evidencia SUGESTIVA (resultados 'slightly weaker') de que los freelancers de más alta calidad/experiencia se ven MÁS perjudicados. Texto primario: 'high-quality workers are not shielded'; 'high-quality freelancers are disproportionately hurt'. Cuantificación de heterogeneidad por earnings pasadas reportada en difusión secundaria (por cada +1% de earnings pasadas, ~0.5% más de caída de empleo y ~1.7% más de caída de ingresos) — NO verificada palabra-por-palabra en el cuerpo del PDF que leí",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -2750,32 +2871,38 @@
         {
           "value": "16% (de un 15 log-point decline)",
           "metric": "Caída de empleo RELATIVA de trabajadores 22-25 en los quintiles de ocupaciones MÁS expuestos a IA (Eloundou et al. 2024, GPT-4 β) vs el quintil menos expuesto, tras condicionar en efectos firm-quintile y firm-time en un event-study de Poisson (Fact 4). Verbatim: '15 log-point decline in relative employment for the most AI-exposed quintiles compared to the least exposed quintile, a large and statistically significant effect'; abstract/conclusión lo expresan como '16% relative employment decline'. RELATIVA, no absoluta. t=-1 = octubre 2022; datos mensuales hasta septiembre 2025. Las estimaciones para otros grupos de edad son 'much smaller in magnitude and not statistically significant'.",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "-6% (jóvenes 22-25) vs +6-9% (mayores; 35-49 >8%)",
           "metric": "Cambio ABSOLUTO de empleo (headcount) de 'late 2022' (t=-1=oct-2022) a sep-2025 en los DOS quintiles MÁS expuestos a IA: 22-25 cayeron 6% ('declined by 6%'), trabajadores mayores subieron (intro L133 verbatim: '6-9% increase for older workers'; Fact 2 L559: 35-49 'grew by over 8%'). En los TRES quintiles MENOS expuestos el crecimiento fue 5-13% sin orden claro por edad. El empleo agregado de ADP 'remains robust' / sigue creciendo.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "≈ -20%",
           "metric": "Caída de empleo (headcount) de software developers de 22-25 años hacia sep-2025 vs su pico de fines de 2022 (caso de estudio crudo, Figura 1; verbatim L490: 'employment for software developers aged 22-25 declined nearly 20% compared to its peak in late 2022'). Empleo de otros grupos de edad en la misma ocupación siguió creciendo. NO es un estimador de regresión.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "caídas donde AI AUTOMATIZA; sin patrón claro donde AUMENTA",
           "metric": "Fact 3: usando el Anthropic Economic Index (Handa et al. 2025) para clasificar queries a Claude por ocupación como automative (Directive + Feedback Loop) vs augmentative (Task Iteration, Learning, Validation): el empleo de jóvenes 22-25 cae en ocupaciones de mayor share automativo, mientras 'employment changes for young workers are not ordered by augmentation exposure, as the fifth quintile has among the fastest employment growth'. Es una ASOCIACIÓN a nivel ocupación-quintil basada en shares de uso, NO un efecto causal estimado. Verbatim: 'consistent with automative uses of AI substituting for labor while augmentative uses do not'.",
-          "dimension": "dim-collaboration-mode"
+          "dimension": "dim-collaboration-mode",
+          "geo": "na"
         },
         {
           "value": "sin divergencia por edad/exposición (posible rigidez salarial)",
           "metric": "Fact 5: el ajuste laboral aparece en el EMPLEO, no en la COMPENSACIÓN. Salario base anual deflactado a dólares 2017 con índice PCE (serie hasta agosto-2025); 'we find little difference in compensation trends by age or exposure quintile'. Interpretación de los autores: posibles efectos compensatorios offsetting (Autor-Thompson 2025) y/o rigidez salarial de corto plazo (Davis-Krolikowski 2025); 'AI may have larger effects on employment than on wages, at least initially'.",
-          "dimension": "dim-wages"
+          "dimension": "dim-wages",
+          "geo": "na"
         },
         {
           "value": "robusto excluyendo TI y ocupaciones remotables; sin patrón pre-2022 (incl. COVID) ⚠ REVISADO POR SUS PROPIOS AUTORES: la versión de agosto de 2026 del mismo estudio (brynjolfsson-chandar-chen-2026-canaries-ago) reconoce que las ocupaciones más y menos expuestas SÍ muestran tendencias divergentes previas a ChatGPT, particularmente alrededor de la pandemia, y las cuantifica. La afirmación de ausencia de patrón pre-2022 quedó superada.",
           "metric": "Fact 6: los resultados se mantienen al excluir ocupaciones de computación (SOC 2010 15-1) y firmas de TI/diseño de sistemas (NAICS 51, 5415), y para ocupaciones no-teletrabajables (Dingel-Neiman 2020). La taxonomía de exposición a IA 'did not meaningfully predict employment outcomes for young workers further back in time, before the widespread use of LLMs, including during the unemployment spike driven by the COVID-19 pandemic'; los patrones aparecen 'most acutely starting in late 2022 and early 2023'.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -2790,32 +2917,38 @@
         {
           "value": "3.7% → 5.4%",
           "metric": "Tasa de firmas que usaron IA para fines de negocio (pregunta core BTOS, ref. dos semanas previas), de inicio (sept 2023) a fin (feb 2024) de la colección. Estimaciones bi-semanales ponderadas, representativas a nivel nacional/sector/tamaño. VERIFICADO verbatim contra abstract w32319.",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "~6.6%",
           "metric": "Tasa ESPERADA de uso de IA por firmas a inicios de otoño (Fall) 2024 (expectativa BTOS), proyectada desde datos sept2023–feb2024. VERIFICADO verbatim contra abstract ('expected rate of about 6.6% by early Fall 2024').",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "1.4%–18.1%",
           "metric": "Rango del uso ACTUAL de IA por firmas POR SECTOR: bajo 1.4% (Construcción y Agricultura) a alto 18.1% (Información). Esperado a otoño 2024: 1.5% (Agricultura) a 21.5% (Información). VERIFICADO contra cuerpo del PDF primario (CES-WP-24-16, líneas de texto extraídas).",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "7% firmas / 9% trabajadores",
           "metric": "Entre firmas de ≥250 empleados: ~7% de firmas usa IA, pero ~9% de los trabajadores está en firmas que usan IA (tasa ponderada por empleo > tasa por firma). La relación uso-tamaño es U-shaped (las más pequeñas, 1–4 empleados, usan más que las de 5–99); el uso decae con la EDAD de la firma pero ponderado por empleo es U-shaped en edad. VERIFICADO contra cuerpo del PDF primario.",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "1.9% vs 22.3% (empleo-ponderado)",
           "metric": "Brecha sectorial en base PONDERADA POR EMPLEO: ~1.9% de trabajadores en Construcción vs ~22.3% en Información están en firmas que usan IA. Esperado a otoño 2024 (empleo-ponderado): 3.2% y 25.2% respectivamente. VERIFICADO contra cuerpo del PDF primario.",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "pocas / few",
           "metric": "Efecto sobre EMPLEO realizado auto-reportado por adoptantes: las firmas usuarias 'often utilize AI to substitute for worker tasks and equipment/software, but few report reductions in employment due to AI use'; además exhiben mejor desempeño y MAYOR incidencia de EXPANSIÓN de empleo que las no usuarias (correlacional, no causal). Razón más común de no-adopción: la IA no aplica al negocio. VERIFICADO verbatim contra abstract w32319.",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         }
       ],
       "reliability_note": "Cifras verificadas contra el abstract verbatim (w32319) y el cuerpo del PDF primario CES-WP-24-16. La definición de 'uso de IA' aquí es la pregunta core de uso para FINES DE NEGOCIO con énfasis en producción (más estrecha que 'cualquier función', usada desde nov-2025), por lo que NO es comparable nivel-a-nivel con el 18%/32% del paper 2026. La asociación adopción→empleo es transversal/auto-reportada, no causal. AUTORÍA: el prompt nombra a McElheran como autora; McElheran NO es coautora de este paper (autores confirmados en NBER). McElheran et al. es trabajo relacionado sobre la Annual Business Survey (período 2016–18) citado dentro, no esta fuente.",
@@ -2831,37 +2964,44 @@
         {
           "value": "18% (32% empleo-ponderado)",
           "metric": "Tasa de firmas que usaron IA en una FUNCIÓN DE NEGOCIO (medida ampliada del suplemento, ref. dos semanas previas), período nov-2025–ene-2026; 18% por firma, 32% ponderado por empleo. Esperado: 22% dentro de seis meses. VERIFICADO verbatim contra abstract/highlights CES-WP-26-25.",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "50%–60% (60%–70% empleo-ponderado)",
           "metric": "Tasa de uso de IA en firmas MUY GRANDES de sectores Información, Servicios Profesionales y Finanzas: 50–60% (60–70% ponderado por empleo). VERIFICADO verbatim contra abstract CES-WP-26-25.",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "57% / 52% / 45% / 41%",
           "metric": "Estrechez del alcance entre ADOPTANTES: 57% integra IA en tres o menos funciones de negocio; funciones más comunes Ventas y Marketing 52%, Estrategia y Desarrollo de Negocio 45%, TI 41%. VERIFICADO verbatim contra abstract CES-WP-26-25.",
-          "dimension": "dim-firm-adoption"
+          "dimension": "dim-firm-adoption",
+          "geo": "na"
         },
         {
           "value": "66% solo aumentan",
           "metric": "Modo de uso a nivel firma: la mayoría de usuarios (66%) usa la IA SOLO para AUMENTAR tareas (augment-only). VERIFICADO verbatim ('Most users (66%) rely on AI solely to augment tasks'). Nota: el dato adicional '23% de firmas (41% empleo-ponderado) tienen trabajadores usando IA en tareas' es una medida de PENETRACIÓN a nivel trabajador (más cercana a adopción que a modo augment/automate); no se mezcla aquí.",
-          "dimension": "dim-collaboration-mode"
+          "dimension": "dim-collaboration-mode",
+          "geo": "na"
         },
         {
           "value": "2% de firmas",
           "metric": "PUENTE adopción→empleo realizado: 'AI-related employment decreases are rare, occurring in only 2% of firms' (VERIFICADO verbatim). Auto-reportado por las firmas en el suplemento BTOS; no causal.",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "amplitud funcional e inversión: + ; tarea-trabajador: n.s.",
           "metric": "Regresión transversal a nivel firma: 'Functional breadth and operational investment are positively associated with employment decreases, whereas worker-task integration shows no significant link to headcount reduction once functional integration and operational investment are taken into account' (VERIFICADO verbatim). También: correlación positiva entre desempeño comercial y amplitud de integración de IA. CORRELACIONAL, no causal.",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         },
         {
           "value": "intensidad al alza: 'large number' de tareas 2,5% → 7% (small: 85% → 71%)",
           "metric": "Señal direccional NUEVA del 2º suplemento: aunque la sustitución sigue rara (~2% de firmas reduce empleo por IA), su INTENSIDAD sube — entre firmas que sustituyen tareas, las que reportan reemplazar un 'large number' pasaron de 2,5% (1er suplemento, inicios 2024) a 7%, y 'small number' cayó de 85% a 71% (Sección 5.1, Pregunta 26, Figura 16). VERIFICADO verbatim contra el executive summary del CES-WP-26-25. La redacción de ESTA pregunta no cambió entre olas (footnote 4), aunque otras del suplemento sí (footnote 29). Condicional a firmas sustituyentes (subconjunto chico). ¿Curva en J de adopción→desplazamiento o artefacto de cuestionario? La 3ª ola es el test.",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         }
       ],
       "reliability_note": "Cifras verificadas verbatim contra el abstract/highlights del CES-WP-26-25 y la página NBER w35141 (título y autores confirmados; publicado abril 2026). Las asociaciones de la regresión son CORRELACIONALES (transversales, auto-reporte de efectos de empleo por la firma respondente, no del trabajador); no son estimaciones causales. La medida de adopción ('cualquier función de negocio') es más amplia que la de 2024 — el salto 5.4%→18% mezcla difusión real con cambio de definición (NO es una serie temporal limpia). McElheran no es autora. QUIEBRE DE SERIE (para cualquier gráfico): el Census cambió la redacción de la pregunta central de IA el 17-nov-2025 ('in producing goods or services' → 'in any of its business functions'); se observó un salto de nivel ~10%→~17% coincidente y el Census abrió una serie temporal NUEVA desde el release del 4-dic-2025 (nota metodológica 'AI Question Wording Updates', census.gov/hfp/btos). Parte del salto a 17-20% es definicional, no adopción real; corroborado por FEDS Note 3-abr-2026 y St. Louis Fed jun-2026. La serie núcleo (olas dic-2025→may-2026, Census story 26-may-2026) da uso 17-20% con fuerte gradiente por tamaño (250+ empleados: 37%; ≤4: <20%).",
@@ -2886,7 +3026,8 @@
           "geography": "global (panel de países)",
           "sector": "economía completa",
           "counterfactual": "σ=1 (Cobb-Douglas, tajadas fijas)",
-          "quote": "our estimate of an elasticity of substitution significantly above one"
+          "quote": "our estimate of an elasticity of substitution significantly above one",
+          "geo": "multi"
         }
       ],
       "ola": "contexto"
@@ -2909,7 +3050,8 @@
           "horizon": "estructural",
           "geography": "EE.UU.",
           "sector": "manufactura",
-          "counterfactual": "σ=1"
+          "counterfactual": "σ=1",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -2932,7 +3074,8 @@
           "horizon": "largo plazo",
           "geography": "EE.UU.",
           "sector": "economía completa",
-          "counterfactual": "σ=1 (rechaza Cobb-Douglas)"
+          "counterfactual": "σ=1 (rechaza Cobb-Douglas)",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -2955,7 +3098,8 @@
           "horizon": "largo plazo",
           "geography": "EE.UU.",
           "sector": "economía completa",
-          "counterfactual": "σ=1 (rechazado)"
+          "counterfactual": "σ=1 (rechazado)",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -2978,7 +3122,8 @@
           "horizon": "largo plazo",
           "geography": "EE.UU. / general",
           "sector": "economía completa",
-          "counterfactual": "σ=1 (rechazado)"
+          "counterfactual": "σ=1 (rechazado)",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3001,7 +3146,8 @@
           "horizon": "largo plazo",
           "geography": "EE.UU.",
           "sector": "economía completa / manufactura",
-          "counterfactual": "σ=1; σ>1 de KN"
+          "counterfactual": "σ=1; σ>1 de KN",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3025,7 +3171,8 @@
           "geography": "16 países desarrollados",
           "sector": "economía completa",
           "counterfactual": "salarios flexibles (sin rigidez)",
-          "quote": "an average of 28 percent of workers are covered by downward nominal rigidity, in the sense that 28 percent of the wage cuts that would have taken place under flexible wage setting are prevented by downward rigidity... an average of 26 percent of workers are covered by downward real rigidity"
+          "quote": "an average of 28 percent of workers are covered by downward nominal rigidity, in the sense that 28 percent of the wage cuts that would have taken place under flexible wage setting are prevented by downward rigidity... an average of 26 percent of workers are covered by downward real rigidity",
+          "geo": "multi"
         }
       ],
       "ola": "contexto"
@@ -3049,7 +3196,8 @@
           "geography": "EE.UU.",
           "sector": "economía completa",
           "counterfactual": "distribución simétrica de cambios salariales",
-          "quote": "In 2006 about 12 percent of workers reported zero wage change; in 2011 the share had risen to about 16 percent... during recessions the rigidities become more binding"
+          "quote": "In 2006 about 12 percent of workers reported zero wage change; in 2011 the share had risen to about 16 percent... during recessions the rigidities become more binding",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3073,7 +3221,8 @@
           "geography": "~15 países europeos",
           "sector": "economía completa",
           "counterfactual": "ajuste vía salario base",
-          "quote": "Only 2.3% of sampled firms cut base wages of at least some employees during the five-year period prior to the survey, while 9.6% of firms froze base wages"
+          "quote": "Only 2.3% of sampled firms cut base wages of at least some employees during the five-year period prior to the survey, while 9.6% of firms froze base wages",
+          "geo": "eu"
         }
       ],
       "ola": "contexto"
@@ -3097,7 +3246,8 @@
           "geography": "India rural",
           "sector": "agricultura",
           "counterfactual": "salarios nominales flexibles a la baja",
-          "quote": "Nominal wages rise in response to positive shocks but do not fall during droughts... This ratcheting effect generates a 9% reduction in employment levels"
+          "quote": "Nominal wages rise in response to positive shocks but do not fall during droughts... This ratcheting effect generates a 9% reduction in employment levels",
+          "geo": "otro"
         }
       ],
       "ola": "contexto"
@@ -3121,7 +3271,8 @@
           "geography": "EE.UU.",
           "sector": "economía completa",
           "counterfactual": "recorte de salario nominal",
-          "quote": "the advantage of layoffs over pay reduction was that they 'get the misery out the door'"
+          "quote": "the advantage of layoffs over pay reduction was that they 'get the misery out the door'",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3145,7 +3296,8 @@
           "geography": "meta-análisis (EE.UU./Europa)",
           "sector": "economía completa",
           "counterfactual": "oferta laboral inelástica",
-          "quote": "we recommend calibrating macro models to match... Frisch elasticities of 0.5 on the intensive and 0.25 on the extensive margin... a Frisch elasticity of aggregate hours of 0.75"
+          "quote": "we recommend calibrating macro models to match... Frisch elasticities of 0.5 on the intensive and 0.25 on the extensive margin... a Frisch elasticity of aggregate hours of 0.75",
+          "geo": "us-eu"
         }
       ],
       "ola": "contexto"
@@ -3169,7 +3321,8 @@
           "geography": "global (teoría)",
           "sector": "economía completa",
           "counterfactual": "crecimiento sin cuellos (explosión)",
-          "quote": "even with infinite amounts of some input, overall production remains finite — again because we are limited by the weakest link... output is always constrained by the weakest links that are not yet automated"
+          "quote": "even with infinite amounts of some input, overall production remains finite — again because we are limited by the weakest link... output is always constrained by the weakest links that are not yet automated",
+          "geo": "global"
         },
         {
           "metric": "Los weak links DOMESTICAN el crecimiento: hay que automatizarlos para acelerar",
@@ -3180,7 +3333,8 @@
           "geography": "global (teoría)",
           "sector": "economía completa",
           "counterfactual": "crecimiento explosivo sin cuellos",
-          "quote": "this acceleration is likely to be slowed by the presence of “weak links”... Accelerating economic growth requires the vast majority of the weak links to be automated away, which delays the large gains"
+          "quote": "this acceleration is likely to be slowed by the presence of “weak links”... Accelerating economic growth requires the vast majority of the weak links to be automated away, which delays the large gains",
+          "geo": "global"
         }
       ],
       "ola": "teoria"
@@ -3204,7 +3358,8 @@
           "geography": "global (teoría)",
           "sector": "economía completa",
           "counterfactual": "explosión de crecimiento sin cuellos",
-          "quote": "Jones and Tonetti (2026) use the weak link framework to explain how the presence of weak links can limit the growth that emerges from artificial intelligence"
+          "quote": "Jones and Tonetti (2026) use the weak link framework to explain how the presence of weak links can limit the growth that emerges from artificial intelligence",
+          "geo": "global"
         }
       ],
       "ola": "teoria"
@@ -3228,7 +3383,8 @@
           "geography": "Reino Unido / general",
           "sector": "economía completa",
           "counterfactual": "pleno empleo vía cambio estructural",
-          "quote": "the substitution of machinery for human labour, is often very injurious to the interests of the class of labourers (cap. 31)"
+          "quote": "the substitution of machinery for human labour, is often very injurious to the interests of the class of labourers (cap. 31)",
+          "geo": "eu"
         }
       ],
       "ola": "historica"
@@ -3252,7 +3408,8 @@
           "geography": "EE.UU.",
           "sector": "telecomunicaciones / clerical",
           "counterfactual": "destrucción neta de empleo",
-          "quote": "the decline in operators was counteracted by employment growth in middle-skill clerical jobs and lower-skill service jobs, including in new categories of work... incumbent telephone operators were most [affected]"
+          "quote": "the decline in operators was counteracted by employment growth in middle-skill clerical jobs and lower-skill service jobs, including in new categories of work... incumbent telephone operators were most [affected]",
+          "geo": "us"
         }
       ],
       "ola": "historica"
@@ -3276,7 +3433,8 @@
           "geography": "—",
           "sector": "bienes creativos",
           "counterfactual": "humano = insumo reemplazable (como un caballo)",
-          "quote": "the human-made one... is valued much much higher than the AI version (paráfrasis del podcast)"
+          "quote": "the human-made one... is valued much much higher than the AI version (paráfrasis del podcast)",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3300,7 +3458,8 @@
           "geography": "EE.UU.",
           "sector": "cuello blanco / software",
           "counterfactual": "white-collar bloodbath",
-          "quote": "you really have to squint to see anything happening... a bit below trend for juniors, but still growth (Imas, paráfrasis)"
+          "quote": "you really have to squint to see anything happening... a bit below trend for juniors, but still growth (Imas, paráfrasis)",
+          "geo": "us"
         }
       ],
       "ola": "generativa"
@@ -3324,7 +3483,8 @@
           "geography": "EE.UU.",
           "sector": "—",
           "counterfactual": "respuesta proporcional al tamaño económico del shock",
-          "quote": "if there's a 2% increase in unemployment, the political winds completely change (paráfrasis del podcast)"
+          "quote": "if there's a 2% increase in unemployment, the political winds completely change (paráfrasis del podcast)",
+          "geo": "us"
         }
       ],
       "ola": "teoria"
@@ -3348,7 +3508,8 @@
           "geography": "—",
           "sector": "—",
           "counterfactual": "consenso de expertos",
-          "quote": "there's a ton of disagreement, like in every single direction (Imas, paráfrasis)"
+          "quote": "there's a ton of disagreement, like in every single direction (Imas, paráfrasis)",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3372,7 +3533,8 @@
           "geography": "global",
           "sector": "hardware de cómputo",
           "counterfactual": "costo constante",
-          "quote": "FLOP/s per dollar doubles every 2.46 years (95% CI: 2.24 to 2.72 years)"
+          "quote": "FLOP/s per dollar doubles every 2.46 years (95% CI: 2.24 to 2.72 years)",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3396,7 +3558,8 @@
           "geography": "global",
           "sector": "modelos de lenguaje",
           "counterfactual": "precio constante",
-          "quote": "prices declining between 9x per year and 900x per year, with a median of 50x per year"
+          "quote": "prices declining between 9x per year and 900x per year, with a median of 50x per year",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3420,7 +3583,8 @@
           "geography": "global",
           "sector": "modelos frontera",
           "counterfactual": "escala constante",
-          "quote": "the compute used to train notable models has grown about 4.1x/year (90% CI: 3.7x to 4.6x) between 2010 to May 2024"
+          "quote": "the compute used to train notable models has grown about 4.1x/year (90% CI: 3.7x to 4.6x) between 2010 to May 2024",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3444,7 +3608,8 @@
           "geography": "global",
           "sector": "modelos frontera",
           "counterfactual": "costo constante",
-          "quote": "the amortized hardware and energy cost for the final training run of frontier models has grown rapidly, at a rate of 2.4x per year since 2016"
+          "quote": "the amortized hardware and energy cost for the final training run of frontier models has grown rapidly, at a rate of 2.4x per year since 2016",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3468,7 +3633,8 @@
           "geography": "global",
           "sector": "semiconductores / energía",
           "counterfactual": "oferta sin restricción",
-          "quote": "Silicon is the binding short-term constraint. Power is the binding long-term constraint."
+          "quote": "Silicon is the binding short-term constraint. Power is the binding long-term constraint.",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3492,7 +3658,8 @@
           "geography": "global (EE.UU. = 45%)",
           "sector": "datacenters",
           "counterfactual": "sin crecimiento de IA",
-          "quote": "Data centres accounted for around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh)."
+          "quote": "Data centres accounted for around 1.5% of the world's electricity consumption in 2024, or 415 terawatt-hours (TWh).",
+          "geo": "multi"
         },
         {
           "metric": "Riesgo de demora por restricciones de red (oferta inelástica)",
@@ -3503,7 +3670,8 @@
           "geography": "global",
           "sector": "red eléctrica",
           "counterfactual": "expansión sin fricción",
-          "quote": "unless these risks are addressed, around 20% of planned data centre projects could be at risk of delays"
+          "quote": "unless these risks are addressed, around 20% of planned data centre projects could be at risk of delays",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3527,7 +3695,8 @@
           "geography": "EE.UU.",
           "sector": "energía",
           "counterfactual": "—",
-          "quote": "Expressed as a percent of gross domestic product (GDP), total energy expenditures were 5.6% in 2016, the lowest since at least 1970."
+          "quote": "Expressed as a percent of gross domestic product (GDP), total energy expenditures were 5.6% in 2016, the lowest since at least 1970.",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3551,7 +3720,8 @@
           "geography": "global",
           "sector": "generación eléctrica",
           "counterfactual": "costo de fósiles (plano)",
-          "quote": "Electricity from utility-scale solar photovoltaics cost $496 per MWh in 2009. Within 15 years the price declined by 88%."
+          "quote": "Electricity from utility-scale solar photovoltaics cost $496 per MWh in 2009. Within 15 years the price declined by 88%.",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3575,7 +3745,8 @@
           "geography": "EE.UU.",
           "sector": "generación eléctrica",
           "counterfactual": "oferta perfectamente elástica",
-          "quote": "The typical project built in 2023 took nearly 5 years from the interconnection request to commercial operations, compared to 3 years in 2015 and <2 years in 2008."
+          "quote": "The typical project built in 2023 took nearly 5 years from the interconnection request to commercial operations, compared to 3 years in 2015 and <2 years in 2008.",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3599,7 +3770,8 @@
           "geography": "EE.UU.",
           "sector": "generación renovable",
           "counterfactual": "oferta inelástica de corto plazo (PES≈0)",
-          "quote": "my preferred estimate of the supply elasticity is 2.7 ... for every 1% increase in the price of RECs, there will [be] approximately a 2.7% increase in renewable generating capacity"
+          "quote": "my preferred estimate of the supply elasticity is 2.7 ... for every 1% increase in the price of RECs, there will [be] approximately a 2.7% increase in renewable generating capacity",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3623,7 +3795,8 @@
           "geography": "global",
           "sector": "semiconductores",
           "counterfactual": "oferta elástica",
-          "quote": "the four largest AI chip designers collectively consumed around 90% of global CoWoS capacity and HBM supply in 2025, while consuming only 12% of advanced logic die production"
+          "quote": "the four largest AI chip designers collectively consumed around 90% of global CoWoS capacity and HBM supply in 2025, while consuming only 12% of advanced logic die production",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3647,7 +3820,8 @@
           "geography": "EE.UU.",
           "sector": "manufactura agregada",
           "counterfactual": "σ=1",
-          "quote": "energy and labor are substitutable while energy and capital are complements"
+          "quote": "energy and labor are substitutable while energy and capital are complements",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -3671,7 +3845,8 @@
           "geography": "Norteamérica / Europa",
           "sector": "economía / manufactura",
           "counterfactual": "σ=1",
-          "quote": "the estimated cross-price elasticities suggest capital-energy substitutability without exception"
+          "quote": "the estimated cross-price elasticities suggest capital-energy substitutability without exception",
+          "geo": "us-eu"
         }
       ],
       "ola": "contexto"
@@ -3695,7 +3870,8 @@
           "geography": "—",
           "sector": "—",
           "counterfactual": "reparto estable de factores",
-          "quote": "in the long run, growth will likely be limited by some other irreproducible factor, and all the benefits of technological progress will accrue to that factor"
+          "quote": "in the long run, growth will likely be limited by some other irreproducible factor, and all the benefits of technological progress will accrue to that factor",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -3719,7 +3895,8 @@
           "geography": "—",
           "sector": "—",
           "counterfactual": "crecimiento gobernado por lo automatizado",
-          "quote": "Economic growth may be constrained not by what we do well but rather by what is essential and yet hard to improve"
+          "quote": "Economic growth may be constrained not by what we do well but rather by what is essential and yet hard to improve",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -3743,7 +3920,8 @@
           "geography": "global",
           "sector": "energía limpia",
           "counterfactual": "energía como recurso escaso/caro",
-          "quote": "(roughly) exponentially at a rate near 10% per year"
+          "quote": "(roughly) exponentially at a rate near 10% per year",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -3759,17 +3937,20 @@
         {
           "value": "−3,8%/año (22-25 en más expuestas) vs +2,0%/año (menos expuestas)",
           "metric": "Tasa ANUALIZADA de cambio de empleo desde nov-2022 (datos a abril 2026), trabajadores 22-25: 'employment in AI-exposed occupations is contracting at 3.8% per year, compared to the least exposed, which are growing at 2.0% per year'. La nota: 'declines in exposed occupations not only persist, but deepen', con 'muted evidence of similar patterns for workers up to age 34'. Descriptivo/correlacional.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "22-25: −4,2% vs −1,7% YoY · todas las edades: −0,2% vs +0,1% YoY",
           "metric": "Interanual a abril 2026 (Figura 1 de la Research Note): para 22-25, las más expuestas −4,2% vs −1,7% las menos expuestas (brecha 2,5pp); para TODAS las edades, −0,2% vs +0,1% (brecha 0,3pp). Las dos hipótesis del mapa a la vez: el agregado casi no se mueve mientras el margen joven/expuesto diverge.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "caídas donde el uso AUTOMATIZA; sin relación clara donde AUMENTA",
           "metric": "Cruce del empleo ADP con el tipo de uso del Anthropic Economic Index (Figura 5): 'automation-related usage is correlated with employment trends, while augmentation-related usage is not'; matiz exacto: 'no clear monotonic relationship' para aumentación y 'declines or more muted increases' (no caída uniforme) para automatización. Asociación a nivel ocupación, no causal. Persiste en el dashboard actualizado a julio (verificación 2-1).",
-          "dimension": "dim-collaboration-mode"
+          "dimension": "dim-collaboration-mode",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3785,12 +3966,14 @@
         {
           "value": "~−5pp share junior de contrataciones (cada shock, por separado)",
           "metric": "Estimados POR SEPARADO, +2 desviaciones estándar de exposición a GenAI o a WFH predicen cada una, a 2025, '~a fall of around 5pp in the junior-share of new hires' y ~3pp en el share de avisos que piden poca experiencia — es decir, la correlación descriptiva de Canaries SÍ replica en 4 países.",
-          "dimension": "dim-atribucion-entry-level"
+          "dimension": "dim-atribucion-entry-level",
+          "geo": "na"
         },
         {
           "value": "conjunto: WFH persiste; GenAI se atenúa a ~0",
           "metric": "Estimados CONJUNTAMENTE: 'the WFH effect remains, while the GenAI coefficient attenuates sharply and is often statistically indistinguishable from zero' (verbatim del abstract). Crítica de variable omitida a la atribución IA del deterioro entry-level; consistente entre múltiples diseños.",
-          "dimension": "dim-atribucion-entry-level"
+          "dimension": "dim-atribucion-entry-level",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3806,12 +3989,14 @@
         {
           "value": "graduados <29: 3,1% → 3,7% · experimentados: 1,9% → 1,8%",
           "metric": "Desempleo de graduados universitarios jóvenes (<29): 3,1% promedio 2017-19 → 3,7% en 2022-25 (~+20%), MIENTRAS el de graduados experimentados BAJÓ de 1,9% a 1,8% — la brecha es específica a la entrada, no general.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "el remoto explica ~64% del alza",
           "metric": "Cálculo back-of-the-envelope: 'remote work can explain 64 percent of the increase in unemployment for all young college graduates between 2017−19 and 2022−24' (mecanismo: pérdida de entrenamiento/mentoría presencial). Además, el timing empuja contra la IA: 'the uptick in youth unemployment rates predates the rapid diffusion of AI', y la brecha joven/viejo persiste en ocupaciones remotables Y no remotables aun controlando exposición a IA.",
-          "dimension": "dim-atribucion-entry-level"
+          "dimension": "dim-atribucion-entry-level",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3827,12 +4012,14 @@
         {
           "value": "'the role of LLMs... appears to be limited'",
           "metric": "Conclusión textual (§1.3.1): 'So far, the role of LLMs in explaining the difficulties encountered by young people entering the labour market appears to be limited'. Evidencia: (1) el gap de desempleo de graduados jóvenes sube desde ANTES de la pandemia, mucho antes del uso intensivo de LLMs, sin punto de quiebre en ningún país analizado; (2) para jóvenes SIN título el patrón es inconsistente entre países (EE.UU. sube desde 2024, Australia BAJA desde mediados de 2024, Canadá/eurozona planos) — incompatible con una causa tecnológica común.",
-          "dimension": "dim-atribucion-entry-level"
+          "dimension": "dim-atribucion-entry-level",
+          "geo": "na"
         },
         {
           "value": "vacantes junior expuestas: sin caída desproporcionada (fines 2023)",
           "metric": "Box 1.6 (Lightcast × exposición Felten-Raj-Seamans): las vacantes JUNIOR en ocupaciones de alta exposición a LLM en EE.UU. no cayeron desproporcionadamente al final de 2023; las ocupaciones expuestas sí son más sensibles a shocks macro (cita Curto Millet & Iscenko 2026 y la literatura de que en downturns se recorta primero la contratación entry-level).",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3848,12 +4035,14 @@
         {
           "value": "efecto IA sobre empleo de expuestas ≈ 0 (indistinguible de cero)",
           "metric": "SDID sobre CPS: 'we find no strong evidence of impacts as of yet... The estimate is close to zero and cannot be distinguished from it, statistically speaking' — y lo mismo para salarios reales por hora. El paper técnico reporta que el desempleo de expuestos subió ~0,5pp más que su control sintético (más en 16-34) pero NO significativo a Q1-2026. Complementa su análisis previo de rotación ocupacional (sin alza inusual de churn).",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "las expuestas eran MENOS cíclicas pre-pandemia",
           "metric": "Hallazgo metodológico con carga para toda la literatura: 'prior to the pandemic, AI-exposed occupation employment is considerably less cyclical than unexposed employment' — las comparaciones crudas expuesto/no-expuesto están sesgadas por ciclicidad diferencial; cualquier atribución necesita un diseño que la acomode.",
-          "dimension": "dim-atribucion-entry-level"
+          "dimension": "dim-atribucion-entry-level",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3869,12 +4058,14 @@
         {
           "value": "agregado: brecha ≈ 0 ('small and insignificant')",
           "metric": "DiD post-ChatGPT sobre desempleo de trabajadores expuestos (todas las edades): 'The average change in the gap since the release of ChatGPT is small and insignificant' — sin aumento sistemático de desempleo para expuestos desde fines de 2022.",
-          "dimension": "dim-realized-employment-change"
+          "dimension": "dim-realized-employment-change",
+          "geo": "na"
         },
         {
           "value": "job finding rate 22-25 en expuestas: −14% vs 2022",
           "metric": "'a 14% drop in the job finding rate compared to that in 2022 in the exposed occupations, although this is just barely statistically significant. (There is no such decrease for workers older than 25.)' — de ~2%/mes a ~1,5%/mes, series que 'visually diverge in 2024', por el margen de CONTRATACIÓN y no de separaciones. El reporte dice explícitamente que 'echoes' a Canaries.",
-          "dimension": "dim-realized-labor-demand"
+          "dimension": "dim-realized-labor-demand",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3890,7 +4081,8 @@
         {
           "value": "ventaja comparativa explica ~60% de la adopción; solo-exposición 14%",
           "metric": "Correlación DÉBIL entre exposición predicha y uso reportado de IA. Su índice alternativo (adopción por ventaja comparativa: ganancia de productividad de la IA vs costos de implementación relativos a productividad y salario del trabajador) explica 'almost 60% of cross-occupation variation in observed AI adoption, compared to 14% for an exposure-only model'; ambos enfoques divergen sustancialmente para ~30% de los trabajadores.",
-          "dimension": "dim-ai-adoption-use"
+          "dimension": "dim-ai-adoption-use",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3906,7 +4098,8 @@
         {
           "value": "equilibrios duales; tecnología más barata puede ser trampa",
           "metric": "En economías con alta capacidad de aprendizaje hay PARES de equilibrios estacionarios ordenados por la tasa agregada de aprendizaje, y 'cheaper technology has opposite effects across the two': en el equilibrio de alto aprendizaje sube el bienestar vía el propio canal de aprendizaje; en el de bajo aprendizaje 'it tips the economy into a human-capital trap'. First-best del planificador: impuesto a los beneficios de automatización + subsidio a mantener la frontera de tareas, a una tasa común.",
-          "dimension": "dim-task-content-shift"
+          "dimension": "dim-task-content-shift",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -3922,12 +4115,14 @@
         {
           "value": "~10pp menos exposición percibida con 15+ años de experiencia",
           "metric": "La exposición PERCIBIDA se concentra en juniors: 'People with at least 15 years of experience put that share of tasks AI can do roughly 10 percentage points lower than those in their first year of work'.",
-          "dimension": "dim-perception-gap"
+          "dimension": "dim-perception-gap",
+          "geo": "na"
         },
         {
           "value": "10% ve probable perder su empleo en 12m; >1/3 da >60% a que lo pierda un colega junior",
           "metric": "Expectativas de pérdida de empleo: '10% rated losing their own jobs as likely or very likely' (de esos, 38% lo atribuye a IA — COTA SUPERIOR: la pregunta mezclaba cambio y pérdida de empleo), pero concentradas en colegas junior: 'over one third stating that the probability of a junior colleague losing their job in the next year was over 60%'. Además, >1/3 espera que la IA pueda hacer 'most or nearly all' de sus tareas en 12 meses y ~6 de 10 eligió una banda de exposición mayor para el año próximo.",
-          "dimension": "dim-perception-gap"
+          "dimension": "dim-perception-gap",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3945,27 +4140,32 @@
         {
           "value": "India: 121 → 185 mil millones USD (2022 → 2025) ⚠ magnitud sin reconciliar",
           "metric": "Exportaciones indias de 'other business services' (WTO), de 2022 (año del lanzamiento de ChatGPT) a 2025. Es la cifra ancla del artículo y la que no cuadra contra la fuente oficial india (ver reliability_note): tratarla como orden de magnitud, no como dato citable.",
-          "dimension": "dim-comercio-servicios-offshore"
+          "dimension": "dim-comercio-servicios-offshore",
+          "geo": "na"
         },
         {
           "value": "15,1%/año post-ChatGPT vs 13,5%/año antes (+1,6pp)",
           "metric": "Crecimiento anual compuesto de las exportaciones indias de OBS: 2022-2025 contra la tendencia log-lineal ajustada sobre 2015-2022. El artículo reporta además que a marzo 2026 India va ~27% por encima de esa tendencia pre-IA. La aceleración es real pero modesta, y la base incluye el salto pandémico de digitalización.",
-          "dimension": "dim-comercio-servicios-offshore"
+          "dimension": "dim-comercio-servicios-offshore",
+          "geo": "na"
         },
         {
           "value": "nueve de nueve creciendo (Q4-2022 = 100): India 153 · Francia y Alemania 139 · China 126 · EE.UU. 123 · Filipinas 120",
           "metric": "Índices a los últimos datos disponibles (mayo 2026 para EE.UU./China/Francia, abril para Alemania, marzo para Filipinas). Ninguna de las nueve economías del panel muestra contracción 42 meses después de ChatGPT. Es el hallazgo central y el más robusto del artículo: no depende del nivel absoluto de ninguna serie.",
-          "dimension": "dim-comercio-servicios-offshore"
+          "dimension": "dim-comercio-servicios-offshore",
+          "geo": "na"
         },
         {
           "value": "Filipinas +3,2% interanual — el más bajo del panel",
           "metric": "Interanual a marzo 2026, contra +10,9% de China, +9,6% de Alemania, +8,9% de Francia y +4,7% de EE.UU. Filipinas es la economía del panel más concentrada en centros de contacto por voz, lo más directamente sustituible por IA conversacional. El artículo no subraya el contraste; es la señal más parecida a desplazamiento selectivo que hay dentro de sus propios datos, y la lectura de que ahí está el margen que se mueve es una inferencia sobre su gráfico, no una afirmación suya.",
-          "dimension": "dim-comercio-servicios-offshore"
+          "dimension": "dim-comercio-servicios-offshore",
+          "geo": "na"
         },
         {
           "value": "TCS: −12.000 empleos (~2% de la plantilla) con exportaciones creciendo ~17%",
           "metric": "El contraejemplo que el propio autor ofrece: el ingreso por empleado sube, no es que la industria se preserve. Verificado por fuera del artículo: TCS anunció el recorte a fines de julio de 2025 para el año fiscal 2026 (~12.000, 2% de la dotación global, concentrado en grados medios y senior) y en enero de 2026 declaró el proceso a mitad de camino. La cifra es correcta; el año que le pone el artículo es el fiscal, no el calendario.",
-          "dimension": "dim-comercio-servicios-offshore"
+          "dimension": "dim-comercio-servicios-offshore",
+          "geo": "na"
         }
       ],
       "ola": "generativa"
@@ -3990,7 +4190,8 @@
           "sector": "economía completa",
           "counterfactual": "tasa efectiva sobre equipo y software",
           "quote": "Our benchmark effective tax on labor ... hovers around 25.5%.",
-          "location": "Sección 'Effective Tax Rates in the US'"
+          "location": "Sección 'Effective Tax Rates in the US'",
+          "geo": "us"
         },
         {
           "metric": "Tasa efectiva sobre el capital que automatiza (equipo y software)",
@@ -4002,7 +4203,8 @@
           "sector": "equipo y software",
           "counterfactual": "25,5% sobre el trabajo",
           "quote": "effective taxes on equipment and software decreased further, to about 5%, following the 2017 tax reform",
-          "location": "Sección 'Effective Tax Rates in the US'"
+          "location": "Sección 'Effective Tax Rates in the US'",
+          "geo": "us"
         },
         {
           "metric": "Efecto de pasar del sistema tributario de la década de 2010 a la tributación óptima de capital y trabajo",
@@ -4014,7 +4216,8 @@
           "sector": "economía completa",
           "counterfactual": "sistema tributario vigente en la década de 2010",
           "quote": "Moving from the US tax system in the 2010s to optimal taxation of capital and labor would raise employment by 4.02% and the labor share by 0.78 percentage points",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Reformas más modestas (si la tributación óptima es inviable)",
@@ -4026,7 +4229,8 @@
           "sector": "economía completa",
           "counterfactual": "sistema vigente",
           "quote": "more modest reforms can still increase employment by 1.14–1.96%, but in this case efficiency can be increased by imposing an additional automation tax",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Mecanismo: por qué el sesgo produce automatización excesiva",
@@ -4038,7 +4242,8 @@
           "sector": "economía completa",
           "counterfactual": "automatización socialmente óptima",
           "quote": "marginal automated tasks do not bring much productivity gains but displace workers, reducing employment below its socially optimal level",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Tamaño de la caja que producen esos instrumentos",
@@ -4050,7 +4255,8 @@
           "sector": "economía completa",
           "counterfactual": "—",
           "quote": "the net tax revenue collected by the government with these instruments is roughly 18.6% of GDP",
-          "location": "Nota al pie 22"
+          "location": "Nota al pie 22",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -4075,7 +4281,8 @@
           "sector": "economía completa",
           "counterfactual": "no gravar la automatización",
           "quote": "it is optimal to tax robots while the current generations of routine workers ... are active in the labor force. Once these workers retire, optimal robot taxes are zero.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Riesgo distributivo bajo el sistema tributario vigente",
@@ -4087,7 +4294,8 @@
           "sector": "economía completa",
           "counterfactual": "sistema tributario reformado",
           "quote": "given the current U.S. tax system, a sustained fall in automation costs can lead to a massive rise in income inequality",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "teoria"
@@ -4112,7 +4320,8 @@
           "sector": "robots y comercio",
           "counterfactual": "regular sin medir el impacto distributivo",
           "quote": "sufficient statistics that can be implemented using evidence on the distributional impact of new technologies, such as robots and trade",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "na"
         },
         {
           "metric": "Trayectoria de la magnitud del impuesto óptimo",
@@ -4124,7 +4333,8 @@
           "sector": "robots y comercio",
           "counterfactual": "impuesto creciente con el daño (la intuición ingenua)",
           "quote": "while distributional concerns create a rationale for non-zero taxes on robots and trade, the magnitude of these taxes may decrease as the process of automation and globalization deepens",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "na"
         }
       ],
       "ola": "teoria"
@@ -4149,7 +4359,8 @@
           "sector": "economía completa",
           "counterfactual": "gravar siempre",
           "quote": "when robots are expensive, a robot subsidy is optimal. As robots get cheaper, it becomes optimal to tax them.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Ganancia de bienestar por instrumento (reforma desde el status quo)",
@@ -4161,7 +4372,8 @@
           "sector": "economía completa",
           "counterfactual": "sistema tributario vigente",
           "quote": "Additional gains between 2 and 20 USD can be achieved by optimally setting taxes on capital ... Allowing for differential taxation of robots and equipment leads to almost no additional welfare gains.",
-          "location": "Introducción, resumen de resultados cuantitativos"
+          "location": "Introducción, resumen de resultados cuantitativos",
+          "geo": "us"
         },
         {
           "metric": "Nivel del impuesto óptimo al capital en la calibración",
@@ -4173,7 +4385,8 @@
           "sector": "capital",
           "counterfactual": "—",
           "quote": "always positive and larger than the robot tax, peaking at about 2% and then declining",
-          "location": "Introducción, resumen de resultados cuantitativos"
+          "location": "Introducción, resumen de resultados cuantitativos",
+          "geo": "us"
         }
       ],
       "ola": "teoria"
@@ -4198,7 +4411,8 @@
           "sector": "economía completa",
           "counterfactual": "—",
           "quote": "Receipts totaled $4.9 trillion during fiscal year 2024",
-          "location": "Tabla 2, 'Receipts, October–September'"
+          "location": "Tabla 2, 'Receipts, October–September'",
+          "geo": "us"
         },
         {
           "metric": "Fracción de la recaudación federal que descansa sobre personas y nóminas",
@@ -4210,7 +4424,8 @@
           "sector": "economía completa",
           "counterfactual": "una base equilibrada entre trabajo y capital",
           "quote": "Combined Individual Income and Payroll Taxes ... Total 4,134",
-          "location": "Tabla 2, memorándum"
+          "location": "Tabla 2, memorándum",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -4235,7 +4450,8 @@
           "sector": "multinacionales",
           "counterfactual": "todos los países con la misma tasa efectiva",
           "quote": "close to 40% of multinational profits ... are shifted to tax havens each year",
-          "location": "Resumen de los autores (missingprofits.world)"
+          "location": "Resumen de los autores (missingprofits.world)",
+          "geo": "global"
         },
         {
           "metric": "Recaudación perdida por el desplazamiento de beneficios",
@@ -4247,7 +4463,8 @@
           "sector": "multinacionales",
           "counterfactual": "sin desplazamiento",
           "quote": "reduces corporate income tax revenue by more than $200 billion, or 10% of global corporate tax receipts",
-          "location": "Resumen de los autores (missingprofits.world)"
+          "location": "Resumen de los autores (missingprofits.world)",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -4272,7 +4489,8 @@
           "sector": "multinacionales con ingresos ≥750 millones de euros",
           "counterfactual": "sin impuesto mínimo global",
           "quote": "The GMT is estimated to raise additional CIT revenues of USD 155-192 billion globally each year or between 6.5% and 8.1% of global CIT revenues",
-          "location": "Sección de ingresos fiscales"
+          "location": "Sección de ingresos fiscales",
+          "geo": "global"
         },
         {
           "metric": "Reducción proyectada del beneficio poco gravado",
@@ -4284,7 +4502,8 @@
           "sector": "multinacionales",
           "counterfactual": "sin impuesto mínimo global",
           "quote": "The GMT is estimated to reduce global low-taxed profit by about 80%; from 36% of all profit globally to about 7%.",
-          "location": "Sección de beneficios poco gravados"
+          "location": "Sección de beneficios poco gravados",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -4309,7 +4528,8 @@
           "sector": "multinacionales en alcance",
           "counterfactual": "escenario sin impuesto mínimo global implementado en ninguna parte",
           "quote": "Global CIT revenues are estimated to rise by 3.2-5.4% per year.",
-          "location": "Hallazgos clave del anuncio del 15 de julio de 2026"
+          "location": "Hallazgos clave del anuncio del 15 de julio de 2026",
+          "geo": "global"
         },
         {
           "metric": "Reducción estimada del desplazamiento de beneficios",
@@ -4321,7 +4541,8 @@
           "sector": "multinacionales",
           "counterfactual": "sin impuesto mínimo global",
           "quote": "The GMT is estimated to reduce profit-shifting substantially with an estimated reduction of between 22.6-44.6%.",
-          "location": "Hallazgos clave del anuncio del 15 de julio de 2026"
+          "location": "Hallazgos clave del anuncio del 15 de julio de 2026",
+          "geo": "global"
         },
         {
           "metric": "Alza de tasas efectivas y efecto sobre inversión y empleo en el primer año",
@@ -4333,7 +4554,8 @@
           "sector": "multinacionales en alcance vs. fuera de alcance",
           "counterfactual": "empresas fuera del alcance de la norma",
           "quote": "finding no statistically significant evidence of reductions in investment or employment among in-scope firms during the first year",
-          "location": "Análisis complementario 'MNE Responses to the GMT'"
+          "location": "Análisis complementario 'MNE Responses to the GMT'",
+          "geo": "global"
         }
       ],
       "ola": "contexto"
@@ -4358,7 +4580,8 @@
           "sector": "personas de bajos ingresos",
           "counterfactual": "grupo de control con 50 USD/mes (2.000 personas)",
           "quote": "The transfer caused total individual income excluding the transfers to fall by about $1,800/year relative to the control group and a 4.1 percentage point decrease in labor market participation.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Calidad del empleo y uso del tiempo liberado",
@@ -4370,7 +4593,8 @@
           "sector": "personas de bajos ingresos",
           "counterfactual": "grupo de control",
           "quote": "we find no impact on quality of employment, and our confidence intervals can rule out even small improvements",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -4395,7 +4619,8 @@
           "sector": "población completa del estado",
           "counterfactual": "control sintético de estados comparables",
           "quote": "the dividend had no effect on employment and increased part-time work by 1.8 percentage points (17 percent)",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Mecanismo que explica la ausencia de caída del empleo",
@@ -4407,7 +4632,8 @@
           "sector": "transables vs no transables",
           "counterfactual": "solo el efecto microeconómico de oferta laboral",
           "quote": "Nontradable sectors have a more positive employment response than tradable sectors",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ],
       "ola": "contexto"
@@ -4432,7 +4658,8 @@
           "sector": "ocupaciones expuestas a IA vs menos expuestas",
           "counterfactual": "haber seguido el ritmo de empleo de los pares menos expuestos",
           "quote": "employment of young workers (ages 22–25) in AI-exposed occupations now stands 19% below where it would be had it kept pace with that of their less-exposed peers",
-          "location": "Abstract, hecho 2"
+          "location": "Abstract, hecho 2",
+          "geo": "us"
         },
         {
           "metric": "Estimación de regresión ocupacional: quintil más expuesto vs menos expuesto, 22-25 años, sin controles",
@@ -4444,7 +4671,8 @@
           "sector": "quintil 5 vs quintil 1 de exposición",
           "counterfactual": "quintil menos expuesto",
           "quote": "employment in the most exposed quintile declined by about 18 percentage points relative to the least exposed quintile (Panel A; −0.179)",
-          "location": "Sección 2.2, Tabla 1 Panel A"
+          "location": "Sección 2.2, Tabla 1 Panel A",
+          "geo": "us"
         },
         {
           "metric": "Mecanismo del ajuste: por dónde se produce la caída",
@@ -4456,7 +4684,8 @@
           "sector": "ocupaciones expuestas",
           "counterfactual": "ajuste por despidos o por salarios",
           "quote": "It operates primarily through reduced hiring of young workers rather than increased separations.",
-          "location": "Abstract, hechos 4 y 6"
+          "location": "Abstract, hechos 4 y 6",
+          "geo": "us"
         },
         {
           "metric": "Dirección de uso: dónde se concentran las caídas",
@@ -4468,7 +4697,8 @@
           "sector": "por tipo de uso de IA en la ocupación",
           "counterfactual": "ocupaciones donde la IA complementa",
           "quote": "Declines are concentrated in occupations where AI usage primarily substitutes for human tasks; where usage primarily complements workers, employment is flat or rising",
-          "location": "Abstract, hecho 5"
+          "location": "Abstract, hecho 5",
+          "geo": "us"
         },
         {
           "metric": "Robustez frente a las explicaciones rivales (la disputa de atribución)",
@@ -4480,7 +4710,8 @@
           "sector": "economía completa",
           "counterfactual": "que el patrón lo explicaran el ciclo de tasas, el sector tecnológico o el trabajo remoto",
           "quote": "The divergence is not explained by several prominent alternative factors: it persists when excluding technology firms and computer occupations, when controlling for exposure to interest-rate increases and for remote work",
-          "location": "Abstract y Sección 3"
+          "location": "Abstract y Sección 3",
+          "geo": "us"
         },
         {
           "metric": "Réplica directa a Lambert-Schindler siguiendo SU especificación",
@@ -4492,7 +4723,8 @@
           "sector": "nuevas contrataciones",
           "counterfactual": "el resultado de Lambert-Schindler, donde controlar por remoto atenúa la correlación",
           "quote": "AI exposure continues to predict a decline in the junior share of new hires after accounting for work-from-home",
-          "location": "Sección 4.3, «Reconciling Remote Work Estimates»"
+          "location": "Sección 4.3, «Reconciling Remote Work Estimates»",
+          "geo": "us"
         },
         {
           "metric": "Los tres patrones de la propia evidencia que los autores marcan como debilidades",
@@ -4504,7 +4736,8 @@
           "sector": "economía completa",
           "counterfactual": "una firma limpia y exclusiva de la IA generativa",
           "quote": "Education is the one control that attenuates these estimates",
-          "location": "Secciones 3 y 4"
+          "location": "Secciones 3 y 4",
+          "geo": "us"
         },
         {
           "metric": "Los cuatro argumentos con que los autores contrapesan esas debilidades",
@@ -4516,7 +4749,8 @@
           "sector": "economía completa",
           "counterfactual": "que el patrón fuera artefacto de ciclo, educación o remoto",
           "quote": "the declines load specifically on AI usage for automation with a clear age gradient, a pattern that interest-rate, education, and remote-work stories do not predict",
-          "location": "Introducción, párrafo de los cuatro hallazgos contrapuestos"
+          "location": "Introducción, párrafo de los cuatro hallazgos contrapuestos",
+          "geo": "us"
         }
       ],
       "ola": "generativa"
@@ -4541,7 +4775,8 @@
           "sector": "empresas no financieras",
           "counterfactual": "firmas comparables que no adoptaron IA, con la adopción instrumentada por la de sus pares estadounidenses",
           "quote": "AI adoption increases the level of labor productivity by 4%",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "eu"
         },
         {
           "metric": "Efecto sobre el empleo de la firma, y cuánto exagera la correlación cruda",
@@ -4553,7 +4788,8 @@
           "sector": "empresas no financieras",
           "counterfactual": "firmas comparables que no adoptaron",
           "quote": "While our naïve specifications associate AI with 8% higher employment, the relationship vanishes after using predicted AI adoption.",
-          "location": "Sección de resultados, discusión de las Tablas 2 y 3"
+          "location": "Sección de resultados, discusión de las Tablas 2 y 3",
+          "geo": "eu"
         },
         {
           "metric": "Mecanismo: por qué sube la productividad sin caer el empleo",
@@ -4565,7 +4801,8 @@
           "sector": "empresas no financieras",
           "counterfactual": "desplazamiento de trabajo",
           "quote": "Productivity gains are due to capital deepening, as we find no adverse effects on firm-level employment.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "eu"
         },
         {
           "metric": "Salarios en firmas adoptantes (comparación con controles, NO el estimador causal)",
@@ -4577,7 +4814,8 @@
           "sector": "empresas no financieras",
           "counterfactual": "firmas no adoptantes con los mismos controles",
           "quote": "AI-adopting firms are more innovative and their workers earn higher wages",
-          "location": "Abstract y Tabla 4"
+          "location": "Abstract y Tabla 4",
+          "geo": "eu"
         },
         {
           "metric": "Concentración de los beneficios: dónde caen las ganancias de productividad",
@@ -4589,7 +4827,8 @@
           "sector": "por tamaño, región y sector",
           "counterfactual": "un reparto parejo de las ganancias entre firmas",
           "quote": "productivity benefits of AI adoption are unevenly distributed and concentrate in medium and large firms",
-          "location": "Abstract y conclusión"
+          "location": "Abstract y conclusión",
+          "geo": "eu"
         },
         {
           "metric": "Estratificación de la adopción por tamaño de firma y por país",
@@ -4601,7 +4840,8 @@
           "sector": "empresas no financieras",
           "counterfactual": "adopción pareja entre tamaños y países",
           "quote": "45% of large firms (more than 250 employees) deploy AI, compared to only 24% of small firms (10 to 49 employees)",
-          "location": "Sección de datos, hechos estilizados"
+          "location": "Sección de datos, hechos estilizados",
+          "geo": "us-eu"
         },
         {
           "metric": "Retorno marginal de las inversiones complementarias (la co-invención, cuantificada)",
@@ -4613,7 +4853,8 @@
           "sector": "empresas no financieras",
           "counterfactual": "adoptar IA sin inversión complementaria",
           "quote": "An extra percentage point spent on software and data increases the effect of AI adoption on labor productivity by around 2.4%, and an extra percentage point spent on training by 5.9%.",
-          "location": "Tabla 6 y su discusión"
+          "location": "Tabla 6 y su discusión",
+          "geo": "eu"
         },
         {
           "metric": "Cómo se sitúan los autores en el debate macro",
@@ -4625,7 +4866,8 @@
           "sector": "economía completa",
           "counterfactual": "los escenarios de crecimiento explosivo o de destrucción masiva",
           "quote": "Our findings cast some doubts on claims of dramatic AI-driven job destruction, while underscoring pressing concerns about its uneven economic impact.",
-          "location": "Introducción"
+          "location": "Introducción",
+          "geo": "eu"
         }
       ],
       "ola": "mixta"
@@ -4651,7 +4893,8 @@
           "sector": "ocupaciones a 3 dígitos",
           "counterfactual": "ocupaciones menos expuestas",
           "quote": "on average employment shares have increased in occupations more exposed to AI. This is particularly the case for occupations with a relatively higher proportion of younger and skilled workers.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "eu"
         },
         {
           "metric": "Heterogeneidad entre países y qué la explica",
@@ -4663,7 +4906,8 @@
           "sector": "economía completa",
           "counterfactual": "un efecto homogéneo entre países",
           "quote": "only very few countries show a decline in employment shares of occupations more exposed to AI-enabled automation",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "eu"
         },
         {
           "metric": "Salarios frente a exposición",
@@ -4675,7 +4919,8 @@
           "sector": "ocupaciones a 3 dígitos",
           "counterfactual": "un efecto salarial proporcional al de empleo",
           "quote": "In contrast to the findings for employment, we find little evidence for a relationship between wages and potential exposures to new technologies.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "eu"
         }
       ]
     },
@@ -4700,7 +4945,8 @@
           "sector": "firmas cotizadas, todos los sectores",
           "counterfactual": "firmas comparables con menor inversión en IA",
           "quote": "a one-standard-deviation increase in the resume-based measure of AI investments over the 8-year period corresponds to a 19.5% increase in sales, a 18.1% increase in employment, and a 22.3% increase in market valuation",
-          "location": "Introducción, resumen de resultados"
+          "location": "Introducción, resumen de resultados",
+          "geo": "us"
         },
         {
           "metric": "Por dónde llega el crecimiento",
@@ -4712,7 +4958,8 @@
           "sector": "firmas cotizadas",
           "counterfactual": "crecimiento por abaratamiento de procesos",
           "quote": "This growth comes primarily through increased product innovation.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Dónde se acumulan las ganancias y qué le hace a la industria",
@@ -4724,7 +4971,8 @@
           "sector": "por tamaño de firma e industria",
           "counterfactual": "ganancias repartidas entre firmas de todos los tamaños",
           "quote": "AI-powered growth concentrates among larger firms and is associated with higher industry concentration.",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ]
     },
@@ -4749,7 +4997,8 @@
           "sector": "casi la totalidad de las vacantes en línea",
           "counterfactual": "establecimientos no expuestos",
           "quote": "AI-exposed establishments are reducing hiring in non-AI positions even as they expand AI hiring",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         },
         {
           "metric": "Efecto agregado, a nivel de ocupación e industria",
@@ -4761,7 +5010,8 @@
           "sector": "ocupaciones e industrias",
           "counterfactual": "un efecto agregado proporcional al de establecimiento",
           "quote": "we find no discernible impact of AI exposure on employment or wages at the occupation or industry level",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "us"
         }
       ]
     },
@@ -4786,7 +5036,8 @@
           "sector": "economía completa",
           "counterfactual": "países con menor inversión en IA",
           "quote": "AI investment is tied to higher real incomes and income shares for households in the top decile, while households in the fifth and bottom decile see a decline in their income shares",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "multi"
         },
         {
           "metric": "Efectos en el mercado laboral y en el comercio de servicios",
@@ -4798,7 +5049,8 @@
           "sector": "economía completa y comercio de servicios",
           "counterfactual": "países con menor actividad en IA",
           "quote": "there is a contraction in overall employment, a shift from mid-skill to high-skill managerial roles and a reduced labour share of income",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "multi"
         }
       ]
     },
@@ -4823,7 +5075,8 @@
           "sector": "programación",
           "counterfactual": "equipos comparables sin acceso a la herramienta",
           "quote": "the use of gen AI increased code output by more than 50%",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "cn"
         },
         {
           "metric": "Quién captura la ganancia de productividad",
@@ -4835,7 +5088,8 @@
           "sector": "programación",
           "counterfactual": "una ganancia pareja entre niveles de experiencia",
           "quote": "productivity gains are statistically significant only among entry-level or junior staff, while the impact on more senior employees is less pronounced",
-          "location": "Abstract"
+          "location": "Abstract",
+          "geo": "cn"
         }
       ]
     },
@@ -4860,7 +5114,8 @@
           "sector": "economía completa, con estructura sectorial",
           "counterfactual": "sin difusión de IA",
           "quote": "the projected annual aggregate labour productivity growth ranges between 0.4-1.3 percentage points in countries with high AI exposure",
-          "location": "Abstract del policy brief"
+          "location": "Abstract del policy brief",
+          "geo": "multi"
         },
         {
           "metric": "Qué decide en qué punto del rango cae un país",
@@ -4872,7 +5127,8 @@
           "sector": "economía completa",
           "counterfactual": "un efecto homogéneo entre países",
           "quote": "stronger specialisation in highly AI-exposed knowledge intensive services such as finance and ICT and more widespread adoption",
-          "location": "Abstract del policy brief"
+          "location": "Abstract del policy brief",
+          "geo": "multi"
         }
       ]
     }

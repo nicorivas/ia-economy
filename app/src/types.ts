@@ -1,8 +1,15 @@
 export type EdgeType = "confirma" | "tensiona" | "refuta" | "informa";
 
+// Código de geografía normalizado (datos/aplicar-geografia.py). `geography` conserva la prosa,
+// que tiene detalle que el código pierde; `geo` es el eje sobre el que se puede contar y filtrar.
+// El vocabulario incluye `latam` y `cl` aunque hoy tengan cero estimaciones: el cero es el dato.
+export type Geo =
+  | "us" | "eu" | "us-eu" | "cn" | "multi" | "global" | "otro" | "latam" | "cl" | "na";
+
 export interface Estimate {
   metric: string;
   dimension: string;
+  geo?: Geo;
   value: string;
   unit?: string;
   horizon?: string;

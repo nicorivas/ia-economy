@@ -105,6 +105,9 @@ def main() -> None:
         f"{len(m['hypotheses'])} hipótesis · {len(m['dimensions'])} dimensiones"
     )
 
+    report.append("   ▸ recuerda correr `aplicar-geografia.py`: codifica la geografía de las")
+    report.append("     estimaciones nuevas y avisa si alguna trae un valor que el diccionario no cubre.")
+
     if "--no-build" not in flags:
         subprocess.run(["python3", str(D / "generar-dossier.py")], check=True)
         APP_COPY.write_text(MAPA.read_text())
