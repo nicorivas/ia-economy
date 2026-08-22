@@ -1,0 +1,198 @@
+{
+  "_comment": "RONDA 9 — Los cuatro candidatos restantes de la bibliografía del BIS 1325, verificados en primaria el 2026-08-21: Acemoglu-Autor-Hazell-Restrepo (vacantes online, 2010-2018), Cornelli-Frost-Mishra (86 países, 2010-2019), Gambacorta-Qiu-Rees-Shan (experimento de campo con un LLM, 2023) y Filippucci-Gal-Laengle-Schief (proyección macro para el G7). Dos cosas que este nodo aporta y que conviene no perder. La primera: AAHR y Cornelli MATIZAN la tesis de la ronda 8 — en la ola previa tampoco era todo expansión, porque los establecimientos expuestos ya reducían contrataciones no-IA y el panel de países ya mostraba contracción del empleo y caída de la participación del trabajo. El contraste entre olas sigue en pie en el margen de los jóvenes calificados, pero no como «antes la IA solo creaba empleo». La segunda: Gambacorta abre una contradicción que el mapa contenía sin haber articulado — la IA sube más la productividad de los novatos justo donde caen sus contrataciones.",
+
+  "hypotheses": [
+    {
+      "id": "hyp-paradoja-junior",
+      "name": "La paradoja del junior: la IA lo hace más productivo justo donde lo dejan de contratar",
+      "statement": "Las dos evidencias más sólidas sobre trabajadores jóvenes apuntan en direcciones opuestas y el debate rara vez las pone juntas. Del lado de la productividad, la IA nivela hacia arriba: en el centro de contacto los agentes novatos ganan cerca de 30% y el quintil más bajo 36%, y en un experimento de campo con un asistente de código el output sube más de 50% con ganancias estadísticamente significativas SOLO entre programadores junior. Del lado del empleo, son esos mismos perfiles los que pierden: la brecha de los 22-25 en ocupaciones expuestas llega a 19% y opera por menor contratación. Si la IA vuelve más valioso al novato, contratarlo debería ser mejor negocio, no peor. Tres mecanismos podrían reconciliarlo, y ninguno está medido: que lo que sube sea el producto por junior y no el número de juniors que la empresa necesita; que la herramienta capture el valor que antes justificaba pagar el aprendizaje de alguien; o que la ganancia sea real pero se materialice para quien ya está adentro, no para quien intenta entrar. Bajo esta hipótesis, el problema del primer empleo no es que la IA haga inútil al novato, sino que hace innecesario contratarlo para obtener lo que el novato producía."
+    }
+  ],
+
+  "dimensions": [
+    {
+      "id": "dim-vacantes-ia-establecimiento",
+      "name": "Vacantes de IA y de no-IA a nivel de establecimiento",
+      "definition": "Composición de los avisos de empleo publicados por un establecimiento: cuántos piden habilidades de IA, cuántos dejan de pedir habilidades antes listadas, y qué pasa con la contratación en posiciones no relacionadas con IA. Mide la reorganización de la demanda de trabajo dentro del empleador, un margen anterior al empleo observado."
+    },
+    {
+      "id": "dim-desigualdad-ingresos-paises-ia",
+      "name": "Desigualdad de ingresos entre hogares asociada a la actividad en IA (panel de países)",
+      "definition": "Relación entre la inversión y actividad económica en IA de un país y la distribución del ingreso entre sus hogares, por deciles. Es el nivel más agregado en que el mapa mira la desigualdad: ni entre trabajadores ni entre empresas, sino entre hogares de una economía."
+    }
+  ],
+
+  "studies": [
+    {
+      "id": "acemoglu-autor-hazell-restrepo-2022-vacantes",
+      "authors": "Daron Acemoglu, David Autor, Jonathon Hazell & Pascual Restrepo",
+      "year": 2022,
+      "venue": "Journal of Labor Economics 40(S1): S293-S340 ('Artificial intelligence and jobs: evidence from online vacancies'); working paper NBER 28257 (diciembre de 2020, revisado enero de 2021)",
+      "url": "https://www.nber.org/papers/w28257",
+      "source_type": "paper",
+      "accessed": "2026-08-21",
+      "ola": "pre-generativa",
+      "reliability_note": "Revisado por pares; verificado sobre el PDF primario del working paper NBER revisado. ⚠ Datos 2010-2018, con «exposición a IA» definida por compatibilidad de tareas con las capacidades de la IA DE ENTONCES: no habla de modelos generativos. La fuente son avisos de empleo en línea (Burning Glass), que capturan la demanda publicada y no la contratación efectiva, y sobrerrepresentan ocupaciones que se reclutan por ese canal. Las estimaciones a nivel de establecimiento son asociaciones diferenciales, no efectos causales.",
+      "estimates": [
+        {
+          "metric": "Reorganización de la demanda de trabajo dentro del establecimiento expuesto",
+          "dimension": "dim-vacantes-ia-establecimiento",
+          "value": "los establecimientos expuestos eliminan diferencialmente avisos que listaban habilidades antes publicadas y a la vez publican requisitos que antes no listaban; reducen la contratación en posiciones NO relacionadas con IA mientras expanden la contratación en IA",
+          "unit": "cualitativo (composición de vacantes)",
+          "horizon": "2010-2018",
+          "geography": "EE.UU.",
+          "sector": "casi la totalidad de las vacantes en línea",
+          "counterfactual": "establecimientos no expuestos",
+          "quote": "AI-exposed establishments are reducing hiring in non-AI positions even as they expand AI hiring",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Efecto agregado, a nivel de ocupación e industria",
+          "dimension": "dim-realized-labor-demand",
+          "value": "ningún impacto discernible sobre empleo o salarios: la IA sustituía humanos en un subconjunto de tareas sin consecuencias agregadas detectables todavía",
+          "unit": "cualitativo",
+          "horizon": "2010-2018",
+          "geography": "EE.UU.",
+          "sector": "ocupaciones e industrias",
+          "counterfactual": "un efecto agregado proporcional al de establecimiento",
+          "quote": "we find no discernible impact of AI exposure on employment or wages at the occupation or industry level",
+          "location": "Abstract"
+        }
+      ]
+    },
+    {
+      "id": "cornelli-frost-mishra-2023-desigualdad",
+      "authors": "Giulio Cornelli, Jon Frost & Saurabh Mishra",
+      "year": 2023,
+      "venue": "BIS Working Papers No 1135 ('Artificial intelligence, services globalisation and income inequality')",
+      "url": "https://www.bis.org/publ/work1135.pdf",
+      "source_type": "paper",
+      "accessed": "2026-08-21",
+      "ola": "pre-generativa",
+      "reliability_note": "Working paper de banco central, no revisado por pares; verificado sobre el PDF primario. ⚠ Panel de 86 países 2010-2019, o sea la ola previa. Los resultados son ASOCIACIONES en panel, no efectos causales, y a un nivel de agregación —país-año— donde conviven muchos otros procesos (globalización financiera, cambio sectorial, ciclo de commodities). Su valor está en ser el único nodo del mapa que mira la desigualdad entre hogares a escala internacional y en conectar el canal de servicios con la distribución del ingreso.",
+      "estimates": [
+        {
+          "metric": "Inversión en IA y distribución del ingreso entre hogares",
+          "dimension": "dim-desigualdad-ingresos-paises-ia",
+          "value": "asociada a mayor desigualdad: suben los ingresos reales y la participación del decil superior, mientras cae la participación de los hogares del quinto decil y del inferior",
+          "unit": "participación en el ingreso por decil",
+          "horizon": "2010-2019",
+          "geography": "86 países",
+          "sector": "economía completa",
+          "counterfactual": "países con menor inversión en IA",
+          "quote": "AI investment is tied to higher real incomes and income shares for households in the top decile, while households in the fifth and bottom decile see a decline in their income shares",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Efectos en el mercado laboral y en el comercio de servicios",
+          "dimension": "dim-labor-share",
+          "value": "contracción del empleo total, desplazamiento de roles de calificación media hacia roles gerenciales de alta calificación, y REDUCCIÓN de la participación del trabajo en el ingreso; además, asociación positiva con las exportaciones de servicios modernos ligados a IA",
+          "unit": "cualitativo (dirección)",
+          "horizon": "2010-2019",
+          "geography": "86 países",
+          "sector": "economía completa y comercio de servicios",
+          "counterfactual": "países con menor actividad en IA",
+          "quote": "there is a contraction in overall employment, a shift from mid-skill to high-skill managerial roles and a reduced labour share of income",
+          "location": "Abstract"
+        }
+      ]
+    },
+    {
+      "id": "gambacorta-etal-2024-codefuse",
+      "authors": "Leonardo Gambacorta, Han Qiu, David Rees & Shu Shan",
+      "year": 2024,
+      "venue": "BIS Working Papers No 1208 ('Generative AI and labour productivity: a field experiment on coding')",
+      "url": "https://www.bis.org/publ/work1208.pdf",
+      "source_type": "paper",
+      "accessed": "2026-08-21",
+      "ola": "generativa",
+      "reliability_note": "Working paper de banco central, no revisado por pares; verificado sobre el PDF primario. Experimento de campo aprovechando la introducción de CodeFuse en Ant Group (septiembre de 2023): un grupo de programadores usó el LLM y otros equipos no fueron informados de su existencia, y se emparejaron empleados comparables. Límites: una sola empresa y un solo país, la medida de producto es cantidad de código —no calidad ni valor del software—, y el diseño es cuasi-experimental con emparejamiento, no aleatorización.",
+      "estimates": [
+        {
+          "metric": "Efecto de un asistente de código basado en LLM sobre la producción de código",
+          "dimension": "dim-productivity-task-rct",
+          "value": "más de 50% de aumento del output de código (≈55%, con cerca de un tercio atribuible directamente al código generado por el modelo)",
+          "unit": "% de output de código",
+          "horizon": "desde septiembre de 2023",
+          "geography": "China (Ant Group)",
+          "sector": "programación",
+          "counterfactual": "equipos comparables sin acceso a la herramienta",
+          "quote": "the use of gen AI increased code output by more than 50%",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Quién captura la ganancia de productividad",
+          "dimension": "dim-productivity-dispersion",
+          "value": "las ganancias son estadísticamente significativas SOLO entre el personal de entrada o junior; en los empleados más senior el impacto es menos pronunciado, y los autores lo atribuyen a menor uso y no a que la herramienta les sirva menos (las tasas de aceptación son parecidas entre niveles de experiencia)",
+          "unit": "cualitativo (gradiente por antigüedad)",
+          "horizon": "desde septiembre de 2023",
+          "geography": "China (Ant Group)",
+          "sector": "programación",
+          "counterfactual": "una ganancia pareja entre niveles de experiencia",
+          "quote": "productivity gains are statistically significant only among entry-level or junior staff, while the impact on more senior employees is less pronounced",
+          "location": "Abstract"
+        }
+      ]
+    },
+    {
+      "id": "filippucci-etal-2025-macro-g7",
+      "authors": "Francesco Filippucci, Peter Gal, Katharina Laengle & Matthias Schief",
+      "year": 2025,
+      "venue": "OECD Artificial Intelligence Paper No. 41, resumido por los propios autores en SUERF Policy Brief No 1283 (octubre de 2025); continúa la línea de 'Miracle or myth?' (OECD AI Paper No. 29, 2024), que es la versión que cita el BIS",
+      "url": "https://www.suerf.org/wp-content/uploads/2025/10/SUERF-Policy-Brief-1283_Filippucci-Gal-Laengle-Schief.pdf",
+      "source_type": "official report",
+      "accessed": "2026-08-21",
+      "ola": "teoria",
+      "reliability_note": "⚠ Lo verificado es el POLICY BRIEF firmado por los propios autores, no el documento completo: el sitio de la OCDE bloquea el acceso automatizado. Las cifras citadas son las del brief. Es una PROYECCIÓN, no una medición: adapta el marco de tareas de Acemoglu (2024) a un contexto sectorial y combina estimaciones micro de desempeño con exposición y supuestos de adopción futura, en tres escenarios de velocidad. Hereda por tanto la incertidumbre de sus insumos micro, muchos de los cuales son experimentos de tarea única. Nota de trazabilidad: el BIS 1325 cita la versión de 2024 (AI Paper 29), cuyas cifras para EE.UU. eran algo menores.",
+      "estimates": [
+        {
+          "metric": "Crecimiento anual proyectado de la productividad laboral agregada por IA, G7",
+          "dimension": "dim-labor-productivity-growth",
+          "value": "0,4 a 1,3 puntos porcentuales anuales en países de alta exposición, por su especialización en servicios intensivos en conocimiento (finanzas, TIC) y su mayor adopción — EE.UU. y Reino Unido; 0,2 a 0,8 puntos donde esos determinantes son menos favorables, como Italia y Japón",
+          "unit": "puntos porcentuales de crecimiento anual",
+          "horizon": "próxima década, en tres escenarios de adopción (lenta, media, rápida)",
+          "geography": "economías del G7",
+          "sector": "economía completa, con estructura sectorial",
+          "counterfactual": "sin difusión de IA",
+          "quote": "the projected annual aggregate labour productivity growth ranges between 0.4-1.3 percentage points in countries with high AI exposure",
+          "location": "Abstract del policy brief"
+        },
+        {
+          "metric": "Qué decide en qué punto del rango cae un país",
+          "dimension": "dim-diffusion-share",
+          "value": "la estructura sectorial (cuánto pesan los servicios intensivos en conocimiento) y el ritmo de adopción; no la capacidad técnica de la tecnología, que se supone común",
+          "unit": "cualitativo (determinantes)",
+          "horizon": "próxima década",
+          "geography": "G7",
+          "sector": "economía completa",
+          "counterfactual": "un efecto homogéneo entre países",
+          "quote": "stronger specialisation in highly AI-exposed knowledge intensive services such as finance and ICT and more widespread adoption",
+          "location": "Abstract del policy brief"
+        }
+      ]
+    }
+  ],
+
+  "study_hypothesis_edges": [
+    { "study_id": "acemoglu-autor-hazell-restrepo-2022-vacantes", "hypothesis": "hyp-exposure-not-employment", "type": "confirma", "why": "El caso más nítido del mapa: el efecto es visible dentro del establecimiento —menos avisos de posiciones no-IA, requisitos que cambian— y desaparece al mirar la ocupación o la industria. Exposición y empleo agregado no son la misma cosa ni en la ola previa." },
+    { "study_id": "acemoglu-autor-hazell-restrepo-2022-vacantes", "hypothesis": "hyp-high-churn-small-net", "type": "confirma", "why": "Mucho movimiento en la composición de la demanda de trabajo, con un neto agregado indetectable. La rotación ocurre en las habilidades pedidas antes que en el número de puestos." },
+    { "study_id": "acemoglu-autor-hazell-restrepo-2022-vacantes", "hypothesis": "hyp-generativa-rompe-con-ola-previa", "type": "tensiona", "why": "Matiza el contraste entre olas: ya en 2010-2018 los establecimientos expuestos reducían contrataciones en posiciones no-IA. La ola previa no fue puramente expansiva, así que la diferencia con la generativa es de magnitud y de a quién alcanza, no un cambio de signo en todos los márgenes." },
+    { "study_id": "acemoglu-autor-hazell-restrepo-2022-vacantes", "hypothesis": "hyp-brecha-entre-firmas", "type": "informa", "why": "El ajuste aparece concentrado en los establecimientos expuestos y no en el promedio de la ocupación: otra medición, una ola antes, de que la acción ocurre entre empleadores y no de manera pareja." },
+
+    { "study_id": "cornelli-frost-mishra-2023-desigualdad", "hypothesis": "hyp-ia-ensancha-desigualdad", "type": "confirma", "why": "Lo mide al nivel más agregado que tiene el mapa: en 86 países, más inversión en IA se asocia con más ingreso y más participación para el decil superior, y menos participación para el quinto decil y el inferior." },
+    { "study_id": "cornelli-frost-mishra-2023-desigualdad", "hypothesis": "hyp-ia-erosiona-participacion", "type": "confirma", "why": "Encuentra reducción de la participación del trabajo en el ingreso asociada a la actividad en IA — el resultado que la lente Agregado·CES deriva de σ, aquí observado en panel de países durante la ola previa." },
+    { "study_id": "cornelli-frost-mishra-2023-desigualdad", "hypothesis": "hyp-ia-expande-telemigracion", "type": "confirma", "why": "Asocia la actividad en IA con mayores exportaciones de servicios modernos: el canal comercio que el mapa incorporó con Baldwin ya era visible una ola antes, y con la distribución del ingreso al lado." },
+    { "study_id": "cornelli-frost-mishra-2023-desigualdad", "hypothesis": "hyp-generativa-rompe-con-ola-previa", "type": "tensiona", "why": "Segundo matiz al contraste entre olas: este panel ya mostraba contracción del empleo total y caída de la participación del trabajo en 2010-2019. Los efectos agregados adversos no empiezan con la generativa." },
+    { "study_id": "cornelli-frost-mishra-2023-desigualdad", "hypothesis": "hyp-routine-polarization", "type": "confirma", "why": "Documenta el desplazamiento de roles de calificación media hacia roles gerenciales de alta calificación, que es la forma que toma la polarización cuando se la mira por composición ocupacional." },
+
+    { "study_id": "gambacorta-etal-2024-codefuse", "hypothesis": "hyp-paradoja-junior", "type": "confirma", "why": "Aporta la mitad de productividad de la paradoja con evidencia de campo sobre un LLM: el output de código sube más de 50% y la ganancia es significativa solo entre juniors, en el mismo perfil donde la contratación se contrae." },
+    { "study_id": "gambacorta-etal-2024-codefuse", "hypothesis": "hyp-skill-leveling", "type": "confirma", "why": "Tercera medición independiente de la nivelación —tras el centro de contacto y la escritura—, ahora en programación y con un LLM desplegado en producción: la herramienta rinde donde falta experiencia." },
+    { "study_id": "gambacorta-etal-2024-codefuse", "hypothesis": "hyp-automation-vs-augmentation", "type": "informa", "why": "Es un caso de aumentación medido en el trabajo real y no en tarea de laboratorio; y aporta el matiz de que la ganancia depende del uso: los senior aceptan las sugerencias en proporción parecida, pero usan menos la herramienta." },
+    { "study_id": "brynjolfsson-li-raymond-2023", "hypothesis": "hyp-paradoja-junior", "type": "confirma", "why": "La otra medición de la mitad productiva: en el centro de contacto los agentes novatos ganan cerca de 30% y el quintil más bajo 36%, mientras los más calificados no ganan casi nada." },
+    { "study_id": "brynjolfsson-chandar-chen-2026-canaries-ago", "hypothesis": "hyp-paradoja-junior", "type": "confirma", "why": "La mitad de empleo: la brecha de los 22-25 en ocupaciones expuestas llega a 19% y opera por menor contratación. Es el mismo perfil al que la herramienta más le sube la productividad." },
+
+    { "study_id": "filippucci-etal-2025-macro-g7", "hypothesis": "hyp-macro-modest-vs-extreme", "type": "confirma", "why": "Se ubica del lado modesto con un rango explícito y sectorialmente fundado —0,2 a 1,3 puntos anuales según país y velocidad de adopción—, lejos de los escenarios explosivos y por encima de la cota más conservadora de Acemoglu." },
+    { "study_id": "filippucci-etal-2025-macro-g7", "hypothesis": "hyp-potential-gated-adoption", "type": "confirma", "why": "El rango proyectado depende de la adopción y de la estructura sectorial, no de la capacidad técnica, que se supone común entre países. El cuello está en la difusión." },
+    { "study_id": "filippucci-etal-2025-macro-g7", "hypothesis": "hyp-exposure-not-employment", "type": "informa", "why": "Es un intento explícito de construir el puente micro→macro que el mapa exhibe como ausente: toma estimaciones de desempeño por tarea y las agrega con exposición y adopción. Su fragilidad hereda la de sus insumos, casi todos experimentos de tarea única." }
+  ]
+}

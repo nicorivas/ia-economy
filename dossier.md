@@ -9,7 +9,7 @@ publico: false
 
 > Dossier de investigación — **semilla, ronda 1, auditada**. Material de base para la plataforma interactiva y para escritura. Generado desde `datos/mapa.json`; **no editar a mano** — regenerar con `datos/generar-dossier.py`.
 
-**36 hipótesis · 104 estudios · 71 dimensiones · 35 conversiones · 236 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
+**37 hipótesis · 108 estudios · 73 dimensiones · 35 conversiones · 253 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
 
 ## La tesis: por qué esto no se lee de un titular
 
@@ -262,9 +262,14 @@ El debate sobre desigualdad y IA se plantea casi siempre entre personas —quié
 
 Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efectos laborales de signo opuesto sobre la misma población. En la ola predictiva de los 2010, las ocupaciones más expuestas GANARON participación en el empleo en Europa, y el efecto fue más fuerte justo donde había más trabajadores jóvenes y calificados; a nivel de firma, invertir en IA venía con más ventas, más empleo y más valor de mercado. Después de noviembre de 2022 la evidencia sobre la misma población se invierte: el empleo de los jóvenes en ocupaciones expuestas se separa a la baja y la brecha se profundiza año a año. Bajo esta hipótesis, la diferencia no es de medición ni de país sino de tecnología: la IA predictiva complementaba al analista que la operaba, mientras la generativa produce directamente el entregable con que ese analista entraba al mercado. El corolario metodológico es duro: casi toda la literatura de exposición ocupacional que se sigue citando —Webb, Felten, Frey-Osborne— está construida sobre la ola que se comportó al revés.
 
+### La paradoja del junior: la IA lo hace más productivo justo donde lo dejan de contratar
+`hyp-paradoja-junior`
+
+Las dos evidencias más sólidas sobre trabajadores jóvenes apuntan en direcciones opuestas y el debate rara vez las pone juntas. Del lado de la productividad, la IA nivela hacia arriba: en el centro de contacto los agentes novatos ganan cerca de 30% y el quintil más bajo 36%, y en un experimento de campo con un asistente de código el output sube más de 50% con ganancias estadísticamente significativas SOLO entre programadores junior. Del lado del empleo, son esos mismos perfiles los que pierden: la brecha de los 22-25 en ocupaciones expuestas llega a 19% y opera por menor contratación. Si la IA vuelve más valioso al novato, contratarlo debería ser mejor negocio, no peor. Tres mecanismos podrían reconciliarlo, y ninguno está medido: que lo que sube sea el producto por junior y no el número de juniors que la empresa necesita; que la herramienta capture el valor que antes justificaba pagar el aprendizaje de alguien; o que la ganancia sea real pero se materialice para quien ya está adentro, no para quien intenta entrar. Bajo esta hipótesis, el problema del primer empleo no es que la IA haga inútil al novato, sino que hace innecesario contratarlo para obtener lo que el novato producía.
+
 ## Capa de medición: dimensiones y conversiones
 
-71 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
+73 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
 
 ### Ausentes — no hay puente (es un hallazgo, no se fabrica) — 8
 
@@ -426,6 +431,7 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
 - **Crecimiento de la firma asociado a invertir en IA (ventas, empleo, valor de mercado)** (`dim-crecimiento-firma-inversion-ia`): Cambio en ventas, dotación y valuación de una empresa asociado a aumentar su inversión en IA, medida por la composición de talento de su planilla. A diferencia de la productividad por trabajador, mide si la empresa crece — y por lo tanto si contrata o no.
 - **La energía como cuello físico de la IA** (`dim-cuello-energetico`): Demanda eléctrica de los datacenters (nivel, crecimiento, concentración geográfica) frente a la capacidad del sistema de entregarla. Mide si la energía se vuelve la restricción de ritmo y lugar de la IA. Caveat: a escala global los datacenters son un actor menor del crecimiento eléctrico — la escasez es local/temporal, no una pared malthusiana. Unidad: TWh, %/año, % del consumo.
 - **Elasticidad de demanda (la bisagra empleo↑/↓)** (`dim-demand-elasticity`): Cuánto crece la demanda de un bien cuando su precio cae. Decide el signo del efecto de automatizar una tarea: si la demanda es elástica (software, Jevons) el bien más barato se compra mucho más y el empleo del resto de tareas SUBE; si se sacia (comida, petróleo, insulina) la demanda no responde y el empleo CAE. Imas: 'no tenemos datos' sobre estas elasticidades — la pieza que más falta. Unidad: elasticidad / cualitativo.
+- **Desigualdad de ingresos entre hogares asociada a la actividad en IA (panel de países)** (`dim-desigualdad-ingresos-paises-ia`): Relación entre la inversión y actividad económica en IA de un país y la distribución del ingreso entre sus hogares, por deciles. Es el nivel más agregado en que el mapa mira la desigualdad: ni entre trabajadores ni entre empresas, sino entre hogares de una economía.
 - **Rezago de difusión** (`dim-diffusion-lag`): Tiempo entre disponibilidad/breakthrough inicial de una tecnología y la fecha en que alcanza un umbral de difusión (p.ej. 50%) o muestra efectos agregados medibles (electrificación ~2 décadas a 50%, ~4 décadas al impacto en productividad). Magnitud TEMPORAL. Unidad: años.
 - **Share de difusión (capacidad/adoptantes instalada)** (`dim-diffusion-share`): Fracción de una base de capital o de adoptantes que incorpora la nueva tecnología (David: <5% del accionamiento mecánico electrificado en 1899; 3% de hogares con luz eléctrica). Penetración tecnológica, no efectos laborales. Unidad: % de capacidad o de adoptantes.
 - **Efecto de desplazamiento** (`dim-displacement-effect`): Componente del giro de contenido de tareas por el cual el capital toma tareas antes hechas por trabajo, reduciendo demanda de trabajo. Negativo por construcción. Unidad: %/año o % acumulado.
@@ -474,6 +480,7 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
 - **Exposición de tareas** (`dim-task-exposure`): Fracción de tareas de una ocupación/economía técnicamente susceptibles de ser realizadas o asistidas por la IA, sobre un umbral definido (p.ej. reduce el tiempo ≥50% a igual calidad — rúbrica Eloundou; o solapamiento patente-tarea — Webb; o scoring GPT-4 — ILO). Medida de susceptibilidad/capacidad del CONTENIDO del trabajo, NO un resultado de empleo. Unidad: % de tareas (o % de trabajadores que cruzan un umbral de tareas).
 - **Signo del efecto neto sobre el empleo** (`dim-task-net-ambiguous`): Dirección (no magnitud) del efecto neto de la automatización sobre la demanda de trabajo: el balance cualitativo entre desplazamiento y reinstauración+productividad. Es cualitativo, no se promedia.
 - **Tasa de éxito de tarea** (`dim-task-success-rate`): Probabilidad estimada de que la IA complete con éxito una tarea, condicional a complejidad (educación requerida) o duración (horas-humano). Anthropic: 70%→66% por nivel educativo; ~60%→45% por duración. Insumo para ajustar estimaciones de productividad. Unidad: % de éxito.
+- **Vacantes de IA y de no-IA a nivel de establecimiento** (`dim-vacantes-ia-establecimiento`): Composición de los avisos de empleo publicados por un establecimiento: cuántos piden habilidades de IA, cuántos dejan de pedir habilidades antes listadas, y qué pasa con la contratación en posiciones no relacionadas con IA. Mide la reorganización de la demanda de trabajo dentro del empleador, un margen anterior al empleo observado.
 - **Captura de la renta (electricidad vs plataforma)** (`dim-value-capture`): Adónde van las ganancias de la IA: difusas a los usuarios (como la electricidad: nadie teme a la compañía eléctrica) o concentradas en el dueño (como las redes sociales: las rentas van a la plataforma). La 'indexabilidad' de la economía —si la gente común puede tener una porción del capital que gana— decide si participa. Unidad: concentración / cualitativo.
 - **Desigualdad salarial** (`dim-wage-inequality`): Dispersión salarial: SD entre-grupos del log de salarios (Acemoglu 0.35→0.36), o ratio p90/p10 (Webb proyecta -4% a -9%). Magnitud distinta de salarios o participación. Unidad: SD de log-salarios o ratio de percentiles.
 - **Rigidez salarial a la baja / margen de ajuste (empleo vs salario)** (`dim-wage-rigidity`): Cuando cae la demanda de trabajo, ¿el ajuste recae en el PRECIO (los salarios bajan) o en la CANTIDAD (se pierden puestos)? La rigidez salarial a la baja (downward nominal/real wage rigidity) mide cuánto se resiste el salario a caer; cuanto más rígido, más del ajuste se desvía al empleo. Informa el parámetro φ del modelo de tareas (φ = fracción del ajuste que cae en salarios; 1−φ en empleo). Unidad: fracción / cualitativo.
@@ -936,6 +943,18 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
 
   *engancha:* `tensiona` Repartir no restaura el ingreso laboral (y el diseño decide cuánto se pierde)
 
+### Daron Acemoglu, David Autor, Jonathon Hazell & Pascual Restrepo (2022)
+`acemoglu-autor-hazell-restrepo-2022-vacantes` · Journal of Labor Economics 40(S1): S293-S340 ('Artificial intelligence and jobs: evidence from online vacancies'); working paper NBER 28257 (diciembre de 2020, revisado enero de 2021) · [fuente](https://www.nber.org/papers/w28257)  ⚠ **Revisado por pares; verificado sobre el PDF primario del working paper NBER revisado. ⚠ Datos 2010-2018, con «exposición a IA» definida por compatibilidad de tareas con las capacidades de la IA DE ENTONCES: no habla de modelos generativos. La fuente son avisos de empleo en línea (Burning Glass), que capturan la demanda publicada y no la contratación efectiva, y sobrerrepresentan ocupaciones que se reclutan por ese canal. Las estimaciones a nivel de establecimiento son asociaciones diferenciales, no efectos causales.**
+
+- **los establecimientos expuestos eliminan diferencialmente avisos que listaban habilidades antes publicadas y a la vez publican requisitos que antes no listaban; reducen la contratación en posiciones NO relacionadas con IA mientras expanden la contratación en IA** — Reorganización de la demanda de trabajo dentro del establecimiento expuesto
+  *dim:* dim-vacantes-ia-establecimiento · *horizonte:* 2010-2018 · *ámbito:* EE.UU./casi la totalidad de las vacantes en línea
+  > AI-exposed establishments are reducing hiring in non-AI positions even as they expand AI hiring
+- **ningún impacto discernible sobre empleo o salarios: la IA sustituía humanos en un subconjunto de tareas sin consecuencias agregadas detectables todavía** — Efecto agregado, a nivel de ocupación e industria
+  *dim:* dim-realized-labor-demand · *horizonte:* 2010-2018 · *ámbito:* EE.UU./ocupaciones e industrias
+  > we find no discernible impact of AI exposure on employment or wages at the occupation or industry level
+
+  *engancha:* `confirma` Exposición no es empleo neto; `confirma` Mucha rotación, neto pequeño e incierto; `tensiona` La IA generativa se comporta distinto de la ola predictiva que la precedió; `informa` La desigualdad de la IA se juega entre empresas, no solo entre trabajadores
+
 ### Tyna Eloundou, Sam Manning, Pamela Mishkin, Daniel Rock (2023)
 `eloundou-2023-gpts` · Science 384(6702):1306-1308 (2024); preprint arXiv:2303.10130 (2023) · [fuente](https://www.science.org/doi/10.1126/science.adj0998)
 
@@ -965,7 +984,7 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
   *dim:* dim-output-quality · *horizonte:* mismo · *ámbito:* mismo/call center
   > no economically significant change in customer satisfaction... -0.12 percentage points
 
-  *engancha:* `confirma` Nivelación de habilidades (la IA comprime la distribución de productividad); `confirma` Exposición no es empleo neto; `confirma` El contexto invierte el signo (no hay multiplicador único de productividad)
+  *engancha:* `confirma` Nivelación de habilidades (la IA comprime la distribución de productividad); `confirma` Exposición no es empleo neto; `confirma` El contexto invierte el signo (no hay multiplicador único de productividad); `confirma` La paradoja del junior: la IA lo hace más productivo justo donde lo dejan de contratar
 
 ### Shakked Noy, Whitney Zhang (2023)
 `noy-zhang-2023` · Science 381(6654):187-192 (2023), DOI 10.1126/science.adh2586; preprint MIT/SSRN id4375283 · [fuente](https://www.science.org/doi/10.1126/science.adh2586)
@@ -1105,6 +1124,18 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
   > reduces corporate income tax revenue by more than $200 billion, or 10% of global corporate tax receipts
 
   *engancha:* `confirma` Lo que se puede gravar es lo que no se puede mover; `informa` Si son complementos y la oferta es inelástica, los átomos capturan la renta
+
+### Giulio Cornelli, Jon Frost & Saurabh Mishra (2023)
+`cornelli-frost-mishra-2023-desigualdad` · BIS Working Papers No 1135 ('Artificial intelligence, services globalisation and income inequality') · [fuente](https://www.bis.org/publ/work1135.pdf)  ⚠ **Working paper de banco central, no revisado por pares; verificado sobre el PDF primario. ⚠ Panel de 86 países 2010-2019, o sea la ola previa. Los resultados son ASOCIACIONES en panel, no efectos causales, y a un nivel de agregación —país-año— donde conviven muchos otros procesos (globalización financiera, cambio sectorial, ciclo de commodities). Su valor está en ser el único nodo del mapa que mira la desigualdad entre hogares a escala internacional y en conectar el canal de servicios con la distribución del ingreso.**
+
+- **asociada a mayor desigualdad: suben los ingresos reales y la participación del decil superior, mientras cae la participación de los hogares del quinto decil y del inferior** — Inversión en IA y distribución del ingreso entre hogares
+  *dim:* dim-desigualdad-ingresos-paises-ia · *horizonte:* 2010-2019 · *ámbito:* 86 países/economía completa
+  > AI investment is tied to higher real incomes and income shares for households in the top decile, while households in the fifth and bottom decile see a decline in their income shares
+- **contracción del empleo total, desplazamiento de roles de calificación media hacia roles gerenciales de alta calificación, y REDUCCIÓN de la participación del trabajo en el ingreso; además, asociación positiva con las exportaciones de servicios modernos ligados a IA** — Efectos en el mercado laboral y en el comercio de servicios
+  *dim:* dim-labor-share · *horizonte:* 2010-2019 · *ámbito:* 86 países/economía completa y comercio de servicios
+  > there is a contraction in overall employment, a shift from mid-skill to high-skill managerial roles and a reduced labour share of income
+
+  *engancha:* `confirma` La IA ensancha (no reduce) la desigualdad; `confirma` La IA erosiona la participación del trabajo (si σ>1); `confirma` La IA expande el offshoring en vez de repatriarlo (telemigración); `tensiona` La IA generativa se comporta distinto de la ola predictiva que la precedió; `confirma` Polarización por sesgo anti-rutina (RBTC)
 
 ### Daron Acemoglu (2024)
 `acemoglu2024simple` · NBER Working Paper No. 32487 · [fuente](https://www.nber.org/system/files/working_papers/w32487/w32487.pdf)
@@ -1292,6 +1323,18 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
 
   *engancha:* `confirma` La IA generativa se comporta distinto de la ola predictiva que la precedió; `confirma` La desigualdad de la IA se juega entre empresas, no solo entre trabajadores; `confirma` Reinstauración vía nuevas tareas; `tensiona` Mucha rotación, neto pequeño e incierto; `informa` La renta de la IA: ¿electricidad (difusa) o plataforma (concentrada)?
 
+### Leonardo Gambacorta, Han Qiu, David Rees & Shu Shan (2024)
+`gambacorta-etal-2024-codefuse` · BIS Working Papers No 1208 ('Generative AI and labour productivity: a field experiment on coding') · [fuente](https://www.bis.org/publ/work1208.pdf)  ⚠ **Working paper de banco central, no revisado por pares; verificado sobre el PDF primario. Experimento de campo aprovechando la introducción de CodeFuse en Ant Group (septiembre de 2023): un grupo de programadores usó el LLM y otros equipos no fueron informados de su existencia, y se emparejaron empleados comparables. Límites: una sola empresa y un solo país, la medida de producto es cantidad de código —no calidad ni valor del software—, y el diseño es cuasi-experimental con emparejamiento, no aleatorización.**
+
+- **más de 50% de aumento del output de código (≈55%, con cerca de un tercio atribuible directamente al código generado por el modelo)** — Efecto de un asistente de código basado en LLM sobre la producción de código
+  *dim:* dim-productivity-task-rct · *horizonte:* desde septiembre de 2023 · *ámbito:* China (Ant Group)/programación
+  > the use of gen AI increased code output by more than 50%
+- **las ganancias son estadísticamente significativas SOLO entre el personal de entrada o junior; en los empleados más senior el impacto es menos pronunciado, y los autores lo atribuyen a menor uso y no a que la herramienta les sirva menos (las tasas de aceptación son parecidas entre niveles de experiencia)** — Quién captura la ganancia de productividad
+  *dim:* dim-productivity-dispersion · *horizonte:* desde septiembre de 2023 · *ámbito:* China (Ant Group)/programación
+  > productivity gains are statistically significant only among entry-level or junior staff, while the impact on more senior employees is less pronounced
+
+  *engancha:* `confirma` La paradoja del junior: la IA lo hace más productivo justo donde lo dejan de contratar; `confirma` Nivelación de habilidades (la IA comprime la distribución de productividad); `informa` Automatización vs aumento (dirección de diseño, Turing Trap)
+
 ### Joel Becker, Nate Rush, Beth Barnes, David Rein et al. (METR) (2025)
 `metr-2025` · METR (arXiv 2507.09089) · [fuente](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
 
@@ -1474,6 +1517,18 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
   > In contrast to the findings for employment, we find little evidence for a relationship between wages and potential exposures to new technologies.
 
   *engancha:* `confirma` La IA generativa se comporta distinto de la ola predictiva que la precedió; `tensiona` La IA expone trabajo alto-calificado (a diferencia de automatización previa); `tensiona` Polarización por sesgo anti-rutina (RBTC); `informa` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `confirma` El ajuste cae más en el empleo que en el salario (φ bajo)
+
+### Francesco Filippucci, Peter Gal, Katharina Laengle & Matthias Schief (2025)
+`filippucci-etal-2025-macro-g7` · OECD Artificial Intelligence Paper No. 41, resumido por los propios autores en SUERF Policy Brief No 1283 (octubre de 2025); continúa la línea de 'Miracle or myth?' (OECD AI Paper No. 29, 2024), que es la versión que cita el BIS · [fuente](https://www.suerf.org/wp-content/uploads/2025/10/SUERF-Policy-Brief-1283_Filippucci-Gal-Laengle-Schief.pdf)  ⚠ **⚠ Lo verificado es el POLICY BRIEF firmado por los propios autores, no el documento completo: el sitio de la OCDE bloquea el acceso automatizado. Las cifras citadas son las del brief. Es una PROYECCIÓN, no una medición: adapta el marco de tareas de Acemoglu (2024) a un contexto sectorial y combina estimaciones micro de desempeño con exposición y supuestos de adopción futura, en tres escenarios de velocidad. Hereda por tanto la incertidumbre de sus insumos micro, muchos de los cuales son experimentos de tarea única. Nota de trazabilidad: el BIS 1325 cita la versión de 2024 (AI Paper 29), cuyas cifras para EE.UU. eran algo menores.**
+
+- **0,4 a 1,3 puntos porcentuales anuales en países de alta exposición, por su especialización en servicios intensivos en conocimiento (finanzas, TIC) y su mayor adopción — EE.UU. y Reino Unido; 0,2 a 0,8 puntos donde esos determinantes son menos favorables, como Italia y Japón** — Crecimiento anual proyectado de la productividad laboral agregada por IA, G7
+  *dim:* dim-labor-productivity-growth · *horizonte:* próxima década, en tres escenarios de adopción (lenta, media, rápida) · *ámbito:* economías del G7/economía completa, con estructura sectorial
+  > the projected annual aggregate labour productivity growth ranges between 0.4-1.3 percentage points in countries with high AI exposure
+- **la estructura sectorial (cuánto pesan los servicios intensivos en conocimiento) y el ritmo de adopción; no la capacidad técnica de la tecnología, que se supone común** — Qué decide en qué punto del rango cae un país
+  *dim:* dim-diffusion-share · *horizonte:* próxima década · *ámbito:* G7/economía completa
+  > stronger specialisation in highly AI-exposed knowledge intensive services such as finance and ICT and more widespread adoption
+
+  *engancha:* `confirma` Macro modesto (Hulten) vs extremo (AGI), reconciliables por horizonte/medición; `confirma` El potencial está limitado por la adopción y la co-invención; `informa` Exposición no es empleo neto
 
 ### Anthropic Economic Index team (2026)
 `anthropic-aei-2026-primitives` · Anthropic (lab report, enero 2026) · [fuente](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report)
@@ -1744,7 +1799,7 @@ Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efect
   *dim:* dim-atribucion-entry-level · *horizonte:* 2022-2026 · *ámbito:* EE.UU./economía completa
   > the declines load specifically on AI usage for automation with a clear age gradient, a pattern that interest-rate, education, and remote-work stories do not predict
 
-  *engancha:* `tensiona` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `confirma` La IA expone trabajo alto-calificado (a diferencia de automatización previa); `confirma` Automatización vs aumento (dirección de diseño, Turing Trap); `confirma` El ajuste cae más en el empleo que en el salario (φ bajo); `informa` Exposición no es empleo neto; `confirma` Desplazamiento domina en el periodo reciente (post-1987); `confirma` Mucha rotación, neto pequeño e incierto
+  *engancha:* `tensiona` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `confirma` La IA expone trabajo alto-calificado (a diferencia de automatización previa); `confirma` Automatización vs aumento (dirección de diseño, Turing Trap); `confirma` El ajuste cae más en el empleo que en el salario (φ bajo); `informa` Exposición no es empleo neto; `confirma` Desplazamiento domina en el periodo reciente (post-1987); `confirma` Mucha rotación, neto pequeño e incierto; `confirma` La paradoja del junior: la IA lo hace más productivo justo donde lo dejan de contratar
 
 ### Iñaki Aldasoro, Leonardo Gambacorta, Rozalia Pal, Debora Revoltella, Christoph Weiss & Marcin Wolski (2026)
 `bis-2026-wp1325-firmas-europeas` · BIS Working Papers No 1325 (Bank for International Settlements, Monetary and Economic Department), enero de 2026; publicado también como EIB Working Paper 2026/02 y CEPR DP21082 · [fuente](https://www.bis.org/publ/work1325.pdf)  ⚠ **Working paper de banco central, no revisado por pares; verificado sobre el PDF primario. Datos: encuesta EIBIS (~12.000 firmas no financieras de la UE y ~800 de EE.UU.) emparejada con estados financieros de ORBIS, corte transversal agrupado 2019-2024. LÍMITES QUE PESAN. (1) La identificación descansa en un instrumento fuerte: se asigna a cada firma europea la tasa de adopción de sus pares estadounidenses, lo que exige suponer que esa adopción externa afecta la productividad europea SOLO a través de la propia adopción; es un supuesto de exclusión discutible en sectores con cadenas de suministro compartidas. (2) La adopción se mide por autorreporte en encuesta, no por uso observado. (3) ⚠ EL RESULTADO DE SALARIOS NO TIENE EL MISMO ESTATUS QUE EL DE PRODUCTIVIDAD: el +4% es el estimador causal, mientras que los salarios se reportan como comparación entre firmas adoptantes y no adoptantes con controles y efectos fijos, y los propios autores lo fraseán como algo que ocurre «hasta ahora» y queda por ver en el mediano plazo. Los resúmenes de prensa suelen presentar ambas cifras con el mismo peso. (4) ⚠ LA DESIGUALDAD MEDIDA ES ENTRE EMPRESAS, no entre trabajadores: que los beneficios vayan desproporcionadamente a trabajadores calificados que coordinan flujos aumentados por IA es una conjetura que los autores dejan planteada en una nota, no un resultado estimado. (5) Todos los efectos de empleo son de CORTO PLAZO y los autores declaran que el largo plazo sigue incierto.**
