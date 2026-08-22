@@ -1,0 +1,193 @@
+{
+  "_comment": "RONDA 8 — La OLA PREVIA, medida bien: Albanesi et al. (16 países europeos, 2011-2019) y Babina et al. (firmas de EE.UU., 2010-2018). Ambos salen de la bibliografía del BIS 1325 y ambos entran marcados como `pre-generativa`, que es justamente lo que los hace valiosos. Procesados el 2026-08-21, verificados sobre los PDF primarios (NBER w31357 y el JFE en la página del autor). NO ENTRAN COMO EVIDENCIA SOBRE IA GENERATIVA. Entran como la mitad «antes» de un contraste: sobre la misma población que hoy mide el Canaries —jóvenes en ocupaciones expuestas—, la ola predictiva de los 2010 hizo lo CONTRARIO, subir su participación en el empleo. Con las dos fechas a la vista, eso deja de ser una contradicción incómoda y pasa a ser la mejor demostración disponible de que la generativa se comporta distinto. Babina agrega la contraparte a nivel de firma: en esa misma ola, invertir en IA hacía crecer el empleo de la empresa, con el crecimiento concentrado en las grandes y asociado a mayor concentración industrial.",
+
+  "hypotheses": [
+    {
+      "id": "hyp-generativa-rompe-con-ola-previa",
+      "name": "La IA generativa se comporta distinto de la ola predictiva que la precedió",
+      "statement": "Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efectos laborales de signo opuesto sobre la misma población. En la ola predictiva de los 2010, las ocupaciones más expuestas GANARON participación en el empleo en Europa, y el efecto fue más fuerte justo donde había más trabajadores jóvenes y calificados; a nivel de firma, invertir en IA venía con más ventas, más empleo y más valor de mercado. Después de noviembre de 2022 la evidencia sobre la misma población se invierte: el empleo de los jóvenes en ocupaciones expuestas se separa a la baja y la brecha se profundiza año a año. Bajo esta hipótesis, la diferencia no es de medición ni de país sino de tecnología: la IA predictiva complementaba al analista que la operaba, mientras la generativa produce directamente el entregable con que ese analista entraba al mercado. El corolario metodológico es duro: casi toda la literatura de exposición ocupacional que se sigue citando —Webb, Felten, Frey-Osborne— está construida sobre la ola que se comportó al revés."
+    }
+  ],
+
+  "dimensions": [
+    {
+      "id": "dim-empleo-expuestas-ola-previa",
+      "name": "Cambio de participación en el empleo de ocupaciones expuestas, ola pre-generativa",
+      "definition": "Variación de la participación en el empleo de las ocupaciones más expuestas a IA durante la ola de aprendizaje automático predictivo, antes de la difusión de los modelos generativos. Es la línea de base contra la que se lee lo que ocurre después de noviembre de 2022; no es una medición de la IA generativa."
+    },
+    {
+      "id": "dim-crecimiento-firma-inversion-ia",
+      "name": "Crecimiento de la firma asociado a invertir en IA (ventas, empleo, valor de mercado)",
+      "definition": "Cambio en ventas, dotación y valuación de una empresa asociado a aumentar su inversión en IA, medida por la composición de talento de su planilla. A diferencia de la productividad por trabajador, mide si la empresa crece — y por lo tanto si contrata o no."
+    },
+    {
+      "id": "dim-concentracion-industrial-ia",
+      "name": "Concentración industrial asociada a la difusión de la IA",
+      "definition": "Grado en que las ganancias de la adopción de IA se acumulan en las empresas más grandes de cada industria y elevan la concentración del sector. Es el margen por el que la IA produce firmas superestrella, y el puente hacia la pregunta de si la renta se difunde o se concentra."
+    }
+  ],
+
+  "studies": [
+    {
+      "id": "albanesi-etal-2025-europa-empleo",
+      "authors": "Stefania Albanesi, António Dias da Silva, Juan F. Jimeno, Ana Lamo & Alena Wabitsch",
+      "year": 2025,
+      "venue": "Economic Policy 40(121): 71-139 ('New technologies and jobs in Europe'); working paper NBER 31357 (junio de 2023, revisado julio de 2023), también IZA DP 16227 y CEPR DP18220",
+      "url": "https://www.nber.org/papers/w31357",
+      "source_type": "paper",
+      "accessed": "2026-08-21",
+      "ola": "pre-generativa",
+      "reliability_note": "Revisado por pares (Economic Policy); verificado sobre el PDF primario del working paper NBER. ⚠ EL PERÍODO ES LO QUE MÁS IMPORTA DE ESTE NODO: 2011-2019, o sea íntegramente anterior a la difusión de los modelos generativos. NO es evidencia sobre lo que hace la IA generativa, y usarlo así sería exactamente el error que la clasificación por olas existe para evitar. Su valor está en ser la mitad «antes» del contraste con el Canaries, que mide la misma población después de 2022 y encuentra lo opuesto. Otros límites: la exposición es POTENCIAL (índices ocupacionales), no adopción observada; el resultado es una asociación entre participaciones de empleo y exposición, sin identificación causal; y los propios autores encuentran heterogeneidad entre países ligada a la velocidad de difusión, la educación, la regulación del mercado de productos y la protección del empleo.",
+      "estimates": [
+        {
+          "metric": "Participación en el empleo de las ocupaciones más expuestas a IA, Europa 2011-2019",
+          "dimension": "dim-empleo-expuestas-ola-previa",
+          "value": "AUMENTÓ en promedio, y particularmente en las ocupaciones con mayor proporción de trabajadores jóvenes y calificados — consistente con cambio técnico sesgado por habilidad",
+          "unit": "cambio de participación en el empleo",
+          "horizon": "2011-2019",
+          "geography": "16 países europeos",
+          "sector": "ocupaciones a 3 dígitos",
+          "counterfactual": "ocupaciones menos expuestas",
+          "quote": "on average employment shares have increased in occupations more exposed to AI. This is particularly the case for occupations with a relatively higher proportion of younger and skilled workers.",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Heterogeneidad entre países y qué la explica",
+          "dimension": "dim-empleo-expuestas-ola-previa",
+          "value": "muy pocos países muestran caída de la participación en las ocupaciones más expuestas; la heterogeneidad se asocia al ritmo de difusión tecnológica y a la educación, pero también al nivel de regulación del mercado de productos (competencia) y a las leyes de protección del empleo",
+          "unit": "cualitativo (heterogeneidad)",
+          "horizon": "2011-2019",
+          "geography": "16 países europeos",
+          "sector": "economía completa",
+          "counterfactual": "un efecto homogéneo entre países",
+          "quote": "only very few countries show a decline in employment shares of occupations more exposed to AI-enabled automation",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Salarios frente a exposición",
+          "dimension": "dim-wages",
+          "value": "poca evidencia de relación entre salarios y exposición potencial a las nuevas tecnologías — el ajuste, si lo hubo, no pasó por el precio",
+          "unit": "cualitativo",
+          "horizon": "2011-2019",
+          "geography": "16 países europeos",
+          "sector": "ocupaciones a 3 dígitos",
+          "counterfactual": "un efecto salarial proporcional al de empleo",
+          "quote": "In contrast to the findings for employment, we find little evidence for a relationship between wages and potential exposures to new technologies.",
+          "location": "Abstract"
+        }
+      ]
+    },
+    {
+      "id": "babina-etal-2024-firm-growth",
+      "authors": "Tania Babina, Anastassia Fedyk, Alex He & James Hodson",
+      "year": 2024,
+      "venue": "Journal of Financial Economics 151: 103745 ('Artificial intelligence, firm growth, and product innovation')",
+      "url": "https://alexxihe.github.io/jfe.pdf",
+      "source_type": "paper",
+      "accessed": "2026-08-21",
+      "ola": "pre-generativa",
+      "reliability_note": "Revisado por pares en una revista de primer nivel; verificado sobre el PDF publicado. ⚠ PERÍODO 2010-2018, anterior a los modelos generativos: mide la ola de aprendizaje automático, no la actual. La medida de inversión en IA es indirecta —la composición de talento de la planilla, construida con currículums de empleados—, así que capta contratación de perfiles de IA antes que uso desplegado. La identificación se apoya en instrumentar con la exposición de cada firma a la oferta universitaria de graduados en IA, un supuesto de exclusión razonable pero discutible. Las magnitudes son por una desviación estándar de la medida sobre ocho años, no efectos anuales.",
+      "estimates": [
+        {
+          "metric": "Crecimiento de la firma por una desviación estándar más de inversión en IA (2010-2018)",
+          "dimension": "dim-crecimiento-firma-inversion-ia",
+          "value": "+19,5% de ventas, +18,1% de EMPLEO y +22,3% de valor de mercado",
+          "unit": "% acumulado sobre ocho años",
+          "horizon": "2010-2018",
+          "geography": "EE.UU.",
+          "sector": "firmas cotizadas, todos los sectores",
+          "counterfactual": "firmas comparables con menor inversión en IA",
+          "quote": "a one-standard-deviation increase in the resume-based measure of AI investments over the 8-year period corresponds to a 19.5% increase in sales, a 18.1% increase in employment, and a 22.3% increase in market valuation",
+          "location": "Introducción, resumen de resultados"
+        },
+        {
+          "metric": "Por dónde llega el crecimiento",
+          "dimension": "dim-crecimiento-firma-inversion-ia",
+          "value": "principalmente por mayor innovación de PRODUCTO, no por reducción de costos ni por eficiencia de procesos",
+          "unit": "cualitativo (mecanismo)",
+          "horizon": "2010-2018",
+          "geography": "EE.UU.",
+          "sector": "firmas cotizadas",
+          "counterfactual": "crecimiento por abaratamiento de procesos",
+          "quote": "This growth comes primarily through increased product innovation.",
+          "location": "Abstract"
+        },
+        {
+          "metric": "Dónde se acumulan las ganancias y qué le hace a la industria",
+          "dimension": "dim-concentracion-industrial-ia",
+          "value": "el crecimiento impulsado por IA se concentra en las firmas MÁS GRANDES y viene asociado a mayor concentración industrial: la IA contribuye a producir empresas superestrella",
+          "unit": "cualitativo (distribución)",
+          "horizon": "2010-2018",
+          "geography": "EE.UU.",
+          "sector": "por tamaño de firma e industria",
+          "counterfactual": "ganancias repartidas entre firmas de todos los tamaños",
+          "quote": "AI-powered growth concentrates among larger firms and is associated with higher industry concentration.",
+          "location": "Abstract"
+        }
+      ]
+    }
+  ],
+
+  "study_hypothesis_edges": [
+    {
+      "study_id": "albanesi-etal-2025-europa-empleo",
+      "hypothesis": "hyp-generativa-rompe-con-ola-previa",
+      "type": "confirma",
+      "why": "Es la mitad «antes» del contraste, y sobre la población más sensible: en Europa 2011-2019 las ocupaciones expuestas GANARON participación en el empleo, con el efecto más fuerte donde había más jóvenes y calificados. Es lo contrario de lo que mide el Canaries después de 2022 en esa misma población."
+    },
+    {
+      "study_id": "babina-etal-2024-firm-growth",
+      "hypothesis": "hyp-generativa-rompe-con-ola-previa",
+      "type": "confirma",
+      "why": "La misma inversión de signo contrario, a nivel de empresa: en 2010-2018 invertir en IA venía con 18,1% más EMPLEO. La discusión actual da por sentado que adoptar IA y contratar son cosas opuestas; en la ola anterior iban juntas."
+    },
+    {
+      "study_id": "albanesi-etal-2025-europa-empleo",
+      "hypothesis": "hyp-ai-targets-high-skill",
+      "type": "tensiona",
+      "why": "En la ola previa, los trabajadores calificados y jóvenes de ocupaciones expuestas salieron ganando participación, no perdiéndola. La afirmación de que la IA golpea hacia arriba vale para la generativa; presentada como propiedad de «la IA» sin fecha, la evidencia anterior la contradice."
+    },
+    {
+      "study_id": "albanesi-etal-2025-europa-empleo",
+      "hypothesis": "hyp-routine-polarization",
+      "type": "tensiona",
+      "why": "Los autores leen su resultado como cambio técnico sesgado por habilidad y no como polarización: en el período que estudian, la expansión ocurre en el extremo calificado en vez de vaciarse el medio."
+    },
+    {
+      "study_id": "albanesi-etal-2025-europa-empleo",
+      "hypothesis": "hyp-entry-level-remoto-o-ciclo",
+      "type": "informa",
+      "why": "Da la línea de base que faltaba para juzgar el deterioro entry-level: antes de 2020, y en 16 países, los jóvenes en ocupaciones expuestas no venían perdiendo terreno sino ganándolo. El quiebre no arrastra desde la ola anterior."
+    },
+    {
+      "study_id": "albanesi-etal-2025-europa-empleo",
+      "hypothesis": "hyp-ajuste-cae-en-empleo",
+      "type": "confirma",
+      "why": "Encuentra movimiento en las participaciones de empleo y poca relación con los salarios: también en la ola previa el ajuste corrió por la cantidad y no por el precio."
+    },
+    {
+      "study_id": "babina-etal-2024-firm-growth",
+      "hypothesis": "hyp-brecha-entre-firmas",
+      "type": "confirma",
+      "why": "Evidencia independiente y anterior de la misma brecha que mide el BIS: el crecimiento por IA se concentra en las firmas grandes y eleva la concentración industrial. Dos olas, misma dirección — es el resultado más estable del mapa a nivel de empresa."
+    },
+    {
+      "study_id": "babina-etal-2024-firm-growth",
+      "hypothesis": "hyp-reinstatement-new-tasks",
+      "type": "confirma",
+      "why": "El crecimiento llega por innovación de producto, que es reinstauración vista desde la empresa: productos nuevos que traen tareas nuevas, y con ellas la contratación. Es el canal que el debate sobre desplazamiento suele dejar fuera."
+    },
+    {
+      "study_id": "babina-etal-2024-firm-growth",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "tensiona",
+      "why": "A nivel de firma el neto no fue pequeño en la ola previa: fue claramente positivo en ventas, empleo y valuación. Lo que queda pequeño es el agregado, porque la ganancia se concentró en pocas empresas grandes."
+    },
+    {
+      "study_id": "babina-etal-2024-firm-growth",
+      "hypothesis": "hyp-captura-electricidad-vs-plataforma",
+      "type": "informa",
+      "why": "Aporta la evidencia empírica que la pregunta necesitaba: en la ola previa la IA se comportó más como plataforma que como electricidad, concentrando la renta en firmas superestrella en vez de difundirla."
+    }
+  ]
+}

@@ -9,7 +9,7 @@ publico: false
 
 > Dossier de investigación — **semilla, ronda 1, auditada**. Material de base para la plataforma interactiva y para escritura. Generado desde `datos/mapa.json`; **no editar a mano** — regenerar con `datos/generar-dossier.py`.
 
-**35 hipótesis · 102 estudios · 68 dimensiones · 35 conversiones · 226 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
+**36 hipótesis · 104 estudios · 71 dimensiones · 35 conversiones · 236 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
 
 ## La tesis: por qué esto no se lee de un titular
 
@@ -257,9 +257,14 @@ Una transferencia no reconstituye el ingreso que el trabajo dejó de generar: pa
 
 El debate sobre desigualdad y IA se plantea casi siempre entre personas —quién sabe usarla y quién no—, pero la evidencia causal a nivel de firma sitúa la brecha un nivel más arriba: entre empresas. La adopción está estratificada por tamaño (45% de las firmas grandes contra 24% de las pequeñas en la UE) y por desarrollo financiero del país, y las ganancias de productividad se concentran en las medianas y grandes, en regiones financieramente avanzadas y en sectores intensivos en tecnología. Bajo esta hipótesis, la IA ensancha primero la dispersión de productividad ENTRE empresas —y con ella la de salarios, porque quien paga mejor es la firma que adoptó—, y la desigualdad entre trabajadores es en parte un efecto derivado de en qué empresa se trabaja. El corolario de política es distinto al habitual: no basta con capacitar personas si las firmas chicas no alcanzan la masa crítica para adoptar.
 
+### La IA generativa se comporta distinto de la ola predictiva que la precedió
+`hyp-generativa-rompe-con-ola-previa`
+
+Bajo la misma etiqueta —«exposición a IA»— hay dos tecnologías con efectos laborales de signo opuesto sobre la misma población. En la ola predictiva de los 2010, las ocupaciones más expuestas GANARON participación en el empleo en Europa, y el efecto fue más fuerte justo donde había más trabajadores jóvenes y calificados; a nivel de firma, invertir en IA venía con más ventas, más empleo y más valor de mercado. Después de noviembre de 2022 la evidencia sobre la misma población se invierte: el empleo de los jóvenes en ocupaciones expuestas se separa a la baja y la brecha se profundiza año a año. Bajo esta hipótesis, la diferencia no es de medición ni de país sino de tecnología: la IA predictiva complementaba al analista que la operaba, mientras la generativa produce directamente el entregable con que ese analista entraba al mercado. El corolario metodológico es duro: casi toda la literatura de exposición ocupacional que se sigue citando —Webb, Felten, Frey-Osborne— está construida sobre la ola que se comportó al revés.
+
 ## Capa de medición: dimensiones y conversiones
 
-68 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
+71 dimensiones (unidades). Las conversiones entre ellas se clasifican en tres clases — y la clase es lo que separa el rigor del aire:
 
 ### Ausentes — no hay puente (es un hallazgo, no se fabrica) — 8
 
@@ -417,6 +422,8 @@ El debate sobre desigualdad y IA se plantea casi siempre entre personas —quié
 - **Modo de colaboración (augment vs automate)** (`dim-collaboration-mode`): Clasificación de cada interacción humano-IA en augmentation (ida y vuelta) vs automation (delegación de tarea completa). Anthropic 52-57% augment; ILO/IMF usan variantes. NO es empleo: una tarea 'automatizada' en una conversación no implica un puesto eliminado. Unidad: % de conversaciones/tareas.
 - **Comercio de servicios offshore (BPO/back-office): exportaciones como termómetro del desplazamiento** (`dim-comercio-servicios-offshore`): 
 - **Composición de la base gravable: qué fracción de la recaudación descansa sobre el trabajo** (`dim-composicion-base-gravable`): Participación de cada fuente en los ingresos fiscales (impuesto a la renta personal, contribuciones sociales/nómina, impuesto corporativo, otros). Mide de qué depende la caja del Estado y, por lo tanto, cuánto de ella está expuesta a una caída de la participación del trabajo. Caveat: el impuesto a la renta personal no es puramente laboral — grava también dividendos, ganancias de capital, intereses y rentas de sociedades transparentes, así que la fracción estrictamente laboral es algo menor que la suma personal+nómina.
+- **Concentración industrial asociada a la difusión de la IA** (`dim-concentracion-industrial-ia`): Grado en que las ganancias de la adopción de IA se acumulan en las empresas más grandes de cada industria y elevan la concentración del sector. Es el margen por el que la IA produce firmas superestrella, y el puente hacia la pregunta de si la renta se difunde o se concentra.
+- **Crecimiento de la firma asociado a invertir en IA (ventas, empleo, valor de mercado)** (`dim-crecimiento-firma-inversion-ia`): Cambio en ventas, dotación y valuación de una empresa asociado a aumentar su inversión en IA, medida por la composición de talento de su planilla. A diferencia de la productividad por trabajador, mide si la empresa crece — y por lo tanto si contrata o no.
 - **La energía como cuello físico de la IA** (`dim-cuello-energetico`): Demanda eléctrica de los datacenters (nivel, crecimiento, concentración geográfica) frente a la capacidad del sistema de entregarla. Mide si la energía se vuelve la restricción de ritmo y lugar de la IA. Caveat: a escala global los datacenters son un actor menor del crecimiento eléctrico — la escasez es local/temporal, no una pared malthusiana. Unidad: TWh, %/año, % del consumo.
 - **Elasticidad de demanda (la bisagra empleo↑/↓)** (`dim-demand-elasticity`): Cuánto crece la demanda de un bien cuando su precio cae. Decide el signo del efecto de automatizar una tarea: si la demanda es elástica (software, Jevons) el bien más barato se compra mucho más y el empleo del resto de tareas SUBE; si se sacia (comida, petróleo, insulina) la demanda no responde y el empleo CAE. Imas: 'no tenemos datos' sobre estas elasticidades — la pieza que más falta. Unidad: elasticidad / cualitativo.
 - **Rezago de difusión** (`dim-diffusion-lag`): Tiempo entre disponibilidad/breakthrough inicial de una tecnología y la fecha en que alcanza un umbral de difusión (p.ej. 50%) o muestra efectos agregados medibles (electrificación ~2 décadas a 50%, ~4 décadas al impacto en productividad). Magnitud TEMPORAL. Unidad: años.
@@ -426,6 +433,7 @@ El debate sobre desigualdad y IA se plantea casi siempre entre personas —quié
 - **Fuga de la base gravable: fracción del beneficio que se desplaza o desaparece al gravarlo** (`dim-elasticidad-fuga-base`): Cuánta base imponible se traslada a jurisdicciones de baja tributación, o deja de declararse, en respuesta a un diferencial de tasas. Se mide por la fracción de beneficios multinacionales declarada en paraísos y por la brecha entre la recaudación proyectada de una reforma y la efectivamente obtenida.
 - **Elasticidad de sustitución capital–trabajo (σ)** (`dim-elasticidad-sustitucion`): Cuán fácilmente la producción reemplaza trabajo por capital cuando cambian sus precios relativos. σ>1 = sustitutos brutos (el capital barato desplaza trabajo y baja su tajada); σ<1 = complementos (el trabajo se vuelve el factor escaso y su tajada sube); σ=1 = Cobb-Douglas (tajadas fijas). Es el parámetro que decide el signo del efecto de la IA sobre la participación del trabajo en el modelo agregado. Unidad: adimensional.
 - **Cambio en razón empleo-población** (`dim-emp-pop-ratio-change`): Cambio en la razón empleo-población, en pp, atribuible a una unidad de exposición tecnológica (p.ej. por robot/1000 trabajadores). Resultado de empleo NETO realizado a una geografía. Unidad: pp.
+- **Cambio de participación en el empleo de ocupaciones expuestas, ola pre-generativa** (`dim-empleo-expuestas-ola-previa`): Variación de la participación en el empleo de las ocupaciones más expuestas a IA durante la ola de aprendizaje automático predictivo, antes de la difusión de los modelos generativos. Es la línea de base contra la que se lee lo que ocurre después de noviembre de 2022; no es una medición de la IA generativa.
 - **Empleo: separaciones / rotación de incumbentes** (`dim-employment-separations`): Continuidad laboral a nivel trabajador: atrición, retención, separaciones (Brynjolfsson: atrición cae, por retención de novatos). Mide salidas de incumbentes, NO creación/destrucción neta de mercado. Unidad: dirección o % de atrición.
 - **Cambio de participación en el empleo** (`dim-employment-share-change`): Cambio en la participación de una ocupación/grupo en el total de horas o empleo, en pp o % proporcional, sobre un periodo y geografía. RELATIVO y suma-cero entre ocupaciones; NO es conteo neto de puestos ni resultado a nivel de trabajador. (Goos-Manning-Salomons, Autor-Dorn.) Unidad: pp o % del share.
 - **Gradiente exposición-por-salario/habilidad** (`dim-exposure-skill-gradient`): Signo y forma de la correlación entre una medida de exposición/susceptibilidad y el salario o educación ocupacional (positivo = alto salario más expuesto, Webb/Eloundou; negativo = bajo salario más susceptible, Frey-Osborne). Unidad: cualitativo/signo o coeficiente.
@@ -1269,6 +1277,21 @@ El debate sobre desigualdad y IA se plantea casi siempre entre personas —quié
 
   *engancha:* `tensiona` Lo que se puede gravar es lo que no se puede mover
 
+### Tania Babina, Anastassia Fedyk, Alex He & James Hodson (2024)
+`babina-etal-2024-firm-growth` · Journal of Financial Economics 151: 103745 ('Artificial intelligence, firm growth, and product innovation') · [fuente](https://alexxihe.github.io/jfe.pdf)  ⚠ **Revisado por pares en una revista de primer nivel; verificado sobre el PDF publicado. ⚠ PERÍODO 2010-2018, anterior a los modelos generativos: mide la ola de aprendizaje automático, no la actual. La medida de inversión en IA es indirecta —la composición de talento de la planilla, construida con currículums de empleados—, así que capta contratación de perfiles de IA antes que uso desplegado. La identificación se apoya en instrumentar con la exposición de cada firma a la oferta universitaria de graduados en IA, un supuesto de exclusión razonable pero discutible. Las magnitudes son por una desviación estándar de la medida sobre ocho años, no efectos anuales.**
+
+- **+19,5% de ventas, +18,1% de EMPLEO y +22,3% de valor de mercado** — Crecimiento de la firma por una desviación estándar más de inversión en IA (2010-2018)
+  *dim:* dim-crecimiento-firma-inversion-ia · *horizonte:* 2010-2018 · *ámbito:* EE.UU./firmas cotizadas, todos los sectores
+  > a one-standard-deviation increase in the resume-based measure of AI investments over the 8-year period corresponds to a 19.5% increase in sales, a 18.1% increase in employment, and a 22.3% increase in market valuation
+- **principalmente por mayor innovación de PRODUCTO, no por reducción de costos ni por eficiencia de procesos** — Por dónde llega el crecimiento
+  *dim:* dim-crecimiento-firma-inversion-ia · *horizonte:* 2010-2018 · *ámbito:* EE.UU./firmas cotizadas
+  > This growth comes primarily through increased product innovation.
+- **el crecimiento impulsado por IA se concentra en las firmas MÁS GRANDES y viene asociado a mayor concentración industrial: la IA contribuye a producir empresas superestrella** — Dónde se acumulan las ganancias y qué le hace a la industria
+  *dim:* dim-concentracion-industrial-ia · *horizonte:* 2010-2018 · *ámbito:* EE.UU./por tamaño de firma e industria
+  > AI-powered growth concentrates among larger firms and is associated with higher industry concentration.
+
+  *engancha:* `confirma` La IA generativa se comporta distinto de la ola predictiva que la precedió; `confirma` La desigualdad de la IA se juega entre empresas, no solo entre trabajadores; `confirma` Reinstauración vía nuevas tareas; `tensiona` Mucha rotación, neto pequeño e incierto; `informa` La renta de la IA: ¿electricidad (difusa) o plataforma (concentrada)?
+
 ### Joel Becker, Nate Rush, Beth Barnes, David Rein et al. (METR) (2025)
 `metr-2025` · METR (arXiv 2507.09089) · [fuente](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
 
@@ -1436,6 +1459,21 @@ El debate sobre desigualdad y IA se plantea casi siempre entre personas —quié
   > we find no impact on quality of employment, and our confidence intervals can rule out even small improvements
 
   *engancha:* `confirma` Repartir no restaura el ingreso laboral (y el diseño decide cuánto se pierde); `informa` La elasticidad de demanda decide si automatizar sube o baja el empleo
+
+### Stefania Albanesi, António Dias da Silva, Juan F. Jimeno, Ana Lamo & Alena Wabitsch (2025)
+`albanesi-etal-2025-europa-empleo` · Economic Policy 40(121): 71-139 ('New technologies and jobs in Europe'); working paper NBER 31357 (junio de 2023, revisado julio de 2023), también IZA DP 16227 y CEPR DP18220 · [fuente](https://www.nber.org/papers/w31357)  ⚠ **Revisado por pares (Economic Policy); verificado sobre el PDF primario del working paper NBER. ⚠ EL PERÍODO ES LO QUE MÁS IMPORTA DE ESTE NODO: 2011-2019, o sea íntegramente anterior a la difusión de los modelos generativos. NO es evidencia sobre lo que hace la IA generativa, y usarlo así sería exactamente el error que la clasificación por olas existe para evitar. Su valor está en ser la mitad «antes» del contraste con el Canaries, que mide la misma población después de 2022 y encuentra lo opuesto. Otros límites: la exposición es POTENCIAL (índices ocupacionales), no adopción observada; el resultado es una asociación entre participaciones de empleo y exposición, sin identificación causal; y los propios autores encuentran heterogeneidad entre países ligada a la velocidad de difusión, la educación, la regulación del mercado de productos y la protección del empleo.**
+
+- **AUMENTÓ en promedio, y particularmente en las ocupaciones con mayor proporción de trabajadores jóvenes y calificados — consistente con cambio técnico sesgado por habilidad** — Participación en el empleo de las ocupaciones más expuestas a IA, Europa 2011-2019
+  *dim:* dim-empleo-expuestas-ola-previa · *horizonte:* 2011-2019 · *ámbito:* 16 países europeos/ocupaciones a 3 dígitos
+  > on average employment shares have increased in occupations more exposed to AI. This is particularly the case for occupations with a relatively higher proportion of younger and skilled workers.
+- **muy pocos países muestran caída de la participación en las ocupaciones más expuestas; la heterogeneidad se asocia al ritmo de difusión tecnológica y a la educación, pero también al nivel de regulación del mercado de productos (competencia) y a las leyes de protección del empleo** — Heterogeneidad entre países y qué la explica
+  *dim:* dim-empleo-expuestas-ola-previa · *horizonte:* 2011-2019 · *ámbito:* 16 países europeos/economía completa
+  > only very few countries show a decline in employment shares of occupations more exposed to AI-enabled automation
+- **poca evidencia de relación entre salarios y exposición potencial a las nuevas tecnologías — el ajuste, si lo hubo, no pasó por el precio** — Salarios frente a exposición
+  *dim:* dim-wages · *horizonte:* 2011-2019 · *ámbito:* 16 países europeos/ocupaciones a 3 dígitos
+  > In contrast to the findings for employment, we find little evidence for a relationship between wages and potential exposures to new technologies.
+
+  *engancha:* `confirma` La IA generativa se comporta distinto de la ola predictiva que la precedió; `tensiona` La IA expone trabajo alto-calificado (a diferencia de automatización previa); `tensiona` Polarización por sesgo anti-rutina (RBTC); `informa` El deterioro entry-level lo explican el remoto o el ciclo, no (solo) la IA; `confirma` El ajuste cae más en el empleo que en el salario (φ bajo)
 
 ### Anthropic Economic Index team (2026)
 `anthropic-aei-2026-primitives` · Anthropic (lab report, enero 2026) · [fuente](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report)
