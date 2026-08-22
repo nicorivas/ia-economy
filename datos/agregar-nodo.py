@@ -6,7 +6,13 @@
 El spec es JSON con cualquiera de estas claves (todas opcionales, mismas formas que
 mapa.json): studies, study_hypothesis_edges, hypotheses, dimensions, conversions.
 Cada item se mergea por 'id' (las aristas por la tripleta), de forma idempotente.
-Valida referencias cruzadas y avisa de lo dudoso. Por defecto regenera el dossier y
+Valida referencias cruzadas y avisa de lo dudoso.
+
+REGLA DE LA OLA: todo estudio nuevo debe declarar el campo `ola` — qué ola tecnológica
+mide (generativa / pre-generativa / mixta / historica / teoria / contexto; ver
+aplicar-olas.py). Un estudio `pre-generativa` no sostiene por sí solo una afirmación
+sobre IA generativa: entra como línea de base de la ola anterior o como contraste. Si
+falta el campo, este script avisa y hay que ponerlo antes de escribir texto encima. Por defecto regenera el dossier y
 sincroniza la app; --no-build lo omite."""
 import json
 import sys
@@ -19,6 +25,7 @@ MAPA = D / "mapa.json"
 APP_COPY = ROOT / "app" / "src" / "mapa.json"
 
 VALID_EDGE = {"confirma", "tensiona", "refuta", "informa", "aplica", "reencuadra"}
+OLAS_VALIDAS = {"generativa", "pre-generativa", "mixta", "historica", "teoria", "contexto"}
 SINGULAR = {
     "hypotheses": "hipótesis",
     "dimensions": "dimensión",
@@ -59,6 +66,14 @@ def main() -> None:
             if key == "dimensions":
                 dim_ids.add(item["id"])
             report.append(f"+  {SINGULAR[key]} '{item['id']}'")
+
+    # Avisar de estudios sin ola declarada (ver la REGLA DE LA OLA en el docstring).
+    for s in spec.get("studies", []):
+        ola = s.get("ola")
+        if not ola:
+            report.append(f"   ⚠ '{s['id']}' no declara `ola` — ¿qué ola tecnológica mide? (ver aplicar-olas.py)")
+        elif ola not in OLAS_VALIDAS:
+            report.append(f"   ⚠ '{s['id']}' declara una ola desconocida '{ola}' (válidas: {', '.join(sorted(OLAS_VALIDAS))})")
 
     # Avisar de dimensiones referidas por estimaciones que no existen.
     for s in spec.get("studies", []):

@@ -3005,3 +3005,41 @@ button.capa-cell:hover:not(.on):not(.soon) {
     overflow-x: auto;
   }
 }
+
+/* ── Marca de OLA ──────────────────────────────────────────────────────────────────────────
+   Qué ola tecnológica mide un estudio. Solo las que se pueden leer mal llevan marca en las
+   listas (pre-generativa, mixta); en la ficha de Fuentes se muestra siempre, con su explicación.
+   Sin caja de color de fondo: un filete a la izquierda, del tono que corresponde. */
+.ola {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 4px;
+  border-left: 2px solid var(--overlay1);
+  font-size: 9px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--subtext0);
+  vertical-align: 1px;
+}
+.ola-warn { border-left-color: var(--peach); color: var(--peach); }
+.ola-half { border-left-color: var(--yellow); color: var(--yellow); }
+.ola-live { border-left-color: var(--green); color: var(--subtext1); }
+.ola-mute { border-left-color: var(--overlay1); color: var(--overlay1); }
+
+.fu-ola {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border-left: 2px solid var(--overlay1);
+  background: var(--surface0);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--subtext1);
+}
+.fu-ola b { text-transform: uppercase; font-size: 10px; letter-spacing: 0.6px; }
+.fu-ola.ola-warn { border-left-color: var(--peach); }
+.fu-ola.ola-warn b { color: var(--peach); }
+.fu-ola.ola-half { border-left-color: var(--yellow); }
+.fu-ola.ola-half b { color: var(--yellow); }
+.fu-ola.ola-live { border-left-color: var(--green); }
+.fu-ola.ola-live b { color: var(--green); }
+.fu-ola.ola-mute b { color: var(--overlay1); }

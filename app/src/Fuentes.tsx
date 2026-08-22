@@ -3,6 +3,7 @@
 // hipótesis que toca. Es la evidencia cruda que sostiene el Explorador y la Síntesis.
 import { useState, useEffect, useRef } from "react";
 import { map, edgesByStudy, hypById, studyById, surname } from "./data";
+import { OLAS, OLA_VISIBLE } from "./olas";
 
 const REL: Record<string, { color: string; mark: string }> = {
   confirma: { color: "var(--green)", mark: "●" },
@@ -66,6 +67,11 @@ export function Fuentes({
             >
               <span className="fu-auth">{st.authors}</span>
               <span className="fu-yr">
+                {st.ola && OLA_VISIBLE.includes(st.ola) && (
+                  <span className={`ola ola-${OLAS[st.ola].tone}`} title={OLAS[st.ola].short}>
+                    {OLAS[st.ola].label}
+                  </span>
+                )}
                 {st.year}
                 {st.reliability_note ? " ⚠" : ""}
               </span>
@@ -91,6 +97,11 @@ export function Fuentes({
                     </a>
                   </>
                 )}
+              </div>
+            )}
+            {s.ola && (
+              <div className={`fu-ola ola-${OLAS[s.ola].tone}`}>
+                <b>{OLAS[s.ola].label}</b> — {OLAS[s.ola].body}
               </div>
             )}
             {s.reliability_note && (

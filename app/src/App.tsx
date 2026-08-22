@@ -6,6 +6,7 @@ import { Band3 } from "./Band3";
 import { VeredictoSection } from "./Veredicto";
 import type { ParamFocus } from "./Veredicto";
 import { RecursosVeredicto } from "./RecursosVeredicto";
+import { OLAS, OLA_VISIBLE } from "./olas";
 import { EstadosVeredicto } from "./EstadosVeredicto";
 import { Section } from "./Section";
 import { TopBar } from "./TopBar";
@@ -398,6 +399,11 @@ export function App() {
                     )}
                     <span className="pill-auth">{s.authors}</span>
                     <span className="pill-year">
+                      {s.ola && OLA_VISIBLE.includes(s.ola) && (
+                        <span className={`ola ola-${OLAS[s.ola].tone}`} title={OLAS[s.ola].short}>
+                          {OLAS[s.ola].label}
+                        </span>
+                      )}
                       {s.year}
                       {s.reliability_note ? " ⚠" : ""}
                     </span>

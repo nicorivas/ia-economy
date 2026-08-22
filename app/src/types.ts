@@ -13,6 +13,18 @@ export interface Estimate {
   location?: string;
 }
 
+// La ola tecnológica que mide el estudio. Existe porque «exposición a IA» nombraba dos cosas
+// distintas: el aprendizaje automático de los 2010 y los modelos generativos posteriores a
+// noviembre de 2022. Un estudio pre-generativo no sostiene por sí solo una afirmación sobre
+// generativa; entra como línea de base o como contraste.
+export type Ola =
+  | "generativa"
+  | "pre-generativa"
+  | "mixta"
+  | "historica"
+  | "teoria"
+  | "contexto";
+
 export interface Study {
   id: string;
   authors: string;
@@ -22,6 +34,7 @@ export interface Study {
   source_type?: string;
   accessed?: boolean;
   reliability_note?: string;
+  ola?: Ola;
   estimates: Estimate[];
 }
 
