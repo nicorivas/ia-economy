@@ -36,6 +36,18 @@ export const LENSES: { key: Lens; label: string; sub: string; built: boolean }[]
   { key: "endogeno", label: "Crecimiento", sub: "weak links: lo que la IA no puede hacer decide al trabajo (Jones)", built: true },
 ];
 
+// Transferibilidad geográfica de un parámetro: qué haría falta para usarlo fuera del país donde
+// se midió. Existe porque casi toda la evidencia del mapa es estadounidense y trasladarla sin
+// declarar el supuesto es el mismo error que mezclar olas, movido al eje del espacio. El campo es
+// OBLIGATORIO a propósito: así el compilador obliga a pronunciarse sobre cada parámetro nuevo.
+//   estructural   no depende del país — propiedad de la tecnología, de la matemática del modelo,
+//                 o fenómeno planetario (la cadena de chips, el desplazamiento de beneficios)
+//   recalculable  se traslada si se recalcula con datos locales que EXISTEN; `trasladoNota` dice
+//                 con cuáles
+//   local         intransferible: hay que medirlo en el país o no se tiene
+//   politica      no es una medición sino una decisión; no se traslada porque no se observa
+export type Traslado = "estructural" | "recalculable" | "local" | "politica";
+
 export interface ParamDef {
   key: ParamKey;
   short: string; // nombre corto = el que usa la fórmula (el slider lo usa de título; label va de descripción)
@@ -53,6 +65,10 @@ export interface ParamDef {
   // Cada estudio que fundamenta el parámetro, anclado en SU valor dentro de la escala del
   // slider. Al mover el slider, cada estudio "pesa" según qué tan cerca queda (vacío = nada lo fija).
   anchors: { studyId: string; at: number }[];
+  // Qué haría falta para usar este parámetro fuera de donde se midió. Ver el tipo `Traslado`.
+  traslado: Traslado;
+  // Para `recalculable`: con qué dato local se rehace. Para `local`: qué habría que medir.
+  trasladoNota?: string;
   min: number;
   max: number;
   step: number;
@@ -74,6 +90,9 @@ export const PARAMS: ParamDef[] = [
       { studyId: "imf-cazzaniga-2024", at: 0.4 },
     ],
     dims: ["dim-task-exposure", "dim-automation-potential", "dim-automatable-hours", "dim-occupation-exposure"],
+    traslado: "recalculable",
+    trasladoNota:
+      "Los índices de exposición están construidos sobre ocupaciones: se rehace ponderando por la estructura ocupacional local. La Encuesta Nacional de Empleo chilena ya usa CIUO-08, compatible con Eloundou y Felten.",
     min: 0.1,
     max: 0.4,
     step: 0.01,
@@ -92,6 +111,9 @@ export const PARAMS: ParamDef[] = [
       { studyId: "bonney-btos-2026-microstructure", at: 0.25 },
     ],
     dims: ["dim-firm-adoption", "dim-ai-adoption-use"],
+    traslado: "local",
+    trasladoNota:
+      "La adopción real es propia de cada economía y no se deduce de la exposición. En Chile habría que medirla con un módulo tipo BTOS o vía la Encuesta Longitudinal de Empresas.",
     min: 0.05,
     max: 0.45,
     step: 0.01,
@@ -109,6 +131,9 @@ export const PARAMS: ParamDef[] = [
       { studyId: "anthropic-aei-2026-primitives", at: 0.45 },
     ],
     dims: ["dim-collaboration-mode", "dim-interaction-type"],
+    traslado: "recalculable",
+    trasladoNota:
+      "La dirección sustituir/aumentar depende del mix de tareas de cada ocupación: se rehace con la misma reponderación ocupacional que la automatizable.",
     min: 0.2,
     max: 0.7,
     step: 0.01,
@@ -122,6 +147,9 @@ export const PARAMS: ParamDef[] = [
     evidence:
       "SUPUESTO — no medida para la IA. Histórico: ~½ del crecimiento del empleo vino de tareas nuevas. >1× crea empleo neto.",
     anchors: [],
+    traslado: "local",
+    trasladoNota:
+      "Depende del dinamismo empresarial y de la creación de tareas nuevas. No está medido para la IA en ningún país — es el puente ausente central del mapa —, así que para Chile no es trasladar sino inaugurar.",
     min: 0,
     max: 1.5,
     step: 0.05,
@@ -136,6 +164,9 @@ export const PARAMS: ParamDef[] = [
       "SUPUESTO — la bisagra (Imas): cuando la IA abarata un bien, ¿la demanda explota (elástica: software, Jevons → más empleo) o se sacia (inelástica: comida, petróleo, insulina → menos)? Sobre 1 crea empleo, bajo 1 lo destruye, en 1 es neutral. Nadie ha medido la elasticidad agregada.",
     anchors: [],
     dims: ["dim-demand-elasticity"],
+    traslado: "recalculable",
+    trasladoNota:
+      "La elasticidad de demanda es propiedad del bien: se aproxima ponderando por el mix sectorial local, con la matriz insumo-producto del Banco Central.",
     min: 0,
     max: 2,
     step: 0.05,
@@ -156,6 +187,9 @@ export const PARAMS: ParamDef[] = [
       { studyId: "dickens-iwfp-2007", at: 0.28 },
     ],
     dims: ["dim-wage-rigidity"],
+    traslado: "local",
+    trasladoNota:
+      "Es institucional puro: rigidez salarial a la baja, protección del empleo, negociación colectiva, salario mínimo e informalidad. Albanesi encuentra que la protección del empleo modula el efecto incluso dentro de Europa.",
     min: 0,
     max: 1,
     step: 0.05,
@@ -335,6 +369,9 @@ const TAREAS: Engine = {
 // El riesgo en este modelo no es el sueldo: es la PARTICIPACIÓN, si σ>1. s_K/s_L = cuentas
 // nacionales (~0,38/0,62), tratados como constantes documentadas. σ y g tienen evidencia (aún
 // sin anclar a estudios del mapa); ε es supuesto.
+// TRASLADO · recalculable: son cuentas nacionales. La participación del trabajo chilena se obtiene
+// del Banco Central y NO es la estadounidense; cambiarla mueve a la vez la lente CES y toda la
+// aritmética fiscal de la rama Estados, así que es la primera cifra a reemplazar en una capa Chile.
 const SK = 0.38;
 const SL = 0.62;
 
@@ -355,6 +392,9 @@ export const CES_PARAMS: ParamDef[] = [
       { studyId: "karabarbounis-neiman2014", at: 1.25 },
     ],
     dims: ["dim-elasticidad-sustitucion"],
+    traslado: "estructural",
+    trasladoNota:
+      "Parámetro tecnológico de la función de producción; la dispersión entre estimaciones es metodológica antes que geográfica.",
     min: 0.4,
     max: 1.4,
     step: 0.05,
@@ -368,6 +408,9 @@ export const CES_PARAMS: ParamDef[] = [
     evidence:
       "Cuánto sube el capital efectivo de la economía al horizonte: exposición a la IA (McKinsey/IMF ~30–40%) por la adopción que de verdad ocurre (BTOS). El tamaño exacto es incierto.",
     anchors: [],
+    traslado: "local",
+    trasladoNota:
+      "Es exposición por adopción, así que hereda la localidad de la adopción.",
     min: 0.02,
     max: 0.15,
     step: 0.01,
@@ -381,6 +424,9 @@ export const CES_PARAMS: ParamDef[] = [
     evidence:
       "SUPUESTO — cuánto más se trabaja cuando sube el salario (Frisch ~0,3–0,8). Traduce el alza de salarios en puestos; no cambia la tajada.",
     anchors: [],
+    traslado: "local",
+    trasladoNota:
+      "Depende de las instituciones y de la composición del empleo. Con cerca de un cuarto del empleo informal, la elasticidad estimada sobre el empleo formal estadounidense no traslada.",
     min: 0,
     max: 1,
     step: 0.05,
@@ -432,6 +478,9 @@ const AGREGADO: Engine = {
 // modelo. La participación no la ha medido nadie: la lente lo dice ("sin datos"). Los β están
 // anclados a cifras VERIFICADAS contra primaria en el mapa; cobertura es el supuesto (durazno) — el
 // salto de extrapolación de la rebanada estudiada a la economía entera.
+// TRASLADO · local: es la penetración de IA "de hoy" en EE.UU., a la que corresponden los efectos
+// medidos. En una economía con otra adopción, el mismo efecto realizado corresponde a otra
+// penetración, así que la extrapolación de la lente Empírico se desplaza.
 const PEN_REF = 0.08; // la penetración de IA "de hoy" a la que corresponden los efectos medidos
 const EMP_DEFAULTS: Vals = { bEmp: -4, bSal: -2.5, cob: 0.25 };
 
@@ -449,6 +498,9 @@ export const EMP_PARAMS: ParamDef[] = [
       { studyId: "brynjolfsson-chandar-chen-2025-canaries", at: -6 },
     ],
     dims: ["dim-realized-labor-demand"],
+    traslado: "local",
+    trasladoNota:
+      "Efecto realizado, medido en EE.UU. Trasladarlo supone igual exposición, igual adopción e iguales instituciones a la vez.",
     min: -16,
     max: 2,
     step: 0.5,
@@ -466,6 +518,9 @@ export const EMP_PARAMS: ParamDef[] = [
       { studyId: "brynjolfsson-chandar-chen-2025-canaries", at: 0 },
     ],
     dims: ["dim-realized-labor-demand", "dim-wages"],
+    traslado: "local",
+    trasladoNota:
+      "Mismo caso que el efecto de empleo: es una medición local, no un parámetro de la tecnología.",
     min: -6,
     max: 1,
     step: 0.5,
@@ -479,6 +534,9 @@ export const EMP_PARAMS: ParamDef[] = [
     evidence:
       "SUPUESTO — los estudios miran freelancers de escritura/imagen y jóvenes en ocupaciones top-expuestas: una rebanada chica y no representativa. Cuánto de la economía entera se le parece es el salto de extrapolación que nadie ha medido.",
     anchors: [],
+    traslado: "recalculable",
+    trasladoNota:
+      "Qué fracción de la economía se parece a la rebanada estudiada se rehace con la estructura sectorial y ocupacional local.",
     min: 0,
     max: 1,
     step: 0.05,
@@ -534,6 +592,9 @@ export const CREC_PARAMS: ParamDef[] = [
       { studyId: "korinek2024scenarios", at: 18 },
     ],
     dims: ["dim-pib-crecimiento"],
+    traslado: "estructural",
+    trasladoNota:
+      "Es la frontera tecnológica mundial, no una propiedad del país. Lo que sí cambia entre países es cuánto de ese potencial se captura, y eso corre por la adopción.",
     min: 1,
     max: 20,
     step: 0.5,
@@ -548,6 +609,9 @@ export const CREC_PARAMS: ParamDef[] = [
       "SUPUESTO — los «weak links» (Chad Jones): las tareas difíciles que quedan con humanos. La producción es una cadena que vale por su eslabón más débil. Si siempre sobrevive alguno (cuello alto), el trabajo es el factor escaso y captura el retorno —pero el crecimiento queda acotado—; si se automatizan todos (cuello bajo), el crecimiento se dispara y la renta del trabajo colapsa. Korinek-Suh: cola de tareas acotada vs no-acotada. Nadie sabe de qué lado caemos.",
     anchors: [],
     dims: ["dim-weak-links"],
+    traslado: "recalculable",
+    trasladoNota:
+      "Los weak links dependen de qué produce el país: en una economía de minería y agroexportación la cadena de tareas complementarias no es la de una de servicios financieros.",
     min: 0,
     max: 1,
     step: 0.05,
@@ -682,6 +746,9 @@ const G_PARAM: ParamDef = {
     "El empuje que vuelve abundante la inteligencia. El cómputo la abarata rápido por unidad (hardware ~2x cada 2,3 años, inferencia mediana ~50x/año, algoritmos ~2x/8 meses) mientras la escala de frontera crece 4-5x/año. El tamaño efectivo al horizonte es incierto.",
   anchors: [],
   dims: ["dim-abundancia-computo"],
+  traslado: "local",
+  trasladoNota:
+    "Igual que la adopción: cuánta IA aterriza de verdad es propio de cada economía.",
   min: 0.02,
   max: 0.15,
   step: 0.01,
@@ -736,6 +803,9 @@ export const ENABLERS: EnablerCfg[] = [
           { studyId: "koetse-meta2008", at: 0.9 },
         ],
         dims: ["dim-sustitucion-energia-factores"],
+        traslado: "estructural",
+        trasladoNota:
+          "Sustitución tecnológica entre factores; no es una propiedad del país.",
         min: 0.3,
         max: 1.4,
         step: 0.05,
@@ -753,6 +823,9 @@ export const ENABLERS: EnablerCfg[] = [
           { studyId: "johnson-supply-elasticity2014", at: 2.7 },
         ],
         dims: ["dim-oferta-energia"],
+        traslado: "local",
+        trasladoNota:
+          "La elasticidad de la ENTREGA es del sistema eléctrico de cada país. La cola de interconexión del LBNL es estadounidense; el equivalente chileno son los datos del Coordinador Eléctrico Nacional y el vertimiento del norte.",
         min: 0,
         max: 2.7,
         step: 0.05,
@@ -782,6 +855,9 @@ export const ENABLERS: EnablerCfg[] = [
           "INFORMADO — el cómputo físico de frontera es el sustrato de la inteligencia: complemento casi puro (σ→0). Korinek-Suh notan, eso sí, que el cómputo es REPRODUCIBLE (se puede construir más), así que su renta se disipa con el tiempo — es un cuello transitorio, no permanente. Razonado, no medido.",
         anchors: [{ studyId: "korinek2024scenarios", at: 0.25 }],
         dims: ["dim-captura-renta-factor-fijo"],
+        traslado: "estructural",
+        trasladoNota:
+          "Sustitución tecnológica entre factores; no es una propiedad del país.",
         min: 0.1,
         max: 1.0,
         step: 0.05,
@@ -796,6 +872,9 @@ export const ENABLERS: EnablerCfg[] = [
           "Bimodal: el die lógico es elástico (se redirige capacidad pujando precio), pero el empaquetado CoWoS y la memoria HBM son el cuello duro e inelástico —fabs nuevas, lead times largos, ~90% consumido por los 4 grandes (Epoch)—. El cuello vinculante manda.",
         anchors: [{ studyId: "epoch-chip-supply2025", at: 0.3 }],
         dims: ["dim-oferta-computo"],
+        traslado: "estructural",
+        trasladoNota:
+          "La cadena de suministro de chips es planetaria: el cuello de empaquetado y memoria es el mismo para todos los países.",
         min: 0,
         max: 2.0,
         step: 0.05,
@@ -826,6 +905,9 @@ export const ENABLERS: EnablerCfg[] = [
           { studyId: "korinek-trammell2024-growth-tai", at: 0.5 },
         ],
         dims: ["dim-captura-renta-factor-fijo"],
+        traslado: "estructural",
+        trasladoNota:
+          "Sustitución tecnológica entre factores; no es una propiedad del país.",
         min: 0.1,
         max: 1.4,
         step: 0.05,
@@ -840,6 +922,9 @@ export const ENABLERS: EnablerCfg[] = [
           "SUPUESTO — no hay estimación de elasticidad de oferta de tierra/minerales para datacenters. Fija por construcción en el corto plazo; inferida muy inelástica por analogía con la red y las cadenas de equipos.",
         anchors: [],
         dims: ["dim-oferta-tierra"],
+        traslado: "local",
+        trasladoNota:
+          "La disponibilidad de suelo, agua y minerales es propia de cada territorio.",
         min: 0,
         max: 1.5,
         step: 0.05,
@@ -938,6 +1023,12 @@ export function compareRow(
 //   25,5% × ingreso laboral + 10% × ingreso neto de capital ≈ 18,6% del PIB,
 // que coincide con el 18,7% observado en NIPA 1981-2018. Con s_L = 0,58 y s_K = 0,38 la identidad
 // cierra exactamente. De ahí salen las tres constantes de abajo.
+// TRASLADO · local las dos tasas, recalculable las dos participaciones. τ_L y τ_K son las tasas
+// efectivas que Acemoglu-Manera-Restrepo estiman para EE.UU. incorporando depreciación acelerada y
+// tasa corporativa efectiva; Chile tiene otra arquitectura —primera categoría con integración
+// parcial, IVA de 19% con un peso en la recaudación que no tiene equivalente allá—, así que la
+// identidad de la nota 22 hay que rehacerla entera, no ajustarla. s_L y s_K salen de cuentas
+// nacionales locales.
 const TAU_L = 0.255; // tasa efectiva sobre el trabajo (AMR 2020; rango declarado 25,5–33,5%)
 const TAU_K = 0.1; // tasa efectiva sobre equipo y software (AMR 2020, década de 2010; ~5% tras 2017)
 const S_L0 = 0.58; // participación del trabajo de partida
@@ -1025,6 +1116,9 @@ const DTAU_PARAM: ParamDef = {
     "SUPUESTO — es la palanca de política, no un dato: nadie ha medido cuánto se puede subir. Como referencia de escala, el piso mínimo global acordado es de 15% y la reforma de 2017 movió la tasa efectiva sobre equipo y software unos 5 puntos.",
   anchors: [],
   dims: ["dim-impuesto-optimo-automatizacion"],
+  traslado: "politica",
+  trasladoNota:
+    "No es una medición sino una decisión de política: no se traslada porque no se observa en ninguna parte.",
   min: 0,
   max: 0.2,
   step: 0.01,
@@ -1043,6 +1137,9 @@ const RHO_PARAM: ParamDef = {
     { studyId: "jones-marinescu-2022-alaska", at: 1 },
   ],
   dims: ["dim-respuesta-oferta-laboral-transferencia"],
+  traslado: "local",
+  trasladoNota:
+    "La respuesta de la oferta laboral a una transferencia depende del mercado laboral que la recibe. Con informalidad alta, el margen de ajuste es otro que el de los experimentos estadounidenses.",
   min: 0.6,
   max: 1,
   step: 0.01,
@@ -1097,6 +1194,9 @@ export const INSTRUMENTOS: InstrumentoCfg[] = [
           "INFORMADO — cerca del 36% de los beneficios multinacionales se declaraba en paraísos en 2015 y ~40% en 2019 (Tørsløv-Wier-Zucman). La prueba coordinada: la OCDE proyectó en 2024 que el piso global del 15% recaudaría 6,5–8,1% del impuesto corporativo mundial y en 2026, con datos de implementación, recortó la estimación a 3,2–5,4%. Esa brecha acota la dirección y el orden de magnitud; no es una elasticidad estimada, y parte de ella son exclusiones y adopción parcial, no solo fuga.",
         anchors: [{ studyId: "torslov-wier-zucman-2023-missing-profits", at: 4 }],
         dims: ["dim-elasticidad-fuga-base"],
+        traslado: "estructural",
+        trasladoNota:
+          "El desplazamiento de beneficios es un fenómeno global y su mecánica no cambia por país; lo que varía es cuánto está expuesta cada economía a él.",
         min: 0.5,
         max: 7,
         step: 0.1,
@@ -1126,6 +1226,9 @@ export const INSTRUMENTOS: InstrumentoCfg[] = [
           "INFORMADO — una máquina instalada no cambia de jurisdicción, pero la decisión de instalarla sí responde al precio: Acemoglu-Manera-Restrepo muestran que la caída de la tasa efectiva de ~20% (2000) a ~5% (post-2017) empujó la automatización por encima de su nivel eficiente, y la mitad de esa caída vino de la depreciación acelerada. La respuesta es real y menor que la del beneficio declarado.",
         anchors: [{ studyId: "acemoglu-manera-restrepo-2020-tax", at: 1.2 }],
         dims: ["dim-sesgo-tributario-capital-trabajo"],
+        traslado: "local",
+        trasladoNota:
+          "La respuesta de la inversión al gravamen depende del código tributario de cada país: depreciación acelerada, integración del impuesto, tratamiento del leasing.",
         min: 0.2,
         max: 4,
         step: 0.1,
@@ -1154,6 +1257,9 @@ export const INSTRUMENTOS: InstrumentoCfg[] = [
           "SUPUESTO — una central, un terreno o una línea de transmisión no se trasladan, así que la fuga debería ser cercana a cero; pero nadie la ha medido para esta base y algo de respuesta hay (dónde se instala el próximo centro de datos sí se elige). El valor bajo es un razonamiento, no un dato.",
         anchors: [],
         dims: ["dim-elasticidad-fuga-base"],
+        traslado: "estructural",
+        trasladoNota:
+          "Que un activo con arraigo físico no pueda declararse en otra jurisdicción no depende del país.",
         min: 0,
         max: 1.5,
         step: 0.05,
