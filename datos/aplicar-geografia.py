@@ -86,6 +86,8 @@ MAPEO = {
     "global (usuarios Claude.ai)": "global",
     "1.2B": "global",
     "1.2B empleos": "global",
+    # Chile — la primera medición local del mapa entró el 2026-08-25
+    "Chile": "cl",
     # Otra geografía concreta
     "India rural": "otro",
     "freelancers (India/Pakistán)": "otro",

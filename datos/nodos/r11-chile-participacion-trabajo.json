@@ -1,0 +1,102 @@
+{
+  "_comment": "LA PRIMERA MEDICIÓN CHILENA DEL MAPA (2026-08-25). Hasta hoy el vocabulario de geografía tenía los códigos `latam` y `cl` con cero estimaciones cada uno, a propósito, para que el cero se viera. Este nodo lo rompe por primera vez. Entra la participación del trabajo chilena, que es el paso 1 del orden escrito en transferibilidad.md porque es una sola cifra y mueve a la vez la lente CES y toda la aritmética fiscal. Verificado por mí sobre los CSV del Anuario de Cuentas Nacionales del Banco Central, descargados y recalculados columna por columna, no sobre el resumen de nadie. NO es un parámetro del modelo todavía: entra a la capa de evidencia, que es donde se puede poner algo honesto sin inventar las otras cinco perillas. Y trae consigo una hipótesis que el mapa necesitaba desde la ronda 10: que la participación del trabajo se compara entre países y entre décadas como si fuera un número, cuando las decisiones de medición la mueven más que el fenómeno que se quiere explicar.",
+
+  "hypotheses": [
+    {
+      "id": "hyp-labor-share-medicion-domina-comparacion",
+      "name": "En la participación del trabajo, las decisiones de medición pesan más que el fenómeno",
+      "statement": "La participación del trabajo se cita como una cifra única y se compara entre países y entre décadas, pero dos decisiones de medición la mueven más que la variación que se quiere explicar. La primera es el denominador: para Chile en 2024 el mismo numerador da 39,5% sobre el PIB a precios de mercado, 43,8% sobre el valor agregado bruto y 44,5% sobre el ingreso factorial, cinco puntos de recorrido antes de discutir nada. La segunda es el ingreso mixto de los trabajadores por cuenta propia, que las cuentas nacionales no reparten entre trabajo y capital: el Banco Central de Chile publica una sola línea combinada, «Excedente de explotación bruto/Ingreso mixto bruto», y según cómo se reparta ese saldo la participación chilena de 2024 va de 0,445 a 0,578. Trece puntos de indeterminación, en una economía donde el 27% del empleo es informal. Bajo esta hipótesis, buena parte de lo que se lee como diferencia real entre países o como caída secular es la convención contable moviéndose: Atkeson muestra que la caída estadounidense se desvanece al mantener constante el tratamiento del capital intangible, Eisfeldt y coautores que un tercio de esa caída en manufactura es pago en acciones mal clasificado, y Lawrence que el resultado depende del supuesto antes que del dato. La consecuencia práctica para este mapa es directa: sustituir el SL estadounidense por el chileno sin declarar denominador ni tratamiento del ingreso mixto introduce un error del tamaño del efecto que se quiere medir."
+    }
+  ],
+
+  "studies": [
+    {
+      "id": "bcch-2025-participacion-trabajo-chile",
+      "authors": "BCCh (Banco Central de Chile)",
+      "year": 2025,
+      "venue": "Anuario de Cuentas Nacionales de Chile 2018-2025: Cuadro 1.11.1 «PIB enfoque ingreso a precios corrientes» (serie ACN051A), Cuadro 1.11.2 (ACN052) y Cuadro 2.4.1 «Cuenta de generación del ingreso» (serie ACI008)",
+      "url": "https://si3.bcentral.cl/estadisticas/Principal1/informes/AnuarioCCNN/listado2025/ACN051A_2025.csv",
+      "source_type": "dataset",
+      "accessed": "2026-08-25",
+      "ola": "contexto",
+      "reliability_note": "Estadística oficial de cuentas nacionales, la fuente más sólida disponible para esta cifra en Chile. Verificado descargando los tres CSV del Anuario y recalculando los cocientes columna por columna; las cifras de abajo son mías sobre los niveles publicados, salvo el 39,5% que el propio Banco publica. ⚠ EL AÑO 2024 ES PROVISIONAL y se revisa cada año. ⚠ NO EXISTE 2025 por el enfoque del ingreso: el Anuario se titula 2018-2025 y analiza 2025 por producción y gasto, pero las tablas de ingreso cierran en 2024, porque dependen del cuadro de oferta y utilización. ⚠ LA SERIE NO EMPALMA HACIA ATRÁS de 2003 en el marco de referencia actual; para una serie larga hay que empalmar compilaciones y declarar el corte. ⚠ EL CICLO DEL COBRE MUEVE ESTA CIFRA: el mínimo de 2006 y el máximo de 2019 difieren en diez puntos, y buena parte de esa amplitud es el precio del cobre moviendo el excedente minero, no un cambio en el reparto institucional. Fijar el parámetro en un año cualquiera hereda ese ciclo. ⚠ NO MIDE IA: es contexto estructural, igual que las participaciones factoriales estadounidenses que el mapa ya usa.",
+      "estimates": [
+        {
+          "metric": "Participación del trabajo en Chile, 2024, con los tres denominadores que el Banco Central publica",
+          "dimension": "dim-labor-share",
+          "value": "39,5% del PIB a precios de mercado · 43,8% del valor agregado bruto · 44,5% del ingreso factorial (remuneraciones sobre remuneraciones más excedente). Niveles 2024: remuneraciones 122.653, excedente bruto de explotación 152.711, PIB 310.681, en miles de millones de pesos",
+          "unit": "% según denominador",
+          "horizon": "2024 (provisional)",
+          "geography": "Chile",
+          "sector": "economía completa",
+          "counterfactual": "el SL=0,62 estadounidense que el modelo del mapa usa hoy",
+          "quote": "Subtotal. Remuneraciones / Subtotal. Excedente bruto de explotación / PIB a costo de factores / Producto interno bruto",
+          "location": "Cuadro 1.11.1 (ACN051A), encabezados de las columnas de subtotal; cocientes calculados sobre los niveles publicados"
+        },
+        {
+          "metric": "El ingreso mixto de los cuenta propia no se publica separado, y de eso depende trece puntos de la cifra",
+          "dimension": "dim-labor-share",
+          "value": "el Banco Central publica una sola línea combinada para las 22 hojas anuales 2003-2024. Si todo el excedente se cuenta como capital, SL = 0,445; si todo el saldo del sector Hogares e IPSFL (36.615, el 13,1% del valor agregado bruto) fuera remuneración al trabajo por cuenta propia, SL = 0,578. El techo sobreestima porque ese saldo incluye el arriendo imputado de la vivienda propia, que sí es capital",
+          "unit": "rango de SL",
+          "horizon": "2024",
+          "geography": "Chile",
+          "sector": "por sector institucional",
+          "counterfactual": "una participación del trabajo puntual y comparable",
+          "quote": "Excedente de explotación bruto/Ingreso mixto bruto",
+          "location": "Cuadro 2.4.1 (ACI008), encabezado de la columna del saldo: los dos conceptos comparten una sola columna"
+        },
+        {
+          "metric": "Serie larga de la participación del trabajo chilena sobre valor agregado bruto, 2003-2024",
+          "dimension": "dim-labor-share",
+          "value": "0,438 (2003) → 0,354 (2006, mínimo, en pleno boom del cobre) → 0,454 (2019, máximo) → 0,438 (2024). Amplitud de 10,1 puntos entre el mínimo y el máximo del período",
+          "unit": "participación sobre valor agregado bruto",
+          "horizon": "2003-2024",
+          "geography": "Chile",
+          "sector": "cuatro sectores institucionales",
+          "counterfactual": "una tendencia secular limpia como la que se discute para EE.UU.",
+          "quote": "Valor agregado bruto / Remuneración de asalariados",
+          "location": "Cuadro 2.4.1 (ACI008); serie calculada sobre los niveles anuales publicados"
+        }
+      ]
+    }
+  ],
+
+  "study_hypothesis_edges": [
+    {
+      "study_id": "bcch-2025-participacion-trabajo-chile",
+      "hypothesis": "hyp-labor-share-medicion-domina-comparacion",
+      "type": "confirma",
+      "why": "Es el caso donde las dos decisiones de medición se pueden cuantificar por separado sobre la misma economía y el mismo año: cinco puntos por el denominador, trece por el tratamiento del ingreso mixto. Las dos juntas superan con holgura la caída secular que la literatura estadounidense discute."
+    },
+    {
+      "study_id": "bcch-2025-participacion-trabajo-chile",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "informa",
+      "why": "Da el punto de partida chileno, que es lo que la hipótesis necesita para significar algo fuera de Estados Unidos. La participación del trabajo en Chile está entre 0,445 y 0,578 según cómo se trate el ingreso mixto, contra el 0,62 estadounidense que el modelo usa hoy. Una erosión de la misma magnitud relativa parte de un nivel distinto y llega a otro lugar."
+    },
+    {
+      "study_id": "atkeson2020-labor-share",
+      "hypothesis": "hyp-labor-share-medicion-domina-comparacion",
+      "type": "confirma",
+      "why": "El mismo argumento en la economía mejor medida del mundo: la caída aparente de la participación estadounidense se desvanece al mantener constante el tratamiento contable del capital intangible. Si la convención domina allá, domina más acá."
+    },
+    {
+      "study_id": "eisfeldt-falato-xiaolan-2022-human-capitalists",
+      "hypothesis": "hyp-labor-share-medicion-domina-comparacion",
+      "type": "confirma",
+      "why": "Cuantifica una tercera decisión de medición de la misma familia: clasificar el pago en acciones como capital en vez de como remuneración se lleva cerca de un tercio de la caída medida en la manufactura estadounidense."
+    },
+    {
+      "study_id": "lawrence2015",
+      "hypothesis": "hyp-labor-share-medicion-domina-comparacion",
+      "type": "confirma",
+      "why": "Su tesis es que el resultado de Karabarbounis-Neiman viene del supuesto antes que del dato, que es esta hipótesis aplicada a la elasticidad en vez de al numerador. Los dos casos comparten la forma: el hecho estilizado hereda la convención con que se construyó."
+    },
+    {
+      "study_id": "grossman-oberfield-2022-elusive",
+      "hypothesis": "hyp-labor-share-medicion-domina-comparacion",
+      "type": "informa",
+      "why": "Su advertencia sobre las trampas de usar datos de corte transversal para juzgar este fenómeno es la versión metodológica del mismo problema, y su conclusión —que tras más de 12.000 trabajos no hay acuerdo sobre por qué cayó ni sobre si hubo un realineamiento duradero— es lo que cabe esperar si la cifra a explicar depende de la convención tanto como del mundo."
+    }
+  ]
+}

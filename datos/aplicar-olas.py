@@ -154,6 +154,8 @@ OLAS = {
     "basu-2019-markups-evidencia": "contexto",
     "eisfeldt-falato-xiaolan-2022-human-capitalists": "contexto",
     "grossman-oberfield-2022-elusive": "contexto",
+    # La primera medición chilena del mapa: cuentas nacionales, no mide IA.
+    "bcch-2025-participacion-trabajo-chile": "contexto",
 }
 
 

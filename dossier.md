@@ -9,7 +9,7 @@ publico: false
 
 > Dossier de investigación — **semilla, ronda 1, auditada**. Material de base para la plataforma interactiva y para escritura. Generado desde `datos/mapa.json`; **no editar a mano** — regenerar con `datos/generar-dossier.py`.
 
-**39 hipótesis · 114 estudios · 76 dimensiones · 35 conversiones · 271 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
+**40 hipótesis · 115 estudios · 76 dimensiones · 35 conversiones · 277 aristas estudio↔hipótesis.** Auditoría anti-aire: **aceptable-con-reservas**.
 
 ## La tesis: por qué esto no se lee de un titular
 
@@ -276,6 +276,11 @@ La caída de la participación del trabajo y el alza de los márkups son hechos 
 `hyp-desacople-no-prueba-ruptura-del-vinculo`
 
 El gráfico de dos líneas que se separan se lee habitualmente como que la productividad dejó de traducirse en paga. Stansbury y Summers hacen la prueba directa —regresar crecimiento de la remuneración sobre crecimiento de la productividad— y encuentran que el vínculo sigue vivo: entre 1973 y 2016, un punto porcentual más de crecimiento de la productividad se asocia a 0,7 a 1 punto más de crecimiento de la remuneración mediana y media. La hipótesis de «desacople fuerte» se rechaza en casi todas las especificaciones. La brecha de NIVEL es real, pero se compone de cuatro cuñas que no son la ruptura del mecanismo: depreciación (bruto contra neto), términos de intercambio entre precios de producto y de consumo, la caída de la participación del trabajo, y la desigualdad que separa la media de la mediana. Bajo esta hipótesis, la conclusión operativa se invierte: el problema no es que crecer la productividad ya no sirva, sino que fuerzas ortogonales a la productividad han estado empujando la paga hacia abajo al mismo tiempo. Y trae una prueba falsable que el propio argumento tecnológico implica y que no pasa: si la tecnología causara la divergencia, los períodos de mayor crecimiento de la productividad deberían mostrar divergencia más rápida, y ese co-movimiento no aparece en los datos.
+
+### En la participación del trabajo, las decisiones de medición pesan más que el fenómeno
+`hyp-labor-share-medicion-domina-comparacion`
+
+La participación del trabajo se cita como una cifra única y se compara entre países y entre décadas, pero dos decisiones de medición la mueven más que la variación que se quiere explicar. La primera es el denominador: para Chile en 2024 el mismo numerador da 39,5% sobre el PIB a precios de mercado, 43,8% sobre el valor agregado bruto y 44,5% sobre el ingreso factorial, cinco puntos de recorrido antes de discutir nada. La segunda es el ingreso mixto de los trabajadores por cuenta propia, que las cuentas nacionales no reparten entre trabajo y capital: el Banco Central de Chile publica una sola línea combinada, «Excedente de explotación bruto/Ingreso mixto bruto», y según cómo se reparta ese saldo la participación chilena de 2024 va de 0,445 a 0,578. Trece puntos de indeterminación, en una economía donde el 27% del empleo es informal. Bajo esta hipótesis, buena parte de lo que se lee como diferencia real entre países o como caída secular es la convención contable moviéndose: Atkeson muestra que la caída estadounidense se desvanece al mantener constante el tratamiento del capital intangible, Eisfeldt y coautores que un tercio de esa caída en manufactura es pago en acciones mal clasificado, y Lawrence que el resultado depende del supuesto antes que del dato. La consecuencia práctica para este mapa es directa: sustituir el SL estadounidense por el chileno sin declarar denominador ni tratamiento del ingreso mixto introduce un error del tamaño del efecto que se quiere medir.
 
 ## Capa de medición: dimensiones y conversiones
 
@@ -708,7 +713,7 @@ El gráfico de dos líneas que se separan se lee habitualmente como que la produ
 - **≈0,5 (1980–2010 ≈0,54; 1999–2010 ≈0,49; tan baja como 0,19)** — Elasticidad de sustitución capital-trabajo (σ), estimaciones propias
   *dim:* dim-elasticidad-sustitucion (σ) · *horizonte:* largo plazo · *ámbito:* EE.UU./economía completa / manufactura
 
-  *engancha:* `refuta` La IA erosiona la participación del trabajo (si σ>1)
+  *engancha:* `refuta` La IA erosiona la participación del trabajo (si σ>1); `confirma` En la participación del trabajo, las decisiones de medición pesan más que el fenómeno
 
 ### Anna M. Stansbury & Lawrence H. Summers (2017)
 `stansbury-summers-2017-link-broken` · NBER Working Paper 24165, diciembre de 2017 ('Productivity and Pay: Is the Link Broken?') · [fuente](https://www.nber.org/papers/w24165)  ⚠ **Working paper de NBER, no revisado por pares; verificado sobre el PDF primario. Es la prueba más directa que existe de la pregunta que el gráfico de dos líneas plantea y no responde. ⚠ ES CORRELACIÓN EN SERIE DE TIEMPO, no identificación causal: los autores regresan crecimientos sobre crecimientos con varias especificaciones y el propio artículo discute la simultaneidad. ⚠ Solo EE.UU., 1973-2016; los autores señalan que la pregunta queda abierta para otros países. ⚠ NO MIDE IA. ⚠ Lo que el resultado NO dice: no dice que la paga típica esté bien, dice lo contrario — que hay fuerzas ortogonales a la productividad empujándola hacia abajo. Confundir «el vínculo sigue vivo» con «no hay problema» es el error de lectura más fácil de cometer con este paper.**
@@ -850,7 +855,7 @@ El gráfico de dos líneas que se separan se lee habitualmente como que la produ
   *dim:* dim-labor-share · *horizonte:* décadas · *ámbito:* EE.UU./economía completa
   > Alternative Facts about the Labor Share (tesis, vía discusión)
 
-  *engancha:* `tensiona` La IA ensancha (no reduce) la desigualdad; `tensiona` Desplazamiento domina en el periodo reciente (post-1987)
+  *engancha:* `tensiona` La IA ensancha (no reduce) la desigualdad; `tensiona` Desplazamiento domina en el periodo reciente (post-1987); `confirma` En la participación del trabajo, las decisiones de medición pesan más que el fenómeno
 
 ### Michael Knoblach, Martin Roessler & Patrick Zwerschke (2020)
 `knoblach2020` · Oxford Bulletin of Economics and Statistics 82(1): 62-82 · [fuente](https://onlinelibrary.wiley.com/doi/10.1111/obes.12312)  ⚠ **Meta-regresión de 2.419 estimaciones (77 estudios). El paper PUBLICADO da un RANGO de largo plazo 0,45–0,87, no un punto central único; el '0,6–0,7' que suele citarse viene del working paper. La ancla en el slider (0,66) es el punto medio del rango.**
@@ -1041,7 +1046,7 @@ El gráfico de dos líneas que se separan se lee habitualmente como que la produ
   *dim:* dim-elasticidad-sustitucion · *horizonte:* 1960s-2010s · *ámbito:* EE.UU./manufactura
   > Only by including equity pay does our structural estimation support complementarity between high-skilled labor and physical capital greater than that of Cobb and Douglas (1928).
 
-  *engancha:* `confirma` El desacople de nivel no prueba que el vínculo se haya roto; `tensiona` La IA erosiona la participación del trabajo (si σ>1); `reencuadra` La IA ensancha (no reduce) la desigualdad
+  *engancha:* `confirma` El desacople de nivel no prueba que el vínculo se haya roto; `tensiona` La IA erosiona la participación del trabajo (si σ>1); `reencuadra` La IA ensancha (no reduce) la desigualdad; `confirma` En la participación del trabajo, las decisiones de medición pesan más que el fenómeno
 
 ### Gene M. Grossman & Ezra Oberfield (2022)
 `grossman-oberfield-2022-elusive` · Annual Review of Economics 14: 93-124 ('The Elusive Explanation for the Declining Labor Share'); working paper NBER 29165 · [fuente](https://www.nber.org/papers/w29165)  ⚠ **Revisión de literatura por invitación en Annual Review of Economics; verificado sobre el PDF del working paper NBER 29165, que es el manuscrito preparado para esa revista. Es el nodo que fija el estado de conocimiento de toda esta rama, y por eso entra: sin él, el mapa mostraría cinco explicaciones que compiten sin decir que juntas explican el fenómeno varias veces de más. ⚠ ES UNA REVISIÓN, no evidencia nueva: su aporte es epistémico. ⚠ Los autores nombran su propio sesgo de publicación como parte del problema — la literatura premia encontrar fuerzas a la baja y desatiende las que empujan al alza. ⚠ NO MIDE IA, y su advertencia se aplica con más fuerza todavía a extrapolar esta literatura hacia la IA.**
@@ -1056,7 +1061,7 @@ El gráfico de dos líneas que se separan se lee habitualmente como que la produ
   *dim:* dim-labor-share · *horizonte:* décadas · *ámbito:* EE.UU. / general/economía completa
   > the explanation for any durable realignment of factor shares— if indeed such a realignment has occurred— remains elusive.
 
-  *engancha:* `tensiona` La IA erosiona la participación del trabajo (si σ>1); `tensiona` El agregado se movió sin que la empresa típica se moviera; `informa` El desacople de nivel no prueba que el vínculo se haya roto
+  *engancha:* `tensiona` La IA erosiona la participación del trabajo (si σ>1); `tensiona` El agregado se movió sin que la empresa típica se moviera; `informa` El desacople de nivel no prueba que el vínculo se haya roto; `informa` En la participación del trabajo, las decisiones de medición pesan más que el fenómeno
 
 ### Tyna Eloundou, Sam Manning, Pamela Mishkin, Daniel Rock (2023)
 `eloundou-2023-gpts` · Science 384(6702):1306-1308 (2024); preprint arXiv:2303.10130 (2023) · [fuente](https://www.science.org/doi/10.1126/science.adj0998)
@@ -1632,6 +1637,21 @@ El gráfico de dos líneas que se separan se lee habitualmente como que la produ
   > stronger specialisation in highly AI-exposed knowledge intensive services such as finance and ICT and more widespread adoption
 
   *engancha:* `confirma` Macro modesto (Hulten) vs extremo (AGI), reconciliables por horizonte/medición; `confirma` El potencial está limitado por la adopción y la co-invención; `informa` Exposición no es empleo neto
+
+### BCCh (Banco Central de Chile) (2025)
+`bcch-2025-participacion-trabajo-chile` · Anuario de Cuentas Nacionales de Chile 2018-2025: Cuadro 1.11.1 «PIB enfoque ingreso a precios corrientes» (serie ACN051A), Cuadro 1.11.2 (ACN052) y Cuadro 2.4.1 «Cuenta de generación del ingreso» (serie ACI008) · [fuente](https://si3.bcentral.cl/estadisticas/Principal1/informes/AnuarioCCNN/listado2025/ACN051A_2025.csv)  ⚠ **Estadística oficial de cuentas nacionales, la fuente más sólida disponible para esta cifra en Chile. Verificado descargando los tres CSV del Anuario y recalculando los cocientes columna por columna; las cifras de abajo son mías sobre los niveles publicados, salvo el 39,5% que el propio Banco publica. ⚠ EL AÑO 2024 ES PROVISIONAL y se revisa cada año. ⚠ NO EXISTE 2025 por el enfoque del ingreso: el Anuario se titula 2018-2025 y analiza 2025 por producción y gasto, pero las tablas de ingreso cierran en 2024, porque dependen del cuadro de oferta y utilización. ⚠ LA SERIE NO EMPALMA HACIA ATRÁS de 2003 en el marco de referencia actual; para una serie larga hay que empalmar compilaciones y declarar el corte. ⚠ EL CICLO DEL COBRE MUEVE ESTA CIFRA: el mínimo de 2006 y el máximo de 2019 difieren en diez puntos, y buena parte de esa amplitud es el precio del cobre moviendo el excedente minero, no un cambio en el reparto institucional. Fijar el parámetro en un año cualquiera hereda ese ciclo. ⚠ NO MIDE IA: es contexto estructural, igual que las participaciones factoriales estadounidenses que el mapa ya usa.**
+
+- **39,5% del PIB a precios de mercado · 43,8% del valor agregado bruto · 44,5% del ingreso factorial (remuneraciones sobre remuneraciones más excedente). Niveles 2024: remuneraciones 122.653, excedente bruto de explotación 152.711, PIB 310.681, en miles de millones de pesos** — Participación del trabajo en Chile, 2024, con los tres denominadores que el Banco Central publica
+  *dim:* dim-labor-share · *horizonte:* 2024 (provisional) · *ámbito:* Chile/economía completa
+  > Subtotal. Remuneraciones / Subtotal. Excedente bruto de explotación / PIB a costo de factores / Producto interno bruto
+- **el Banco Central publica una sola línea combinada para las 22 hojas anuales 2003-2024. Si todo el excedente se cuenta como capital, SL = 0,445; si todo el saldo del sector Hogares e IPSFL (36.615, el 13,1% del valor agregado bruto) fuera remuneración al trabajo por cuenta propia, SL = 0,578. El techo sobreestima porque ese saldo incluye el arriendo imputado de la vivienda propia, que sí es capital** — El ingreso mixto de los cuenta propia no se publica separado, y de eso depende trece puntos de la cifra
+  *dim:* dim-labor-share · *horizonte:* 2024 · *ámbito:* Chile/por sector institucional
+  > Excedente de explotación bruto/Ingreso mixto bruto
+- **0,438 (2003) → 0,354 (2006, mínimo, en pleno boom del cobre) → 0,454 (2019, máximo) → 0,438 (2024). Amplitud de 10,1 puntos entre el mínimo y el máximo del período** — Serie larga de la participación del trabajo chilena sobre valor agregado bruto, 2003-2024
+  *dim:* dim-labor-share · *horizonte:* 2003-2024 · *ámbito:* Chile/cuatro sectores institucionales
+  > Valor agregado bruto / Remuneración de asalariados
+
+  *engancha:* `confirma` En la participación del trabajo, las decisiones de medición pesan más que el fenómeno; `informa` La IA erosiona la participación del trabajo (si σ>1)
 
 ### Anthropic Economic Index team (2026)
 `anthropic-aei-2026-primitives` · Anthropic (lab report, enero 2026) · [fuente](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report)
