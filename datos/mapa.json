@@ -310,6 +310,16 @@
       "id": "hyp-paradoja-junior",
       "name": "La paradoja del junior: la IA lo hace más productivo justo donde lo dejan de contratar",
       "statement": "Las dos evidencias más sólidas sobre trabajadores jóvenes apuntan en direcciones opuestas y el debate rara vez las pone juntas. Del lado de la productividad, la IA nivela hacia arriba: en el centro de contacto los agentes novatos ganan cerca de 30% y el quintil más bajo 36%, y en un experimento de campo con un asistente de código el output sube más de 50% con ganancias estadísticamente significativas SOLO entre programadores junior. Del lado del empleo, son esos mismos perfiles los que pierden: la brecha de los 22-25 en ocupaciones expuestas llega a 19% y opera por menor contratación. Si la IA vuelve más valioso al novato, contratarlo debería ser mejor negocio, no peor. Tres mecanismos podrían reconciliarlo, y ninguno está medido: que lo que sube sea el producto por junior y no el número de juniors que la empresa necesita; que la herramienta capture el valor que antes justificaba pagar el aprendizaje de alguien; o que la ganancia sea real pero se materialice para quien ya está adentro, no para quien intenta entrar. Bajo esta hipótesis, el problema del primer empleo no es que la IA haga inútil al novato, sino que hace innecesario contratarlo para obtener lo que el novato producía."
+    },
+    {
+      "id": "hyp-agregado-se-mueve-sin-la-firma-tipica",
+      "name": "El agregado se movió sin que la empresa típica se moviera",
+      "statement": "La caída de la participación del trabajo y el alza de los márkups son hechos agregados que casi no ocurrieron dentro de las empresas: ocurrieron por recomposición de quién produce. Autor y coautores descomponen la caída de la participación en manufactura y encuentran que el 96% de los 18,9 puntos perdidos entre 1982 y 2012 se explica por reasignación de ventas entre firmas establecidas, mientras la firma promedio no ponderada perdió 0,69 puntos en treinta años. De Loecker, Eeckhout y Unger encuentran la misma forma en el otro indicador: el márkup promedio sube de 21% a 61% sobre el costo marginal, y la mediana no se mueve. Bajo esta hipótesis, la narrativa de que los empleadores apretaron a sus trabajadores mira el margen equivocado: lo que cambió es qué empresas producen la mayor parte del producto, y esas empresas nacieron con menos trabajo por peso de ventas. La consecuencia para la IA es directa y cambia dónde hay que mirar. Si la IA erosiona la participación del trabajo, el canal más probable no es que cada empleador sustituya trabajadores, sino que la producción se corra hacia firmas que ya operan con poco trabajo — que es justo lo que la evidencia a nivel de firma viene mostrando. Un tablero que vigile despidos en la empresa promedio no va a ver esto pasar."
+    },
+    {
+      "id": "hyp-desacople-no-prueba-ruptura-del-vinculo",
+      "name": "El desacople de nivel no prueba que el vínculo se haya roto",
+      "statement": "El gráfico de dos líneas que se separan se lee habitualmente como que la productividad dejó de traducirse en paga. Stansbury y Summers hacen la prueba directa —regresar crecimiento de la remuneración sobre crecimiento de la productividad— y encuentran que el vínculo sigue vivo: entre 1973 y 2016, un punto porcentual más de crecimiento de la productividad se asocia a 0,7 a 1 punto más de crecimiento de la remuneración mediana y media. La hipótesis de «desacople fuerte» se rechaza en casi todas las especificaciones. La brecha de NIVEL es real, pero se compone de cuatro cuñas que no son la ruptura del mecanismo: depreciación (bruto contra neto), términos de intercambio entre precios de producto y de consumo, la caída de la participación del trabajo, y la desigualdad que separa la media de la mediana. Bajo esta hipótesis, la conclusión operativa se invierte: el problema no es que crecer la productividad ya no sirva, sino que fuerzas ortogonales a la productividad han estado empujando la paga hacia abajo al mismo tiempo. Y trae una prueba falsable que el propio argumento tecnológico implica y que no pasa: si la tecnología causara la divergencia, los períodos de mayor crecimiento de la productividad deberían mostrar divergencia más rápida, y ese co-movimiento no aparece en los datos."
     }
   ],
   "dimensions": [
@@ -675,6 +685,21 @@
       "id": "dim-desigualdad-ingresos-paises-ia",
       "name": "Desigualdad de ingresos entre hogares asociada a la actividad en IA (panel de países)",
       "definition": "Relación entre la inversión y actividad económica en IA de un país y la distribución del ingreso entre sus hogares, por deciles. Es el nivel más agregado en que el mapa mira la desigualdad: ni entre trabajadores ni entre empresas, sino entre hogares de una economía."
+    },
+    {
+      "id": "dim-markups",
+      "name": "Márkup (precio sobre costo marginal)",
+      "definition": "Razón entre el precio de venta y el costo marginal de producción, estimada a partir de datos de firmas bajo el supuesto de minimización de costos. Es la medida menos ambigua de poder de mercado que la literatura ha logrado construir, y el puente entre «los mercados se concentraron» y «la participación del trabajo cayó». Su nivel y su tendencia dependen fuertemente del método y del tratamiento de los costos de overhead, así que el número no se puede citar sin el método."
+    },
+    {
+      "id": "dim-descomposicion-labor-share",
+      "name": "Descomposición de la caída de la participación del trabajo: entre firmas contra dentro de la firma",
+      "definition": "Reparto de la variación agregada de la participación del trabajo entre lo que cambió dentro de cada empresa (la misma firma pagando una fracción distinta de su valor agregado) y lo que cambió por reasignación de la producción entre empresas con participaciones distintas, más la entrada y la salida. Distingue dos mundos con la misma cifra agregada y consecuencias de política opuestas."
+    },
+    {
+      "id": "dim-transmision-productividad-paga",
+      "name": "Transmisión de la productividad a la remuneración (pass-through)",
+      "definition": "Cuántos puntos de crecimiento de la remuneración —mediana, media o de trabajadores de producción— se asocian a un punto adicional de crecimiento de la productividad del trabajo. Mide si el mecanismo sigue operando, a diferencia del gráfico de niveles, que mide cuánto se acumuló la brecha. Un pass-through cercano a uno con una brecha de nivel grande es un escenario perfectamente coherente y con diagnóstico distinto al de un pass-through cero."
     }
   ],
   "conversions": [
@@ -5131,6 +5156,318 @@
           "geo": "multi"
         }
       ]
+    },
+    {
+      "id": "autor-etal-2020-superstar",
+      "authors": "David Autor, David Dorn, Lawrence F. Katz, Christina Patterson & John Van Reenen",
+      "year": 2020,
+      "venue": "Quarterly Journal of Economics 135(2): 645-709 ('The Fall of the Labor Share and the Rise of Superstar Firms'); working paper NBER 23396 (mayo de 2017)",
+      "url": "https://www.nber.org/papers/w23396",
+      "source_type": "paper",
+      "accessed": "2026-08-24",
+      "ola": "contexto",
+      "reliability_note": "Revisado por pares en una revista de primer nivel; verificado sobre el PDF del working paper NBER 23396, que es la versión que contiene la descomposición citada. Microdatos de panel del Economic Census de EE.UU. desde 1982, con contraparte internacional. ⚠ NO MIDE IA: el período termina en 2012 y la tecnología no se observa directamente, se infiere del patrón. ⚠ LA AMBIGÜEDAD DE FONDO ES DE LOS PROPIOS AUTORES: mayor concentración admite dos lecturas opuestas —más poder de mercado, o más competencia donde las firmas más eficientes ganan participación— y esta evidencia no separa una de la otra; Basu (2019) desarrolla justamente ese punto. ⚠ La descomposición más limpia (compensación sobre valor agregado) existe solo para manufactura, porque fuera de manufactura no hay valor agregado a nivel de firma; el resto usa nómina sobre ventas.",
+      "estimates": [
+        {
+          "metric": "Descomposición de la caída de la participación del trabajo en manufactura, 1982-2012",
+          "dimension": "dim-descomposicion-labor-share",
+          "value": "la participación de la compensación cayó 18,9 puntos porcentuales y el 96% de esa caída (18,21/18,9) se explica por reasignación entre firmas establecidas; la participación no ponderada de las firmas establecidas cayó solo 0,69 puntos en los treinta años",
+          "unit": "puntos porcentuales y % de la variación",
+          "horizon": "1982-2012",
+          "geography": "EE.UU.",
+          "sector": "manufactura",
+          "counterfactual": "que la caída ocurriera dentro de las firmas",
+          "quote": "the compensation share fell by 18.9 percentage points between 1982 and 2012 and 96% of this change (= 18.21/18.9) is accounted for by a reallocation amongst incumbent firms. The unweighted labor share for incumbents fell by only 0.69 percentage points.",
+          "location": "Sección de resultados, Main Decomposition Results (Tabla 4)",
+          "geo": "us"
+        },
+        {
+          "metric": "Reasignación entre firmas contra caída dentro de la firma, formulación general",
+          "dimension": "dim-descomposicion-labor-share",
+          "value": "la caída se debe mayormente a reasignación entre firmas y no a una caída de la participación media no ponderada dentro de las firmas; en manufactura el componente entre firmas es de tres a siete veces el componente dentro de la firma según el período",
+          "unit": "cualitativo y razón entre componentes",
+          "horizon": "1982-1997 y 1997-2012",
+          "geography": "EE.UU.",
+          "sector": "manufactura y otros cinco sectores",
+          "counterfactual": "un descenso generalizado firma por firma",
+          "quote": "the fall in the labor share will be driven largely by between-firm reallocation rather than (primarily) a fall in the unweighted mean labor share within firms",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Relación entre concentración y participación del trabajo, y su alcance internacional",
+          "dimension": "dim-labor-share",
+          "value": "las industrias donde más subió la concentración son las que más perdieron participación del trabajo, y el patrón aparece también fuera de EE.UU.; las cinco predicciones de la hipótesis de firmas superestrella reciben apoyo",
+          "unit": "cualitativo (contraste de predicciones)",
+          "horizon": "1982-2012",
+          "geography": "global (panel de países)",
+          "sector": "el grueso del sector privado, industrias a cuatro dígitos",
+          "counterfactual": "que la concentración no se relacione con la participación del trabajo",
+          "quote": "industries where concentration rises most will have the largest declines in the labor share; ... and finally, such patterns will be observed not only in U.S. firms, but also internationally. We find support for all of these predictions.",
+          "location": "Abstract",
+          "geo": "multi"
+        }
+      ]
+    },
+    {
+      "id": "stansbury-summers-2017-link-broken",
+      "authors": "Anna M. Stansbury & Lawrence H. Summers",
+      "year": 2017,
+      "venue": "NBER Working Paper 24165, diciembre de 2017 ('Productivity and Pay: Is the Link Broken?')",
+      "url": "https://www.nber.org/papers/w24165",
+      "source_type": "paper",
+      "accessed": "2026-08-24",
+      "ola": "contexto",
+      "reliability_note": "Working paper de NBER, no revisado por pares; verificado sobre el PDF primario. Es la prueba más directa que existe de la pregunta que el gráfico de dos líneas plantea y no responde. ⚠ ES CORRELACIÓN EN SERIE DE TIEMPO, no identificación causal: los autores regresan crecimientos sobre crecimientos con varias especificaciones y el propio artículo discute la simultaneidad. ⚠ Solo EE.UU., 1973-2016; los autores señalan que la pregunta queda abierta para otros países. ⚠ NO MIDE IA. ⚠ Lo que el resultado NO dice: no dice que la paga típica esté bien, dice lo contrario — que hay fuerzas ortogonales a la productividad empujándola hacia abajo. Confundir «el vínculo sigue vivo» con «no hay problema» es el error de lectura más fácil de cometer con este paper.",
+      "estimates": [
+        {
+          "metric": "Transmisión de un punto de crecimiento de la productividad a la remuneración, 1973-2016",
+          "dimension": "dim-transmision-productividad-paga",
+          "value": "+0,7 a 1 punto porcentual en la remuneración mediana y media; +0,4 a 0,7 puntos en la de trabajadores de producción y no supervisores",
+          "unit": "puntos porcentuales por punto de productividad",
+          "horizon": "1973-2016",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "desacople fuerte (β=0), rechazado en casi todas las especificaciones",
+          "quote": "over 1973-2016, one percentage point higher productivity growth has been associated with 0.7 to 1 percentage points higher median and average compensation growth and with 0.4 to 0.7 percentage points higher production/nonsupervisory compensation growth",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "La prueba falsable de las teorías tecnológicas de la divergencia",
+          "dimension": "dim-transmision-productividad-paga",
+          "value": "no hay co-movimiento sustancial entre el crecimiento de la productividad y la participación del trabajo ni la razón media/mediana — o sea que los períodos de productividad más rápida no divergen más rápido, que es lo que la explicación tecnológica pura predice",
+          "unit": "cualitativo (ausencia de co-movimiento)",
+          "horizon": "1973-2016",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "una explicación puramente tecnológica de la divergencia",
+          "quote": "We do not find substantial evidence of co-movement between productivity growth and the labor share or mean/median compensation ratio. This tends not to provide strong support for pure technology-based theories of the productivity-compensation divergence.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Qué queda en pie de la divergencia una vez rechazado el desacople fuerte",
+          "dimension": "dim-transmision-productividad-paga",
+          "value": "otros factores ortogonales a la productividad han estado suprimiendo la remuneración típica mientras la productividad la empujaba hacia arriba; la brecha de nivel se descompone en depreciación (bruto contra neto), términos de intercambio entre deflactor de producto y de consumo, caída de la participación del trabajo, y desigualdad entre media y mediana",
+          "unit": "cualitativo (descomposición de la brecha)",
+          "horizon": "1973-2016",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "que la brecha de nivel implique un mecanismo roto",
+          "quote": "These results suggest that other factors orthogonal to productivity have been acting to suppress typical compensation even as productivity growth has been acting to raise it.",
+          "location": "Abstract; la descomposición en cuñas, en la Introducción con la Figura 2",
+          "geo": "us"
+        }
+      ]
+    },
+    {
+      "id": "deloecker-eeckhout-unger-2020-market-power",
+      "authors": "Jan De Loecker, Jan Eeckhout & Gabriel Unger",
+      "year": 2020,
+      "venue": "Quarterly Journal of Economics 135(2): 561-644 ('The Rise of Market Power and the Macroeconomic Implications'); manuscrito aceptado del 15 de noviembre de 2019; working paper NBER 23687 (agosto de 2017)",
+      "url": "https://www.janeeckhout.com/wp-content/uploads/RMP.pdf",
+      "source_type": "paper",
+      "accessed": "2026-08-24",
+      "ola": "contexto",
+      "reliability_note": "Revisado por pares en una revista de primer nivel; verificado sobre el manuscrito aceptado de noviembre de 2019, que es la versión con las cifras publicadas. ⚠ OJO CON LA VERSIÓN: el working paper NBER 23687 de 2017 reporta 18% → 67%, y la versión publicada 21% → 61%. Citar la cifra sin decir la versión produce discrepancias que parecen errores y no lo son. ⚠ ES EL ESTUDIO MÁS DISPUTADO DE ESTA RONDA: el método —minimización de costos con un insumo variable— depende de qué se cuenta como costo variable, y Traina y Basu muestran que incluir los gastos de administración y ventas cambia el resultado sustancialmente. Basu (2019) está en el mapa precisamente como su contrapeso. ⚠ NO MIDE IA.",
+      "estimates": [
+        {
+          "metric": "Márkup promedio sobre el costo marginal, EE.UU. desde 1955",
+          "dimension": "dim-markups",
+          "value": "estable hasta 1980 y luego al alza, de 21% sobre el costo marginal a 61% hoy; la tasa de ganancia promedio sube de 1% a 8%",
+          "unit": "% sobre el costo marginal",
+          "horizon": "1955-2016",
+          "geography": "EE.UU.",
+          "sector": "firmas cotizadas, economía completa",
+          "counterfactual": "márkups estables",
+          "quote": "In 1980, average markups start to rise from 21% above marginal cost to 61% now. ... We also find an increase in the average profit rate from 1% to 8%.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Dónde ocurre el alza dentro de la distribución de firmas",
+          "dimension": "dim-markups",
+          "value": "el alza la produce la cola superior de la distribución, cuyos percentiles altos suben marcadamente, mientras la MEDIANA no cambia; hay además reasignación de participación de mercado desde firmas de márkup bajo hacia firmas de márkup alto, y ocurre sobre todo dentro de cada industria",
+          "unit": "cualitativo (forma de la distribución)",
+          "horizon": "1955-2016",
+          "geography": "EE.UU.",
+          "sector": "firmas cotizadas",
+          "counterfactual": "un desplazamiento parejo de toda la distribución",
+          "quote": "The increase is driven mainly by the upper tail of the markup distribution: the upper percentiles have increased sharply. Quite strikingly, the median is unchanged.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Qué tendencias seculares explicaría el alza del poder de mercado",
+          "dimension": "dim-labor-share",
+          "value": "un aumento del poder de mercado promedio da cuenta de varias tendencias de las últimas cuatro décadas, en particular la caída de la participación del trabajo y la del capital, y la pérdida de dinamismo del mercado laboral",
+          "unit": "cualitativo (implicaciones macro)",
+          "horizon": "cuatro décadas",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "explicaciones tecnológicas o de comercio",
+          "quote": "which can account for a number of secular trends in the last four decades, most notably the declining labor and capital shares as well as the decrease in labor market dynamism.",
+          "location": "Abstract",
+          "geo": "us"
+        }
+      ]
+    },
+    {
+      "id": "basu-2019-markups-evidencia",
+      "authors": "Susanto Basu",
+      "year": 2019,
+      "venue": "Journal of Economic Perspectives 33(3): 3-22 ('Are Price-Cost Markups Rising in the United States? A Discussion of the Evidence'); working paper NBER 26057 (julio de 2019)",
+      "url": "https://www.nber.org/papers/w26057",
+      "source_type": "paper",
+      "accessed": "2026-08-24",
+      "ola": "contexto",
+      "reliability_note": "Revisión crítica de método en una revista de primer nivel; verificado sobre el PDF del working paper NBER 26057, escrito para el JEP. Es el contrapeso deliberado de De Loecker-Eeckhout-Unger dentro de esta ronda. ⚠ NO ES UNA MEDICIÓN NUEVA: es una evaluación de tres familias de métodos, así que su aporte es sobre lo que se puede y no se puede saber, no sobre cuál es el número. ⚠ SU CONCLUSIÓN ESTÁ CALIBRADA Y NO SE DEJA SIMPLIFICAR EN NINGUNA DE LAS DOS DIRECCIONES: niega que se pueda sostener un alza pronunciada, y a la vez concede que un alza pequeña bastaría para mover la participación del trabajo. Quien lo cite como «no pasó nada» lo está citando mal.",
+      "estimates": [
+        {
+          "metric": "Qué permiten concluir los métodos existentes sobre la tendencia de los márkups",
+          "dimension": "dim-markups",
+          "value": "los métodos existentes no permiten determinar si los márkups han estado estables o si han subido modestamente en las últimas décadas; los hallazgos de alzas pronunciadas son difíciles de reconciliar con otra evidencia y con los datos agregados",
+          "unit": "cualitativo (límite de identificación)",
+          "horizon": "varias décadas",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "el alza de 21% a 61% de De Loecker-Eeckhout-Unger",
+          "quote": "Existing methods cannot determine whether markups have been stable or whether they have risen modestly over the past several decades.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Qué tan grande tiene que ser el alza para mover la participación del trabajo",
+          "dimension": "dim-labor-share",
+          "value": "incrementos relativamente pequeños de los márkups son consistentes con cambios significativos en los agregados, incluida la caída observada de la participación del trabajo — o sea que el mecanismo puede operar sin las cifras espectaculares",
+          "unit": "cualitativo (suficiencia del mecanismo)",
+          "horizon": "varias décadas",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "que se necesite un alza grande de márkups",
+          "quote": "Even relatively small increases in markups are consistent with significant changes in aggregate outcomes, such as the observed decline in labor's share of national income.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Qué se puede leer de la concentración industrial",
+          "dimension": "dim-markups",
+          "value": "la concentración industrial admite dos interpretaciones opuestas —más poder de mercado, o más competencia con las firmas más eficientes ganando participación— y por eso la literatura buscó estimar los márkups, que son menos ambiguos",
+          "unit": "cualitativo (ambigüedad de la medida)",
+          "horizon": "varias décadas",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "leer concentración como poder de mercado",
+          "quote": "industrial concentration can be interpreted as evidence of either increased market power or as evidence of greater competition, where more efficient firms are able to gain market share",
+          "location": "Introducción",
+          "geo": "us"
+        }
+      ]
+    },
+    {
+      "id": "eisfeldt-falato-xiaolan-2022-human-capitalists",
+      "authors": "Andrea L. Eisfeldt, Antonio Falato & Mindy Z. Xiaolan",
+      "year": 2022,
+      "venue": "NBER Working Paper 28815 ('Human Capitalists'), mayo de 2021, revisado abril de 2022; publicado en NBER Macroeconomics Annual 37 (2023)",
+      "url": "https://www.nber.org/papers/w28815",
+      "source_type": "paper",
+      "accessed": "2026-08-24",
+      "ola": "contexto",
+      "reliability_note": "Verificado sobre el PDF del working paper NBER revisado en abril de 2022. Es el nodo de MEDICIÓN de esta ronda: no discute las causas, discute si la cifra que todos explican está bien construida. ⚠ EL ALCANCE ES ACOTADO Y LA CIFRA NO SE PUEDE EXTRAPOLAR: los resultados centrales son de manufactura estadounidense, donde el pago en acciones está concentrado; la corrección sería menor en sectores con poca compensación accionaria. ⚠ La reconstrucción del pago en acciones exige supuestos —qué fracción es incentivo, qué fracción está calificada, cómo se imputa el diferimiento— y los autores los discuten explícitamente. ⚠ NO MIDE IA. Su relevancia para el mapa es indirecta y fuerte: toca a la vez la participación del trabajo y σ.",
+      "estimates": [
+        {
+          "metric": "Peso del pago en acciones en la remuneración del trabajo calificado",
+          "dimension": "dim-labor-share",
+          "value": "36% de la compensación total al trabajo altamente calificado en la manufactura estadounidense en años recientes, tras aumentar sustancialmente desde los años ochenta",
+          "unit": "% de la compensación total",
+          "horizon": "1980s-2010s",
+          "geography": "EE.UU.",
+          "sector": "manufactura",
+          "counterfactual": "que el ingreso laboral se agote en salarios y beneficios registrados",
+          "quote": "Equity-based compensation has increased substantially since the 1980s, representing thirty-six percent of total compensation to high-skilled labor in US manufacturing in recent years.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Cuánto de la caída de la participación del trabajo es medición",
+          "dimension": "dim-labor-share",
+          "value": "incluir la compensación en acciones elimina casi por completo la caída de la participación del trabajo calificado y reduce la caída total de la participación del trabajo en cerca de un tercio",
+          "unit": "fracción de la caída medida",
+          "horizon": "1960s-2010s",
+          "geography": "EE.UU.",
+          "sector": "manufactura",
+          "counterfactual": "la serie estándar de participación del trabajo",
+          "quote": "In manufacturing, the inclusion of equity-based compensation almost eliminates the decline in the high-skilled labor share, and reduces the total decline in the labor share by about one-third.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Qué le hace la corrección a la elasticidad de sustitución estimada",
+          "dimension": "dim-elasticidad-sustitucion",
+          "value": "solo al incluir el pago en acciones la estimación estructural sostiene complementariedad entre trabajo calificado y capital físico MAYOR que la de Cobb-Douglas — es decir σ<1 entre esos dos factores; con la medición estándar, no",
+          "unit": "adimensional (σ frente a 1)",
+          "horizon": "1960s-2010s",
+          "geography": "EE.UU.",
+          "sector": "manufactura",
+          "counterfactual": "Cobb-Douglas (σ=1)",
+          "quote": "Only by including equity pay does our structural estimation support complementarity between high-skilled labor and physical capital greater than that of Cobb and Douglas (1928).",
+          "location": "Abstract",
+          "geo": "us"
+        }
+      ]
+    },
+    {
+      "id": "grossman-oberfield-2022-elusive",
+      "authors": "Gene M. Grossman & Ezra Oberfield",
+      "year": 2022,
+      "venue": "Annual Review of Economics 14: 93-124 ('The Elusive Explanation for the Declining Labor Share'); working paper NBER 29165",
+      "url": "https://www.nber.org/papers/w29165",
+      "source_type": "paper",
+      "accessed": "2026-08-24",
+      "ola": "contexto",
+      "reliability_note": "Revisión de literatura por invitación en Annual Review of Economics; verificado sobre el PDF del working paper NBER 29165, que es el manuscrito preparado para esa revista. Es el nodo que fija el estado de conocimiento de toda esta rama, y por eso entra: sin él, el mapa mostraría cinco explicaciones que compiten sin decir que juntas explican el fenómeno varias veces de más. ⚠ ES UNA REVISIÓN, no evidencia nueva: su aporte es epistémico. ⚠ Los autores nombran su propio sesgo de publicación como parte del problema — la literatura premia encontrar fuerzas a la baja y desatiende las que empujan al alza. ⚠ NO MIDE IA, y su advertencia se aplica con más fuerza todavía a extrapolar esta literatura hacia la IA.",
+      "estimates": [
+        {
+          "metric": "Estado del conocimiento sobre por qué cayó la participación del trabajo",
+          "dimension": "dim-labor-share",
+          "value": "tras más de 12.000 proyectos de investigación seguimos sin entender bien por qué cayó la participación del trabajo, ni si la caída es temporal o permanente, sigue en curso, se está estabilizando o se revertirá",
+          "unit": "cualitativo (estado del conocimiento)",
+          "horizon": "décadas de literatura",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "que exista una explicación establecida",
+          "quote": "We conclude that, after more than 12,000 research projects, we still do not have a firm grip on why the labor share in national income has fallen and whether that decline is likely to be temporary or permanent, ongoing, leveling out, or reversed.",
+          "location": "Introducción",
+          "geo": "us"
+        },
+        {
+          "metric": "El problema de fondo de la literatura: sobre-explicación",
+          "dimension": "dim-labor-share",
+          "value": "el conjunto de trabajos explica el fenómeno varias veces de más — cambio técnico, globalización y China, poder de mercado, caída de la sindicalización y del poder de negociación, y composición de la fuerza de trabajo, cada uno con su cuota del mismo hecho",
+          "unit": "cualitativo (crítica de agregación)",
+          "horizon": "la última década de literatura",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "que las explicaciones sean acumulables",
+          "quote": "We review this literature, with special emphasis on the pitfalls associated with using cross-sectional data to assess this phenomenon and the reasons why the body of papers collectively explains the phenomenon many times over.",
+          "location": "Abstract",
+          "geo": "us"
+        },
+        {
+          "metric": "Si siquiera hubo un realineamiento duradero de los factores",
+          "dimension": "dim-labor-share",
+          "value": "la explicación de cualquier realineamiento duradero de las participaciones factoriales —si es que tal realineamiento ocurrió— sigue siendo esquiva; la condicional es de los autores",
+          "unit": "cualitativo",
+          "horizon": "décadas",
+          "geography": "EE.UU. / general",
+          "sector": "economía completa",
+          "counterfactual": "dar por establecido el hecho a explicar",
+          "quote": "the explanation for any durable realignment of factor shares— if indeed such a realignment has occurred— remains elusive.",
+          "location": "Sección 10, conclusión",
+          "geo": "us"
+        }
+      ]
     }
   ],
   "study_hypothesis_edges": [
@@ -6651,6 +6988,114 @@
       "hypothesis": "hyp-exposure-not-employment",
       "type": "informa",
       "why": "Es un intento explícito de construir el puente micro→macro que el mapa exhibe como ausente: toma estimaciones de desempeño por tarea y las agrega con exposición y adopción. Su fragilidad hereda la de sus insumos, casi todos experimentos de tarea única."
+    },
+    {
+      "study_id": "autor-etal-2020-superstar",
+      "hypothesis": "hyp-agregado-se-mueve-sin-la-firma-tipica",
+      "type": "confirma",
+      "why": "Es la mitad más fuerte de la hipótesis y la que trae el número: 96% de los 18,9 puntos perdidos entre 1982 y 2012 son reasignación entre firmas establecidas, contra 0,69 puntos de la firma promedio no ponderada en treinta años. El hecho agregado ocurrió casi enteramente fuera de la empresa típica."
+    },
+    {
+      "study_id": "autor-etal-2020-superstar",
+      "hypothesis": "hyp-brecha-entre-firmas",
+      "type": "confirma",
+      "why": "La brecha entre empresas que el BIS y Babina miden para la IA ya existía y ya movía el agregado dos décadas antes, en la misma dirección y por el mismo canal. Que el fenómeno preceda a la IA no lo debilita: le da una línea de base y quita el aire de novedad."
+    },
+    {
+      "study_id": "autor-etal-2020-superstar",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "informa",
+      "why": "Cambia el canal por el que habría que esperar la erosión. Si la participación del trabajo cae históricamente por recomposición de quién produce y no por sustitución dentro de la firma, entonces la vía por la que la IA la erosionaría pasa por la concentración, no directamente por σ. La hipótesis se enuncia en términos de σ y esta evidencia sugiere que ese no es el margen donde el fenómeno ocurrió antes."
+    },
+    {
+      "study_id": "autor-etal-2020-superstar",
+      "hypothesis": "hyp-captura-electricidad-vs-plataforma",
+      "type": "informa",
+      "why": "Da el precedente histórico de la pregunta: en las tres décadas anteriores a la IA, la renta de las ganancias de productividad se comportó como plataforma y no como electricidad, acumulándose en firmas superestrella con poco trabajo por peso de ventas."
+    },
+    {
+      "study_id": "deloecker-eeckhout-unger-2020-market-power",
+      "hypothesis": "hyp-agregado-se-mueve-sin-la-firma-tipica",
+      "type": "confirma",
+      "why": "Confirma la misma forma con otro indicador y otros datos: el márkup promedio se cuadruplica en distancia sobre el costo y la mediana no se mueve. Dos papers independientes, dos variables distintas, la misma conclusión estructural — el promedio se movió por la cola."
+    },
+    {
+      "study_id": "deloecker-eeckhout-unger-2020-market-power",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "informa",
+      "why": "Ofrece la ruta alternativa a σ para llegar al mismo destino: la participación del trabajo puede caer por poder de mercado sin que la elasticidad de sustitución supere uno. Es el eslabón que el argumento periodístico asume y que el mapa no tenía; ponerlo permite ver que la hipótesis de σ no es la única forma de sostener la conclusión."
+    },
+    {
+      "study_id": "deloecker-eeckhout-unger-2020-market-power",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "informa",
+      "why": "Documenta que la renta se concentró en la cola alta de las empresas durante cuatro décadas y que eso viene con menor dinamismo del mercado laboral. Es el molde histórico de lo que se teme de la IA, medido antes de que la IA existiera."
+    },
+    {
+      "study_id": "basu-2019-markups-evidencia",
+      "hypothesis": "hyp-agregado-se-mueve-sin-la-firma-tipica",
+      "type": "tensiona",
+      "why": "Ataca la pata de márkups de la hipótesis en su raíz metodológica: los métodos existentes no distinguen entre márkups estables y un alza modesta, así que la forma de la distribución que De Loecker y coautores describen depende de supuestos discutidos. Además desactiva la lectura de la concentración, que admite el signo contrario — firmas más eficientes ganando participación. La pata de Autor y coautores sobrevive porque es una descomposición contable, no una estimación de poder de mercado."
+    },
+    {
+      "study_id": "basu-2019-markups-evidencia",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "informa",
+      "why": "Baja el umbral del mecanismo y con eso ordena el debate: alzas pequeñas de márkups bastan para mover la participación del trabajo, así que refutar las cifras espectaculares no refuta el canal. Vale simétricamente para la IA — no hace falta un efecto dramático para que la participación se mueva."
+    },
+    {
+      "study_id": "stansbury-summers-2017-link-broken",
+      "hypothesis": "hyp-desacople-no-prueba-ruptura-del-vinculo",
+      "type": "confirma",
+      "why": "Es la prueba directa de la hipótesis y la única del mapa: un punto de productividad sigue asociado a 0,7 a 1 punto de remuneración mediana y media entre 1973 y 2016, y el desacople fuerte se rechaza en casi todas las especificaciones. La brecha de nivel convive con un mecanismo que sigue operando."
+    },
+    {
+      "study_id": "stansbury-summers-2017-link-broken",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "Corre la prueba falsable que la propia hipótesis tecnológica implica y no la pasa: si la tecnología causara la divergencia, los períodos de mayor crecimiento de la productividad deberían divergir más rápido, y ese co-movimiento no aparece en cuarenta años de datos estadounidenses. Es la objeción más dura del mapa a extrapolar el desacople histórico hacia la IA, y no depende de discutir σ."
+    },
+    {
+      "study_id": "stansbury-summers-2017-link-broken",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "informa",
+      "why": "Aísla cuánto de la brecha entre productividad y paga típica es desigualdad y no participación del trabajo: la separación entre media y mediana es una de las cuatro cuñas, y es la que traduce el fenómeno agregado en lo que le pasa a una persona concreta."
+    },
+    {
+      "study_id": "eisfeldt-falato-xiaolan-2022-human-capitalists",
+      "hypothesis": "hyp-desacople-no-prueba-ruptura-del-vinculo",
+      "type": "confirma",
+      "why": "Aporta la cuña de medición más concreta: cerca de un tercio de la caída de la participación del trabajo en manufactura estadounidense desaparece al contar el pago en acciones como lo que es, remuneración al trabajo. El hecho a explicar es más chico de lo que la serie estándar muestra."
+    },
+    {
+      "study_id": "eisfeldt-falato-xiaolan-2022-human-capitalists",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "Golpea la condición de la hipótesis desde la medición y no desde la econometría de σ: solo al incluir el pago en acciones la estimación estructural sostiene complementariedad entre trabajo calificado y capital físico mayor que Cobb-Douglas, o sea σ<1. Si el trabajo más expuesto a la IA es justamente el calificado, la evidencia mejor medida apunta a que ese factor y el capital se necesitan, no que se reemplacen."
+    },
+    {
+      "study_id": "eisfeldt-falato-xiaolan-2022-human-capitalists",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "reencuadra",
+      "why": "Disuelve parcialmente la frontera sobre la que se apoya todo el debate. Si el 36% de la remuneración del trabajo calificado en manufactura son derechos sobre dividendos y ganancias de capital, «trabajo contra capital» y «desigualdad dentro del trabajo» dejan de ser dos ejes: el extremo alto del trabajo cobra como capital, y las dos preguntas se miden en el mismo dato."
+    },
+    {
+      "study_id": "grossman-oberfield-2022-elusive",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "Erosiona el piso sobre el que se para la hipótesis. Después de más de 12.000 trabajos no hay acuerdo sobre por qué cayó la participación del trabajo, ni sobre si la caída es permanente, ni —en la formulación de los autores— sobre si hubo un realineamiento duradero. Proyectar el efecto de la IA sobre esa serie hereda toda esa incertidumbre, y el mapa no debería mostrarla como una base firme a la que la IA solo agrega un empujón."
+    },
+    {
+      "study_id": "grossman-oberfield-2022-elusive",
+      "hypothesis": "hyp-agregado-se-mueve-sin-la-firma-tipica",
+      "type": "tensiona",
+      "why": "La explicación de firmas superestrella es una de las que la revisión acusa de explicar el fenómeno varias veces de más, junto con el cambio técnico, la globalización, el poder de mercado y la sindicalización. La descomposición contable de Autor y coautores es sólida; lo que esta revisión niega es que identificar el margen equivalga a identificar la causa."
+    },
+    {
+      "study_id": "grossman-oberfield-2022-elusive",
+      "hypothesis": "hyp-desacople-no-prueba-ruptura-del-vinculo",
+      "type": "informa",
+      "why": "Refuerza el punto epistémico desde el otro extremo del debate: los autores señalan que el sesgo de publicación atrae la atención hacia las fuerzas que empujan la participación hacia abajo y desatiende las que empujan hacia arriba. La brecha se lee siempre en una dirección, y parte de eso es de la literatura y no del fenómeno."
     }
   ],
   "findings": [

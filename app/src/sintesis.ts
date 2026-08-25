@@ -5,7 +5,7 @@
 // (versionadas); `cites` son
 // studyId reales del mapa (la vista los resuelve a "apellido 'año"). Actualizar con la fecha al editar.
 
-export const SINTESIS_FECHA = "2026-08-21";
+export const SINTESIS_FECHA = "2026-08-24";
 
 // ── Charts hechos a medida (sin librería) que ejemplifican una respuesta. Anclados a datos reales.
 export type ChartTone = "accent" | "neg" | "pos" | "neutral";
@@ -150,6 +150,7 @@ export const SINTESIS: SintesisItem[] = [
       "La escasez del trabajo se mide en el precio, no solo en la cantidad: el escenario a temer no es «no hay trabajo» sino «hay trabajo que paga menos». El reparto entre ambos —el parámetro φ— lo informa, sin fijarlo, la rigidez salarial a la baja.",
       "Esa evidencia es robusta en su dirección: los salarios se resisten a caer. Dickens et al. estiman que ~28% de los recortes que ocurrirían bajo flexibilidad son impedidos por la rigidez; los recortes de salario base son «extremely rare» (Babecký, Wage Dynamics Network); las firmas prefieren despedir antes que recortar (Bewley). Así que, en el corto plazo, el ajuste cae más en el empleo que en el sueldo —φ tiende bajo, cerca de 0,30—. Y, de hecho, ADP encuentra que hasta ahora el efecto de la IA aparece en el empleo, no en la compensación.",
       "Pero la rigidez es nominal y de corto plazo. Con los años —contratos renegociados, inflación que erosiona el salario real— el ajuste de precio se materializa. El golpe, si persiste, migra del puesto al sueldo.",
+      "A ese horizonte largo conviene saber qué tan vivo sigue el mecanismo que traduce productividad en paga, porque el gráfico famoso de las dos líneas separándose se lee habitualmente como que se rompió. Stansbury y Summers hacen la prueba directa en EE.UU. entre 1973 y 2016: un punto porcentual más de crecimiento de la productividad se asocia a entre 0,7 y 1 punto más de crecimiento de la remuneración mediana y media, y el desacople fuerte se rechaza en casi todas las especificaciones. La brecha acumulada es de nivel y se compone de depreciación, deflactores distintos, la caída de la participación del trabajo y la desigualdad entre media y mediana. Su hallazgo más incómodo para proyectar esto hacia la IA es otro: la explicación tecnológica predice que los períodos de productividad más rápida diverjan más rápido, y ese co-movimiento no aparece en cuarenta años de datos.",
     ],
     chart: {
       type: "scale",
@@ -167,7 +168,7 @@ export const SINTESIS: SintesisItem[] = [
       ],
       caption: "Las estimaciones se agrupan abajo: el ajuste cae más en el empleo que en el sueldo.",
     },
-    cites: ["dickens-iwfp-2007", "babecky-wdn-2010", "bewley-1999", "brynjolfsson-chandar-chen-2025-canaries"],
+    cites: ["dickens-iwfp-2007", "babecky-wdn-2010", "bewley-1999", "brynjolfsson-chandar-chen-2025-canaries", "stansbury-summers-2017-link-broken"],
     lentes: ["Tareas"],
   },
   {
@@ -178,6 +179,7 @@ export const SINTESIS: SintesisItem[] = [
       "Aquí la respuesta depende menos de los datos que del modelo. En la lente agregada (CES), la suerte de la tajada del trabajo la decide un solo número: σ, la elasticidad de sustitución entre capital y trabajo. Si σ>1 (sustitutos), el capital barato —la IA— se lleva una tajada creciente; si σ<1 (complementos), el trabajo se vuelve el factor escaso y su tajada sube.",
       "Y el centro de gravedad empírico está BAJO 1: Chirinko (0,4–0,6), Oberfield-Raval (0,5–0,7), Antràs (~0,78), el meta-análisis de Knoblach. Solo Karabarbounis-Neiman (~1,25) sostiene σ>1, y Lawrence argumenta que ese resultado viene del supuesto, no del dato. Tomado en serio, el modelo agregado predice por defecto que la participación del trabajo SUBE — lo contrario de la intuición de que «el capital se queda con todo».",
       "La lente de tareas, en cambio, da desplazamiento neto puro: la tajada cae con las tareas que pasan al capital. Y la de crecimiento dice que depende de los «weak links» —las tareas que la IA no puede hacer, que son la fuente de la escasez y capturan el retorno (Jones). Es la pregunta donde el marco pesa más que el dato.",
+      "El registro histórico agrega una advertencia sobre la premisa. La participación del trabajo en EE.UU. cayó, pero casi no cayó dentro de las empresas: Autor y coautores descomponen los 18,9 puntos que perdió la manufactura entre 1982 y 2012 y el 96% es reasignación de ventas hacia firmas que ya operaban con menos trabajo, mientras la firma promedio perdía 0,69 puntos en treinta años. De Loecker, Eeckhout y Unger encuentran la misma forma en los márkups, que suben de 21% a 61% sobre el costo marginal con la mediana inmóvil, y Basu muestra que los métodos disponibles no distinguen ese alza de una estable. Eisfeldt, Falato y Xiaolan reducen en un tercio la caída medida al contar el pago en acciones como remuneración al trabajo, y solo con esa corrección su estimación estructural sostiene complementariedad entre trabajo calificado y capital: otra vez σ<1. Grossman y Oberfield cierran una revisión de más de 12.000 trabajos sin acuerdo sobre por qué cayó ni sobre si la caída es permanente. Para la IA eso corre el foco: la evidencia histórica dice que la tajada del trabajo se mueve por recomposición de quién produce, y ese margen no aparece en σ.",
     ],
     chart: {
       type: "scale",
@@ -205,6 +207,11 @@ export const SINTESIS: SintesisItem[] = [
       "lawrence2015",
       "atkeson2020-labor-share",
       "dwarkesh2026-economia-agi",
+      "autor-etal-2020-superstar",
+      "deloecker-eeckhout-unger-2020-market-power",
+      "basu-2019-markups-evidencia",
+      "eisfeldt-falato-xiaolan-2022-human-capitalists",
+      "grossman-oberfield-2022-elusive",
     ],
     lentes: ["Agregado·CES", "Tareas", "Crecimiento"],
   },

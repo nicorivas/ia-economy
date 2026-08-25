@@ -38,6 +38,7 @@ OLAS = {
     "noy-zhang-2023": "generativa",
     "peng-copilot-2023": "generativa",
     "metr-2025": "generativa",
+    "gambacorta-etal-2024-codefuse": "generativa",
     "anthropic-aei-2026-primitives": "generativa",
     "anthropic-aei-2025-original": "generativa",
     "anthropic-aei-2026-cadences": "generativa",
@@ -79,6 +80,10 @@ OLAS = {
     "goos-manning-salomons-2014": "pre-generativa",
     "autor2015-jobs": "pre-generativa",
     "brynjolfsson2021jcurve": "pre-generativa",
+    "albanesi-etal-2025-europa-empleo": "pre-generativa",
+    "babina-etal-2024-firm-growth": "pre-generativa",
+    "acemoglu-autor-hazell-restrepo-2022-vacantes": "pre-generativa",
+    "cornelli-frost-mishra-2023-desigualdad": "pre-generativa",
     # ── Mixta: la muestra cruza noviembre de 2022 ─────────────────────────────────────────
     "bis-2026-wp1325-firmas-europeas": "mixta",
     "oecd-emo-2023": "mixta",
@@ -90,6 +95,7 @@ OLAS = {
     "feigenbaum-gross-2024-operators": "historica",
     # ── Teoría: modelos y marcos sin período de datos propio ──────────────────────────────
     "acemoglu2024simple": "teoria",
+    "filippucci-etal-2025-macro-g7": "teoria",
     "korinek2024scenarios": "teoria",
     "korinek-trammell2024-growth-tai": "teoria",
     "korinek-stiglitz2019": "teoria",
@@ -140,6 +146,14 @@ OLAS = {
     "oecd-2026-gmt-eia": "contexto",
     "vivalt-etal-2025-guaranteed-income": "contexto",
     "jones-marinescu-2022-alaska": "contexto",
+    # Ronda 10 — el desacople paga/productividad. Ninguno mide IA: son el eslabón causal
+    # entre «la productividad creció» y «la paga no la siguió», que el mapa citaba sin tener.
+    "autor-etal-2020-superstar": "contexto",
+    "stansbury-summers-2017-link-broken": "contexto",
+    "deloecker-eeckhout-unger-2020-market-power": "contexto",
+    "basu-2019-markups-evidencia": "contexto",
+    "eisfeldt-falato-xiaolan-2022-human-capitalists": "contexto",
+    "grossman-oberfield-2022-elusive": "contexto",
 }
 
 
