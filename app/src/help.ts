@@ -524,10 +524,11 @@ export const HELP_SCOPE: HelpEntry = {
   kicker: "Región",
   title: "¿De dónde son los supuestos?",
   body: [
-    "Cambia la base de partida según la región. Estados Unidos y el promedio global tienen datos propios; Europa, América Latina y Asia todavía no — ahí se parte de los supuestos globales.",
+    "Cambia la base de partida según la región. Estados Unidos y el promedio global tienen parámetros propios; Europa, América Latina y Asia todavía no, así que ahí el modelo corre con los supuestos globales.",
+    "Que un alcance no tenga parámetros propios no significa que el mapa no sepa nada de esa región: la nota bajo el selector cuenta cuántos estudios y estimaciones declaran ese lugar. Para Europa son varios y todavía no están traducidos a parámetros; para América Latina son cero, y ese cero es un dato del mapa.",
     "La exposición a la IA y la velocidad de adopción difieren mucho por región, así que el punto de partida importa.",
   ],
-  read: "«Sin datos propios» = usa la base global como aproximación.",
+  read: "«Sin parámetros propios» = el modelo usa la base global como aproximación.",
 };
 
 export const HELP_SHARE: HelpEntry = {

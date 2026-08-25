@@ -1,5 +1,6 @@
 import rawMap from "./mapa.json";
-import type { MapData, StudyHypEdge } from "./types";
+import type { Geo, MapData, StudyHypEdge } from "./types";
+import type { Scope } from "./model";
 
 export const map = rawMap as unknown as MapData;
 
@@ -37,3 +38,32 @@ export function surname(authors: string): string {
   return tokens[n - 1]; // persona: último token = apellido
 }
 const PARTICULA = /^(de|del|de la|van|von|der|den|da|di|du|la|le|dos|das|ter)$/i;
+
+// ── Cuánta evidencia del mapa cubre cada alcance geográfico ──────────────────────────────
+// El selector de alcance decía «sin datos propios» para Europa, y eso confundía dos cosas
+// distintas: que el MODELO no tiene parámetros europeos propios, que es cierto y sigue
+// siéndolo, con que el mapa no tiene evidencia europea, que es falso y cada ronda lo vuelve
+// más falso. Esto cuenta lo segundo a partir de los códigos `geo` que normaliza
+// aplicar-geografia.py, así que se actualiza solo y no hay una cifra que mantener a mano.
+// El cero de América Latina se muestra igual que el resto: es el dato, no un vacío.
+const SCOPE_GEO: Record<Scope, Geo[]> = {
+  global: ["global", "multi"],
+  us: ["us", "us-eu"],
+  eu: ["eu", "us-eu"],
+  latam: ["latam", "cl"],
+  asia: ["cn"],
+};
+
+export function scopeEvidence(scope: Scope): { studies: number; estimates: number } {
+  const codes = SCOPE_GEO[scope];
+  let studies = 0;
+  let estimates = 0;
+  for (const s of map.studies) {
+    const n = (s.estimates ?? []).filter((e) => e.geo && codes.includes(e.geo)).length;
+    if (n > 0) {
+      studies += 1;
+      estimates += n;
+    }
+  }
+  return { studies, estimates };
+}

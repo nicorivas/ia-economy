@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   SCOPES,
   PARAMS,
@@ -16,7 +16,7 @@ import {
 } from "./model";
 import type { Scope, Vals, ParamKey, Metric, ParamDef, Lens, Engine, SensRow, HorizonF } from "./model";
 import { readParams, writeParams } from "./urlState";
-import { studyById, surname } from "./data";
+import { studyById, surname, scopeEvidence } from "./data";
 import { Compare } from "./Compare";
 import { Distribucion } from "./Distribucion";
 import {
@@ -933,6 +933,9 @@ export function VeredictoSection({
   const set = (k: ParamKey, v: number) => setVals((p) => ({ ...p, [k]: v }));
 
   const meta = SCOPES.find((s) => s.key === scope)!;
+  // Cuánta evidencia del mapa declara este lugar. Se computa de los códigos `geo`, así que
+  // la nota de abajo no puede quedar desactualizada por una ronda nueva.
+  const scopeEv = useMemo(() => scopeEvidence(scope), [scope]);
 
   // Tres estados: anclado (azul, la evidencia lo fija), informado (verde, la evidencia lo acota sin
   // fijarlo) y supuesto (durazno, la literatura no lo toca).
@@ -1175,7 +1178,7 @@ export function VeredictoSection({
                   {SCOPES.map((s) => (
                     <option key={s.key} value={s.key}>
                       {s.label}
-                      {s.hasData ? "" : " · sin datos propios"}
+                      {s.hasData ? "" : " · sin parámetros propios"}
                     </option>
                   ))}
                 </select>
@@ -1193,7 +1196,11 @@ export function VeredictoSection({
 
               {!meta.hasData && (
                 <div className="ver-note">
-                  Sin datos propios de esta región todavía — usa los supuestos globales como base.
+                  El modelo no tiene parámetros propios de esta región y corre con los supuestos
+                  globales.{" "}
+                  {scopeEv.estimates > 0
+                    ? `La evidencia del mapa sí la cubre: ${scopeEv.studies} ${scopeEv.studies === 1 ? "estudio" : "estudios"} y ${scopeEv.estimates} ${scopeEv.estimates === 1 ? "estimación" : "estimaciones"} declaran este lugar, y todavía no están traducidas a parámetros.`
+                    : "Y el mapa tampoco tiene una sola estimación medida aquí."}
                 </div>
               )}
             </div>
