@@ -30,5 +30,10 @@ export function surname(authors: string): string {
   const tokens = first.split(/\s+/).filter(Boolean);
   if (tokens.length <= 1) return first;
   if (INST.test(first)) return tokens[0]; // institución: McKinsey, Anthropic, OECD…
-  return tokens[tokens.length - 1]; // persona: último token = apellido
+  // Apellidos con partícula: "Jan De Loecker" → "De Loecker", "John Van Reenen" → "Van Reenen".
+  // Sin esto el último token solo deja "Loecker", que no es como se cita.
+  const n = tokens.length;
+  if (n >= 3 && PARTICULA.test(tokens[n - 2])) return `${tokens[n - 2]} ${tokens[n - 1]}`;
+  return tokens[n - 1]; // persona: último token = apellido
 }
+const PARTICULA = /^(de|del|de la|van|von|der|den|da|di|du|la|le|dos|das|ter)$/i;
