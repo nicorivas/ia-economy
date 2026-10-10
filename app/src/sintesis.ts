@@ -5,7 +5,7 @@
 // (versionadas); `cites` son
 // studyId reales del mapa (la vista los resuelve a "apellido 'año"). Actualizar con la fecha al editar.
 
-export const SINTESIS_FECHA = "2026-08-24";
+export const SINTESIS_FECHA = "2026-10-10";
 
 // ── Charts hechos a medida (sin librería) que ejemplifican una respuesta. Anclados a datos reales.
 export type ChartTone = "accent" | "neg" | "pos" | "neutral";
@@ -180,6 +180,7 @@ export const SINTESIS: SintesisItem[] = [
       "Y el centro de gravedad empírico está BAJO 1: Chirinko (0,4–0,6), Oberfield-Raval (0,5–0,7), Antràs (~0,78), el meta-análisis de Knoblach. Solo Karabarbounis-Neiman (~1,25) sostiene σ>1, y Lawrence argumenta que ese resultado viene del supuesto, no del dato. Tomado en serio, el modelo agregado predice por defecto que la participación del trabajo SUBE — lo contrario de la intuición de que «el capital se queda con todo».",
       "La lente de tareas, en cambio, da desplazamiento neto puro: la tajada cae con las tareas que pasan al capital. Y la de crecimiento dice que depende de los «weak links» —las tareas que la IA no puede hacer, que son la fuente de la escasez y capturan el retorno (Jones). Es la pregunta donde el marco pesa más que el dato.",
       "El registro histórico agrega una advertencia sobre la premisa. La participación del trabajo en EE.UU. cayó, pero casi no cayó dentro de las empresas: Autor y coautores descomponen los 18,9 puntos que perdió la manufactura entre 1982 y 2012 y el 96% es reasignación de ventas hacia firmas que ya operaban con menos trabajo, mientras la firma promedio perdía 0,69 puntos en treinta años. De Loecker, Eeckhout y Unger encuentran la misma forma en los márkups, que suben de 21% a 61% sobre el costo marginal con la mediana inmóvil, y Basu muestra que los métodos disponibles no distinguen ese alza de una estable. Eisfeldt, Falato y Xiaolan reducen en un tercio la caída medida al contar el pago en acciones como remuneración al trabajo, y solo con esa corrección su estimación estructural sostiene complementariedad entre trabajo calificado y capital: otra vez σ<1. Grossman y Oberfield cierran una revisión de más de 12.000 trabajos sin acuerdo sobre por qué cayó ni sobre si la caída es permanente. Para la IA eso corre el foco: la evidencia histórica dice que la tajada del trabajo se mueve por recomposición de quién produce, y ese margen no aparece en σ.",
+      "Y hay un giro que obliga a corregir la pregunta misma. La hipótesis del mapa estaba enunciada «la IA erosiona la participación del trabajo SI σ>1», heredando el reflejo de que con complementos la tajada está a salvo. El modelo de Korinek y Jones fija σ=0,5 y la tajada cae igual, porque en un modelo de tareas lo que avanza es la frontera de qué hace el trabajo: cada tarea que cruza deja de pagar salario aunque los factores restantes sean complementos. O sea que σ>1 nunca fue la condición necesaria, solo la ruta más obvia. Lo que decide es cuántas tareas cruzan y cuántas nacen del otro lado — y esa segunda cifra, la reinstauración, su propio modelo la fija por decreto: 0,50 en el escenario modesto, cero en el extremo, calibrada con la descomposición histórica de 1947 a 2017. El resultado más citado del campo descansa sobre el parámetro que nadie ha medido para la IA.",
     ],
     chart: {
       type: "scale",
@@ -212,6 +213,7 @@ export const SINTESIS: SintesisItem[] = [
       "basu-2019-markups-evidencia",
       "eisfeldt-falato-xiaolan-2022-human-capitalists",
       "grossman-oberfield-2022-elusive",
+      "korinek-jones-2026-escenarios",
     ],
     lentes: ["Agregado·CES", "Tareas", "Crecimiento"],
   },
@@ -277,6 +279,7 @@ export const SINTESIS: SintesisItem[] = [
       "Es la lección más profunda de toda la herramienta. Corre el mismo escenario —el mismo empuje de IA— por las cuatro lentes y el signo se da vuelta. La de tareas dice que el empleo y los salarios bajan un poco; la agregada (CES, con σ<1) dice que suben; la empírica se inclina a un negativo leve; la de crecimiento dice que todo depende del cuello de botella humano.",
       "El campo discute como si su modelo fuera el mundo, y casi nadie lo dice. Pero la conclusión depende del marco con que respondes tanto como de los datos que metes: el desacuerdo ENTRE modelos es tan grande como el desacuerdo dentro de cualquiera de ellos.",
       "Por eso la herramienta deja elegir la lente y no esconde que la respuesta es, en rigor, una respuesta por marco — no un número único. Esa es la honestidad llevada a su conclusión.",
+      "En septiembre de 2026 llegó la demostración desde afuera y con la firma más pesada posible. Korinek, Charles Jones y coautores publicaron un modelo de escenarios para la economía estadounidense al 2030 que fija σ en 0,5 —el mismo centro empírico que alimenta la lente CES de acá, y explícitamente complementos brutos— y obtiene que la participación del trabajo CAE en los tres escenarios, hasta 60→45 en el más extremo. Con ese mismo σ, la lente agregada de esta herramienta predice que sube. La discrepancia no está en el parámetro: un modelo de tareas mueve la frontera de qué hace el trabajo, mientras la CES reparte factores sobre una función de producción fija. Dos equipos, el mismo σ, signos opuestos. Es este punto demostrado con el rigor más alto disponible, y por gente que no estaba tratando de demostrarlo.",
     ],
     chart: {
       type: "lenses",
@@ -295,6 +298,7 @@ export const SINTESIS: SintesisItem[] = [
       "chirinko2008",
       "karabarbounis-neiman2014",
       "korinek2024scenarios",
+      "korinek-jones-2026-escenarios",
       "hui-reshef-zhou-2024-online-labor",
       "dwarkesh2026-economia-agi",
       "fradkin-etal-2026-forecast",

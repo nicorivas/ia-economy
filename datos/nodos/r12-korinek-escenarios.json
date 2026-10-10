@@ -1,0 +1,287 @@
+{
+  "_comment": "RONDA 12 — EL MODELO DE ESCENARIOS DEL ANTHROPIC INSTITUTE (2026-10-10). Nico pasó el sitio anthropic.com/institute/econ-scenarios diciendo que se parecía mucho a lo que queríamos hacer, y tiene razón: usa los mismos primitivos que este mapa. Leí el technical report entero. Es el nodo `teoria` más importante que le faltaba al mapa, por tres razones. (1) Su calibración está hecha casi enteramente de estudios que YA son nodos de acá: Massenkoff-McCrory para la masa afectada, el BTOS del Census para la difusión, el Anthropic Economic Index para el share de automatización, Brynjolfsson et al. para la ganancia por instancia, Eloundou para el techo, y Jones-Tonetti para los weak links. Este mapa es la capa de evidencia sobre la que se para un modelo así. (2) Confirma el veredicto de σ de la Síntesis —fijan 0,5, complementos brutos, y NO usan el 1,25 de Karabarbounis-Neiman—, y a la vez muestra que la lente de tareas tumba la participación del trabajo CON ese mismo σ<1, que es exactamente lo que `quien-renta` anticipaba al decir que el marco pesa más que el dato. (3) Su junta más débil es la que este mapa exhibe como puente ausente: la reinstauración ρ es un supuesto de escenario calibrado con la descomposición de Acemoglu-Restrepo de 1947-2017, o sea evidencia pre-generativa anclando una proyección generativa. Hay que registrar las tres cosas, incluida la tercera, que es incómoda porque los autores son los mismos que este mapa cita como autoridad.",
+
+  "dimensions": [
+    {
+      "id": "dim-desempleo-reasignacion",
+      "name": "Desempleo generado por la reasignación entre ocupaciones",
+      "definition": "Desempleo que resulta de que trabajadores desplazados de una ocupación tengan que buscar trabajo en otra, no de la caída de la demanda agregada. Depende de cuántos deben cambiar y de qué tan difícil es el cruce entre ocupaciones. Es el mecanismo que convierte el desplazamiento en desempleo observable, y el mapa no tenía ninguna dimensión que lo midiera: hasta ahora el desplazamiento se registraba como efecto sobre el empleo, sin modelar el tránsito."
+    },
+    {
+      "id": "dim-expectativas-publicas-capacidad-ia",
+      "name": "Expectativas del público sobre la capacidad futura de la IA",
+      "definition": "Lo que la población general espera sobre cuándo la IA podrá hacer tareas cognitivas de dificultad creciente, qué tan ampliamente se usará, cuánta productividad agregará y cuánto demorará un desplazado en reubicarse. Importa porque esas expectativas son insumo de decisiones reales —de formación, de contratación, de política— aunque no sean una medición de la IA, y porque permiten situar el escenario que el público considera central frente al que consideran los modelos."
+    }
+  ],
+
+  "studies": [
+    {
+      "id": "korinek-jones-2026-escenarios",
+      "authors": "Anton Korinek, Charles I. Jones, Szymon Sacher, Tess Cotter & Peter McCrory",
+      "year": 2026,
+      "venue": "The Anthropic Institute, Working Paper No. 2026-02, septiembre de 2026 ('Economic Scenarios for Transformative AI'); explorador interactivo en anthropic.com/institute/econ-scenarios",
+      "url": "https://www.anthropic.com/institute/econ-scenarios",
+      "source_type": "paper",
+      "accessed": "2026-10-10",
+      "ola": "teoria",
+      "reliability_note": "Working paper institucional, no revisado por pares, verificado sobre el PDF del reporte técnico. Comentado antes de publicarse por Acemoglu, Autor, Romer, Nakamura, Steinsson, Moll, Klenow, Restrepo, Ben Jones y otros, que NO fueron invitados a suscribir las conclusiones. ⚠ NO ES UNA MEDICIÓN NI UN PRONÓSTICO: los propios autores dicen que los escenarios no son predicciones y que no les asignan probabilidades; su función es hacer comparables las consecuencias de distintos supuestos. Las cifras de abajo son salidas de un modelo, no observaciones, y hay que leerlas así. ⚠ CONFLICTO DE INTERÉS DECLARABLE: lo publica el instituto de una empresa cuyo producto es la tecnología que el modelo evalúa, y tres de los insumos de calibración —el share de automatización, la masa afectada y la ganancia por instancia— vienen de investigación de la misma casa. Los autores declaran que las opiniones no representan necesariamente a Anthropic. ⚠ LO QUE EL MODELO OMITE, por lista propia: respuestas de política, ciclos económicos, demanda agregada y el efecto del despliegue de centros de datos, disrupciones financieras, riesgos catastróficos, robots físicos capaces, y el seguimiento de trabajadores individuales. Varios revisores pidieron además que se aclarara que puede estar subestimando cuánto la IA acelera el progreso técnico. ⚠ SOLO ESTADOS UNIDOS. ⚠ Horizonte corto: todo cierra en 2030.",
+      "estimates": [
+        {
+          "metric": "PIB en 2030 respecto de la senda sin IA, por escenario",
+          "dimension": "dim-pib-crecimiento",
+          "value": "modesto +1,6% · sustancial +8,3% · extremo +32%. En el extremo el crecimiento anual llega a 15% y la economía se duplica cada 4,5 años. Los autores sitúan el modesto cerca de Acemoglu (2025) y de las cifras de la OCDE, el sustancial en el rango de los pronósticos de banca y consultoría de 2023, y el extremo fuera de todos ellos",
+          "unit": "% sobre la senda sin IA al 2030",
+          "horizon": "2026-2030",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "la misma economía sin IA",
+          "quote": "In the modest change scenario, GDP in 2030 is 1.6 percent higher than without AI... The substantial change scenario, with GDP 8.3 percent higher by 2030... The extreme change scenario, with GDP 32 percent higher by 2030, lies well beyond these",
+          "location": "Introducción, sección 1"
+        },
+        {
+          "metric": "Participación del trabajo bajo los tres escenarios",
+          "dimension": "dim-labor-share",
+          "value": "cae en los tres, porque los salarios quedan rezagados respecto del aumento del producto; en el escenario extremo pasa de 60% hoy a 45% en 2030",
+          "unit": "% del ingreso",
+          "horizon": "2026-2030",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "participación estable",
+          "quote": "The labor share of income falls across the three scenarios as wages lag behind the increases in output. In the extreme scenario, the labor share of income falls from 60 percent today to 45 percent in 2030.",
+          "location": "Introducción, sección 1"
+        },
+        {
+          "metric": "La elasticidad de sustitución que el modelo fija, y el signo que produce",
+          "dimension": "dim-elasticidad-sustitucion",
+          "value": "σ = 0,5 entre tareas, fijo y común a los tres escenarios, declarado como complementos brutos citando a Acemoglu-Restrepo (2022), Humlum (2019) y Jones-Tonetti (2026). Y con ese σ<1 la participación del trabajo CAE, porque lo que se mueve es la frontera de tareas que hace el trabajo y no la proporción de factores sobre una función fija",
+          "unit": "adimensional",
+          "horizon": "común a los tres escenarios",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "σ=1 (Cobb-Douglas); σ>1 de Karabarbounis-Neiman, que NO usan",
+          "quote": "σ elasticity of substitution across tasks — 0.5 — gross complements (Acemoglu and Restrepo, 2022; Humlum, 2019; Jones and Tonetti, 2026)",
+          "location": "Tabla 1, panel A (Calibración: parámetros y valores de escenario)"
+        },
+        {
+          "metric": "La reinstauración como perilla de escenario, y de dónde sale su número",
+          "dimension": "dim-reinstatement-effect",
+          "value": "ρ = 0,50 en el modesto · 0,25 en el sustancial · 0 en el extremo, declarados como supuestos de escenario. La justificación es histórica: en la descomposición de Acemoglu-Restrepo las tareas nuevas acompañaron a las automatizadas entre 1947 y 1987 y corrieron a la mitad entre 1987 y 2017. El escenario extremo asume que la IA no crea ninguna tarea nueva para humanos",
+          "unit": "masa de tareas nuevas por unidad automatizada",
+          "horizon": "2026-2030",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "medir ρ para la IA, que nadie ha hecho",
+          "quote": "The reinstatement ratio ρ is the mass of new labor tasks created per unit of tasks automated. In the decomposition of Acemoglu and Restrepo (2019), new tasks roughly kept pace with automated ones over 1947–87 and ran at about half of them over 1987–2017. The modest scenario's 0.5 is thus similar to recent history. The extreme scenario's 0 assumes that AI does not create any new tasks for humans to perform.",
+          "location": "Sección 3, calibración de la disruptividad"
+        },
+        {
+          "metric": "Salarios por tipo de ocupación en el escenario extremo",
+          "dimension": "dim-wages",
+          "value": "el salario cognitivo queda 11,5% por DEBAJO de su senda sin IA, mientras el del resto de las ocupaciones queda 34% por ENCIMA. En el modesto las diferencias son pequeñas incluso al 2030, y casi toda la divergencia ocurre después de 2027",
+          "unit": "% respecto de la senda sin IA",
+          "horizon": "2030",
+          "geography": "EE.UU.",
+          "sector": "ocupaciones cognitivas (SOC 11-29, 41, 43) contra el resto",
+          "counterfactual": "la misma economía sin IA",
+          "quote": "the cognitive wage is 11.5 percent below its no-AI path while the wage in all other occupations is 34 percent above it. ... Across scenarios, almost all of the divergence comes after 2027.",
+          "location": "Introducción, sección 1"
+        },
+        {
+          "metric": "Desempleo por reasignación entre ocupaciones",
+          "dimension": "dim-desempleo-reasignacion",
+          "value": "en el escenario modesto el desempleo sube una décima de punto; en el extremo casi uno de cada cinco trabajadores cognitivos queda desempleado. El tránsito lo gobiernan dos parámetros que los autores declaran imposibles de estimar con precisión porque la IA todavía no ha desplazado a una fracción significativa de trabajadores: el descuento de búsqueda μ (0,17 calibrado del CPS para tiempos normales) y la velocidad de publicación de vacantes",
+          "unit": "tasa de desempleo",
+          "horizon": "2030",
+          "geography": "EE.UU.",
+          "sector": "ocupaciones cognitivas",
+          "counterfactual": "reasignación sin fricción",
+          "quote": "In the extreme change scenario, AI has transformative effects... nearly one in five cognitive workers is unemployed.",
+          "location": "Resumen"
+        },
+        {
+          "metric": "El canal de innovación aporta mucho menos de lo esperado, incluso en el extremo",
+          "dimension": "dim-labor-productivity-growth",
+          "value": "la productividad del trabajo sube por este canal bastante menos de un 1% en los TRES escenarios, y la PTF medida menos todavía, porque automatizar la investigación aumenta los insumos de investigación pero la investigación sigue cuellobotellada por tareas físicas. Los autores lo marcan como un hallazgo sorprendente, y advierten que su modelo no puede generar las singularidades de Aghion-Jones-Jones (2019), así que lo leen como cota inferior",
+          "unit": "% de productividad del trabajo por el canal de innovación",
+          "horizon": "2026-2030",
+          "geography": "EE.UU.",
+          "sector": "producción de ideas",
+          "counterfactual": "aceleración explosiva del crecimiento por IA en investigación",
+          "quote": "One surprising finding of our model is that the growth speedup from AI in innovation is relatively minor, even in the extreme change scenario. ... Automating research increases the amount of research inputs that go into the production of new knowledge, but research remains bottlenecked by physical tasks. Labor productivity rises through this channel by well under one percent in all three scenarios",
+          "location": "Introducción, sección 1"
+        },
+        {
+          "metric": "Difusión frente a capacidad: dos perillas separadas",
+          "dimension": "dim-diffusion-share",
+          "value": "la difusión parte en 0,10 a mediados de 2026 —anclada en el uso de IA por firmas del BTOS del Census— y llega a 0,2 / 0,4 / 0,6 en 2030 según escenario, contra un techo de 1. La masa afectada es una perilla distinta: 0,14 hoy, 0,2 / 0,3 / 0,5 en 2030, contra un techo de 0,624 que es todo el trabajo cognitivo",
+          "unit": "fracción de instancias",
+          "horizon": "2026-2030",
+          "geography": "EE.UU.",
+          "sector": "economía completa",
+          "counterfactual": "que la capacidad se traduzca en uso sin rezago",
+          "quote": "d_t diffusion share, mid-2026 anchor — 0.10 — firm AI use, Business Trends and Outlook Survey and its 2026 AI supplement",
+          "location": "Tabla 1, panel B (La IA en la producción de bienes y servicios)"
+        },
+        {
+          "metric": "Cuánto del uso real parece automatización y no aumento",
+          "dimension": "dim-collaboration-mode",
+          "value": "cerca de la mitad del uso en Claude.ai y cerca de TRES CUARTOS del uso por API parece automatización, en el sentido de que el usuario delega y el modelo ejecuta. De ahí sale el share de automatización ψ del modelo: 0,50 describe el uso de chat de hoy y 0,90 un mundo donde el uso agéntico es la norma",
+          "unit": "fracción del uso",
+          "horizon": "2025-2026",
+          "geography": "EE.UU.",
+          "sector": "uso de Claude",
+          "counterfactual": "que el uso real predomine en aumento",
+          "quote": "about half of use on Claude.ai and about three quarters on the API looks like automation (the user delegates and the model executes). So 0.5 describes chat use today, and 0.9 a world in which agentic use is the norm.",
+          "location": "Sección 3, calibración de la disruptividad"
+        },
+        {
+          "metric": "Qué espera el público estadounidense, y dónde lo deja eso",
+          "dimension": "dim-expectativas-publicas-capacidad-ia",
+          "value": "encuesta representativa a 10.980 adultos sobre cuándo la IA podrá hacer ocho tareas cognitivas de dificultad creciente, qué tan ampliamente se usará, cuánta productividad agregará, si automatiza o aumenta, y cuánto demora un desplazado en reubicarse. Corriendo el modelo con sus respuestas MEDIANAS el resultado cae cerca del escenario sustancial: PIB 8% más alto al 2030 y empleo cognitivo 4% más bajo. Alrededor del 10% de los encuestados tiene visiones compatibles con el escenario extremo",
+          "unit": "respuestas medianas convertidas en salidas del modelo",
+          "horizon": "agosto de 2026, proyectado a 2030",
+          "geography": "EE.UU.",
+          "sector": "población adulta",
+          "counterfactual": "el escenario modesto o el extremo",
+          "quote": "Running the simulations using their median answers as inputs to the model, we find that the public's expectations land close to our substantial change scenario.",
+          "location": "Introducción, sección 1; encuesta fielded con Morning Consult"
+        }
+      ]
+    }
+  ],
+
+  "study_hypothesis_edges": [
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-weak-links-acotan-capturan",
+      "type": "confirma",
+      "why": "Es la confirmación más fuerte que esta hipótesis podía recibir, porque la firma su propio autor. Con Chad Jones de coautor, el modelo encuentra que automatizar la investigación casi no acelera el crecimiento —bastante menos de un 1% de productividad del trabajo por ese canal, en los TRES escenarios— precisamente porque la investigación sigue cuellobotellada por tareas físicas. Los weak links dejan de ser una conjetura teórica y pasan a ser el resultado que el modelo no logra esquivar."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-escasez-se-muda-a-fisico",
+      "type": "confirma",
+      "why": "El mecanismo por el que el crecimiento no se dispara es exactamente el de esta hipótesis: lo que queda escaso cuando la inteligencia se vuelve abundante son las tareas físicas, y son ellas las que fijan el techo. Aparece aquí como resultado de un modelo macro cerrado, no como argumento."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-macro-modest-vs-extreme",
+      "type": "confirma",
+      "why": "El paper entero es la reconciliación que esta hipótesis postula, construida de propósito: un marco único donde el macro modesto y el extremo son el mismo modelo con otros supuestos. Y lo dicen de frente sobre los datos de hoy — que el efecto laboral apagado es compatible con estar en el escenario modesto O con estar en el comienzo del extremo, dos lecturas con implicancias de política opuestas."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-task-net-ambiguous",
+      "type": "confirma",
+      "why": "La arquitectura del modelo es la descomposición desplazamiento-reinstauración-productividad, y el resultado neto cambia de signo según los supuestos. Que un modelo construido con todo el cuidado disponible siga devolviendo un rango que va de +1,6% a +32% de PIB es la mejor ilustración de que la ambigüedad no es falta de trabajo."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-ai-targets-high-skill",
+      "type": "confirma",
+      "why": "Toda la partición del modelo asume esta hipótesis y la cuantifica: las ocupaciones expuestas son las cognitivas (SOC 11-29, 41, 43) y las no expuestas son el electricista y el obrero de la construcción. En el extremo el salario cognitivo cae 11,5% bajo su senda sin IA mientras el del resto sube 34% sobre la suya."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-ia-ensancha-desigualdad",
+      "type": "confirma",
+      "why": "Ensancha por los dos ejes a la vez y con cifras: entre trabajadores, los 11,5 puntos abajo contra 34 arriba según la ocupación; y entre factores, la participación del trabajo cayendo de 60 a 45. Los autores concluyen que el problema del escenario extremo no es lograr crecimiento sino que el beneficio se reparta."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-potential-gated-adoption",
+      "type": "confirma",
+      "why": "El modelo separa en dos perillas lo que el debate suele confundir: la masa de tareas afectadas y la difusión efectiva. Incluso en el escenario extremo la difusión llega a 0,6 contra un techo de 1, así que ni ahí la capacidad se traduce entera en uso."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-gpt-lag",
+      "type": "confirma",
+      "why": "El rezago está parametrizado: la difusión parte en 0,10 medida con el BTOS del Census y sube lentamente, de modo que la capacidad existente tarda años en aplicarse. Es el rezago de tecnología de propósito general puesto como estructura del modelo y no como anécdota histórica."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-automation-vs-augmentation",
+      "type": "confirma",
+      "why": "La dirección de diseño es literalmente una perilla: el share de automatización ψ va de 0,50 a 0,90 según escenario, y mueve el resultado. Es el Turing trap convertido en parámetro, con la implicación que la hipótesis siempre sostuvo — que la diferencia entre automatizar y aumentar es una elección y no una propiedad de la tecnología."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-relacional-sostiene-empleo",
+      "type": "confirma",
+      "why": "En los tres escenarios el empleo se corre desde las ocupaciones cognitivas hacia las demás, y los salarios de esas otras suben — hasta 34% sobre su senda en el extremo. El sector no cognitivo absorbe, que es lo que la hipótesis postula. La condición que la hipótesis pone también aparece: solo absorbe si el cruce ocupacional es posible, y ahí está la fricción que genera desempleo."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-desacople-no-prueba-ruptura-del-vinculo",
+      "type": "confirma",
+      "why": "El modelo produce desacople sin que el vínculo se rompa, que es justo lo que la hipótesis sostiene: la participación del trabajo cae «porque los salarios quedan rezagados respecto del aumento del producto», y el salario promedio sube igual. Ver caer la tajada y subir el salario a la vez, dentro de un modelo explícito, es la demostración más limpia de que una cosa no implica la otra."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-ia-erosiona-participacion",
+      "type": "tensiona",
+      "why": "Tensiona la CONDICIÓN de la hipótesis, no su conclusión, y por eso es la arista más importante de este nodo. El enunciado dice «si σ>1». Korinek y Jones fijan σ = 0,5 —complementos brutos, el centro del dossier de once estudios de este mapa— y aun así la participación del trabajo cae de 60 a 45. En un modelo de tareas lo que se mueve es la frontera de qué hace el trabajo, no la proporción de factores sobre una función fija, así que σ>1 no es necesario. La lectura de la Síntesis —que con σ<1 la tajada SUBE— vale para la lente CES y no para la de tareas, y este paper es la instancia más seria de esa diferencia."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-generativa-rompe-con-ola-previa",
+      "type": "tensiona",
+      "why": "El modelo comete, con todo el cuidado del mundo, la mezcla de olas que esta hipótesis advierte: su parámetro decisivo —la reinstauración ρ— se calibra con la descomposición de Acemoglu-Restrepo de 1947-87 y 1987-2017, es decir con evidencia enteramente pre-generativa, para proyectar una economía generativa. Si la hipótesis es cierta y la generativa se comporta distinto de la ola previa, entonces el ancla histórica de ρ no vale y el rango entero de escenarios hereda ese problema. No es un descuido de los autores, que son explícitos sobre de dónde sale el número: es que no existe otra fuente."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-high-churn-small-net",
+      "type": "tensiona",
+      "why": "La hipótesis sostiene que hay mucha rotación con un neto pequeño e incierto. Acá la rotación es enorme y el neto también puede serlo: en el escenario extremo casi uno de cada cinco trabajadores cognitivos queda desempleado y el PIB sube 32%. La hipótesis sobrevive en el escenario modesto, donde el desempleo sube una décima de punto, pero el paper muestra que «neto pequeño» es un resultado de supuestos particulares y no una propiedad general del tránsito."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-augmentation-domina-uso",
+      "type": "tensiona",
+      "why": "Trae la cifra que más incomoda a esta hipótesis, y de la fuente que mejor puede medirla: cerca de la mitad del uso en Claude.ai y cerca de tres cuartos del uso por API parecen automatización, con el usuario delegando y el modelo ejecutando. Si el uso por API es el que crece, el predominio del aumento es una propiedad del chat y no del uso real."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-oferta-fisica-inelastica",
+      "type": "tensiona",
+      "why": "La tensión es de arquitectura y conviene declararla como tal. El modelo deja crecer el capital con una elasticidad de oferta de 3 y el único cuello físico que incorpora está en la producción de ideas; no tiene bloque de energía ni de cómputo, y los autores listan entre sus omisiones el efecto del despliegue de centros de datos. La rama física de este mapa sostiene que ahí está la restricción que manda. No se contradicen en un dato: se contradicen en qué deciden omitir."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-reinstatement-new-tasks",
+      "type": "informa",
+      "why": "Muestra cuánto peso carga este puente y cuán poco lo sostiene. ρ decide el signo del resultado —va de 0,50 a 0 entre escenarios— y su valor no se mide: se asume, con una referencia histórica pre-IA. El escenario extremo es literalmente el supuesto de que la reinstauración es cero. Mientras nadie mida ρ para la IA, el rango de escenarios es el rango de esa ignorancia."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-exposure-not-employment",
+      "type": "informa",
+      "why": "Es el intento más serio de construir el puente que esta hipótesis declara ausente — de la exposición técnica al empleo neto — y confirma por qué está ausente: el puente se construye, pero cada tramo que falta se cruza con un supuesto de escenario, desde la reinstauración hasta la velocidad de reubicación. El resultado no es una conversión validada sino un rango que hace comparables los supuestos."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-ajuste-cae-en-empleo",
+      "type": "informa",
+      "why": "Pone el reparto empleo-salario como parámetro explícito: la rigidez del salario cognitivo entra fijada en 0,50 anual a partir de evidencia de fijación salarial, y de ella depende cuánto del golpe aparece como desempleo y cuánto como caída del salario. Es φ con otro nombre, y el modelo confirma que decide la forma del resultado sin fijar su valor con datos de IA."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-base-gravable-erosiona-con-participacion",
+      "type": "informa",
+      "why": "Entrega la magnitud que la rama fiscal necesitaba y no tenía para la IA: una participación del trabajo cayendo de 60 a 45 en cuatro años. Si la base gravable sigue a la participación, ese es el tamaño del agujero, y el horizonte es mucho más corto que el de cualquiera de los escenarios fiscales que el mapa discutía."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-transferencia-no-restaura-ingreso",
+      "type": "informa",
+      "why": "Los autores llegan por su cuenta al problema que esta hipótesis aborda: si la IA eleva el producto mientras desplaza trabajo, los mecanismos por los que la gente recibe recursos de una economía mucho más próspera pueden tener que cambiar, y nombran reentrenamiento, seguros nuevos y apoyo al ingreso. Dejan la pregunta abierta en el punto exacto donde esta hipótesis aporta la evidencia de qué pasa al repartir."
+    },
+    {
+      "study_id": "korinek-jones-2026-escenarios",
+      "hypothesis": "hyp-labor-share-medicion-domina-comparacion",
+      "type": "informa",
+      "why": "Es el caso que muestra que esta hipótesis muerde en el trabajo más visible del campo. El modelo toma la participación del trabajo inicial en 0,60 como «valor convencional para Estados Unidos», sin entrar en la disputa que el mapa registra con Atkeson, Eisfeldt y Lawrence. Su titular es un movimiento de 60 a 45; si el 60 depende de la convención contable, el tamaño de la caída también, y el resultado más citado del paper queda apoyado en una cifra que la literatura no tiene cerrada."
+    }
+  ]
+}

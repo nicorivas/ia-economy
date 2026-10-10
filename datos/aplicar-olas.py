@@ -96,6 +96,8 @@ OLAS = {
     # ── Teoría: modelos y marcos sin período de datos propio ──────────────────────────────
     "acemoglu2024simple": "teoria",
     "filippucci-etal-2025-macro-g7": "teoria",
+    # El modelo de escenarios del Anthropic Institute: marco sin período de datos propio.
+    "korinek-jones-2026-escenarios": "teoria",
     "korinek2024scenarios": "teoria",
     "korinek-trammell2024-growth-tai": "teoria",
     "korinek-stiglitz2019": "teoria",
