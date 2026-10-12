@@ -1,0 +1,203 @@
+/* Presentación de las piezas. Mismo lenguaje que la plataforma: catppuccin, plano, sin
+   esquinas redondeadas. El lienzo es siempre 1080×1350; acá solo se escala. */
+
+.bit-page {
+  min-height: 100%;
+  background: var(--crust);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 64px;
+}
+
+.bit-head {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0 14px;
+  border-bottom: 1px solid var(--surface0);
+}
+.bit-back {
+  color: var(--subtext0);
+  text-decoration: none;
+  font-size: 13px;
+}
+.bit-back:hover {
+  color: var(--text);
+}
+.bit-serie {
+  color: var(--overlay1);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.bit-stage {
+  width: 100%;
+  max-width: 560px;
+  padding: 20px 0 0;
+}
+/* El marco mantiene 4:5 exacto a cualquier ancho: el diseño es vertical primero. */
+.bit-frame {
+  width: 100%;
+  aspect-ratio: 1080 / 1350;
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  overflow: hidden;
+}
+/* Las dos capas de una pieza: el campo WebGL abajo, el tipo en SVG arriba. Mismas medidas,
+   el mismo 1080×1350 escalado por CSS; nunca se componen en horizontal y se encogen. */
+.bit-capas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.bit-canvas,
+.bit-svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bit-controls {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 0;
+}
+.bit-btn {
+  background: var(--surface0);
+  color: var(--text);
+  border: none;
+  border-radius: 0;
+  width: 40px;
+  height: 32px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.bit-btn:hover {
+  background: var(--surface1);
+}
+.bit-range {
+  flex: 1;
+  accent-color: var(--blue);
+  height: 32px;
+}
+
+.bit-caps {
+  width: 100%;
+  max-width: 560px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 1px;
+  background: var(--surface0);
+  border: 1px solid var(--surface0);
+}
+.bit-cap {
+  background: var(--base);
+  color: var(--subtext0);
+  border: none;
+  border-radius: 0;
+  padding: 10px 8px;
+  font-size: 11px;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+.bit-cap:hover {
+  background: var(--surface0);
+  color: var(--text);
+}
+.bit-cap.on {
+  background: var(--surface0);
+  color: var(--text);
+  box-shadow: inset 2px 0 0 var(--blue);
+}
+.bit-cap-n {
+  display: block;
+  color: var(--overlay1);
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.bit-ficha {
+  width: 100%;
+  max-width: 560px;
+  padding: 32px 0 0;
+}
+.bit-titulo {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.bit-afirmacion {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--subtext1);
+  margin: 0 0 24px;
+}
+.bit-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  margin: 0 0 20px;
+  font-size: 13px;
+}
+.bit-meta dt {
+  color: var(--overlay1);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+.bit-meta dd {
+  margin: 4px 0 0;
+  color: var(--subtext0);
+  line-height: 1.5;
+}
+.bit-meta a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.bit-meta a:hover {
+  text-decoration: underline;
+}
+.bit-nota {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--overlay1);
+  border-top: 1px solid var(--surface0);
+  padding-top: 16px;
+  margin: 0;
+}
+
+/* Modo captura: el lienzo y nada más, en píxeles exactos. */
+.bit-captura {
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  background: var(--mantle);
+}
+.bit-captura .bit-canvas,
+.bit-captura .bit-svg {
+  width: 1080px;
+  height: 1350px;
+}
+
+/* Nivel 2 en la web: el mismo párrafo de la lámina, como texto de verdad. */
+.bit-parrafo {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--subtext0);
+  margin: 0 0 24px;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ia-empleo-estudio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Exportador de piezas: una escena, tres salidas (video, laminas, PDF).",
+  "scripts": {
+    "exportar": "node exportar.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.56.0"
+  }
+}
